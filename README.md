@@ -9,7 +9,10 @@ Welcome! This portfolio highlights my 15+ years of experience in software qualit
 - **Tech Stack:** Linux, SaaS platforms, GitHub, scripting (Python, Bash)
 
 ## Portfolio Projects
+1.  https://github.com/jeffmaddow-ops/postman-cicd-demo
+    Automated API Testing with Postman and GitHub Actions
 
+2.    
 
 ## Contact
 - [LinkedIn](https://www.linkedin.com/in/jeff-maddow) 
