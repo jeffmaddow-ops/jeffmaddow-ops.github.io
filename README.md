@@ -65,11 +65,25 @@ Welcome!
 
 ---
 
-##  Portfolio Projects
-1.  https://github.com/jeffmaddow-ops/postman-cicd-demo
-    Automated API Testing with Postman and GitHub Actions
+##  Projects
+## ☕ Featured GitHub Projects
 
-2.    
+Here are some real things I’ve built, learned from, or kept around as curiosities.
+
+### 📌 [jeffmaddow‑ops.github.io](https://github.com/jeffmaddow-ops/jeffmaddow-ops.github.io)
+Personal site / GitHub Pages repo — this is where this portfolio *could* live as a real page (still brewing).  
+
+### 📌 [postman‑cicd‑demo](https://github.com/jeffmaddow-ops/postman-cicd-demo)
+Demo of automated API testing using Postman collections integrated with GitHub Actions workflows. Shows how I tie API test automation into CI/CD pipelines.  
+
+### 📌 [linkedin_job_agent](https://github.com/jeffmaddow-ops/linkedin_job_agent)
+Python‑based job search tool for LinkedIn, with both CLI and web components depending on where the wind was blowing that week.  
+
+### 📌 [learn_ansible](https://github.com/jeffmaddow-ops/learn_ansible)
+Ansible learning repo with playbooks and examples capturing what I picked up about automating systems config and deployments.  
+
+### 📌 [ghostwriter_chatbot_modern](https://github.com/jeffmaddow-ops/ghostwriter_chatbot_modern)
+Early JavaScript “ghostwriter” chatbot project — mostly initial commit and experimentation while getting comfortable with Git workflows.  
 
 ---
 
