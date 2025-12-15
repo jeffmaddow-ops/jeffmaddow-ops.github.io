@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeff Maddow – Technical Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* Dark theme palette */
+  :root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --primary-color: #4caf50; /* green accent */
+    --secondary-color: #ffa726; /* orange accent */
+    --card-bg: #1e1e1e;
+    --link-color: #ffa726;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  a { color: var(--link-color); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  header {
+    text-align: center;
+    padding: 40px 20px 20px 20px;
+  }
+
+  header h1 {
+    font-size: 2.8em;
+    color: var(--primary-color);
+    margin: 0.2em 0;
+  }
+
+  header p {
+    font-size: 1.2em;
+    margin: 0.2em 0;
+    color: var(--secondary-color);
+  }
+
+  .banner {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5px;
+  }
+
+  .badges img {
+    margin: 5px;
+  }
+
+  .project-card {
+    background-color: var(--card-bg);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .project-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(255, 167, 38, 0.5);
+  }
+
+  .project-card h3 {
+    margin-top: 0;
+    color: var(--secondary-color);
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 0.9em;
+    color: #aaa;
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 2em; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="assets/banner.png" alt="Portfolio Banner" class="banner">
+  <h1>Jeff Maddow – Technical Portfolio</h1>
+  <p><strong>Delivering enterprise SaaS solutions with technical expertise</strong></p>
+</header>
+
+<section>
+  <h2>🛠 Skills & Tools</h2>
+  <div class="badges">
+    <!-- Platform & Integration -->
+    <img src="https://img.shields.io/badge/REST-API-61DAFB?style=for-the-badge" alt="REST API">
+    <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" alt="Postman">
+    <img src="https://img.shields.io/badge/Webhooks-FFCA28?style=for-the-badge" alt="Webhooks">
+    <img src="https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white" alt="JSON">
+
+    <!-- Systems Administration -->
+    <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux">
+    <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows">
+    <img src="https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS">
+    <img src="https://img.shields.io/badge/VMware-607078?style=for-the-badge&logo=vmware&logoColor=white" alt="VMware">
+    <img src="https://img.shields.io/badge/Hyper--V-0078D7?style=for-the-badge" alt="Hyper-V">
+    <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS">
+    <img src="https://img.shields.io/badge/UTM-FF6C37?style=for-the-badge" alt="UTM">
+
+    <!-- Data & Analytics -->
+    <img src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="SQL">
+    <img src="https://img.shields.io/badge/ETL-FF6F61?style=for-the-badge" alt="ETL">
+    <img src="https://img.shields.io/badge/API-Integration-61DAFB?style=for-the-badge" alt="API Integration">
+
+    <!-- Scripting & Automation -->
+    <img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash">
+    <img src="https://img.shields.io/badge/PowerShell-0078D7?style=for-the-badge&logo=powershell&logoColor=white" alt="PowerShell">
+    <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+
+    <!-- Networking & Security -->
+    <img src="https://img.shields.io/badge/TCP/IP-6A1B9A?style=for-the-badge" alt="TCP/IP">
+    <img src="https://img.shields.io/badge/SSL-1E88E5?style=for-the-badge" alt="SSL">
+    <img src="https://img.shields.io/badge/OAuth-FF5722?style=for-the-badge" alt="OAuth">
+    <img src="https://img.shields.io/badge/Wireshark-1BA1E2?style=for-the-badge&logo=wireshark&logoColor=white" alt="Wireshark">
+    <img src="https://img.shields.io/badge/HIPAA-1976D2?style=for-the-badge" alt="HIPAA">
+  </div>
+</section>
+
+<section>
+  <h2>📁 Featured Projects</h2>
+
+  <div class="project-card">
+    <h3><a href="https://github.com/jeffmaddow-ops/jeffmaddow-ops.github.io">Personal GitHub Pages Site</a></h3>
+    <p>Portfolio and personal site hosted on GitHub Pages — central hub for projects and technical documentation.</p>
+  </div>
+
+  <div class="project-card">
+    <h3><a href="https://github.com/jeffmaddow-ops/postman-cicd-demo">Postman CI/CD Demo</a></h3>
+    <p>Automated API testing with Postman integrated into GitHub Actions pipelines for CI/CD.</p>
+  </div>
+
+  <div class="project-card">
+    <h3><a href="https://github.com/jeffmaddow-ops/linkedin_job_agent">LinkedIn Job Agent</a></h3>
+    <p>Python-based automation tool for LinkedIn job search with CLI/web integration.</p>
+  </div>
+
+  <div class="project-card">
+    <h3><a href="https://github.com/jeffmaddow-ops/learn_ansible">Learn Ansible</a></h3>
+    <p>Playbooks and examples for learning system configuration automation using Ansible.</p>
+  </div>
+
+  <div class="project-card">
+    <h3><a href="https://github.com/jeffmaddow-ops/ghostwriter_chatbot_modern">Ghostwriter Chatbot Modern</a></h3>
+    <p>Early chatbot project for experimenting with JavaScript and Git workflows.</p>
+  </div>
+</section>
+
+<footer>
+  <p>📫 Contact: <a href="https://www.linkedin.com/in/jeffmaddow">LinkedIn</a> | <a href="mailto:your-email@example.com">Email</a> | <a href="https://github.com/jeffmaddow-ops">GitHub</a></p>
+</footer>
+
+</body>
+</html>
