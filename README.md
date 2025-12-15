@@ -108,13 +108,12 @@
 <section>
   <h2>🛠 Skills & Tools</h2>
   <div class="badges">
-    <!-- Platform & Integration -->
+		<-- Platform & Integration -->
     <img src="https://img.shields.io/badge/REST-API-61DAFB?style=for-the-badge" alt="REST API">
     <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" alt="Postman">
     <img src="https://img.shields.io/badge/Webhooks-FFCA28?style=for-the-badge" alt="Webhooks">
     <img src="https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white" alt="JSON">
-
-    <!-- Systems Administration -->
+    <-- Systems Administration -->
     <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux">
     <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows">
     <img src="https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS">
@@ -122,25 +121,22 @@
     <img src="https://img.shields.io/badge/Hyper--V-0078D7?style=for-the-badge" alt="Hyper-V">
     <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS">
     <img src="https://img.shields.io/badge/UTM-FF6C37?style=for-the-badge" alt="UTM">
-
-    <!-- Data & Analytics -->
+    <-- Data & Analytics -->
     <img src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="SQL">
     <img src="https://img.shields.io/badge/ETL-FF6F61?style=for-the-badge" alt="ETL">
     <img src="https://img.shields.io/badge/API-Integration-61DAFB?style=for-the-badge" alt="API Integration">
-
-    <!-- Scripting & Automation -->
+    <-- Scripting & Automation -->
     <img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash">
     <img src="https://img.shields.io/badge/PowerShell-0078D7?style=for-the-badge&logo=powershell&logoColor=white" alt="PowerShell">
     <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
     <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
-
-    <!-- Networking & Security -->
+    <-- Networking & Security -->
     <img src="https://img.shields.io/badge/TCP/IP-6A1B9A?style=for-the-badge" alt="TCP/IP">
     <img src="https://img.shields.io/badge/SSL-1E88E5?style=for-the-badge" alt="SSL">
     <img src="https://img.shields.io/badge/OAuth-FF5722?style=for-the-badge" alt="OAuth">
     <img src="https://img.shields.io/badge/Wireshark-1BA1E2?style=for-the-badge&logo=wireshark&logoColor=white" alt="Wireshark">
     <img src="https://img.shields.io/badge/HIPAA-1976D2?style=for-the-badge" alt="HIPAA">
-   </div>
+  </div>
 </section>
 
 <section>
@@ -174,7 +170,6 @@
 
 <footer>
   <p>📫 Contact: <a href="https://www.linkedin.com/in/jeffmaddow">LinkedIn</a> | <a href="mailto:your-email@example.com">Email</a> | <a href="https://github.com/jeffmaddow-ops">GitHub</a></p>
-  <p>Professional technical portfolio showcasing enterprise SaaS implementations and solutions engineering.</p>
 </footer>
 
 </body>
