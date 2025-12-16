@@ -4,8 +4,6 @@ Continuous Learning Through Building, Testing, and Improving
 
 This repository serves as a living portfolio focused on continuous learning through hands-on QA, automation, and implementation work. Each project is designed to reflect real-world scenarios rather than isolated tutorials or theoretical examples.
 
-The goal is simple: learn by doing, validate assumptions through testing, and improve through iteration.
-
 What You’ll Find Here
 	•	QA & Test Engineering: Test strategies, automation frameworks, validation workflows, and exploratory testing examples
 	•	Automation: Scripts and tools built to reduce manual effort, improve reliability, and surface issues earlier
@@ -16,7 +14,7 @@ Philosophy
 	•	Continuous learning beats static expertise
 	•	Practical solutions matter more than perfect code
 	•	Testing is a product enabler, not a checkbox
-	•	Assumptions are meant to be challenged
+	•	Dont assume - Verify
 
 How to Use This Repository
 
