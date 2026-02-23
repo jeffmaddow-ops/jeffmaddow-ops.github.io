@@ -534,6 +534,31 @@ img {
     color: var(--accent);
 }
 
+
+/* ============================================================
+   CONSULTING EXPERTISE (Experience Section)
+   ============================================================ */
+
+.experience__lead {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-md);
+}
+
+.experience__list {
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.experience__list li {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.experience__content .body-large:last-of-type {
+    opacity: 0.9;
+}
+
 /* Philosophy Editorial */
 .philosophy-editorial {
     padding-block: var(--space-5xl);
