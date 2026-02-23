@@ -1,906 +1,477 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jeff Maddow – Technical Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  :root {
-    --bg-primary: #000000;
-    --bg-secondary: #1a0033;
-    --bg-card: #0a0a1e;
-    --text-primary: #F5E9E7;
-    --text-secondary: #8A9DB1;
-    --text-muted: #837D68;
-    --accent-mint: #C1C0C2;
-    --accent-peach: #F5E9E7;
-    --accent-sage: #837D68;
-    --accent-blue: #8A9DB1;
-    --accent-pink: #ECC5C6;
-    --accent-primary: #8A9DB1;
-    --accent-secondary: #ECC5C6;
-    --neon-cyan: #00ffff;
-    --neon-pink: #ff00ff;
-    --neon-yellow: #ffff00;
-    --neon-green: #00ff00;
-    --border-color: #00ffff;
-    --hover-glow: rgba(0, 255, 255, 0.5);
-  }
-
-  @keyframes scanline {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100vh); }
-  }
-
-  @keyframes flicker {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.95; }
-  }
-
-  @keyframes pixel-pulse {
-    0%, 100% { box-shadow: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-cyan); }
-    50% { box-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-pink); }
-  }
-
-  body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: 'Fira Code', 'Courier New', monospace;
-    line-height: 1.6;
-    overflow-x: hidden;
-    position: relative;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-      repeating-linear-gradient(
-        0deg,
-        rgba(0, 255, 255, 0.03) 0px,
-        rgba(0, 255, 255, 0.03) 1px,
-        transparent 1px,
-        transparent 2px
-      );
-    pointer-events: none;
-    z-index: 9999;
-    animation: flicker 0.15s infinite;
-  }
-
-  body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(transparent, rgba(0, 255, 255, 0.3), transparent);
-    animation: scanline 6s linear infinite;
-    pointer-events: none;
-    z-index: 9998;
-  }
-
-  /* Hero Section */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    padding: 2rem;
-    background: 
-      radial-gradient(circle at 20% 50%, rgba(255, 0, 255, 0.1), transparent 50%),
-      radial-gradient(circle at 80% 50%, rgba(0, 255, 255, 0.1), transparent 50%),
-      var(--bg-primary);
-    border-bottom: 4px solid var(--neon-cyan);
-    box-shadow: 0 4px 0 var(--neon-pink);
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(0deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 20px 20px;
-    opacity: 0.3;
-  }
-
-  .hero-content {
-    text-align: center;
-    z-index: 1;
-    max-width: 900px;
-    border: 4px solid var(--neon-cyan);
-    padding: 3rem 2rem;
-    background: rgba(0, 0, 0, 0.7);
-    box-shadow: 
-      0 0 20px rgba(0, 255, 255, 0.5),
-      inset 0 0 20px rgba(0, 255, 255, 0.1);
-    position: relative;
-  }
-
-  .hero-content::before,
-  .hero-content::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: var(--bg-primary);
-    border: 4px solid var(--neon-pink);
-  }
-
-  .hero-content::before {
-    top: -4px;
-    left: -4px;
-  }
-
-  .hero-content::after {
-    bottom: -4px;
-    right: -4px;
-  }
-
-  .hero h1 {
-    font-size: clamp(2rem, 8vw, 4rem);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--text-primary);
-    text-shadow: 
-      0 0 10px var(--accent-blue),
-      0 0 20px var(--accent-pink),
-      3px 3px 0 rgba(0, 0, 0, 0.5);
-    animation: pixel-pulse 2s ease-in-out infinite;
-  }
-
-  .hero .subtitle {
-    font-size: clamp(0.8rem, 2vw, 1.2rem);
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-  }
-
-  .hero .role {
-    font-size: clamp(0.7rem, 2vw, 1rem);
-    color: var(--accent-sage);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    border: 2px solid var(--accent-sage);
-    padding: 0.5rem 1rem;
-    display: inline-block;
-    background: rgba(131, 125, 104, 0.1);
-  }
-
-  /* Navigation */
-  nav {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.9);
-    padding: 0.5rem;
-    border: 3px solid var(--neon-cyan);
-    box-shadow: 
-      0 0 10px var(--neon-cyan),
-      inset 0 0 10px rgba(0, 255, 255, 0.2);
-  }
-
-  nav a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    margin: 0 0.5rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    transition: all 0.3s ease;
-    display: inline-block;
-    border: 2px solid transparent;
-    font-family: 'Fira Code', monospace;
-  }
-
-  nav a:hover {
-    color: var(--neon-cyan);
-    border: 2px solid var(--neon-cyan);
-    text-shadow: 0 0 10px var(--neon-cyan);
-    background: rgba(0, 255, 255, 0.1);
-  }
-
-  /* Container */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 2rem;
-    position: relative;
-  }
-
-  /* Section Titles */
-  .section-title {
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
-    font-weight: 700;
-    margin-bottom: 3rem;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    color: var(--text-primary);
-    text-shadow: 
-      0 0 10px var(--accent-blue),
-      0 0 20px var(--accent-pink),
-      3px 3px 0 rgba(0, 0, 0, 0.8);
-    border: 4px solid var(--neon-cyan);
-    border-left: none;
-    border-right: none;
-    padding: 1rem 0;
-    position: relative;
-    background: rgba(0, 255, 255, 0.05);
-  }
-
-  .section-title::before,
-  .section-title::after {
-    content: '◆';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--neon-pink);
-    font-size: 1.5rem;
-    text-shadow: 0 0 10px var(--neon-pink);
-  }
-
-  .section-title::before {
-    left: 1.5rem;
-  }
-
-  .section-title::after {
-    right: 1.5rem;
-  }
-
-  /* Skills Section */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
-  }
-
-  .skill-card {
-    background: var(--bg-card);
-    padding: 2rem;
-    border: 4px solid var(--neon-cyan);
-    transition: all 0.3s ease;
-    position: relative;
-    box-shadow: 
-      0 0 10px rgba(0, 255, 255, 0.3),
-      inset 0 0 20px rgba(0, 255, 255, 0.05);
-  }
-
-  .skill-card::before,
-  .skill-card::after {
-    content: '';
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    background: var(--bg-primary);
-    border: 3px solid var(--neon-pink);
-  }
-
-  .skill-card::before {
-    top: -3px;
-    left: -3px;
-  }
-
-  .skill-card::after {
-    bottom: -3px;
-    right: -3px;
-  }
-
-  .skill-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 
-      0 0 20px var(--neon-cyan),
-      0 0 40px var(--neon-pink),
-      inset 0 0 30px rgba(0, 255, 255, 0.1);
-    border-color: var(--neon-pink);
-  }
-
-  .skill-icon {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    margin: 0 auto 1rem;
-    background: rgba(0, 0, 0, 0.5);
-    border: 3px solid var(--neon-yellow);
-    box-shadow: 
-      0 0 10px var(--neon-yellow),
-      inset 0 0 10px rgba(255, 255, 0, 0.2);
-    transition: all 0.3s ease;
-  }
-
-  .skill-card:hover .skill-icon {
-    transform: scale(1.2) rotate(360deg);
-    border-color: var(--neon-pink);
-    box-shadow: 
-      0 0 20px var(--neon-pink),
-      inset 0 0 20px rgba(255, 0, 255, 0.3);
-  }
-
-  .skill-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    text-align: center;
-    text-shadow: 0 0 5px var(--accent-blue);
-  }
-
-  .skill-card p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    text-align: center;
-  }
-
-  /* Projects Section */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
-  }
-
-  .project-card {
-    background: var(--bg-card);
-    overflow: hidden;
-    border: 4px solid var(--neon-pink);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    box-shadow: 
-      0 0 10px rgba(255, 0, 255, 0.3),
-      inset 0 0 20px rgba(255, 0, 255, 0.05);
-  }
-
-  .project-card::before,
-  .project-card::after {
-    content: '';
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    background: var(--bg-primary);
-    border: 3px solid var(--neon-cyan);
-    z-index: 10;
-  }
-
-  .project-card::before {
-    top: -3px;
-    right: -3px;
-  }
-
-  .project-card::after {
-    bottom: -3px;
-    left: -3px;
-  }
-
-  .project-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 
-      0 0 30px var(--neon-pink),
-      0 0 60px var(--neon-cyan),
-      inset 0 0 30px rgba(255, 0, 255, 0.1);
-    border-color: var(--neon-cyan);
-  }
-
-  .project-image {
-    width: 100%;
-    height: 180px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    position: relative;
-    overflow: hidden;
-    border-bottom: 3px solid var(--neon-yellow);
-  }
-
-  .project-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(0deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 10px 10px;
-  }
-
-  .project-card:nth-child(2) .project-image {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  }
-
-  .project-card:nth-child(3) .project-image {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  }
-
-  .project-card:nth-child(4) .project-image {
-    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-  }
-
-  .project-card:nth-child(5) .project-image {
-    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-  }
-
-  .project-number {
-    position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 0.3rem 0.8rem;
-    border: 2px solid var(--neon-yellow);
-    font-family: 'Fira Code', monospace;
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-shadow: 0 0 5px var(--neon-yellow);
-    box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
-  }
-
-  .project-content {
-    padding: 1.5rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .project-content h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-shadow: 0 0 5px var(--accent-blue);
-  }
-
-  .project-content p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-    line-height: 1.5;
-  }
-
-  .project-links {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .project-link {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: rgba(0, 0, 0, 0.5);
-    color: var(--neon-cyan);
-    text-decoration: none;
-    font-size: 0.8rem;
-    border: 2px solid var(--neon-cyan);
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    font-weight: 700;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-  }
-
-  .project-link:hover {
-    background: var(--neon-cyan);
-    color: var(--bg-primary);
-    transform: translateX(5px);
-    box-shadow: 0 0 20px var(--neon-cyan);
-    text-shadow: none;
-  }
-
-  /* Timeline Section */
-  .timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 20px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--border-color);
-  }
-
-  .timeline-item {
-    position: relative;
-    padding-left: 60px;
-    margin-bottom: 3rem;
-  }
-
-  .timeline-dot {
-    position: absolute;
-    left: 11px;
-    top: 0;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--accent-blue);
-    border: 4px solid var(--bg-primary);
-    z-index: 1;
-  }
-
-  .timeline-content {
-    background: var(--bg-card);
-    padding: 1.5rem;
-    border-radius: 15px;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-  }
-
-  .timeline-item:nth-child(1) .timeline-content {
-    border-left: 4px solid var(--accent-pink);
-  }
-
-  .timeline-item:nth-child(2) .timeline-content {
-    border-left: 4px solid var(--accent-sage);
-  }
-
-  .timeline-item:nth-child(3) .timeline-content {
-    border-left: 4px solid var(--accent-blue);
-  }
-
-  .timeline-item:nth-child(4) .timeline-content {
-    border-left: 4px solid var(--accent-mint);
-  }
-
-  .timeline-content:hover {
-    transform: translateX(10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  }
-
-  .timeline-year {
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
-    color: var(--accent-blue);
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-  }
-
-  .timeline-content h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-  }
-
-  .timeline-content p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-  }
-
-  /* Badges Section */
-  .badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-    margin: 2rem 0;
-  }
-
-  .badges img {
-    transition: transform 0.2s ease;
-  }
-
-  .badges img:hover {
-    transform: translateY(-3px);
-  }
-
-  /* Footer */
-  footer {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 3rem 2rem;
-    text-align: center;
-    border-top: 4px solid var(--neon-cyan);
-    box-shadow: 0 -4px 0 var(--neon-pink);
-    position: relative;
-  }
-
-  footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(0deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 20px 20px;
-    opacity: 0.3;
-  }
-
-  .footer-content {
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-
-  .social-link {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    padding: 0.8rem 1.5rem;
-    border: 3px solid var(--neon-cyan);
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-weight: 700;
-    background: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-  }
-
-  .social-link:hover {
-    color: var(--neon-cyan);
-    border-color: var(--neon-pink);
-    transform: translateY(-3px);
-    box-shadow: 0 0 20px var(--neon-cyan);
-    text-shadow: 0 0 10px var(--neon-cyan);
-  }
-
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    nav {
-      top: 0.5rem;
-      right: 0.5rem;
-      padding: 0.5rem;
-    }
-
-    nav a {
-      margin: 0 0.3rem;
-      font-size: 0.7rem;
-      padding: 0.4rem 0.6rem;
-    }
-
-    .hero-content {
-      padding: 2rem 1rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(1.5rem, 6vw, 3rem);
-    }
-
-    .skills-grid,
-    .projects-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .section-title::before,
-    .section-title::after {
-      font-size: 1rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    nav {
-      position: static;
-      margin: 0.5rem;
-      text-align: center;
-      width: calc(100% - 1rem);
-    }
-
-    nav a {
-      display: inline-block;
-      margin: 0.3rem;
-      font-size: 0.65rem;
-    }
-
-    .hero-content::before,
-    .hero-content::after {
-      width: 15px;
-      height: 15px;
-    }
-
-    .project-card::before,
-    .project-card::after,
-    .skill-card::before,
-    .skill-card::after {
-      width: 10px;
-      height: 10px;
-    }
-  }
-
-  /* Scroll Animations */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .fade-in {
-    animation: fadeInUp 0.6s ease-out;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeff Maddow — Implementation Engineering & Integration Architecture</title>
+  <meta name="description"
+    content="Senior Implementation & Customer Solutions Engineer specializing in complex API integrations, automation-first infrastructure, and technical fluency across customer-facing and backend systems.">
+  <link rel="stylesheet" href="index.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 </head>
+
 <body>
 
-<!-- Navigation -->
-<nav>
-  <a href="#home">Home</a>
-  <a href="#projects">Projects</a>
-  <a href="#skills">Skills</a>
-</nav>
-
-<!-- Hero Section -->
-<section id="home" class="hero">
-  <div class="hero-content">
-    <h1>Hi There!</h1>
-    <p class="subtitle">Jeff's Portfolio</p>
-    <p class="role">Implementation & Customer Solutions Engineer</p>
-  </div>
-</section>
-
-<!-- Skills Section -->
-<section id="skills" class="container">
-  <h2 class="section-title">Skills & Expertise</h2>
-  
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-icon">🔌</div>
-      <h3>Platform Integration</h3>
-      <p>REST APIs, Webhooks, JSON, Postman, API Integration and testing for seamless B2B solutions</p>
-    </div>
-    
-    <div class="skill-card">
-      <div class="skill-icon">💻</div>
-      <h3>Systems Administration</h3>
-      <p>Linux, Windows, macOS, VMware, AWS, Hyper-V - Multi-platform infrastructure management</p>
-    </div>
-    
-    <div class="skill-card">
-      <div class="skill-icon">⚙️</div>
-      <h3>Scripting & Automation</h3>
-      <p>Bash, PowerShell, Docker, GitHub - Automating workflows and deployment pipelines</p>
-    </div>
-    
-    <div class="skill-card">
-      <div class="skill-icon">📊</div>
-      <h3>Data</h3>
-      <p>SQL, ETL processes, data integration and migration</p>
-    </div>
-    
-    <div class="skill-card">
-      <div class="skill-icon">✅</div>
-      <h3>QA</h3>
-      <p>Comprehensive testing strategies ensuring robust and reliable software delivery</p>
-    </div>
-    
-    <div class="skill-card">
-      <div class="skill-icon">🔒</div>
-      <h3>Networking & Security</h3>
-      <p>TCP/IP, SSL, OAuth, Wireshark, HIPAA compliance and secure implementations</p>
+  <!-- ===== PRELOADER ===== -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__terminal">
+      <p class="preloader__line" data-line="0"><span class="preloader__prompt">›</span> Initializing portfolio system...
+      </p>
+      <p class="preloader__line" data-line="1"><span class="preloader__prompt">›</span> Loading integration modules...
+      </p>
+      <p class="preloader__line" data-line="2"><span class="preloader__prompt">›</span> Calibrating signal...</p>
+      <p class="preloader__line" data-line="3"><span class="preloader__prompt">›</span> Rendering interface...</p>
     </div>
   </div>
 
-</section>
+  <!-- ===== NAV ===== -->
+  <nav class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#" class="nav__logo">JM</a>
+      <ul class="nav__links">
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#skills" class="nav__link">Skills</a></li>
+        <li><a href="#work" class="nav__link">Work</a></li>
+        <li><a href="#projects" class="nav__link">Projects</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<!-- Projects Section -->
-<section id="projects" class="container">
-  <h2 class="section-title">AI-Powered Projects</h2>
-  
-  <div class="projects-grid">
-    <div class="project-card">
-      <div class="project-image">
-        <div class="project-number">Project 01</div>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero section" id="hero">
+    <div class="container hero__content">
+      <h1 class="hero__name reveal" style="--stagger: 0">
+        <span>Jeff</span>
+        <span>Maddow</span>
+      </h1>
+      <hr class="hero__rule reveal-line" style="--stagger: 1">
+      <p class="hero__subtitle reveal" style="--stagger: 2">
+        Implementation Engineering · Integration Architecture · AI-Driven Automation for Modern SaaS Teams
+      </p>
+    </div>
+  </header>
+
+
+  <!-- ===== ABOUT / VALUE PROPOSITIONS ===== -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about__intro">
+        <p class="label label--accent reveal" style="--stagger: 0">About</p>
+        <h2 class="headline-display about__heading reveal" style="--stagger: 1">
+          Building the connective tissue<br>between <em>systems</em> and <em>teams</em>
+        </h2>
+        <p class="body-large reveal" style="--stagger: 2">
+          I lead technical discovery, architect integrations, and deliver production-grade
+          implementations across enterprise telephony, cloud infrastructure, and SaaS platforms.
+          My work sits at the intersection of engineering depth and customer-facing clarity —
+          turning complex requirements into systems that ship on time and hold under pressure.
+        </p>
       </div>
-      <div class="project-content">
-        <h3>Personal GitHub Pages Site</h3>
-        <p>Portfolio and personal site hosted on GitHub Pages — central hub for projects and technical documentation</p>
-        <div class="project-links">
-          <a href="https://github.com/jeffmaddow-ops/jeffmaddow-ops.github.io" class="project-link">View Code →</a>
+
+      <div class="props-grid">
+        <div class="prop-card reveal" style="--stagger: 3">
+          <span class="prop-card__index">01 —</span>
+          <h3 class="prop-card__title">Production-Ready Integrations</h3>
+          <p class="prop-card__desc">
+            Complex API, SIP, and telephony integrations architected for enterprise reliability.
+            REST, SOAP, SAML/SSO, and Twilio SIP domain configurations —
+            validated with packet analysis and built to hold at scale.
+          </p>
+        </div>
+        <div class="prop-card reveal" style="--stagger: 4">
+          <span class="prop-card__index">02 —</span>
+          <h3 class="prop-card__title">Automation-First Mindset</h3>
+          <p class="prop-card__desc">
+            AWS ingestion pipelines, IVR configuration automation, and AI-driven
+            structured prompting that eliminates manual cycles. If a human is
+            doing it repeatedly, I build the system that replaces it.
+          </p>
+        </div>
+        <div class="prop-card reveal" style="--stagger: 5">
+          <span class="prop-card__index">03 —</span>
+          <h3 class="prop-card__title">Full-Stack Technical Fluency</h3>
+          <p class="prop-card__desc">
+            Equally effective leading a stakeholder discovery workshop and
+            running Wireshark captures to diagnose SIP signaling defects.
+            The ability to operate across the entire stack is the differentiator.
+          </p>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="project-card">
-      <div class="project-image">
-        <div class="project-number">Project 02</div>
+
+  <!-- ===== TECHNICAL COMPETENCIES ===== -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="skills__header">
+        <p class="label label--accent reveal" style="--stagger: 0">Competencies</p>
+        <h2 class="headline-display skills__heading reveal" style="--stagger: 1">
+          Technical Arsenal
+        </h2>
       </div>
-      <div class="project-content">
-        <h3>Postman CI/CD Demo</h3>
-        <p>Automated API testing with Postman integrated into GitHub Actions pipelines for continuous integration and deployment</p>
-        <div class="project-links">
-          <a href="https://github.com/jeffmaddow-ops/postman-cicd-demo" class="project-link">View Code →</a>
+
+      <div class="skills__grid">
+
+        <div class="skill-card reveal" style="--stagger: 2">
+          <span class="skill-card__label">Cloud & Infrastructure</span>
+          <div class="skill-card__tags">
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">VMware</span>
+            <span class="skill-tag">Hyper-V</span>
+            <span class="skill-tag">RHEL</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Windows</span>
+            <span class="skill-tag">macOS</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">CI/CD</span>
+            <span class="skill-tag">HA Clusters</span>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="project-card">
-      <div class="project-image">
-        <div class="project-number">Project 03</div>
-      </div>
-      <div class="project-content">
-        <h3>LinkedIn Job Agent</h3>
-        <p>Python-based automation tool for LinkedIn job search with CLI/web integration for streamlined job hunting</p>
-        <div class="project-links">
-          <a href="https://github.com/jeffmaddow-ops/linkedin_job_agent" class="project-link">View Code →</a>
+        <div class="skill-card reveal" style="--stagger: 3">
+          <span class="skill-card__label">Telephony & Voice</span>
+          <div class="skill-card__tags">
+            <span class="skill-tag">Twilio SIP</span>
+            <span class="skill-tag">IVR Design</span>
+            <span class="skill-tag">SIP Signaling</span>
+            <span class="skill-tag">ACL Controls</span>
+            <span class="skill-tag">Voice Routing</span>
+            <span class="skill-tag">CX Workflows</span>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="project-card">
-      <div class="project-image">
-        <div class="project-number">Project 04</div>
-      </div>
-      <div class="project-content">
-        <h3>Learn Ansible</h3>
-        <p>Playbooks and examples for learning system configuration automation using Ansible infrastructure as code</p>
-        <div class="project-links">
-          <a href="https://github.com/jeffmaddow-ops/learn_ansible" class="project-link">View Code →</a>
+        <div class="skill-card reveal" style="--stagger: 4">
+          <span class="skill-card__label">Integration & APIs</span>
+          <div class="skill-card__tags">
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">SOAP</span>
+            <span class="skill-tag">Webhooks</span>
+            <span class="skill-tag">OAuth 2.0</span>
+            <span class="skill-tag">SAML / SSO</span>
+            <span class="skill-tag">XML / JSON</span>
+            <span class="skill-tag">SSL/TLS</span>
+            <span class="skill-tag">Postman</span>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="project-card">
-      <div class="project-image">
-        <div class="project-number">Project 05</div>
-      </div>
-      <div class="project-content">
-        <h3>Ghostwriter Chatbot Modern</h3>
-        <p>Early chatbot project for experimenting with JavaScript and Git workflows, exploring conversational AI</p>
-        <div class="project-links">
-          <a href="https://github.com/jeffmaddow-ops/ghostwriter_chatbot_modern" class="project-link">View Code →</a>
+        <div class="skill-card reveal" style="--stagger: 5">
+          <span class="skill-card__label">Analysis & QA</span>
+          <div class="skill-card__tags">
+            <span class="skill-tag">Wireshark</span>
+            <span class="skill-tag">tcpdump</span>
+            <span class="skill-tag">TCP/IP</span>
+            <span class="skill-tag">Packet Capture</span>
+            <span class="skill-tag">SIP Diagnostics</span>
+            <span class="skill-tag">Defect Triage</span>
+            <span class="skill-tag">QA Testing</span>
+            <span class="skill-tag">HIPAA</span>
+          </div>
         </div>
+
+        <div class="skill-card reveal" style="--stagger: 6">
+          <span class="skill-card__label">Scripting & Automation</span>
+          <div class="skill-card__tags">
+            <span class="skill-tag">Bash</span>
+            <span class="skill-tag">PowerShell</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Ansible</span>
+            <span class="skill-tag">GitHub Actions</span>
+            <span class="skill-tag">ETL</span>
+            <span class="skill-tag">AI Prompting</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal" style="--stagger: 7">
+          <span class="skill-card__label">Enterprise & Pre-Sales</span>
+          <div class="skill-card__tags">
+            <span class="skill-tag">Technical Discovery</span>
+            <span class="skill-tag">RFI / RFP</span>
+            <span class="skill-tag">Solution Architecture</span>
+            <span class="skill-tag">Stakeholder Alignment</span>
+            <span class="skill-tag">Runbooks</span>
+          </div>
+        </div>
+
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Footer -->
-<footer>
-  <div class="footer-content">
-    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-    </p>
-    
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/jeff-maddow" class="social-link">LinkedIn</a>
-      <a href="https://github.com/jeffmaddow-ops" class="social-link">GitHub</a>
+
+  <!-- ===== SELECTED WORK ===== -->
+  <section class="work section" id="work">
+    <div class="container">
+      <p class="label label--accent reveal" style="--stagger: 0">Selected Work</p>
+      <h2 class="headline-display work__heading reveal" style="--stagger: 1">
+        Impact that shipped
+      </h2>
+
+      <div class="work__list">
+
+        <article class="work-card reveal" style="--stagger: 2">
+          <div class="work-card__accent"></div>
+          <div class="work-card__body">
+            <div class="work-card__meta">
+              <span class="work-card__role">Implementation Engineering</span>
+            </div>
+            <h3 class="work-card__title">Enterprise Implementation Velocity — 4 Weeks to 7 Days</h3>
+            <p class="work-card__impact">
+              Delivered 15+ enterprise implementations per month, compressing time-to-value from 4 weeks
+              to 7 days. Architected repeatable deployment workflows, built architecture documentation
+              and runbooks, and established standards that scaled across the implementation org.
+            </p>
+            <div class="work-card__tags">
+              <span class="work-card__tag">Enterprise Deployment</span>
+              <span class="work-card__tag">Technical Discovery</span>
+              <span class="work-card__tag">Runbooks</span>
+              <span class="work-card__tag">Stakeholder Alignment</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card reveal" style="--stagger: 3">
+          <div class="work-card__accent"></div>
+          <div class="work-card__body">
+            <div class="work-card__meta">
+              <span class="work-card__role">Cloud Infrastructure</span>
+            </div>
+            <h3 class="work-card__title">12 AWS Migrations — Zero Downtime, 70% Faster Deployments</h3>
+            <p class="work-card__impact">
+              Executed 12 AWS cloud migrations with zero downtime. Improved deployment speed by 70%
+              and reduced infrastructure costs by 25%. Managed 60+ VMware environments across test
+              and production systems, and designed high-availability RHEL clusters with documented
+              failover standards.
+            </p>
+            <div class="work-card__tags">
+              <span class="work-card__tag">AWS</span>
+              <span class="work-card__tag">VMware</span>
+              <span class="work-card__tag">RHEL HA Clusters</span>
+              <span class="work-card__tag">Zero-Downtime Migration</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card reveal" style="--stagger: 4">
+          <div class="work-card__accent"></div>
+          <div class="work-card__body">
+            <div class="work-card__meta">
+              <span class="work-card__role">Automation & Data Engineering</span>
+            </div>
+            <h3 class="work-card__title">AWS Ingestion Pipelines — 100K+ Records, 15 Hours Saved Weekly</h3>
+            <p class="work-card__impact">
+              Built AWS ingestion pipelines processing 100K+ records per client, eliminating 15 hours
+              per week of manual data work. Automated IVR configuration processes (60% setup time reduction)
+              and architected AI-driven automation using structured prompting to reduce manual CX workflow
+              configuration time by 60%.
+            </p>
+            <div class="work-card__tags">
+              <span class="work-card__tag">AWS Pipelines</span>
+              <span class="work-card__tag">ETL / Ingestion</span>
+              <span class="work-card__tag">IVR Automation</span>
+              <span class="work-card__tag">AI Structured Prompting</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card reveal" style="--stagger: 5">
+          <div class="work-card__accent"></div>
+          <div class="work-card__body">
+            <div class="work-card__meta">
+              <span class="work-card__role">Telephony & Integration Engineering</span>
+            </div>
+            <h3 class="work-card__title">Enterprise Telephony & SIP Integration Architecture</h3>
+            <p class="work-card__impact">
+              Engineered Twilio SIP domain integrations with ACL policies and registration controls
+              for secure, scalable voice routing. Implemented SSO/SAML integrations across enterprise
+              SaaS environments. Configured and validated REST/SOAP integrations using Postman and
+              packet analysis. Used Wireshark and tcpdump to diagnose SIP signaling and
+              network defects, identifying 20+ critical integration defects pre-release.
+            </p>
+            <div class="work-card__tags">
+              <span class="work-card__tag">Twilio SIP</span>
+              <span class="work-card__tag">SAML / SSO</span>
+              <span class="work-card__tag">REST / SOAP</span>
+              <span class="work-card__tag">Wireshark</span>
+              <span class="work-card__tag">Postman</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card reveal" style="--stagger: 6">
+          <div class="work-card__accent"></div>
+          <div class="work-card__body">
+            <div class="work-card__meta">
+              <span class="work-card__role">Solutions Engineering & Pre-Sales</span>
+            </div>
+            <h3 class="work-card__title">100% Enterprise Retention Across 150+ Accounts</h3>
+            <p class="work-card__impact">
+              Led technical discovery workshops with enterprise stakeholders, aligning business
+              requirements to scalable cloud and telephony architectures. Supported formal RFI/RFP
+              responses, scoped and validated solution designs during customer evaluations and pilots,
+              and partnered with Account Executives throughout enterprise sales cycles to drive
+              procurement decisions and long-term retention.
+            </p>
+            <div class="work-card__tags">
+              <span class="work-card__tag">Technical Discovery</span>
+              <span class="work-card__tag">RFI / RFP</span>
+              <span class="work-card__tag">Solution Validation</span>
+              <span class="work-card__tag">Enterprise Sales</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </div>
-    
-    <p style="color: var(--text-secondary); margin-top: 2rem; font-size: 0.85rem;">
-      © 2026 Jeff Maddow
-    </p>
-  </div>
-</footer>
+  </section>
 
+
+  <!-- ===== GITHUB / VIBE CODING ===== -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <p class="label label--accent reveal" style="--stagger: 0">GitHub · Vibe Coding</p>
+      <h2 class="headline-display projects__heading reveal" style="--stagger: 1">
+        Built in the open
+      </h2>
+      <p class="body-large reveal" style="--stagger: 2">
+        AI-assisted projects, automation experiments, and infrastructure-as-code —
+        built with curiosity and shipped to public repos.
+      </p>
+
+      <div class="projects__grid">
+
+        <a href="https://github.com/jeffmaddow-ops/postman-cicd-demo" class="project-card reveal" style="--stagger: 3"
+          target="_blank" rel="noopener">
+          <div class="project-card__header">
+            <svg class="project-card__icon" viewBox="0 0 16 16" fill="currentColor" width="20" height="20">
+              <path
+                d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z" />
+            </svg>
+            <span class="project-card__label">Repository</span>
+          </div>
+          <h3 class="project-card__title">Postman CI/CD Demo</h3>
+          <p class="project-card__desc">Automated API testing with Postman integrated into GitHub Actions pipelines for
+            continuous integration and deployment</p>
+          <div class="project-card__meta">
+            <span class="project-card__lang"><span
+                class="project-card__dot project-card__dot--js"></span>JavaScript</span>
+            <span class="project-card__link-text">View Code →</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/jeffmaddow-ops/linkedin_job_agent" class="project-card reveal" style="--stagger: 4"
+          target="_blank" rel="noopener">
+          <div class="project-card__header">
+            <svg class="project-card__icon" viewBox="0 0 16 16" fill="currentColor" width="20" height="20">
+              <path
+                d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z" />
+            </svg>
+            <span class="project-card__label">Repository</span>
+          </div>
+          <h3 class="project-card__title">LinkedIn Job Agent</h3>
+          <p class="project-card__desc">Python-based automation tool for LinkedIn job search with CLI and web
+            integration for streamlined job hunting workflows</p>
+          <div class="project-card__meta">
+            <span class="project-card__lang"><span class="project-card__dot project-card__dot--py"></span>Python</span>
+            <span class="project-card__link-text">View Code →</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/jeffmaddow-ops/learn_ansible" class="project-card reveal" style="--stagger: 5"
+          target="_blank" rel="noopener">
+          <div class="project-card__header">
+            <svg class="project-card__icon" viewBox="0 0 16 16" fill="currentColor" width="20" height="20">
+              <path
+                d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z" />
+            </svg>
+            <span class="project-card__label">Repository</span>
+          </div>
+          <h3 class="project-card__title">Learn Ansible</h3>
+          <p class="project-card__desc">Playbooks and examples for system configuration automation using Ansible
+            infrastructure-as-code patterns</p>
+          <div class="project-card__meta">
+            <span class="project-card__lang"><span class="project-card__dot project-card__dot--yaml"></span>YAML</span>
+            <span class="project-card__link-text">View Code →</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/jeffmaddow-ops/ghostwriter_chatbot_modern" class="project-card reveal"
+          style="--stagger: 6" target="_blank" rel="noopener">
+          <div class="project-card__header">
+            <svg class="project-card__icon" viewBox="0 0 16 16" fill="currentColor" width="20" height="20">
+              <path
+                d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z" />
+            </svg>
+            <span class="project-card__label">Repository</span>
+          </div>
+          <h3 class="project-card__title">Ghostwriter Chatbot</h3>
+          <p class="project-card__desc">Conversational AI experiment exploring JavaScript chatbot patterns and Git-based
+            development workflows</p>
+          <div class="project-card__meta">
+            <span class="project-card__lang"><span
+                class="project-card__dot project-card__dot--js"></span>JavaScript</span>
+            <span class="project-card__link-text">View Code →</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/jeffmaddow-ops/jeffmaddow-ops.github.io" class="project-card reveal"
+          style="--stagger: 7" target="_blank" rel="noopener">
+          <div class="project-card__header">
+            <svg class="project-card__icon" viewBox="0 0 16 16" fill="currentColor" width="20" height="20">
+              <path
+                d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z" />
+            </svg>
+            <span class="project-card__label">Repository</span>
+          </div>
+          <h3 class="project-card__title">GitHub Pages Site</h3>
+          <p class="project-card__desc">Personal portfolio and technical documentation hub hosted on GitHub Pages — the
+            foundation for this site</p>
+          <div class="project-card__meta">
+            <span class="project-card__lang"><span class="project-card__dot project-card__dot--html"></span>HTML</span>
+            <span class="project-card__link-text">View Code →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <p class="label label--accent reveal" style="--stagger: 0">Get In Touch</p>
+      <h2 class="headline-display contact__heading reveal" style="--stagger: 1">
+        Let's build something
+      </h2>
+      <p class="contact__sub reveal" style="--stagger: 2">
+        Open to full-time roles, contract engagements, and technical advisory opportunities.
+      </p>
+      <a href="#work" class="cta-button reveal" style="--stagger: 3">
+        View My Work
+        <span class="cta-button__arrow">→</span>
+      </a>
+      <div class="contact__links reveal" style="--stagger: 4">
+        <a href="https://www.linkedin.com/in/jeff-maddow" class="contact__link" target="_blank"
+          rel="noopener">LinkedIn</a>
+        <a href="https://github.com/jeffmaddow-ops" class="contact__link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer-bar">
+    <div class="container footer-bar__inner">
+      <span class="footer-bar__copy">© 2026 Jeff Maddow</span>
+      <span class="footer-bar__location">Available Remotely</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
 </body>
+
 </html>
