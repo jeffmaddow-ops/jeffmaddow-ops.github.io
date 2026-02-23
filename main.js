@@ -14,122 +14,7 @@
 
 
     /* ==========================================================
-       PRELOADER — GSAP TIMELINE
-       Total duration: ~3.5s
-       Phase 1: Terminal lines type in (staggered)
-       Phase 2: Terminal fades, brand name fades up
-       Phase 3: Brand name + preloader dissolve into hero with blur + scale
-       ========================================================== */
-
-    function initPreloader() {
-        const preloader = document.getElementById('preloader');
-        if (!preloader) return initSite();
-
-        // Skip preloader if reduced motion
-        if (prefersReducedMotion) {
-            preloader.remove();
-            document.body.classList.remove('is-loading');
-            initSite();
-            return;
-        }
-
-        // Lock scroll
-        document.body.classList.add('is-loading');
-
-        // Wait for GSAP to be available
-        if (typeof gsap === 'undefined') {
-            // Fallback: just remove preloader
-            preloader.remove();
-            document.body.classList.remove('is-loading');
-            initSite();
-            return;
-        }
-
-        const lines = preloader.querySelectorAll('.preloader__line');
-        const terminal = preloader.querySelector('.preloader__terminal');
-        const nav = document.getElementById('nav');
-        const heroElements = document.querySelectorAll('.hero .reveal, .hero .reveal-line');
-
-        // Master timeline
-        const tl = gsap.timeline({
-            onComplete: () => {
-                preloader.remove();
-                document.body.classList.remove('is-loading');
-                initSite();
-            },
-        });
-
-        // ---- Phase 1: Terminal lines appear one-by-one ----
-        lines.forEach((line, i) => {
-            const delay = i * 0.35;
-
-            tl.to(line, {
-                opacity: 1,
-                y: 0,
-                duration: 0.25,
-                ease: 'power2.out',
-                onStart: () => {
-                    // Remove cursor from previous line
-                    if (i > 0) lines[i - 1].classList.remove('is-typing');
-                    line.classList.add('is-typing');
-                },
-            }, delay);
-        });
-
-        // Remove cursor from last line after brief pause
-        tl.call(() => {
-            lines[lines.length - 1].classList.remove('is-typing');
-        }, null, '>+0.3');
-
-
-        // ---- Phase 2: Terminal fades out, preloader dissolves into hero ----
-        tl.to(terminal, {
-            opacity: 0,
-            y: -16,
-            duration: 0.5,
-            ease: 'power3.inOut',
-        }, '>+0.15');
-
-        tl.to(preloader, {
-            opacity: 0,
-            scale: 1.04,
-            filter: 'blur(12px)',
-            duration: 0.7,
-            ease: 'power3.inOut',
-            onStart: () => {
-                preloader.classList.add('is-done');
-            },
-        }, '>+0.1');
-
-        // Bring in the nav
-        tl.fromTo(nav, {
-            opacity: 0,
-            y: -12,
-        }, {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            ease: 'power2.out',
-        }, '<+0.3');
-
-        // Bring in hero elements with stagger
-        tl.to(heroElements, {
-            opacity: 1,
-            y: 0,
-            scaleX: 1,
-            duration: 0.7,
-            ease: 'power3.out',
-            stagger: 0.1,
-            onComplete: function () {
-                // Add is-visible class to all hero elements so CSS handles hover states
-                heroElements.forEach(el => el.classList.add('is-visible'));
-            },
-        }, '<+0.1');
-    }
-
-
-    /* ==========================================================
-       SITE INIT — Everything after preloader completes
+       SITE INIT — Immediate Initialization
        ========================================================== */
 
     function initSite() {
@@ -263,8 +148,8 @@
 
     // ---- Kick everything off ----
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initPreloader);
+        document.addEventListener('DOMContentLoaded', initSite);
     } else {
-        initPreloader();
+        initSite();
     }
 })();

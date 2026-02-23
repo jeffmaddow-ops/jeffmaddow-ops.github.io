@@ -240,107 +240,7 @@ img {
 }
 
 
-/* ============================================================
-   PRELOADER
-   ============================================================ */
-body.is-loading {
-    overflow: hidden;
-}
 
-body.is-loading .nav {
-    opacity: 0;
-    pointer-events: none;
-}
-
-body.is-loading .hero .reveal,
-body.is-loading .hero .reveal-line {
-    opacity: 0;
-    transition: none;
-}
-
-.preloader {
-    position: fixed;
-    inset: 0;
-    z-index: 10000;
-    background-color: #06060A;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.preloader.is-done {
-    pointer-events: none;
-}
-
-.preloader__terminal {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 460px;
-    width: 100%;
-    padding-inline: var(--gutter);
-}
-
-.preloader__line {
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
-    color: var(--text-secondary);
-    letter-spacing: 0.03em;
-    line-height: 1.6;
-    opacity: 0;
-    transform: translateY(8px);
-    white-space: nowrap;
-}
-
-.preloader__prompt {
-    color: var(--accent);
-    margin-right: 8px;
-    font-weight: 400;
-}
-
-/* Blinking cursor on active line */
-.preloader__line.is-typing::after {
-    content: '█';
-    display: inline-block;
-    color: var(--accent);
-    opacity: 1;
-    animation: blink-cursor 0.6s steps(1) infinite;
-    margin-left: 2px;
-    font-size: 0.75em;
-    vertical-align: baseline;
-}
-
-@keyframes blink-cursor {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
-}
-
-.preloader__brand {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.preloader__brand-name {
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-primary);
-}
 
 
 /* ============================================================
@@ -684,6 +584,46 @@ body.is-loading .hero .reveal-line {
     color: var(--text-secondary);
     line-height: 1.7;
     max-width: 60ch;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.work-card__impact strong {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-right: 4px;
+}
+
+/* Philosophy Section Styling */
+.philosophy {
+    border-bottom: 1px solid var(--border-subtle);
+    padding-block: var(--space-4xl);
+}
+
+.philosophy__content {
+    max-width: 800px;
+}
+
+.philosophy .body-large {
+    color: var(--text-primary);
+    font-size: var(--text-xl);
+    line-height: 1.5;
+    margin-bottom: var(--space-xl);
+}
+
+.philosophy strong {
+    color: var(--accent);
+}
+
+.philosophy__quote {
+    font-size: var(--text-3xl);
+    margin-top: var(--space-xl);
+    line-height: 1.2;
 }
 
 .work-card__tags {

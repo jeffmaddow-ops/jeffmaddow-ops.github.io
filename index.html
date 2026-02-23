@@ -13,17 +13,7 @@
 
 <body>
 
-  <!-- ===== PRELOADER ===== -->
-  <div class="preloader" id="preloader" aria-hidden="true">
-    <div class="preloader__terminal">
-      <p class="preloader__line" data-line="0"><span class="preloader__prompt">›</span> Initializing portfolio system...
-      </p>
-      <p class="preloader__line" data-line="1"><span class="preloader__prompt">›</span> Loading integration modules...
-      </p>
-      <p class="preloader__line" data-line="2"><span class="preloader__prompt">›</span> Calibrating signal...</p>
-      <p class="preloader__line" data-line="3"><span class="preloader__prompt">›</span> Rendering interface...</p>
-    </div>
-  </div>
+
 
   <!-- ===== NAV ===== -->
   <nav class="nav" id="nav">
@@ -43,14 +33,22 @@
   <!-- ===== HERO ===== -->
   <header class="hero section" id="hero">
     <div class="container hero__content">
-      <h1 class="hero__name reveal" style="--stagger: 0">
-        <span>Jeff</span>
-        <span>Maddow</span>
+      <p class="label label--accent reveal" style="--stagger: 0">Integration Architecture · API Systems · Automation
+        Engineering</p>
+      <h1 class="hero__name reveal" style="--stagger: 1">
+        <span>Implementation</span>
+        <span>meets Precision.</span>
       </h1>
-      <hr class="hero__rule reveal-line" style="--stagger: 1">
-      <p class="hero__subtitle reveal" style="--stagger: 2">
-        Implementation Engineering · Integration Architecture · AI-Driven Automation for Modern SaaS Teams
+      <hr class="hero__rule reveal-line" style="--stagger: 2">
+      <p class="hero__subtitle reveal" style="--stagger: 3">
+        Enterprise SaaS integrations and automation engineered for production stability.
       </p>
+      <div class="hero__actions reveal" style="--stagger: 4">
+        <a href="#work" class="cta-button">
+          View My Work
+          <span class="cta-button__arrow">→</span>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -59,15 +57,14 @@
   <section class="about section" id="about">
     <div class="container">
       <div class="about__intro">
-        <p class="label label--accent reveal" style="--stagger: 0">About</p>
+        <p class="label label--accent reveal" style="--stagger: 0">Strategic Positioning</p>
         <h2 class="headline-display about__heading reveal" style="--stagger: 1">
-          Building the connective tissue<br>between <em>systems</em> and <em>teams</em>
+          Technical depth meets<br><em>enterprise</em> execution.
         </h2>
         <p class="body-large reveal" style="--stagger: 2">
-          I lead technical discovery, architect integrations, and deliver production-grade
-          implementations across enterprise telephony, cloud infrastructure, and SaaS platforms.
-          My work sits at the intersection of engineering depth and customer-facing clarity —
-          turning complex requirements into systems that ship on time and hold under pressure.
+          Production is the proving ground.
+          <br>
+          I engineer integration systems that remain predictable, testable, and stable long after go-live.
         </p>
       </div>
 
@@ -76,29 +73,42 @@
           <span class="prop-card__index">01 —</span>
           <h3 class="prop-card__title">Production-Ready Integrations</h3>
           <p class="prop-card__desc">
-            Complex API, SIP, and telephony integrations architected for enterprise reliability.
-            REST, SOAP, SAML/SSO, and Twilio SIP domain configurations —
-            validated with packet analysis and built to hold at scale.
+            REST APIs · OAuth · Webhooks · Data Contracts.
+            Designing and deploying integration architectures that survive real-world edge cases and version changes.
           </p>
         </div>
         <div class="prop-card reveal" style="--stagger: 4">
           <span class="prop-card__index">02 —</span>
-          <h3 class="prop-card__title">Automation-First Mindset</h3>
+          <h3 class="prop-card__title">Automation-First Engineering</h3>
           <p class="prop-card__desc">
-            AWS ingestion pipelines, IVR configuration automation, and AI-driven
-            structured prompting that eliminates manual cycles. If a human is
-            doing it repeatedly, I build the system that replaces it.
+            CI/CD · Postman Testing · Bash · PowerShell · GitHub Actions.
+            Building systems that validate themselves before reaching production.
           </p>
         </div>
         <div class="prop-card reveal" style="--stagger: 5">
           <span class="prop-card__index">03 —</span>
-          <h3 class="prop-card__title">Full-Stack Technical Fluency</h3>
+          <h3 class="prop-card__title">Customer-Facing Technical Leadership</h3>
           <p class="prop-card__desc">
-            Equally effective leading a stakeholder discovery workshop and
-            running Wireshark captures to diagnose SIP signaling defects.
-            The ability to operate across the entire stack is the differentiator.
+            Go-Live Support · Troubleshooting · Stakeholder Communication.
+            Operating between engineering teams and enterprise clients to ensure stable launches.
           </p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PHILOSOPHY ===== -->
+  <section class="section philosophy" id="philosophy">
+    <div class="container">
+      <div class="philosophy__content">
+        <p class="body-large reveal" style="--stagger: 0">
+          Most SaaS integrations focus on getting it to work.<br>
+          We focus on making it <strong>repeatable</strong>, <strong>testable</strong>, and <strong>resilient</strong>.
+        </p>
+        <p class="headline-display reveal philosophy__quote" style="--stagger: 1">
+          Production reliability is not an afterthought.<br>
+          It is <em>the product</em>.
+        </p>
       </div>
     </div>
   </section>
@@ -218,17 +228,19 @@
             <div class="work-card__meta">
               <span class="work-card__role">Implementation Engineering</span>
             </div>
-            <h3 class="work-card__title">Enterprise Implementation Velocity — 4 Weeks to 7 Days</h3>
-            <p class="work-card__impact">
-              Delivered 15+ enterprise implementations per month, compressing time-to-value from 4 weeks
-              to 7 days. Architected repeatable deployment workflows, built architecture documentation
-              and runbooks, and established standards that scaled across the implementation org.
-            </p>
+            <h3 class="work-card__title">Enterprise Implementation Velocity</h3>
+            <div class="work-card__impact">
+              <p><strong>Problem:</strong> Stalled go-lives due to fragmented discovery and manual deployment handoffs.
+              </p>
+              <p><strong>Approach:</strong> Engineered a standardized technical discovery framework and automated
+                runbook generation.</p>
+              <p><strong>Result:</strong> Compressed time-to-value from 4 weeks to 7 days while increasing monthly
+                capacity by 50%.</p>
+            </div>
             <div class="work-card__tags">
-              <span class="work-card__tag">Enterprise Deployment</span>
-              <span class="work-card__tag">Technical Discovery</span>
-              <span class="work-card__tag">Runbooks</span>
-              <span class="work-card__tag">Stakeholder Alignment</span>
+              <span class="work-card__tag">Framework Design</span>
+              <span class="work-card__tag">Process Automation</span>
+              <span class="work-card__tag">Capacity Scaling</span>
             </div>
           </div>
         </article>
@@ -239,18 +251,19 @@
             <div class="work-card__meta">
               <span class="work-card__role">Cloud Infrastructure</span>
             </div>
-            <h3 class="work-card__title">12 AWS Migrations — Zero Downtime, 70% Faster Deployments</h3>
-            <p class="work-card__impact">
-              Executed 12 AWS cloud migrations with zero downtime. Improved deployment speed by 70%
-              and reduced infrastructure costs by 25%. Managed 60+ VMware environments across test
-              and production systems, and designed high-availability RHEL clusters with documented
-              failover standards.
-            </p>
+            <h3 class="work-card__title">Zero-Downtime AWS Migrations</h3>
+            <div class="work-card__impact">
+              <p><strong>Problem:</strong> Legacy on-prem environments causing deployment bottlenecks and inconsistent
+                performance.</p>
+              <p><strong>Approach:</strong> Orchestrated zero-downtime migrations using high-availability RHEL clusters
+                and automated failover standards.</p>
+              <p><strong>Result:</strong> Improved deployment velocity by 70% and reduced operational overhead by 25%.
+              </p>
+            </div>
             <div class="work-card__tags">
               <span class="work-card__tag">AWS</span>
-              <span class="work-card__tag">VMware</span>
-              <span class="work-card__tag">RHEL HA Clusters</span>
-              <span class="work-card__tag">Zero-Downtime Migration</span>
+              <span class="work-card__tag">HA Clusters</span>
+              <span class="work-card__tag">Infrastructure as Code</span>
             </div>
           </div>
         </article>
@@ -261,18 +274,19 @@
             <div class="work-card__meta">
               <span class="work-card__role">Automation & Data Engineering</span>
             </div>
-            <h3 class="work-card__title">AWS Ingestion Pipelines — 100K+ Records, 15 Hours Saved Weekly</h3>
-            <p class="work-card__impact">
-              Built AWS ingestion pipelines processing 100K+ records per client, eliminating 15 hours
-              per week of manual data work. Automated IVR configuration processes (60% setup time reduction)
-              and architected AI-driven automation using structured prompting to reduce manual CX workflow
-              configuration time by 60%.
-            </p>
+            <h3 class="work-card__title">Serverless Ingestion & AI Automation</h3>
+            <div class="work-card__impact">
+              <p><strong>Problem:</strong> Manual data mapping cycles consuming 15+ engineering hours weekly per client.
+              </p>
+              <p><strong>Approach:</strong> Built serverless AWS pipelines with AI-driven structured prompting for CX
+                workflow configuration.</p>
+              <p><strong>Result:</strong> Automated 100K+ record processing per client, eliminating manual cycles and
+                reducing setup time by 60%.</p>
+            </div>
             <div class="work-card__tags">
-              <span class="work-card__tag">AWS Pipelines</span>
-              <span class="work-card__tag">ETL / Ingestion</span>
-              <span class="work-card__tag">IVR Automation</span>
-              <span class="work-card__tag">AI Structured Prompting</span>
+              <span class="work-card__tag">Serverless Pipelines</span>
+              <span class="work-card__tag">LLM Automation</span>
+              <span class="work-card__tag">ETL Optmization</span>
             </div>
           </div>
         </article>
@@ -283,20 +297,19 @@
             <div class="work-card__meta">
               <span class="work-card__role">Telephony & Integration Engineering</span>
             </div>
-            <h3 class="work-card__title">Enterprise Telephony & SIP Integration Architecture</h3>
-            <p class="work-card__impact">
-              Engineered Twilio SIP domain integrations with ACL policies and registration controls
-              for secure, scalable voice routing. Implemented SSO/SAML integrations across enterprise
-              SaaS environments. Configured and validated REST/SOAP integrations using Postman and
-              packet analysis. Used Wireshark and tcpdump to diagnose SIP signaling and
-              network defects, identifying 20+ critical integration defects pre-release.
-            </p>
+            <h3 class="work-card__title">Twilio SIP Integration Architecture</h3>
+            <div class="work-card__impact">
+              <p><strong>Problem:</strong> Vulnerable SIP signaling and unsecured voice routing preventing enterprise
+                market entry.</p>
+              <p><strong>Approach:</strong> Architected secure SIP domains with registration controls and validated
+                signaling via packet analysis.</p>
+              <p><strong>Result:</strong> Identified 20+ critical defects pre-release and secured a 100% stable go-live
+                for enterprise clients.</p>
+            </div>
             <div class="work-card__tags">
-              <span class="work-card__tag">Twilio SIP</span>
-              <span class="work-card__tag">SAML / SSO</span>
-              <span class="work-card__tag">REST / SOAP</span>
-              <span class="work-card__tag">Wireshark</span>
-              <span class="work-card__tag">Postman</span>
+              <span class="work-card__tag">SIP Signaling</span>
+              <span class="work-card__tag">Packet Analysis</span>
+              <span class="work-card__tag">Security Engineering</span>
             </div>
           </div>
         </article>
@@ -305,21 +318,21 @@
           <div class="work-card__accent"></div>
           <div class="work-card__body">
             <div class="work-card__meta">
-              <span class="work-card__role">Solutions Engineering & Pre-Sales</span>
+              <span class="work-card__role">Technical Leadership</span>
             </div>
-            <h3 class="work-card__title">100% Enterprise Retention Across 150+ Accounts</h3>
-            <p class="work-card__impact">
-              Led technical discovery workshops with enterprise stakeholders, aligning business
-              requirements to scalable cloud and telephony architectures. Supported formal RFI/RFP
-              responses, scoped and validated solution designs during customer evaluations and pilots,
-              and partnered with Account Executives throughout enterprise sales cycles to drive
-              procurement decisions and long-term retention.
-            </p>
+            <h3 class="work-card__title">Enterprise Solution Authority</h3>
+            <div class="work-card__impact">
+              <p><strong>Problem:</strong> At-risk enterprise accounts due to misalignment between business needs and
+                solution architecture.</p>
+              <p><strong>Approach:</strong> Led technical discovery workshops to align solution designs with enterprise
+                procurement standards.</p>
+              <p><strong>Result:</strong> Maintained 100% retention across 150+ marquee accounts through architectural
+                stability and authority.</p>
+            </div>
             <div class="work-card__tags">
-              <span class="work-card__tag">Technical Discovery</span>
-              <span class="work-card__tag">RFI / RFP</span>
-              <span class="work-card__tag">Solution Validation</span>
-              <span class="work-card__tag">Enterprise Sales</span>
+              <span class="work-card__tag">Solution Design</span>
+              <span class="work-card__tag">Account Retention</span>
+              <span class="work-card__tag">Discovery Ownership</span>
             </div>
           </div>
         </article>
