@@ -627,8 +627,10 @@ img {
 
 .footer-bar__inner {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    gap: 0.25rem;
 }
 
 .footer-bar__copy {
