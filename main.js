@@ -21,8 +21,9 @@
         initScrollReveal();
         initNavScroll();
         initSmoothScroll();
-        initSkillTags();
+        initMagneticButtons();
         initHeroParallax();
+        initLeadershipToggle();
     }
 
 
@@ -35,10 +36,7 @@
             return;
         }
 
-        // Only observe elements NOT already visible (hero elements handled by preloader)
-        const revealElements = document.querySelectorAll(
-            '.reveal:not(.is-visible), .reveal-line:not(.is-visible)'
-        );
+        const revealElements = document.querySelectorAll('.reveal');
 
         const observer = new IntersectionObserver(
             (entries) => {
@@ -109,14 +107,34 @@
     }
 
 
-    // ---- Skill Tag Interaction ----
-    function initSkillTags() {
-        document.querySelectorAll('.skill-tag').forEach((tag) => {
-            tag.addEventListener('mouseenter', () => {
-                tag.style.transform = 'translateY(-2px)';
+    // ---- Magnetic Button Interaction ----
+    function initMagneticButtons() {
+        if (prefersReducedMotion) return;
+
+        const magneticElements = document.querySelectorAll('.cta-button, .nav__link, .work-item__link');
+
+        magneticElements.forEach((el) => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+
+                // Subtle pull (0.35 factor)
+                gsap.to(el, {
+                    x: x * 0.35,
+                    y: y * 0.35,
+                    duration: 0.6,
+                    ease: 'power2.out',
+                });
             });
-            tag.addEventListener('mouseleave', () => {
-                tag.style.transform = 'translateY(0)';
+
+            el.addEventListener('mouseleave', () => {
+                gsap.to(el, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.8,
+                    ease: 'elastic.out(1, 0.3)',
+                });
             });
         });
     }
@@ -145,11 +163,128 @@
         }, { passive: true });
     }
 
+    // ---- Expandable Leadership Section ----
+    function initLeadershipToggle() {
+        const toggleBtn = document.getElementById('leadership-toggle');
+        const collapsible = document.getElementById('leadership-collapsible');
+
+        if (!toggleBtn || !collapsible || typeof gsap === 'undefined') return;
+
+        // Set initial GSAP state
+        gsap.set(collapsible, { height: 0, opacity: 0, overflow: 'hidden', visibility: 'hidden' });
+
+        let isExpanded = false;
+
+        toggleBtn.addEventListener('click', () => {
+            isExpanded = !isExpanded;
+            toggleBtn.setAttribute('aria-expanded', isExpanded);
+            collapsible.setAttribute('aria-hidden', !isExpanded);
+
+            if (isExpanded) {
+                gsap.to(collapsible, {
+                    height: 'auto',
+                    opacity: 1,
+                    visibility: 'visible',
+                    duration: 0.6,
+                    ease: 'power3.out'
+                });
+            } else {
+                gsap.to(collapsible, {
+                    height: 0,
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: 'power3.inOut',
+                    onComplete: () => {
+                        gsap.set(collapsible, { visibility: 'hidden' });
+                    }
+                });
+            }
+        });
+    }
+
+    // ---- Cinematic Preloader ----
+    function initPreloader() {
+        const preloader = document.getElementById('preloader');
+        if (!preloader) {
+            initSite();
+            return;
+        }
+
+        if (prefersReducedMotion) {
+            preloader.style.display = 'none';
+            initSite();
+            return;
+        }
+
+        const tl = gsap.timeline({
+            defaults: { ease: 'power2.inOut' },
+            onComplete: () => {
+                preloader.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Lock scroll during preloader
+        document.body.style.overflow = 'hidden';
+
+        // Initial set
+        gsap.set('.preloader__frame', { opacity: 0, scale: 0.98 });
+        gsap.set('.preloader__init', { opacity: 0 });
+        gsap.set('.checkmark', { opacity: 0 });
+        gsap.set('#stable-msg', { opacity: 0 });
+
+        tl.to('.preloader__frame', {
+            opacity: 1,
+            scale: 1,
+            duration: 1,
+            ease: 'power3.out'
+        })
+            .to('.preloader__init', {
+                opacity: 1,
+                duration: 0.6
+            }, "-=0.4")
+            .to('#check-1 .checkmark', { opacity: 1, duration: 0.3 }, "+=0.2")
+            .to('#check-2 .checkmark', { opacity: 1, duration: 0.3 }, "+=0.2")
+            .to('#check-3 .checkmark', { opacity: 1, duration: 0.3 }, "+=0.2")
+            .to('.preloader__init, .preloader__checklist', {
+                opacity: 0,
+                duration: 0.5
+            }, "+=0.4")
+            .to('#stable-msg', {
+                opacity: 1,
+                duration: 0.7,
+                ease: 'power3.out'
+            }, "-=0.2")
+
+            // Final transition
+            .addLabel('transition', '+=0.6')
+            .to('#stable-msg, .preloader__label', {
+                opacity: 0,
+                duration: 0.4
+            }, 'transition')
+            .to('.preloader__frame', {
+                width: '72px',
+                height: '1px',
+                borderWidth: '0px',
+                backgroundColor: 'var(--accent)',
+                duration: 1,
+                ease: 'power4.inOut'
+            }, 'transition')
+            .to(preloader, {
+                opacity: 0,
+                duration: 0.6,
+                ease: 'power2.in'
+            }, 'transition+=0.6')
+            .call(() => {
+                initSite();
+            }, null, 'transition+=0.3');
+    }
+
 
     // ---- Kick everything off ----
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initSite);
+        document.addEventListener('DOMContentLoaded', initPreloader);
     } else {
-        initSite();
+        initPreloader();
     }
 })();

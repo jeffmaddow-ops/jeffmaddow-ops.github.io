@@ -13,18 +13,32 @@
 
 <body>
 
-
-
+  <!-- ===== PRELOADER ===== -->
+  <div id="preloader" class="preloader">
+    <div class="preloader__frame">
+      <span class="preloader__label">JM | Enterprise Systems</span>
+      <div class="preloader__content">
+        <p class="preloader__init">Initializing production protocol…</p>
+        <ul class="preloader__checklist">
+          <li class="preloader__item" id="check-1">Endpoint Validation <span class="checkmark">✓</span></li>
+          <li class="preloader__item" id="check-2">Authentication Layer <span class="checkmark">✓</span></li>
+          <li class="preloader__item" id="check-3">Deployment Pipeline <span class="checkmark">✓</span></li>
+        </ul>
+        <p class="preloader__stable" id="stable-msg">System <span class="stable-text">Stable.</span></p>
+      </div>
+    </div>
+  </div>
   <!-- ===== NAV ===== -->
   <nav class="nav" id="nav">
     <div class="container nav__inner">
       <a href="#" class="nav__logo">JM</a>
       <ul class="nav__links">
         <li><a href="#about" class="nav__link">About</a></li>
-        <li><a href="#skills" class="nav__link">Skills</a></li>
-        <li><a href="#work" class="nav__link">Work</a></li>
-        <li><a href="#projects" class="nav__link">Projects</a></li>
-        <li><a href="#contact" class="nav__link">Contact</a></li>
+        <li><a href="#experience" class="nav__link">Consulting Expertise</a></li>
+        <li><a href="#impact" class="nav__link">Enterprise Impact</a></li>
+        <li><a href="#model" class="nav__link">Operating Model</a></li>
+        <li><a href="#work" class="nav__link">Technical Leadership</a></li>
+        <li><a href="#contact" class="nav__link">Availability</a></li>
       </ul>
     </div>
   </nav>
@@ -32,20 +46,31 @@
 
   <!-- ===== HERO ===== -->
   <header class="hero section" id="hero">
+    <div class="hero__bg-photo"></div> <!-- Architectural background photo -->
+    <div class="hero__bg-lines"></div> <!-- Background for CSS architecture diagram -->
     <div class="container hero__content">
-      <p class="label label--accent reveal" style="--stagger: 0">Integration Architecture · API Systems · Automation
-        Engineering</p>
+      <p class="label label--accent reveal" style="--stagger: 0">Solutions Consulting · TAM · Production Credibility</p>
       <h1 class="hero__name reveal" style="--stagger: 1">
-        <span>Implementation</span>
-        <span>meets Precision.</span>
+        <span>Technical Solutions</span>
+        <span>Delivered with Precision.</span>
       </h1>
       <hr class="hero__rule reveal-line" style="--stagger: 2">
       <p class="hero__subtitle reveal" style="--stagger: 3">
-        Enterprise SaaS integrations and automation engineered for production stability.
+        Enterprise SaaS integrations and customer-facing technical delivery built for production stability.
       </p>
-      <div class="hero__actions reveal" style="--stagger: 4">
+
+      <!-- Metadata Strip -->
+      <div class="hero__metadata reveal" style="--stagger: 4">
+        <span>Production Stability</span>
+        <span class="dot">·</span>
+        <span>Enterprise Delivery</span>
+        <span class="dot">·</span>
+        <span>Customer Trust</span>
+      </div>
+
+      <div class="hero__actions reveal" style="--stagger: 5">
         <a href="#work" class="cta-button">
-          View My Work
+          View My Impact
           <span class="cta-button__arrow">→</span>
         </a>
       </div>
@@ -53,424 +78,235 @@
   </header>
 
 
-  <!-- ===== ABOUT / VALUE PROPOSITIONS ===== -->
-  <section class="about section" id="about">
+  <!-- ===== POSITIONING STATEMENT (About) ===== -->
+  <section class="about-editorial section" id="about">
     <div class="container">
-      <div class="about__intro">
-        <p class="label label--accent reveal" style="--stagger: 0">Strategic Positioning</p>
-        <h2 class="headline-display about__heading reveal" style="--stagger: 1">
-          Technical depth meets<br><em>enterprise</em> execution.
-        </h2>
-        <p class="body-large reveal" style="--stagger: 2">
-          Production is the proving ground.
-          <br>
-          I engineer integration systems that remain predictable, testable, and stable long after go-live.
-        </p>
-      </div>
-
-      <div class="props-grid">
-        <div class="prop-card reveal" style="--stagger: 3">
-          <span class="prop-card__index">01 —</span>
-          <h3 class="prop-card__title">Production-Ready Integrations</h3>
-          <p class="prop-card__desc">
-            REST APIs · OAuth · Webhooks · Data Contracts.
-            Designing and deploying integration architectures that survive real-world edge cases and version changes.
+      <div class="editorial-block reveal" style="--stagger: 0">
+        <h2 class="editorial__heading">Professional Profile</h2>
+        <div class="editorial__body">
+          <p class="body-large">
+            I bring production systems experience into customer-facing technical roles.
           </p>
-        </div>
-        <div class="prop-card reveal" style="--stagger: 4">
-          <span class="prop-card__index">02 —</span>
-          <h3 class="prop-card__title">Automation-First Engineering</h3>
-          <p class="prop-card__desc">
-            CI/CD · Postman Testing · Bash · PowerShell · GitHub Actions.
-            Building systems that validate themselves before reaching production.
+          <p class="body-large">
+            My background includes implementing complex SaaS integrations, troubleshooting API configurations,
+            supporting go-live deployments, and partnering with customers to resolve real-world system constraints.
           </p>
-        </div>
-        <div class="prop-card reveal" style="--stagger: 5">
-          <span class="prop-card__index">03 —</span>
-          <h3 class="prop-card__title">Customer-Facing Technical Leadership</h3>
-          <p class="prop-card__desc">
-            Go-Live Support · Troubleshooting · Stakeholder Communication.
-            Operating between engineering teams and enterprise clients to ensure stable launches.
+          <p class="body-large">
+            I know how systems behave under load — and how to communicate that clearly to enterprise stakeholders.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== PHILOSOPHY ===== -->
-  <section class="section philosophy" id="philosophy">
+  <!-- ===== PRODUCTION EXPERIENCE SECTION ===== -->
+  <section class="experience section" id="experience">
     <div class="container">
-      <div class="philosophy__content">
-        <p class="body-large reveal" style="--stagger: 0">
-          Most SaaS integrations focus on getting it to work.<br>
-          We focus on making it <strong>repeatable</strong>, <strong>testable</strong>, and <strong>resilient</strong>.
-        </p>
-        <p class="headline-display reveal philosophy__quote" style="--stagger: 1">
-          Production reliability is not an afterthought.<br>
-          It is <em>the product</em>.
-        </p>
+      <div class="editorial-block">
+        <h2 class="editorial__heading reveal" style="--stagger: 0">Consulting Expertise</h2>
+        <div class="experience__content reveal" style="--stagger: 1">
+          <h3 class="headline-display experience__lead">
+            Production experience that <br><em>translates</em> to consulting.
+          </h3>
+          <p class="body-large">
+            Real implementations don’t fail in theory — they fail in edge cases, configuration gaps, and misaligned
+            expectations. I have engineered and led:
+          </p>
+          <ul class="experience__list">
+            <li>API configuration and ongoing troubleshooting</li>
+            <li>OAuth and webhook validation in live environments</li>
+            <li>Log analysis and root cause investigation</li>
+            <li>Formal RFI/RFP technical requirement mapping</li>
+            <li>Twilio SIP domain integration and ACL security</li>
+            <li>SSO/SAML enterprise authentication environments</li>
+            <li>AI-assisted workflow automation (reducing CX config time by 60%)</li>
+          </ul>
+          <p class="body-large">
+            This experience translates directly into Solutions Consultant and Technical Account Manager roles, where
+            <span class="highlight">credibility, clarity, and risk awareness</span> matter as much as technical skill.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-
-  <!-- ===== TECHNICAL COMPETENCIES ===== -->
-  <section class="section" id="skills">
+  <!-- ===== ENTERPRISE IMPACT SECTION ===== -->
+  <section class="impact section" id="impact">
     <div class="container">
-      <div class="skills__header">
-        <p class="label label--accent reveal" style="--stagger: 0">Competencies</p>
-        <h2 class="headline-display skills__heading reveal" style="--stagger: 1">
-          Technical Arsenal
-        </h2>
-      </div>
-
-      <div class="skills__grid">
-
-        <div class="skill-card reveal" style="--stagger: 2">
-          <span class="skill-card__label">Cloud & Infrastructure</span>
-          <div class="skill-card__tags">
-            <span class="skill-tag">AWS</span>
-            <span class="skill-tag">VMware</span>
-            <span class="skill-tag">Hyper-V</span>
-            <span class="skill-tag">RHEL</span>
-            <span class="skill-tag">Linux</span>
-            <span class="skill-tag">Windows</span>
-            <span class="skill-tag">macOS</span>
-            <span class="skill-tag">Docker</span>
-            <span class="skill-tag">CI/CD</span>
-            <span class="skill-tag">HA Clusters</span>
-          </div>
+      <div class="editorial-block">
+        <span class="editorial__divider">⸻</span>
+        <h2 class="editorial__heading reveal" style="--stagger: 0">Enterprise Impact</h2>
+        <div class="impact__content reveal" style="--stagger: 1">
+          <ul class="model__list">
+            <li><strong>150+</strong> enterprise customers supported</li>
+            <li><strong>100%</strong> retention across managed accounts</li>
+            <li><strong>94%</strong> CSAT</li>
+            <li><strong>12</strong> AWS migrations executed with zero downtime</li>
+            <li><strong>70%</strong> deployment speed improvement</li>
+            <li><strong>25%</strong> infrastructure cost reduction</li>
+            <li><strong>60%</strong> IVR configuration time reduction</li>
+            <li><strong>90%</strong> Tier 2 production escalations resolved within SLA</li>
+            <li>AWS ingestion pipelines processing <strong>100k+</strong> records per client</li>
+          </ul>
         </div>
-
-        <div class="skill-card reveal" style="--stagger: 3">
-          <span class="skill-card__label">Telephony & Voice</span>
-          <div class="skill-card__tags">
-            <span class="skill-tag">Twilio SIP</span>
-            <span class="skill-tag">IVR Design</span>
-            <span class="skill-tag">SIP Signaling</span>
-            <span class="skill-tag">ACL Controls</span>
-            <span class="skill-tag">Voice Routing</span>
-            <span class="skill-tag">CX Workflows</span>
-          </div>
-        </div>
-
-        <div class="skill-card reveal" style="--stagger: 4">
-          <span class="skill-card__label">Integration & APIs</span>
-          <div class="skill-card__tags">
-            <span class="skill-tag">REST APIs</span>
-            <span class="skill-tag">SOAP</span>
-            <span class="skill-tag">Webhooks</span>
-            <span class="skill-tag">OAuth 2.0</span>
-            <span class="skill-tag">SAML / SSO</span>
-            <span class="skill-tag">XML / JSON</span>
-            <span class="skill-tag">SSL/TLS</span>
-            <span class="skill-tag">Postman</span>
-          </div>
-        </div>
-
-        <div class="skill-card reveal" style="--stagger: 5">
-          <span class="skill-card__label">Analysis & QA</span>
-          <div class="skill-card__tags">
-            <span class="skill-tag">Wireshark</span>
-            <span class="skill-tag">tcpdump</span>
-            <span class="skill-tag">TCP/IP</span>
-            <span class="skill-tag">Packet Capture</span>
-            <span class="skill-tag">SIP Diagnostics</span>
-            <span class="skill-tag">Defect Triage</span>
-            <span class="skill-tag">QA Testing</span>
-            <span class="skill-tag">HIPAA</span>
-          </div>
-        </div>
-
-        <div class="skill-card reveal" style="--stagger: 6">
-          <span class="skill-card__label">Scripting & Automation</span>
-          <div class="skill-card__tags">
-            <span class="skill-tag">Bash</span>
-            <span class="skill-tag">PowerShell</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">Ansible</span>
-            <span class="skill-tag">GitHub Actions</span>
-            <span class="skill-tag">ETL</span>
-            <span class="skill-tag">AI Prompting</span>
-          </div>
-        </div>
-
-        <div class="skill-card reveal" style="--stagger: 7">
-          <span class="skill-card__label">Enterprise & Pre-Sales</span>
-          <div class="skill-card__tags">
-            <span class="skill-tag">Technical Discovery</span>
-            <span class="skill-tag">RFI / RFP</span>
-            <span class="skill-tag">Solution Architecture</span>
-            <span class="skill-tag">Stakeholder Alignment</span>
-            <span class="skill-tag">Runbooks</span>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
 
+  <!-- ===== OPERATING MODEL SECTION ===== -->
+  <section class="operating-model section" id="model">
+    <div class="container">
+      <div class="editorial-block">
+        <h2 class="editorial__heading reveal" style="--stagger: 0">Operating Model</h2>
+        <div class="model__content reveal" style="--stagger: 1">
+          <p class="body-large">
+            In customer-facing technical roles, I operate across three layers:
+          </p>
+          <ul class="model__list">
+            <li><strong>Business expectations</strong> — aligning stakeholders on scope, timeline, and risk.</li>
+            <li><strong>Technical implementation</strong> — validating integrations, payloads, and environment
+              configurations.</li>
+            <li><strong>Production stability</strong> — anticipating edge cases and failure modes before they escalate
+              into customer issues.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- ===== SELECTED WORK ===== -->
+  <!-- ===== SELECTED WORK (Editorial List) ===== -->
   <section class="work section" id="work">
     <div class="container">
-      <p class="label label--accent reveal" style="--stagger: 0">Selected Work</p>
-      <h2 class="headline-display work__heading reveal" style="--stagger: 1">
-        Impact that shipped
-      </h2>
+      <h2 class="editorial__heading reveal" style="--stagger: 0">Technical Leadership</h2>
+      <div class="work-editorial__list">
 
-      <div class="work__list">
-
-        <article class="work-card reveal" style="--stagger: 2">
-          <div class="work-card__accent"></div>
-          <div class="work-card__body">
-            <div class="work-card__meta">
-              <span class="work-card__role">Implementation Engineering</span>
-            </div>
-            <h3 class="work-card__title">Enterprise Implementation Velocity</h3>
-            <div class="work-card__impact">
-              <p><strong>Problem:</strong> Stalled go-lives due to fragmented discovery and manual deployment handoffs.
-              </p>
-              <p><strong>Approach:</strong> Engineered a standardized technical discovery framework and automated
-                runbook generation.</p>
-              <p><strong>Result:</strong> Compressed time-to-value from 4 weeks to 7 days while increasing monthly
-                capacity by 50%.</p>
-            </div>
-            <div class="work-card__tags">
-              <span class="work-card__tag">Framework Design</span>
-              <span class="work-card__tag">Process Automation</span>
-              <span class="work-card__tag">Capacity Scaling</span>
-            </div>
+        <article class="work-item reveal" style="--stagger: 1">
+          <div class="work-item__content">
+            <h3 class="work-item__title">Customer-Facing Technical Leadership</h3>
+            <p class="work-item__desc">
+              <strong>Context:</strong> Enterprise SaaS implementations across regulated environments.<br>
+              <strong>Approach:</strong> Led technical discovery sessions, aligned requirements to scalable cloud
+              architectures, and drove RFI/RFP responses during enterprise sales cycles.<br>
+              <strong>Impact:</strong> Delivered 15+ implementations monthly, reduced time-to-value from 4 weeks to 7
+              days, and secured 100% retention with 94% CSAT.
+            </p>
           </div>
         </article>
 
-        <article class="work-card reveal" style="--stagger: 3">
-          <div class="work-card__accent"></div>
-          <div class="work-card__body">
-            <div class="work-card__meta">
-              <span class="work-card__role">Cloud Infrastructure</span>
-            </div>
-            <h3 class="work-card__title">Zero-Downtime AWS Migrations</h3>
-            <div class="work-card__impact">
-              <p><strong>Problem:</strong> Legacy on-prem environments causing deployment bottlenecks and inconsistent
-                performance.</p>
-              <p><strong>Approach:</strong> Orchestrated zero-downtime migrations using high-availability RHEL clusters
-                and automated failover standards.</p>
-              <p><strong>Result:</strong> Improved deployment velocity by 70% and reduced operational overhead by 25%.
-              </p>
-            </div>
-            <div class="work-card__tags">
-              <span class="work-card__tag">AWS</span>
-              <span class="work-card__tag">HA Clusters</span>
-              <span class="work-card__tag">Infrastructure as Code</span>
-            </div>
+        <article class="work-item reveal" style="--stagger: 2">
+          <div class="work-item__content">
+            <h3 class="work-item__title">Risk Management & Production Stability</h3>
+            <p class="work-item__desc">
+              <strong>Context:</strong> Manual validation and unclear ownership increasing production risk.<br>
+              <strong>Approach:</strong> Engineered automated workflows and applied structured testing to eliminate
+              regression and deployment errors.<br>
+              <strong>Impact:</strong> Reduced preventable production incidents by 80% and enforced highly consistent,
+              zero-downtime deployment cadences.
+            </p>
           </div>
         </article>
 
-        <article class="work-card reveal" style="--stagger: 4">
-          <div class="work-card__accent"></div>
-          <div class="work-card__body">
-            <div class="work-card__meta">
-              <span class="work-card__role">Automation & Data Engineering</span>
-            </div>
-            <h3 class="work-card__title">Serverless Ingestion & AI Automation</h3>
-            <div class="work-card__impact">
-              <p><strong>Problem:</strong> Manual data mapping cycles consuming 15+ engineering hours weekly per client.
-              </p>
-              <p><strong>Approach:</strong> Built serverless AWS pipelines with AI-driven structured prompting for CX
-                workflow configuration.</p>
-              <p><strong>Result:</strong> Automated 100K+ record processing per client, eliminating manual cycles and
-                reducing setup time by 60%.</p>
-            </div>
-            <div class="work-card__tags">
-              <span class="work-card__tag">Serverless Pipelines</span>
-              <span class="work-card__tag">LLM Automation</span>
-              <span class="work-card__tag">ETL Optmization</span>
-            </div>
-          </div>
-        </article>
+        <div class="leadership-expand reveal" style="--stagger: 3">
+          <button id="leadership-toggle" class="expand-toggle" aria-expanded="false"
+            aria-controls="leadership-collapsible">
+            View further execution <span class="expand-toggle__icon">→</span>
+          </button>
 
-        <article class="work-card reveal" style="--stagger: 5">
-          <div class="work-card__accent"></div>
-          <div class="work-card__body">
-            <div class="work-card__meta">
-              <span class="work-card__role">Telephony & Integration Engineering</span>
-            </div>
-            <h3 class="work-card__title">Twilio SIP Integration Architecture</h3>
-            <div class="work-card__impact">
-              <p><strong>Problem:</strong> Vulnerable SIP signaling and unsecured voice routing preventing enterprise
-                market entry.</p>
-              <p><strong>Approach:</strong> Architected secure SIP domains with registration controls and validated
-                signaling via packet analysis.</p>
-              <p><strong>Result:</strong> Identified 20+ critical defects pre-release and secured a 100% stable go-live
-                for enterprise clients.</p>
-            </div>
-            <div class="work-card__tags">
-              <span class="work-card__tag">SIP Signaling</span>
-              <span class="work-card__tag">Packet Analysis</span>
-              <span class="work-card__tag">Security Engineering</span>
-            </div>
-          </div>
-        </article>
+          <div id="leadership-collapsible" class="collapsible-wrapper" aria-hidden="true"
+            style="height: 0; opacity: 0; overflow: hidden; visibility: hidden;">
+            <div class="collapsible-inner">
+              <article class="work-item">
+                <div class="work-item__content">
+                  <h3 class="work-item__title">AWS Migration Execution</h3>
+                  <p class="work-item__desc">
+                    <strong>Context:</strong> Legacy infrastructure limiting deployment speed and scalability.<br>
+                    <strong>Approach:</strong> Executed 12 AWS migrations across enterprise environments with structured
+                    cutover planning and rollback safeguards.<br>
+                    <strong>Impact:</strong> Achieved zero downtime migrations, improved deployment speed by 70%, and
+                    reduced infrastructure costs by 25%.
+                  </p>
+                </div>
+              </article>
 
-        <article class="work-card reveal" style="--stagger: 6">
-          <div class="work-card__accent"></div>
-          <div class="work-card__body">
-            <div class="work-card__meta">
-              <span class="work-card__role">Technical Leadership</span>
-            </div>
-            <h3 class="work-card__title">Enterprise Solution Authority</h3>
-            <div class="work-card__impact">
-              <p><strong>Problem:</strong> At-risk enterprise accounts due to misalignment between business needs and
-                solution architecture.</p>
-              <p><strong>Approach:</strong> Led technical discovery workshops to align solution designs with enterprise
-                procurement standards.</p>
-              <p><strong>Result:</strong> Maintained 100% retention across 150+ marquee accounts through architectural
-                stability and authority.</p>
-            </div>
-            <div class="work-card__tags">
-              <span class="work-card__tag">Solution Design</span>
-              <span class="work-card__tag">Account Retention</span>
-              <span class="work-card__tag">Discovery Ownership</span>
+              <article class="work-item">
+                <div class="work-item__content">
+                  <h3 class="work-item__title">Tier 2 Escalation Management</h3>
+                  <p class="work-item__desc">
+                    <strong>Context:</strong> Production telephony and integration defects impacting enterprise
+                    workflows.<br>
+                    <strong>Approach:</strong> Diagnosed issues using packet analysis (Wireshark/tcpdump), SIP trace
+                    review, and API validation.<br>
+                    <strong>Impact:</strong> Resolved 90% of Tier 2 escalations within SLA and prevented recurrence
+                    through root cause documentation.
+                  </p>
+                </div>
+              </article>
+
+              <article class="work-item">
+                <div class="work-item__content">
+                  <h3 class="work-item__title">Telephony Architecture & Security</h3>
+                  <p class="work-item__desc">
+                    <strong>Context:</strong> Enterprise clients requiring secure and scalable voice routing.<br>
+                    <strong>Approach:</strong> Engineered Twilio SIP domain integrations, implemented IP ACL policies,
+                    and secured registration controls.<br>
+                    <strong>Impact:</strong> Eliminated misconfiguration-related incidents and secured 99.99% telephony
+                    stability across all enterprise SIP integrations.
+                  </p>
+                </div>
+              </article>
+
+              <article class="work-item">
+                <div class="work-item__content">
+                  <h3 class="work-item__title">Data Ingestion Automation</h3>
+                  <p class="work-item__desc">
+                    <strong>Context:</strong> Manual ingestion workflows slowing CX operations.<br>
+                    <strong>Approach:</strong> Built AWS ingestion pipelines processing 100k+ records per client and
+                    automated validation logic.<br>
+                    <strong>Impact:</strong> Eliminated 15+ hours per week of manual processing and achieved 100% data
+                    ingestion accuracy.
+                  </p>
+                </div>
+              </article>
             </div>
           </div>
-        </article>
+        </div>
 
       </div>
     </div>
   </section>
 
-
-  <!-- ===== GITHUB / VIBE CODING ===== -->
-  <section class="projects section" id="projects">
+  <!-- ===== CONSULTING VALUE SECTION ===== -->
+  <section class="section philosophy-editorial" id="philosophy">
     <div class="container">
-      <p class="label label--accent reveal" style="--stagger: 0">GitHub · Vibe Coding</p>
-      <h2 class="headline-display projects__heading reveal" style="--stagger: 1">
-        Built in the open
-      </h2>
-      <p class="body-large reveal" style="--stagger: 2">
-        AI-assisted projects, automation experiments, and infrastructure-as-code —
-        built with curiosity and shipped to public repos.
-      </p>
-
-      <div class="projects__grid">
-
-        <a href="https://github.com/jeffmaddow-ops/postman-cicd-demo" class="project-card reveal" style="--stagger: 3"
-          target="_blank" rel="noopener">
-          <div class="project-card__header">
-            <svg class="project-card__icon" viewBox="0 0 16 16" fill="currentColor" width="20" height="20">
-              <path
-                d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z" />
-            </svg>
-            <span class="project-card__label">Repository</span>
-          </div>
-          <h3 class="project-card__title">Postman CI/CD Demo</h3>
-          <p class="project-card__desc">Automated API testing with Postman integrated into GitHub Actions pipelines for
-            continuous integration and deployment</p>
-          <div class="project-card__meta">
-            <span class="project-card__lang"><span
-                class="project-card__dot project-card__dot--js"></span>JavaScript</span>
-            <span class="project-card__link-text">View Code →</span>
-          </div>
-        </a>
-
-        <a href="https://github.com/jeffmaddow-ops/linkedin_job_agent" class="project-card reveal" style="--stagger: 4"
-          target="_blank" rel="noopener">
-          <div class="project-card__header">
-            <svg class="project-card__icon" viewBox="0 0 16 16" fill="currentColor" width="20" height="20">
-              <path
-                d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z" />
-            </svg>
-            <span class="project-card__label">Repository</span>
-          </div>
-          <h3 class="project-card__title">LinkedIn Job Agent</h3>
-          <p class="project-card__desc">Python-based automation tool for LinkedIn job search with CLI and web
-            integration for streamlined job hunting workflows</p>
-          <div class="project-card__meta">
-            <span class="project-card__lang"><span class="project-card__dot project-card__dot--py"></span>Python</span>
-            <span class="project-card__link-text">View Code →</span>
-          </div>
-        </a>
-
-        <a href="https://github.com/jeffmaddow-ops/learn_ansible" class="project-card reveal" style="--stagger: 5"
-          target="_blank" rel="noopener">
-          <div class="project-card__header">
-            <svg class="project-card__icon" viewBox="0 0 16 16" fill="currentColor" width="20" height="20">
-              <path
-                d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z" />
-            </svg>
-            <span class="project-card__label">Repository</span>
-          </div>
-          <h3 class="project-card__title">Learn Ansible</h3>
-          <p class="project-card__desc">Playbooks and examples for system configuration automation using Ansible
-            infrastructure-as-code patterns</p>
-          <div class="project-card__meta">
-            <span class="project-card__lang"><span class="project-card__dot project-card__dot--yaml"></span>YAML</span>
-            <span class="project-card__link-text">View Code →</span>
-          </div>
-        </a>
-
-        <a href="https://github.com/jeffmaddow-ops/ghostwriter_chatbot_modern" class="project-card reveal"
-          style="--stagger: 6" target="_blank" rel="noopener">
-          <div class="project-card__header">
-            <svg class="project-card__icon" viewBox="0 0 16 16" fill="currentColor" width="20" height="20">
-              <path
-                d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z" />
-            </svg>
-            <span class="project-card__label">Repository</span>
-          </div>
-          <h3 class="project-card__title">Ghostwriter Chatbot</h3>
-          <p class="project-card__desc">Conversational AI experiment exploring JavaScript chatbot patterns and Git-based
-            development workflows</p>
-          <div class="project-card__meta">
-            <span class="project-card__lang"><span
-                class="project-card__dot project-card__dot--js"></span>JavaScript</span>
-            <span class="project-card__link-text">View Code →</span>
-          </div>
-        </a>
-
-        <a href="https://github.com/jeffmaddow-ops/jeffmaddow-ops.github.io" class="project-card reveal"
-          style="--stagger: 7" target="_blank" rel="noopener">
-          <div class="project-card__header">
-            <svg class="project-card__icon" viewBox="0 0 16 16" fill="currentColor" width="20" height="20">
-              <path
-                d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z" />
-            </svg>
-            <span class="project-card__label">Repository</span>
-          </div>
-          <h3 class="project-card__title">GitHub Pages Site</h3>
-          <p class="project-card__desc">Personal portfolio and technical documentation hub hosted on GitHub Pages — the
-            foundation for this site</p>
-          <div class="project-card__meta">
-            <span class="project-card__lang"><span class="project-card__dot project-card__dot--html"></span>HTML</span>
-            <span class="project-card__link-text">View Code →</span>
-          </div>
-        </a>
-
+      <div class="philosophy-block reveal" style="--stagger: 0">
+        <p class="philosophy__text">
+          I don’t just understand how integrations work. <br>
+          <span class="philosophy__emphasis">I understand how they fail</span> — and how to prevent that in front of
+          customers.
+        </p>
+        <p class="philosophy__subtext">
+          That awareness is what makes strong Solutions Consultants and Technical Account Managers effective in
+          high-stakes environments.
+        </p>
       </div>
     </div>
   </section>
 
 
-  <!-- ===== CONTACT ===== -->
-  <section class="contact section" id="contact">
+  <!-- ===== CLOSING / AVAILABILITY ===== -->
+  <section class="availability section" id="contact">
     <div class="container">
-      <p class="label label--accent reveal" style="--stagger: 0">Get In Touch</p>
-      <h2 class="headline-display contact__heading reveal" style="--stagger: 1">
-        Let's build something
-      </h2>
-      <p class="contact__sub reveal" style="--stagger: 2">
-        Open to full-time roles, contract engagements, and technical advisory opportunities.
-      </p>
-      <a href="#work" class="cta-button reveal" style="--stagger: 3">
-        View My Work
-        <span class="cta-button__arrow">→</span>
-      </a>
-      <div class="contact__links reveal" style="--stagger: 4">
-        <a href="https://www.linkedin.com/in/jeff-maddow" class="contact__link" target="_blank"
-          rel="noopener">LinkedIn</a>
-        <a href="https://github.com/jeffmaddow-ops" class="contact__link" target="_blank" rel="noopener">GitHub</a>
+      <div class="availability-block reveal" style="--stagger: 0">
+        <h2 class="editorial__heading">Availability</h2>
+        <div class="contact__links">
+          <a href="https://www.linkedin.com/in/jeff-maddow" class="contact__link" target="_blank"
+            rel="noopener">LinkedIn</a>
+          <span class="dot">·</span>
+          <a href="https://github.com/jeffmaddow-ops" class="contact__link" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p class="availability__notation reveal" style="--stagger: 1">
+          Selected repositories reflect ongoing AI-assisted development and continuous technical learning.
+        </p>
       </div>
     </div>
   </section>
@@ -479,8 +315,8 @@
   <!-- ===== FOOTER ===== -->
   <footer class="footer-bar">
     <div class="container footer-bar__inner">
-      <span class="footer-bar__copy">© 2026 Jeff Maddow</span>
-      <span class="footer-bar__location">Available Remotely</span>
+      <span class="footer-bar__copy">© 2026 Jeff Maddow | Solutions Consulting · Technical Account Management ·
+        Remote</span>
     </div>
   </footer>
 
