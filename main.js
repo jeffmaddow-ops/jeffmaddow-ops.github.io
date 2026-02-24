@@ -257,7 +257,7 @@
             }, "-=0.2")
 
             // Final transition
-            .addLabel('transition', '+=0.6')
+            .addLabel('transition', '+=0.1')
             .to('#stable-msg, .preloader__label', {
                 opacity: 0,
                 duration: 0.4
