@@ -202,7 +202,7 @@
         });
     }
 
- // ---- Fast Enterprise Preloader (< 1s total) ----
+// ---- Fast, Fail-Safe Preloader ----
 function initPreloader() {
     const preloader = document.getElementById('preloader');
     if (!preloader) {
@@ -211,63 +211,55 @@ function initPreloader() {
     }
 
     if (prefersReducedMotion) {
-        preloader.style.display = 'none';
+        preloader.remove();
         initSite();
         return;
     }
 
-    // Lock scroll briefly
     document.body.style.overflow = 'hidden';
 
     const tl = gsap.timeline({
         defaults: { ease: 'power2.out' },
-        onComplete: () => {
-            preloader.style.display = 'none';
-            document.body.style.overflow = '';
-            initSite();
-        }
+        onComplete: cleanup
     });
 
-    // Initial state
+    function cleanup() {
+        document.body.style.overflow = '';
+        preloader.remove(); // remove entirely, not display:none
+        initSite();
+    }
+
+    // HARD FAILSAFE — kills preloader no matter what
+    setTimeout(() => {
+        if (document.body.contains(preloader)) {
+            cleanup();
+        }
+    }, 1000); // absolute max lifetime
+
+    // Animation (~700ms total)
     gsap.set('.preloader__frame', { opacity: 0, scale: 0.98 });
     gsap.set('.preloader__init', { opacity: 0 });
     gsap.set('.checkmark', { opacity: 0 });
     gsap.set('#stable-msg', { opacity: 0 });
 
-    tl
-    // Frame quick reveal
-    .to('.preloader__frame', {
+    tl.to('.preloader__frame', {
         opacity: 1,
         scale: 1,
         duration: 0.25
     })
-
-    // Quick init text
     .to('.preloader__init', {
         opacity: 1,
         duration: 0.15
     }, "-=0.15")
-
-    // Rapid system checks
     .to('#check-1 .checkmark', { opacity: 1, duration: 0.1 }, "+=0.05")
     .to('#check-2 .checkmark', { opacity: 1, duration: 0.1 }, "+=0.05")
     .to('#check-3 .checkmark', { opacity: 1, duration: 0.1 }, "+=0.05")
-
-    // Quick stable state flash
-    .to('.preloader__init, .preloader__checklist', {
-        opacity: 0,
-        duration: 0.15
-    }, "+=0.05")
-
-    .to('#stable-msg', {
-        opacity: 1,
-        duration: 0.15
-    }, "-=0.05")
-
-    // Clean fade out
     .to(preloader, {
         opacity: 0,
         duration: 0.25,
         ease: 'power1.in'
     }, "+=0.05");
 }
+
+// Kick off ONLY after full page load
+window.addEventListener('load', initPreloader);
