@@ -559,6 +559,39 @@ img {
     opacity: 0.9;
 }
 
+/* ============================================================
+   HOW I ENGAGE
+   ============================================================ */
+
+.engage__lead {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-lg);
+}
+
+.engage__list {
+    list-style: none;
+    margin-top: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 60ch;
+}
+
+.engage__list li {
+    position: relative;
+    padding-left: var(--space-xl);
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.engage__list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
 /* Philosophy Editorial */
 .philosophy-editorial {
     padding-block: var(--space-5xl);
