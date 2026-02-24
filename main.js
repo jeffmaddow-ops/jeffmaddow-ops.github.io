@@ -203,87 +203,67 @@
     }
 
  // ---- Cinematic Preloader ----
-    function initPreloader() {
-        const preloader = document.getElementById('preloader');
-        if (!preloader) {
-            initSite();
-            return;
-        }
+function initPreloader() {
+    const preloader = document.getElementById('preloader');
+    if (!preloader || prefersReducedMotion) {
+        if (preloader) preloader.style.display = 'none';
+        initSite();
+        return;
+    }
 
-        if (prefersReducedMotion) {
+    // Constants
+    const FRAME_SELECTOR = '.preloader__frame';
+    const INIT_SELECTOR = '.preloader__init';
+    const CHECKMARK_SELECTOR = '.checkmark';
+    const STABLE_MSG_SELECTOR = '#stable-msg';
+    const PRELOADER_CHECKLIST_SELECTOR = '.preloader__init, .preloader__checklist';
+    const PRELOADER_LABEL_SELECTOR = '.preloader__label';
+
+    // Animation durations
+    const DURATION_FRAME = 0.8;
+    const DURATION_INIT = 0.35;
+    const DURATION_CHECKMARK = 0.2;
+    const DURATION_CHECKLIST = 0.5;
+    const DURATION_STABLE_MSG = 0.4;
+    const DURATION_LABEL = 0.3;
+    const DURATION_FRAME_TRANSITION = 0.7;
+    const DURATION_PRELOADER_FADE = 0.4;
+
+    // Lock scroll during preloader
+    document.body.style.overflow = 'hidden';
+
+    // Initial set
+    gsap.set(FRAME_SELECTOR, { opacity: 0, scale: 0.98 });
+    gsap.set(INIT_SELECTOR, { opacity: 0 });
+    gsap.set(CHECKMARK_SELECTOR, { opacity: 0 });
+    gsap.set(STABLE_MSG_SELECTOR, { opacity: 0 });
+
+    // Create timeline
+    const tl = gsap.timeline({
+        defaults: { ease: 'power2.inOut' },
+        onComplete: () => {
             preloader.style.display = 'none';
-            initSite();
-            return;
+            document.body.style.overflow = '';
         }
+    });
 
-        const tl = gsap.timeline({
-            defaults: { ease: 'power2.inOut' },
-            onComplete: () => {
-                preloader.style.display = 'none';
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Lock scroll during preloader
-        document.body.style.overflow = 'hidden';
-
-        // Initial set
-        gsap.set('.preloader__frame', { opacity: 0, scale: 0.98 });
-        gsap.set('.preloader__init', { opacity: 0 });
-        gsap.set('.checkmark', { opacity: 0 });
-        gsap.set('#stable-msg', { opacity: 0 });
-
-        tl.to('.preloader__frame', {
-            opacity: 1,
-            scale: 1,
-            duration: 0.8,
-            ease: 'power3.out'
-        })
-            .to('.preloader__init', {
-                opacity: 1,
-                duration: 0.35
-            }, "-=0.3")
-            .to('#check-1 .checkmark', { opacity: 1, duration: 0.2 }, "+=0.1")
-            .to('#check-2 .checkmark', { opacity: 1, duration: 0.2 }, "+=0.1")
-            .to('#check-3 .checkmark', { opacity: 1, duration: 0.2 }, "+=0.1")
-            .to('.preloader__init, .preloader__checklist', {
-                opacity: 0,
-                duration: 0.5
-            }, "+=0.2")
-            .to('#stable-msg', {
-                opacity: 1,
-                duration: 0.4,
-                ease: 'power3.out'
-            }, "-=0.1")
-
-            // Final transition
-            .addLabel('transition', '+=0.1')
-            .to('#stable-msg, .preloader__label', {
-                opacity: 0,
-                duration: 0.3
-            }, 'transition')
-            .to('.preloader__frame', {
-                width: '72px',
-                height: '1px',
-                borderWidth: '0px',
-                backgroundColor: 'var(--accent)',
-                duration: 0.7,
-                ease: 'power4.inOut'
-            }, 'transition')
-            .to(preloader, {
-                opacity: 0,
-                duration: 0.4,
-                ease: 'power2.in'
-            }, 'transition+=0.3')
-            .call(() => {
-                initSite();
-            }, null, 'transition+=0.2');
-    }
-
-    // ---- Kick everything off ----
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initPreloader);
-    } else {
-        initPreloader();
-    }
-})();
+    tl.to(FRAME_SELECTOR, { opacity: 1, scale: 1, duration: DURATION_FRAME, ease: 'power3.out' })
+      .to(INIT_SELECTOR, { opacity: 1, duration: DURATION_INIT }, "-=0.3")
+      .to('#check-1 .checkmark', { opacity: 1, duration: DURATION_CHECKMARK }, "+=0.1")
+      .to('#check-2 .checkmark', { opacity: 1, duration: DURATION_CHECKMARK }, "+=0.1")
+      .to('#check-3 .checkmark', { opacity: 1, duration: DURATION_CHECKMARK }, "+=0.1")
+      .to(PRELOADER_CHECKLIST_SELECTOR, { opacity: 0, duration: DURATION_CHECKLIST }, "+=0.2")
+      .to(STABLE_MSG_SELECTOR, { opacity: 1, duration: DURATION_STABLE_MSG, ease: 'power3.out' }, "-=0.1")
+      .addLabel('transition', '+=0.1')
+      .to([STABLE_MSG_SELECTOR, PRELOADER_LABEL_SELECTOR], { opacity: 0, duration: DURATION_LABEL }, 'transition')
+      .to(FRAME_SELECTOR, {
+          width: '72px',
+          height: '1px',
+          borderWidth: '0px',
+          backgroundColor: 'var(--accent)',
+          duration: DURATION_FRAME_TRANSITION,
+          ease: 'power4.inOut'
+      }, 'transition')
+      .to(preloader, { opacity: 0, duration: DURATION_PRELOADER_FADE, ease: 'power2.in' }, 'transition+=0.3')
+      .call(initSite, null, 'transition+=0.2');
+};
