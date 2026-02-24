@@ -236,7 +236,7 @@
         tl.to('.preloader__frame', {
             opacity: 1,
             scale: 1,
-            duration: 1,
+            duration: 0.8,
             ease: 'power3.out'
         })
             .to('.preloader__init', {
@@ -260,24 +260,24 @@
             .addLabel('transition', '+=0.1')
             .to('#stable-msg, .preloader__label', {
                 opacity: 0,
-                duration: 0.4
+                duration: 0.3
             }, 'transition')
             .to('.preloader__frame', {
                 width: '72px',
                 height: '1px',
                 borderWidth: '0px',
                 backgroundColor: 'var(--accent)',
-                duration: 1,
+                duration: 0.7,
                 ease: 'power4.inOut'
             }, 'transition')
             .to(preloader, {
                 opacity: 0,
-                duration: 0.6,
+                duration: 0.4,
                 ease: 'power2.in'
-            }, 'transition+=0.6')
+            }, 'transition+=0.3')
             .call(() => {
                 initSite();
-            }, null, 'transition+=0.3');
+            }, null, 'transition+=0.2');
     }
 
 
