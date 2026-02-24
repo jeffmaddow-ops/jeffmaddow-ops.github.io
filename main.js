@@ -243,18 +243,18 @@
                 opacity: 1,
                 duration: 0.6
             }, "-=0.4")
-            .to('#check-1 .checkmark', { opacity: 1, duration: 0.3 }, "+=0.2")
-            .to('#check-2 .checkmark', { opacity: 1, duration: 0.3 }, "+=0.2")
-            .to('#check-3 .checkmark', { opacity: 1, duration: 0.3 }, "+=0.2")
+            .to('#check-1 .checkmark', { opacity: 1, duration: 0.2 }, "+=0.1")
+            .to('#check-2 .checkmark', { opacity: 1, duration: 0.2 }, "+=0.1")
+            .to('#check-3 .checkmark', { opacity: 1, duration: 0.2 }, "+=0.1")
             .to('.preloader__init, .preloader__checklist', {
                 opacity: 0,
                 duration: 0.5
-            }, "+=0.4")
+            }, "+=0.2")
             .to('#stable-msg', {
                 opacity: 1,
-                duration: 0.7,
+                duration: 0.4,
                 ease: 'power3.out'
-            }, "-=0.2")
+            }, "-=0.1")
 
             // Final transition
             .addLabel('transition', '+=0.1')
