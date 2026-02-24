@@ -241,8 +241,8 @@
         })
             .to('.preloader__init', {
                 opacity: 1,
-                duration: 0.6
-            }, "-=0.4")
+                duration: 0.35
+            }, "-=0.3")
             .to('#check-1 .checkmark', { opacity: 1, duration: 0.2 }, "+=0.1")
             .to('#check-2 .checkmark', { opacity: 1, duration: 0.2 }, "+=0.1")
             .to('#check-3 .checkmark', { opacity: 1, duration: 0.2 }, "+=0.1")
