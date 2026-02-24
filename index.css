@@ -266,7 +266,7 @@ img {
     background-position: center;
     background-repeat: no-repeat;
     opacity: 0.20;
-    filter: blur(1px) contrast(1.05);
+    filter: blur(1px) brightness(1.15) contrast(1.05);
     /* Reduced for lower contrast and tighter executive focus */
     mix-blend-mode: luminosity;
     pointer-events: none;
