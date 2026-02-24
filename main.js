@@ -263,5 +263,5 @@ function initPreloader() {
 
 // Kick off ONLY after full page load
 window.addEventListener('load', initPreloader);
-    }
+    
 })();
