@@ -797,8 +797,9 @@ img {
 
 
 /* ============================================================
-   NAV (minimal)
+   NAV (minimal — fully stabilized responsive behavior)
    ============================================================ */
+
 .nav {
     position: fixed;
     top: 0;
@@ -822,34 +823,84 @@ img {
     align-items: center;
 }
 
+/* Logo */
 .nav__logo {
     font-family: var(--font-body);
-    /* Modern editorial feel, not terminal-inspired */
     font-size: var(--text-base);
     letter-spacing: 0.12em;
     font-weight: 500;
     text-transform: uppercase;
     color: var(--text-primary);
+    white-space: nowrap;
 }
 
+/* Navigation Links */
 .nav__links {
     display: flex;
-    gap: var(--space-xl);
+    align-items: center;
+    flex-wrap: wrap;              /* Prevent overflow at mid widths */
+    gap: var(--space-lg);
     list-style: none;
 }
 
 .nav__link {
     font-family: var(--font-body);
-    /* Modern editorial feel */
     font-size: var(--text-sm);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text-secondary);
+    white-space: nowrap;          /* Prevent word breaking */
     transition: color var(--duration-fast) var(--ease-out-quart);
 }
 
 .nav__link:hover {
     color: var(--text-primary);
+}
+
+/* ============================================================
+   TABLET (refine spacing before collapse)
+   ============================================================ */
+
+@media (max-width: 1100px) {
+    .nav__links {
+        gap: var(--space-md);
+    }
+
+    .nav__link {
+        font-size: var(--text-xs);
+        letter-spacing: 0.06em;
+    }
+}
+
+@media (max-width: 900px) {
+    .nav__links {
+        gap: var(--space-sm);
+    }
+
+    .nav__link {
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+    }
+}
+
+/* ============================================================
+   MOBILE (clean collapse)
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+    .nav__links {
+        display: none;  /* Clean minimal mobile */
+    }
+
+    .nav__inner {
+        justify-content: center; /* Center JM on mobile */
+    }
+
+    .nav__logo {
+        font-size: var(--text-sm);
+        letter-spacing: 0.1em;
+    }
 }
 
 
