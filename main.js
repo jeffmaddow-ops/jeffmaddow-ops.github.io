@@ -202,66 +202,88 @@
         });
     }
 
-// ---- Fast, Fail-Safe Preloader ----
-function initPreloader() {
-    const preloader = document.getElementById('preloader');
-    if (!preloader) {
-        initSite();
-        return;
-    }
-
-    if (prefersReducedMotion) {
-        preloader.remove();
-        initSite();
-        return;
-    }
-
-    document.body.style.overflow = 'hidden';
-
-    const tl = gsap.timeline({
-        defaults: { ease: 'power2.out' },
-        onComplete: cleanup
-    });
-
-    function cleanup() {
-        document.body.style.overflow = '';
-        preloader.remove(); // remove entirely, not display:none
-        initSite();
-    }
-
-    // HARD FAILSAFE — kills preloader no matter what
-    setTimeout(() => {
-        if (document.body.contains(preloader)) {
-            cleanup();
+ // ---- Cinematic Preloader ----
+    function initPreloader() {
+        const preloader = document.getElementById('preloader');
+        if (!preloader) {
+            initSite();
+            return;
         }
-    }, 1000); // absolute max lifetime
 
-    // Animation (~700ms total)
-    gsap.set('.preloader__frame', { opacity: 0, scale: 0.98 });
-    gsap.set('.preloader__init', { opacity: 0 });
-    gsap.set('.checkmark', { opacity: 0 });
-    gsap.set('#stable-msg', { opacity: 0 });
+        if (prefersReducedMotion) {
+            preloader.style.display = 'none';
+            initSite();
+            return;
+        }
 
-    tl.to('.preloader__frame', {
-        opacity: 1,
-        scale: 1,
-        duration: 0.25
-    })
-    .to('.preloader__init', {
-        opacity: 1,
-        duration: 0.15
-    }, "-=0.15")
-    .to('#check-1 .checkmark', { opacity: 1, duration: 0.1 }, "+=0.05")
-    .to('#check-2 .checkmark', { opacity: 1, duration: 0.1 }, "+=0.05")
-    .to('#check-3 .checkmark', { opacity: 1, duration: 0.1 }, "+=0.05")
-    .to(preloader, {
-        opacity: 0,
-        duration: 0.25,
-        ease: 'power1.in'
-    }, "+=0.05");
-}
+        const tl = gsap.timeline({
+            defaults: { ease: 'power2.inOut' },
+            onComplete: () => {
+                preloader.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
 
-// Kick off ONLY after full page load
-window.addEventListener('load', initPreloader);
-    
+        // Lock scroll during preloader
+        document.body.style.overflow = 'hidden';
+
+        // Initial set
+        gsap.set('.preloader__frame', { opacity: 0, scale: 0.98 });
+        gsap.set('.preloader__init', { opacity: 0 });
+        gsap.set('.checkmark', { opacity: 0 });
+        gsap.set('#stable-msg', { opacity: 0 });
+
+        tl.to('.preloader__frame', {
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+            ease: 'power3.out'
+        })
+            .to('.preloader__init', {
+                opacity: 1,
+                duration: 0.35
+            }, "-=0.3")
+            .to('#check-1 .checkmark', { opacity: 1, duration: 0.2 }, "+=0.1")
+            .to('#check-2 .checkmark', { opacity: 1, duration: 0.2 }, "+=0.1")
+            .to('#check-3 .checkmark', { opacity: 1, duration: 0.2 }, "+=0.1")
+            .to('.preloader__init, .preloader__checklist', {
+                opacity: 0,
+                duration: 0.5
+            }, "+=0.2")
+            .to('#stable-msg', {
+                opacity: 1,
+                duration: 0.4,
+                ease: 'power3.out'
+            }, "-=0.1")
+
+            // Final transition
+            .addLabel('transition', '+=0.1')
+            .to('#stable-msg, .preloader__label', {
+                opacity: 0,
+                duration: 0.3
+            }, 'transition')
+            .to('.preloader__frame', {
+                width: '72px',
+                height: '1px',
+                borderWidth: '0px',
+                backgroundColor: 'var(--accent)',
+                duration: 0.7,
+                ease: 'power4.inOut'
+            }, 'transition')
+            .to(preloader, {
+                opacity: 0,
+                duration: 0.4,
+                ease: 'power2.in'
+            }, 'transition+=0.3')
+            .call(() => {
+                initSite();
+            }, null, 'transition+=0.2');
+    }
+
+    // ---- Kick everything off ----
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPreloader);
+    } else {
+        initPreloader();
+    }
 })();
