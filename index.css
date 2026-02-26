@@ -9,6 +9,7 @@
 /* ============================================================
    DESIGN TOKENS
    ============================================================ */
+
 :root {
     /* Palette */
     --bg-primary: #0A0A0F;
@@ -70,6 +71,7 @@
 /* ============================================================
    RESET & BASE
    ============================================================ */
+
 *,
 *::before,
 *::after {
@@ -132,6 +134,7 @@ img {
 /* ============================================================
    LAYOUT UTILITIES
    ============================================================ */
+
 .container {
     width: 100%;
     max-width: var(--max-width);
@@ -153,6 +156,7 @@ img {
 /* ============================================================
    TYPOGRAPHY UTILITIES
    ============================================================ */
+
 .label {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
@@ -189,6 +193,7 @@ img {
 /* ============================================================
    SCROLL ANIMATION SYSTEM
    ============================================================ */
+
 .reveal {
     opacity: 0;
     transform: translateY(32px);
@@ -241,12 +246,10 @@ img {
 }
 
 
-
-
-
 /* ============================================================
    HERO
    ============================================================ */
+
 .hero {
     min-height: 100vh;
     display: flex;
@@ -481,7 +484,6 @@ img {
 }
 
 /* Expandable Leadership Section */
-
 .expand-toggle {
     background: transparent;
     border: none;
@@ -506,7 +508,7 @@ img {
 
 .expand-toggle__icon {
     display: inline-block;
-    font-size: 1.5em; /* 🔥 makes arrow larger relative to text */
+    font-size: 1.8em; /* 🔥 makes arrow larger relative to text */
     line-height: 1;
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
@@ -636,6 +638,7 @@ img {
 /* ============================================================
    AVAILABILITY / FOOTER
    ============================================================ */
+
 .availability {
     text-align: center;
     border-top: 1px solid var(--border-subtle);
