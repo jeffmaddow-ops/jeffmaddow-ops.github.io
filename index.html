@@ -13,312 +13,164 @@
 
 <body>
 
-  <!-- ===== PRELOADER ===== -->
-  <div id="preloader" class="preloader">
-    <div class="preloader__frame">
-      <span class="preloader__label">JM | Portfolio</span>
-      <div class="preloader__content">
-        <p class="preloader__init">Initializing...</p>
-        <ul class="preloader__checklist">
-          <li class="preloader__item" id="check-1">Endpoint Validation <span class="checkmark">✓</span></li>
-          <li class="preloader__item" id="check-2">Authentication Layer <span class="checkmark">✓</span></li>
-          <li class="preloader__item" id="check-3">Deployment Pipeline <span class="checkmark">✓</span></li>
-        </ul>
-        <p class="preloader__stable" id="stable-msg">Environment <span class="stable-text">Ready...</span></p>
-      </div>
+<!-- ===== PRELOADER ===== -->
+<div id="preloader" class="preloader">
+  <div class="preloader__frame">
+    <span class="preloader__label">JM | Portfolio</span>
+    <div class="preloader__content">
+      <p class="preloader__init">Initializing...</p>
+      <ul class="preloader__checklist">
+        <li class="preloader__item">Endpoint Validation <span class="checkmark">✓</span></li>
+        <li class="preloader__item">Authentication Layer <span class="checkmark">✓</span></li>
+        <li class="preloader__item">Deployment Pipeline <span class="checkmark">✓</span></li>
+      </ul>
+      <p class="preloader__stable">Environment <span class="stable-text">Ready...</span></p>
     </div>
   </div>
-  <!-- ===== NAV ===== -->
-  <nav class="nav" id="nav">
-    <div class="container nav__inner">
-      <a href="#" class="nav__logo">JM</a>
-      <ul class="nav__links">
-        <li><a href="#about" class="nav__link">About</a></li>
-        <li><a href="#experience" class="nav__link">Consulting Expertise</a></li>
-        <li><a href="#impact" class="nav__link">Enterprise Impact</a></li>
-        <li><a href="#model" class="nav__link">Operating Model</a></li>
-        <li><a href="#work" class="nav__link">Technical Leadership</a></li>
-        <li><a href="#contact" class="nav__link">Availability</a></li>
-      </ul>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="container nav__inner">
+    <a href="#" class="nav__logo">JM</a>
+    <ul class="nav__links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#impact">Enterprise Impact</a></li>
+      <li><a href="#model">Operating Model</a></li>
+      <li><a href="#leadership-approach">Leadership</a></li>
+      <li><a href="#engage">How I Engage</a></li>
+      <li><a href="#experience">Consulting Expertise</a></li>
+      <li><a href="#work">Technical Leadership</a></li>
+      <li><a href="#contact">Availability</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero section">
+  <div class="hero__bg-photo"></div>
+  <div class="hero__bg-lines"></div>
+
+  <div class="container hero__content">
+    <p class="label label--accent">
+      Customer Success Engineering · Enterprise SaaS · Networking & Identity
+    </p>
+
+    <h1 class="hero__name">
+      <span>Customer-Facing Technical Leadership</span>
+      <span>Built for Enterprise Scale.</span>
+    </h1>
+
+    <hr class="hero__rule">
+
+    <p class="hero__subtitle">
+      Led 150+ enterprise deployments, reduced time to value by 75%, and maintained 94% CSAT with 100% retention.
+    </p>
+
+    <div class="hero__metadata">
+      <span>Networking & Infrastructure</span>
+      <span class="dot">·</span>
+      <span>Identity & Access Control</span>
+      <span class="dot">·</span>
+      <span>Cloud Infrastructure (AWS)</span>
     </div>
-  </nav>
+  </div>
+</header>
 
-
-  <!-- ===== HERO ===== -->
-  <header class="hero section" id="hero">
-    <div class="hero__bg-photo"></div> <!-- Architectural background photo -->
-    <div class="hero__bg-lines"></div> <!-- Background for CSS architecture diagram -->
-    <div class="container hero__content">
-      <p class="label label--accent reveal" style="--stagger: 0">Solutions Consulting · TAM · Production Credibility</p>
-      <h1 class="hero__name reveal" style="--stagger: 1">
-        <span>Technical Solutions</span>
-        <span>Engineered for Production.</span>
-      </h1>
-      <hr class="hero__rule reveal-line" style="--stagger: 2">
-      <p class="hero__subtitle reveal" style="--stagger: 3">
-        Enterprise SaaS integrations and customer-facing technical delivery built for reliability and scale.
-      </p>
-
-      <!-- Metadata Strip -->
-      <div class="hero__metadata reveal" style="--stagger: 4">
-        <span>Production Stability</span>
-        <span class="dot">·</span>
-        <span>Enterprise Delivery</span>
-        <span class="dot">·</span>
-        <span>Customer Trust</span>
-      </div>
-
-      <div class="hero__actions reveal" style="--stagger: 5">
-        <a href="#work" class="cta-button">
-          See the Impact
-          <span class="cta-button__arrow">→</span>
-        </a>
-      </div>
-    </div>
-  </header>
-
-
-  <!-- ===== POSITIONING STATEMENT (About) ===== -->
-  <section class="about-editorial section" id="about">
-    <div class="container">
-      <div class="editorial-block reveal" style="--stagger: 0">
-        <h2 class="editorial__heading">Professional Profile</h2>
-        <div class="editorial__body">
-          <p class="body-large">
-            I bring hands-on production experience into customer-facing technical engagements.
-          </p>
-          <p class="body-large">
-            I lead complex SaaS integrations, resolve API configuration issues, support go-live deployments, 
-            and work directly with customers to solve real-world system constraints.
-          </p>
-          <p class="body-large">
-            I understand how systems perform under production pressure and communicate risk and tradeoffs clearly to enterprise stakeholders.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PRODUCTION EXPERIENCE SECTION ===== -->
-  <section class="experience section" id="experience">
-    <div class="container">
-      <div class="editorial-block">
-        <h2 class="editorial__heading reveal" style="--stagger: 0">Consulting Expertise</h2>
-        <div class="experience__content reveal" style="--stagger: 1">
-          <h3 class="headline-display experience__lead">
-            Production Experience Applied to Consulting
-          </h3>
-          <p class="body-large">
-            Real implementations fail in edge cases, configuration gaps, and misaligned expectations. I’ve engineered and led:
-          </p>
-  
-          <ul class="experience__list">
-            <li>API configuration and ongoing troubleshooting</li>
-            <li>OAuth and webhook validation in live environments</li>
-            <li>Log analysis and root cause investigation</li>
-            <li>RFI/RFP technical requirement mapping</li>
-            <li>Twilio SIP domain integration and ACL security</li>
-            <li>SSO/SAML enterprise authentication</li>
-            <li>AI-assisted workflow automation (reducing CX config time by 60%)</li>
-          </ul>
-          
-          <p class="body-large">
-            This experience translates directly into Solutions Consultant and Technical Account Manager roles, where
-            <span class="highlight">credibility, and risk awareness</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ENTERPRISE IMPACT SECTION ===== -->
-  <section class="impact section" id="impact">
-    <div class="container">
-      <div class="editorial-block">
-        <span class="editorial__divider">⸻</span>
-        <h2 class="editorial__heading reveal" style="--stagger: 0">Enterprise Impact</h2>
-        <div class="impact__content reveal" style="--stagger: 1">
-          <ul class="model__list">
-            <li><strong>150+</strong> enterprise customers supported</li>
-            <li><strong>100%</strong> retention across managed accounts</li>
-            <li><strong>94%</strong> CSAT</li>
-            <li><strong>12</strong> AWS migrations executed with zero downtime</li>
-            <li><strong>70%</strong> deployment speed improvement</li>
-            <li><strong>25%</strong> infrastructure cost reduction</li>
-            <li><strong>60%</strong> IVR configuration time reduction</li>
-            <li><strong>90%</strong> Tier 2 production escalations resolved within SLA</li>
-            <li>AWS ingestion pipelines processing <strong>100k+</strong> records per client</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== OPERATING MODEL SECTION ===== -->
-  <section class="operating-model section" id="model">
-    <div class="container">
-      <div class="editorial-block">
-        <h2 class="editorial__heading reveal" style="--stagger: 0">Operating Model</h2>
-        <div class="model__content reveal" style="--stagger: 1">
-          <p class="body-large">
-            In customer-facing technical roles, I operate across three layers:
-          </p>
-          <ul class="model__list">
-            <li><strong>Business expectations</strong> — aligning stakeholders on scope, timeline, and risk.</li>
-            <li><strong>Technical implementation</strong> — validating integrations, payloads, and environment
-              configurations.</li>
-            <li><strong>Production stability</strong> — anticipating edge cases and failure modes before they escalate
-              into customer issues.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SELECTED WORK (Editorial List) ===== -->
-  <section class="work section" id="work">
-    <div class="container">
-      <h2 class="editorial__heading reveal" style="--stagger: 0">Technical Leadership</h2>
-      <div class="work-editorial__list">
-
-        <article class="work-item reveal" style="--stagger: 1">
-          <div class="work-item__content">
-            <h3 class="work-item__title">Customer-Facing Technical Leadership</h3>
-            <p class="work-item__desc">
-              <strong>Context:</strong> Enterprise SaaS implementations in regulated environments.<br>
-              <strong>Approach:</strong> Led technical discovery sessions, mapped requirements to scalable cloud
-              architectures, and supported RFI/RFP responses across enterprise sales cycles.<br>
-              <strong>Impact:</strong> Delivered 15+ implementations monthly, reduced time-to-value from 4 weeks to 7
-              days, and maintained 100% retention with 94% CSAT.
-            </p>
-          </div>
-        </article>
-
-        <article class="work-item reveal" style="--stagger: 2">
-          <div class="work-item__content">
-            <h3 class="work-item__title">Risk Management & Production Stability</h3>
-            <p class="work-item__desc">
-              <strong>Context:</strong> Manual validation and unclear ownership increased production risk.<br>
-              <strong>Approach:</strong> Engineered automated workflows and implemented structured testing to prevent
-              regression and deployment errors.<br>
-              <strong>Impact:</strong> Reduced preventable production incidents by 80% and established consistent,
-              zero-downtime deployment practices.
-            </p>
-          </div>
-        </article>
-
-        <div class="leadership-expand reveal" style="--stagger: 3">
-          <button id="leadership-toggle" class="expand-toggle" aria-expanded="false"
-            aria-controls="leadership-collapsible">
-            Technical Leadership Examples in Practice <span class="expand-toggle__icon">→</span>
-          </button>
-
-          <div id="leadership-collapsible" class="collapsible-wrapper" aria-hidden="true"
-            style="height: 0; opacity: 0; overflow: hidden; visibility: hidden;">
-            <div class="collapsible-inner">
-              <article class="work-item">
-                <div class="work-item__content">
-                  <h3 class="work-item__title">AWS Migration Execution</h3>
-                  <p class="work-item__desc">
-                    <strong>Context:</strong> Legacy infrastructure constrained scalability and slowed deployments.<br>
-                    <strong>Approach:</strong> Executed 12 AWS migrations across enterprise environments with structured
-                    cutover planning and rollback controls.<br>
-                    <strong>Impact:</strong> Delivered zero downtime transitions, improved deployment speed by 70%, and
-                    reduced infrastructure costs.
-                  </p>
-                </div>
-              </article>
-
-              <article class="work-item">
-                <div class="work-item__content">
-                  <h3 class="work-item__title">Tier 2 Escalation Management</h3>
-                  <p class="work-item__desc">
-                    <strong>Context:</strong> Production telephony and integration defects impacting enterprise
-                    workflows.<br>
-                    <strong>Approach:</strong> Led root cause investigations using packet analysis (Wireshark/tcpdump), SIP trace
-                    review, and API validation.<br>
-                    <strong>Impact:</strong> Resolved 90% of Tier 2 escalations within SLA and prevented recurrence
-                    through documentation.
-                  </p>
-                </div>
-              </article>
-
-              <article class="work-item">
-                <div class="work-item__content">
-                  <h3 class="work-item__title">Telephony Architecture & Security</h3>
-                  <p class="work-item__desc">
-                    <strong>Context:</strong> Enterprise clients requiring secure and scalable voice routing.<br>
-                    <strong>Approach:</strong> Engineered Twilio SIP domain integrations, implemented IP ACL policies,
-                    and secured registration controls.<br>
-                    <strong>Impact:</strong> Eliminated misconfiguration-related incidents and secured 99.99% telephony
-                    stability across all enterprise SIP integrations.
-                  </p>
-                </div>
-              </article>
-
-              <article class="work-item">
-                <div class="work-item__content">
-                  <h3 class="work-item__title">Data Ingestion Automation</h3>
-                  <p class="work-item__desc">
-                    <strong>Context:</strong> Manual ingestion workflows slowing CX operations.<br>
-                    <strong>Approach:</strong> Built AWS ingestion pipelines processing 100k+ records per client and
-                    automated validation logic.<br>
-                    <strong>Impact:</strong> Eliminated 15+ hours per week of manual processing and achieved 100% data
-                    ingestion accuracy.
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CONSULTING VALUE SECTION ===== -->
-  <section class="section philosophy-editorial" id="philosophy">
-    <div class="container">
-      <div class="philosophy-block reveal" style="--stagger: 0">
-        <p class="philosophy__text">
-          I don’t just understand how integrations work. <br>
-          <span class="philosophy__emphasis">I understand how they fail</span> and how to prevent that in front of
-          customers.
-        </p>
-        <p class="philosophy__subtext">
-          That awareness is what makes Solutions Consultants and Technical Account Managers effective in
-          high-stakes environments.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  
-  <!-- ===== HOW I ENGAGE ===== -->
-<section class="engage section" id="engage">
-  <div class="container">
-    <div class="editorial-block">
-      <h2 class="editorial__heading reveal" style="--stagger: 0">
-        How I Engage
-      </h2>
-
-      <div class="engage__content reveal" style="--stagger: 1">
-        <h3 class="headline-display engage__lead">
-          How I Operate in High-Stakes Environments
-        </h3>
-
-        <ul class="engage__list">
-          <li>Lead structured technical discovery to define scope, constraints, and success criteria</li>
-          <li>Translate business requirements into scalable integration architecture</li>
-          <li>Identify production risk before deployment and mitigate early</li>
-          <li>Align technical tradeoffs with business and executive stakeholders</li>
-          <li>Maintain deployment discipline through go-live and post-launch stabilization</li>
-        </ul>
-      </div>
-    </div>
+<!-- ===== ABOUT ===== -->
+<section class="section" id="about">
+  <div class="container editorial-block">
+    <h2 class="editorial__heading">Professional Profile</h2>
+    <p class="body-large">
+      I bring hands-on production experience into customer-facing technical engagements. I lead complex SaaS integrations, resolve API configuration issues, support go-live deployments, and communicate production risk clearly to enterprise stakeholders.
+    </p>
   </div>
 </section>
 
+<!-- ===== ENTERPRISE IMPACT ===== -->
+<section class="section impact" id="impact">
+  <div class="container editorial-block">
+    <h2 class="editorial__heading">Enterprise Impact</h2>
+    <ul class="model__list">
+      <li><strong>150+</strong> enterprise customers supported</li>
+      <li><strong>100%</strong> retention</li>
+      <li><strong>94%</strong> CSAT</li>
+      <li><strong>12</strong> AWS migrations</li>
+      <li><strong>70%</strong> faster deployments</li>
+      <li><strong>25%</strong> cost reduction</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== OPERATING MODEL ===== -->
+<section class="section" id="model">
+  <div class="container editorial-block">
+    <h2 class="editorial__heading">Operating Model</h2>
+    <ul class="model__list">
+      <li><strong>Business Expectations</strong> — Align stakeholders on scope and risk.</li>
+      <li><strong>Technical Implementation</strong> — Validate integrations and architecture.</li>
+      <li><strong>Production Stability</strong> — Anticipate failure modes before go-live.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== HOW I APPROACH TECHNICAL LEADERSHIP ===== -->
+<section class="section" id="leadership-approach">
+  <div class="container editorial-block">
+    <h2 class="editorial__heading">How I Approach Technical Leadership</h2>
+    <ul class="engage__list">
+      <li>Simplify complex networking and identity systems into executable plans.</li>
+      <li>Accelerate time to value through structured onboarding.</li>
+      <li>Surface adoption risk early using measurable signals.</li>
+      <li>Align technical decisions with business outcomes.</li>
+      <li>Partner cross-functionally to ensure consistent execution.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== HOW I ENGAGE ===== -->
+<section class="section" id="engage">
+  <div class="container editorial-block">
+    <h2 class="editorial__heading">How I Engage</h2>
+    <ul class="engage__list">
+      <li>Lead structured technical discovery.</li>
+      <li>Translate business requirements into scalable architecture.</li>
+      <li>Identify production risk before deployment.</li>
+      <li>Align tradeoffs with executive stakeholders.</li>
+      <li>Maintain deployment discipline post-launch.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== CONSULTING EXPERTISE ===== -->
+<section class="section" id="experience">
+  <div class="container editorial-block">
+    <h2 class="editorial__heading">Consulting Expertise</h2>
+    <ul class="experience__list">
+      <li>API configuration and troubleshooting</li>
+      <li>OAuth and webhook validation</li>
+      <li>Twilio SIP integration and ACL security</li>
+      <li>SSO/SAML authentication</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== TECHNICAL LEADERSHIP ===== -->
+<section class="section" id="work">
+  <div class="container editorial-block">
+    <h2 class="editorial__heading">Technical Leadership</h2>
+    <p>Selected enterprise implementation and risk mitigation case examples.</p>
+  </div>
+</section>
+
+<!-- ===== PHILOSOPHY ===== -->
+<section class="section" id="philosophy">
+  <div class="container philosophy-block">
+    <p>
+      I don’t just understand how integrations work — I understand how they fail and how to prevent that in front of customers.
+    </p>
+  </div>
+</section>
 
   <!-- ===== CLOSING / AVAILABILITY ===== -->
   <section class="availability section" id="contact">
