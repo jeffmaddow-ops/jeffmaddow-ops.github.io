@@ -506,7 +506,10 @@ img {
 
 .expand-toggle__icon {
     display: inline-block;
-    transition: transform var(--duration-fast) var(--ease-out-quart);
+    font-size: 1.4em; /* 🔥 makes arrow larger relative to text */
+    line-height: 1;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
 }
 
 .expand-toggle[aria-expanded="true"] .expand-toggle__icon {
