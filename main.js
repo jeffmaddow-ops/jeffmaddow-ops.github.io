@@ -4,6 +4,15 @@
    GSAP for preloader timeline, vanilla for the rest
    ============================================================ */
 
+// Always load page from top
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('load', function () {
+  window.scrollTo(0, 0);
+});
+
 (function () {
     'use strict';
 
