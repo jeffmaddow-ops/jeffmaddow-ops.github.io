@@ -540,7 +540,6 @@ img {
     color: var(--accent);
 }
 
-
 /* ============================================================
    CONSULTING EXPERTISE (Experience Section)
    ============================================================ */
@@ -551,18 +550,27 @@ img {
 }
 
 .experience__list {
+    list-style: none;                /* remove browser bullets */
     margin-top: var(--space-md);
     margin-bottom: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);            /* consistent spacing */
 }
 
 .experience__list li {
+    position: relative;
+    padding-left: var(--space-xl);   /* same pattern as engage/model */
     font-size: var(--text-base);
     line-height: 1.75;
     color: var(--text-secondary);
 }
 
-.experience__content .body-large:last-of-type {
-    opacity: 0.9;
+.experience__list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
 }
 
 /* ============================================================
