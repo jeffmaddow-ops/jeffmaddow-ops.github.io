@@ -1,217 +1,647 @@
-<!DOCTYPE html>
-<html lang="en">
+/* ============================================================
+   JEFF MADDOW — PORTFOLIO
+   Design System: Midnight Luxe (Dark Editorial)
+   Final Production Stylesheet
+   ============================================================ */
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeff Maddow — Enterprise Implementation & Solutions Engineering</title>
-  <meta name="description"
-    content="Senior Implementation & Customer Solutions Engineer specializing in complex API integrations, automation-first infrastructure, and technical fluency across customer-facing and backend systems.">
-  <link rel="stylesheet" href="index.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-</head>
+/* ============================================================
+   GOOGLE FONTS
+   ============================================================ */
 
-<body>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400&display=swap');
 
-<!-- ===== PRELOADER ===== -->
-<div id="preloader" class="preloader">
-  <div class="preloader__frame">
-    <span class="preloader__label">JM | Portfolio</span>
-    <div class="preloader__content">
-      <p class="preloader__init">Initializing...</p>
-      <ul class="preloader__checklist">
-        <li class="preloader__item">Endpoint Validation <span class="checkmark">✓</span></li>
-        <li class="preloader__item">Authentication Layer <span class="checkmark">✓</span></li>
-        <li class="preloader__item">Deployment Pipeline <span class="checkmark">✓</span></li>
-      </ul>
-      <p class="preloader__stable">Environment <span class="stable-text">Ready...</span></p>
-    </div>
-  </div>
-</div>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
 
-<!-- ===== NAV ===== -->
-<nav class="nav">
-  <div class="container nav__inner">
-    <a href="#" class="nav__logo">JM</a>
-    <ul class="nav__links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#impact">Enterprise Impact</a></li>
-      <li><a href="#model">Operating Model</a></li>
-      <li><a href="#leadership-approach">Leadership</a></li>
-      <li><a href="#engage">How I Engage</a></li>
-      <li><a href="#experience">Consulting Expertise</a></li>
-      <li><a href="#work">Technical Leadership</a></li>
-      <li><a href="#contact">Availability</a></li>
-    </ul>
-  </div>
-</nav>
+:root {
 
-<!-- ===== HERO ===== -->
-<header class="hero section">
-  <div class="hero__bg-photo"></div>
-  <div class="hero__bg-lines"></div>
+  /* Palette */
+  --bg-primary: #0A0A0F;
+  --bg-secondary: #111118;
+  --bg-elevated: #181822;
+  --accent: #C9A84C;
 
-  <div class="container hero__content">
-    <p class="label label--accent">
-      Customer Success Engineering · Enterprise SaaS · Networking & Identity
-    </p>
+  --text-primary: #FFFFFF;
+  --text-secondary: #B8B8C0;
+  --text-tertiary: #888890;
 
-    <h1 class="hero__name">
-      <span>Customer-Facing Technical Leadership</span>
-      <span>Built for Enterprise Scale.</span>
-    </h1>
+  --border-subtle: rgba(255,255,255,0.06);
 
-    <hr class="hero__rule">
+  /* Typography */
+  --font-body: 'Inter', sans-serif;
+  --font-display: 'Playfair Display', serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
-    <p class="hero__subtitle">
-      Led 150+ enterprise deployments, reduced time to value by 75%, and maintained 94% CSAT with 100% retention.
-    </p>
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-hero: clamp(2.25rem, 4.5vw, 3.75rem);
 
-    <div class="hero__metadata">
-      <span>Networking & Infrastructure</span>
-      <span class="dot">·</span>
-      <span>Identity & Access Control</span>
-      <span class="dot">·</span>
-      <span>Cloud Infrastructure (AWS)</span>
-    </div>
-  </div>
-</header>
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-5xl: 128px;
 
-<!-- ===== ABOUT ===== -->
-<section class="section" id="about">
-  <div class="container editorial-block">
-    <h2 class="editorial__heading">Professional Profile</h2>
-    <p class="body-large">
-      I bring hands-on production experience into customer-facing technical engagements. I lead complex SaaS integrations, resolve API configuration issues, support go-live deployments, and communicate production risk clearly to enterprise stakeholders.
-    </p>
-  </div>
-</section>
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16,1,0.3,1);
+  --ease-out-quart: cubic-bezier(0.25,1,0.5,1);
 
-<!-- ===== ENTERPRISE IMPACT ===== -->
-<section class="section impact" id="impact">
-  <div class="container editorial-block">
-    <h2 class="editorial__heading">Enterprise Impact</h2>
-    <ul class="model__list">
-      <li><strong>150+</strong> enterprise customers supported</li>
-      <li><strong>100%</strong> retention</li>
-      <li><strong>94%</strong> CSAT</li>
-      <li><strong>12</strong> AWS migrations</li>
-      <li><strong>70%</strong> faster deployments</li>
-      <li><strong>25%</strong> cost reduction</li>
-    </ul>
-  </div>
-</section>
+  --duration-fast: 300ms;
+  --duration-med: 500ms;
+  --duration-slow: 800ms;
 
-<!-- ===== OPERATING MODEL ===== -->
-<section class="section" id="model">
-  <div class="container editorial-block">
-    <h2 class="editorial__heading">Operating Model</h2>
-    <ul class="model__list">
-      <li><strong>Business Expectations</strong> — Align stakeholders on scope and risk.</li>
-      <li><strong>Technical Implementation</strong> — Validate integrations and architecture.</li>
-      <li><strong>Production Stability</strong> — Anticipate failure modes before go-live.</li>
-    </ul>
-  </div>
-</section>
+  /* Layout */
+  --max-width: 1200px;
+  --gutter: clamp(20px,4vw,48px);
+}
 
-<!-- ===== HOW I APPROACH TECHNICAL LEADERSHIP ===== -->
-<section class="section" id="leadership-approach">
-  <div class="container editorial-block">
-    <h2 class="editorial__heading">How I Approach Technical Leadership</h2>
-    <ul class="engage__list">
-      <li>Simplify complex networking and identity systems into executable plans.</li>
-      <li>Accelerate time to value through structured onboarding.</li>
-      <li>Surface adoption risk early using measurable signals.</li>
-      <li>Align technical decisions with business outcomes.</li>
-      <li>Partner cross-functionally to ensure consistent execution.</li>
-    </ul>
-  </div>
-</section>
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
 
-<!-- ===== HOW I ENGAGE ===== -->
-<section class="section" id="engage">
-  <div class="container editorial-block">
-    <h2 class="editorial__heading">How I Engage</h2>
-    <ul class="engage__list">
-      <li>Lead structured technical discovery.</li>
-      <li>Translate business requirements into scalable architecture.</li>
-      <li>Identify production risk before deployment.</li>
-      <li>Align tradeoffs with executive stakeholders.</li>
-      <li>Maintain deployment discipline post-launch.</li>
-    </ul>
-  </div>
-</section>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-<!-- ===== CONSULTING EXPERTISE ===== -->
-<section class="section" id="experience">
-  <div class="container editorial-block">
-    <h2 class="editorial__heading">Consulting Expertise</h2>
-    <ul class="experience__list">
-      <li>API configuration and troubleshooting</li>
-      <li>OAuth and webhook validation</li>
-      <li>Twilio SIP integration and ACL security</li>
-      <li>SSO/SAML authentication</li>
-    </ul>
-  </div>
-</section>
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
 
-<!-- ===== TECHNICAL LEADERSHIP ===== -->
-<section class="section" id="work">
-  <div class="container editorial-block">
-    <h2 class="editorial__heading">Technical Leadership</h2>
-    <p>Selected enterprise implementation and risk mitigation case examples.</p>
-  </div>
-</section>
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
 
-<!-- ===== PHILOSOPHY ===== -->
-<section class="section" id="philosophy">
-  <div class="container philosophy-block">
-    <p>
-      I don’t just understand how integrations work — I understand how they fail and how to prevent that in front of customers.
-    </p>
-  </div>
-</section>
+/* Grain Overlay */
 
-  <!-- ===== CLOSING / AVAILABILITY ===== -->
-  <section class="availability section" id="contact">
-    <div class="container">
-      <div class="availability-block reveal" style="--stagger: 0">
-        <h2 class="editorial__heading">Availability</h2>
-        <div class="contact__links">
-  <a href="https://www.linkedin.com/in/jeff-maddow"
-     class="contact__link"
-     target="_blank"
-     rel="noopener">LinkedIn</a>
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
 
-  <span class="dot">·</span>
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--duration-fast) var(--ease-out-quart);
+}
 
-  <a href="https://github.com/jeffmaddow-ops"
-     class="contact__link"
-     target="_blank"
-     rel="noopener">GitHub</a>
+a:hover {
+  color: var(--accent);
+}
 
-  <span class="dot">·</span>
+/* ============================================================
+   LAYOUT UTILITIES
+   ============================================================ */
 
-  <a href="mailto:jeffmaddow@icloud.com"
-     class="contact__link">Email</a>
-</div>
-        <p class="availability__notation reveal" style="--stagger: 1">
-          GitHub repositories reflect ongoing AI-assisted development and continuous technical learning.
-        </p>
-      </div>
-    </div>
-  </section>
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
 
+.section {
+  padding-block: clamp(72px,8vh,88px);
+}
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer-bar">
-    <div class="container footer-bar__inner">
-      <span class="footer-bar__copy">© 2026 Jeff Maddow · Solutions Consulting · Technical Account Management ·
-        Remote</span>
-    </div>
-  </footer>
+/* ============================================================
+   SCROLL ANIMATIONS
+   ============================================================ */
 
-  <script src="main.js"></script>
-</body>
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity var(--duration-slow) var(--ease-out-expo),
+    transform var(--duration-slow) var(--ease-out-expo);
+  transition-delay: calc(var(--stagger, 0) * 100ms);
+}
 
-</html>
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   PRELOADER
+   ============================================================ */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9998;
+}
+
+.preloader__frame {
+  width: 380px;
+  height: 220px;
+  border: 1px solid var(--border-subtle);
+  padding: var(--space-xl);
+  position: relative;
+}
+
+.preloader__label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.preloader__init {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.preloader__item {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  opacity: 0.6;
+}
+
+.checkmark {
+  color: var(--accent);
+  opacity: 0;
+}
+
+.preloader__item.is-checked {
+  opacity: 1;
+}
+
+.preloader__item.is-checked .checkmark {
+  opacity: 1;
+}
+
+.preloader__stable {
+  margin-top: var(--space-md);
+  opacity: 0;
+}
+
+.stable-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding-block: var(--space-md);
+  z-index: 100;
+}
+
+.nav.is-scrolled {
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.nav__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo {
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.nav__links {
+  display: flex;
+  gap: var(--space-lg);
+  list-style: none;
+}
+
+.nav__link {
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.nav__link:hover {
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: var(--space-5xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__bg-photo {
+  position: absolute;
+  inset: 0;
+  background: url('hero-data-center.png') center/cover no-repeat;
+  opacity: 0.20;
+  filter: blur(1px) brightness(1.25);
+  mix-blend-mode: luminosity;
+  z-index: 0;
+}
+
+.hero__bg-lines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  z-index: 1;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 3;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-secondary);
+}
+
+.label--accent {
+  color: var(--accent);
+}
+
+.hero__name {
+  font-size: var(--text-hero);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-lg);
+}
+
+.hero__rule {
+  width: 72px;
+  height: 1px;
+  background: var(--accent);
+  border: none;
+  margin-bottom: var(--space-lg);
+}
+
+.hero__subtitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--text-secondary);
+  max-width: 42ch;
+  margin-bottom: var(--space-xl);
+}
+
+.hero__metadata {
+  display: flex;
+  gap: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.dot {
+  color: var(--accent);
+}
+
+/* ============================================================
+   EDITORIAL SECTIONS
+   ============================================================ */
+
+.editorial__heading {
+  font-size: var(--text-base);
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-sm);
+}
+
+.editorial-block {
+  max-width: 900px;
+}
+
+.body-large {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  max-width: 70ch;
+}
+
+/* Impact */
+
+.impact {
+  background: var(--bg-elevated);
+}
+
+.model__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.model__list li {
+  color: var(--text-secondary);
+}
+
+.model__list strong {
+  color: var(--text-primary);
+}
+
+/* Engage */
+
+.engage__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.engage__list li {
+  padding-left: var(--space-xl);
+  position: relative;
+  color: var(--text-secondary);
+}
+
+.engage__list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* Experience */
+
+.experience__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.experience__list li {
+  color: var(--text-secondary);
+}
+
+/* Philosophy */
+
+#philosophy {
+  background: var(--bg-secondary);
+}
+
+.philosophy-block {
+  max-width: 800px;
+  text-align: center;
+}
+
+#philosophy p {
+  font-size: var(--text-2xl);
+  font-family: var(--font-display);
+}
+
+/* ============================================================
+   AVAILABILITY
+   ============================================================ */
+
+.availability {
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+.contact__links {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+.contact__link {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.contact__link:hover {
+  color: var(--text-primary);
+}
+
+.availability__notation {
+  margin-top: var(--space-xl);
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer-bar {
+  padding-block: var(--space-xl);
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+.footer-bar__copy {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .nav__links {
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 600px) {
+
+  .nav__links {
+    display: none;
+  }
+
+  .hero {
+    min-height: 85vh;
+  }
+
+  .contact__links {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET
+   ============================================================ */
+
+@media (max-width: 1024px) {
+
+  .container {
+    padding-inline: 32px;
+  }
+
+  .hero {
+    padding-block: var(--space-4xl);
+  }
+
+  .hero__name {
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: 0.1em;
+  }
+
+  .hero__subtitle {
+    max-width: 36ch;
+  }
+
+  .hero__metadata {
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .editorial-block {
+    max-width: 720px;
+  }
+
+  .model__list,
+  .engage__list,
+  .experience__list {
+    gap: var(--space-md);
+  }
+
+  .nav__links {
+    gap: var(--space-md);
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
+
+@media (max-width: 640px) {
+
+  .container {
+    padding-inline: 20px;
+  }
+
+  .section {
+    padding-block: var(--space-3xl);
+  }
+
+  /* NAV */
+  .nav__links {
+    display: none;
+  }
+
+  .nav__inner {
+    justify-content: center;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 85vh;
+    padding-block: var(--space-3xl);
+  }
+
+  .hero__name {
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
+    letter-spacing: 0.08em;
+  }
+
+  .hero__subtitle {
+    font-size: var(--text-base);
+    max-width: 100%;
+  }
+
+  .hero__metadata {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    font-size: 0.65rem;
+  }
+
+  /* Editorial Sections */
+  .editorial-block {
+    max-width: 100%;
+  }
+
+  .body-large {
+    font-size: var(--text-base);
+  }
+
+  /* Lists */
+  .engage__list li,
+  .model__list li,
+  .experience__list li {
+    font-size: 0.95rem;
+  }
+
+  /* Philosophy */
+  #philosophy p {
+    font-size: var(--text-lg);
+  }
+
+  /* Contact */
+  .contact__links {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .availability__notation {
+    font-size: 0.65rem;
+  }
+
+  /* Preloader Resize */
+  .preloader__frame {
+    width: 90%;
+    height: auto;
+  }
+}
