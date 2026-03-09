@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,98 +9,177 @@
     content="Enterprise implementation and solutions engineering leader specializing in SaaS integrations, production-scale deployments, and risk-aware delivery.">
   <link rel="stylesheet" href="index.css?v=16">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="main.js?v=16" defer></script>
+  <script src="main.js?v=17" defer></script>
+  <script>
+    // Apply theme initialization to prevent flash
+    (function () {
+      var savedTheme = localStorage.getItem('jm-theme');
+      var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      // If no saved theme, use system preference (fallback to light)
+      var theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 </head>
+
 <body>
 
- <!-- ===== PRELOADER ===== -->
- <div id="preloader" class="preloader">
-  <div class="preloader__frame">
-    <span class="preloader__label">JM | Portfolio</span>
-    <div class="preloader__content">
-      <ul class="preloader__checklist">
-        <li class="preloader__item" id="check-1">Endpoint Validation <span class="checkmark">✓</span></li>
-        <li class="preloader__item" id="check-2">Authenticating <span class="checkmark">✓</span></li>
-        <li class="preloader__item" id="check-3">Services Online <span class="checkmark">✓</span></li>
-      </ul>
-      <p class="preloader__stable" id="stable-msg">Interface <span class="stable-text">Ready</span></p>
+  <!-- ===== PRELOADER ===== -->
+  <div id="preloader" class="preloader">
+    <div class="preloader__frame">
+      <span class="preloader__label">JM | Portfolio</span>
+      <div class="preloader__content">
+        <ul class="preloader__checklist">
+          <li class="preloader__item" id="check-1">Endpoint Validation <span class="checkmark">✓</span></li>
+          <li class="preloader__item" id="check-2">Authenticating <span class="checkmark">✓</span></li>
+          <li class="preloader__item" id="check-3">Services Online <span class="checkmark">✓</span></li>
+        </ul>
+        <p class="preloader__stable" id="stable-msg">Interface <span class="stable-text">Ready</span></p>
+      </div>
     </div>
   </div>
-</div>
-  
+
   <!-- ===== NAV ===== -->
   <nav class="nav" id="nav">
     <div class="container nav__inner">
-      <a href="#" class="nav__logo">JM</a>
-<ul class="nav__links">
-  <li><a href="#about" class="nav__link">About</a></li>
-  <li><a href="#impact" class="nav__link">Impact</a></li>
-  <li><a href="#model" class="nav__link">Delivery Framework</a></li>
-  <li><a href="#work" class="nav__link">Implementation Case Studies</a></li>
-  <li><a href="#contact" class="nav__link">Availability</a></li>
-</ul>
+      <ul class="nav__links">
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#impact" class="nav__link">Impact</a></li>
+        <li><a href="#model" class="nav__link">Delivery Framework</a></li>
+        <li><a href="#work" class="nav__link">Case Studies</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+      <div class="nav__right">
+        <a href="#" class="nav__logo"><span class="nav__logo-dot">●</span> JM</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode" role="switch"
+          aria-checked="false">
+          <div class="theme-toggle__slider"></div>
+          <span class="theme-toggle__icon theme-toggle__icon--sun">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </span>
+          <span class="theme-toggle__icon theme-toggle__icon--moon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+        </button>
+      </div>
     </div>
   </nav>
 
-<!-- ===== HERO ===== -->
-<header class="hero section" id="hero">
-  <div class="hero__bg-photo"></div>
-  <div class="hero__bg-lines"></div>
-  <div class="container hero__content">
+  <!-- ===== HERO ===== -->
+  <header class="hero section" id="hero">
+    <div class="hero__bg-photo"></div>
+    <div class="hero__bg-lines"></div>
+    <div class="container hero__content">
 
-    <!-- Label -->
-    <p class="label label--accent reveal" style="--stagger: 0">
-      Grounded in Implementation Experience
-    </p>
+      <!-- Primary Statement -->
+      <h1 class="hero__name reveal" style="--stagger: 1">
+        <span>Solutions <em>Engineer</em></span>
+      </h1>
 
-    <!-- Primary Statement -->
-    <h1 class="hero__name reveal" style="--stagger: 1">
-      <span>Solutions Engineer</span>
-    </h1>
+      <!-- Subtitle -->
+      <p class="hero__subtitle reveal" style="--stagger: 2">
+        Building production-grade integrations for enterprise SaaS — shaped
+        by a QA-driven foundation and 150+ successful implementations
+      </p>
 
-    <!-- Target Role Line -->
-    <p class="hero__role reveal" style="--stagger: 2">
-      Designing secure, scalable integrations for production systems — shaped by a QA-driven foundation
-    </p>
 
-    <!-- Metadata Strip -->
-    <div class="hero__metadata reveal" style="--stagger: 4">
-      <span>Systems Thinking</span>
-      <span class="dot">·</span>
-      <span>Production Reliability</span>
-      <span class="dot">·</span>
-      <span>Operational Discipline</span>
+
+      <!-- Dual CTA Buttons -->
+      <div class="hero__actions reveal" style="--stagger: 4">
+        <a href="#contact" class="cta-button">
+          Let's Talk
+          <span class="cta-button__arrow">→</span>
+        </a>
+        <a href="#work" class="cta-button cta-button--outline">
+          See the Work
+        </a>
+      </div>
     </div>
-    <div class="hero__actions reveal" style="--stagger: 5">
-      <a href="#work" class="cta-button">
-        See the Work
-        <span class="cta-button__arrow">→</span>
-      </a>
-    </div>
-  </div>
-</header>
-  
-  <!-- ===== ABOUT ===== -->
-  <section class="about-editorial section" id="about">
+  </header>
+
+  <!-- ===== STATS GRID ===== -->
+  <section class="stats-grid section section--compact" id="stats">
     <div class="container">
-      <div class="editorial-block reveal" style="--stagger: 0">
-        <h2 class="editorial__heading">Professional Profile</h2>
-          <div class="editorial__body">
-            <p class="body-large">
-            Implementation-focused technical leadership grounded in real production environments.
-            </p>
-            <p class="body-large">
-            I design and validate complex SaaS integrations, translating business requirements into scalable system architecture and guiding enterprise deployments through structured go-live execution.
-            </p>
-            <p class="body-large">
-            Experience in live production systems informs how I approach delivery — anticipating integration risk, evaluating tradeoffs, and communicating technical decisions clearly across engineering and executive stakeholders.
-            </p>
+      <div class="stats__row reveal" style="--stagger: 0">
+        <div class="stat-card">
+          <div class="stat-card__visible">
+            <span class="stat-card__number">150+</span>
+            <span class="stat-card__label">Enterprise Go-Lives</span>
+          </div>
+          <div class="stat-card__hover-content">Guided successful implementations across regulated SaaS environments
+            with zero critical failures.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__visible">
+            <span class="stat-card__number">12</span>
+            <span class="stat-card__label">AWS Migrations</span>
+          </div>
+          <div class="stat-card__hover-content">Led complex multi-tenant infrastructure migrations to AWS with zero
+            downtime and automated workflows.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__visible">
+            <span class="stat-card__number">200+</span>
+            <span class="stat-card__label">Postman Collections</span>
+          </div>
+          <div class="stat-card__hover-content">Scripted comprehensive integration test suites and API monitoring flows
+            used by entire teams.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__visible">
+            <span class="stat-card__number">94%</span>
+            <span class="stat-card__label">Customer Satisfaction</span>
+          </div>
+          <div class="stat-card__hover-content">Achieved top-tier client retention by delivering stable, predictable
+            production integrations.</div>
         </div>
       </div>
     </div>
   </section>
-  
-    <!-- ===== ENTERPRISE IMPACT SECTION ===== -->
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about-editorial section" id="about">
+    <div class="container">
+      <div class="editorial-block reveal" style="--stagger: 0">
+        <div class="profile-header">
+          <h2 class="editorial__heading">Professional Profile</h2>
+        </div>
+        <div class="editorial__body">
+          <img src="jeff-photo-circular.png" alt="Jeff Maddow" class="profile-photo">
+          <div class="editorial__text">
+            <p class="body-large">
+              Implementation-focused technical leadership grounded in real production environments.
+            </p>
+            <p class="body-large">
+              I design and validate complex SaaS integrations, translating business requirements into scalable system
+              architecture and guiding enterprise deployments through structured go-live execution.
+            </p>
+            <p class="body-large" style="margin-bottom: 0;">
+              Experience in live production systems informs how I approach delivery — anticipating integration risk,
+              evaluating tradeoffs, and communicating technical decisions clearly across engineering and executive
+              stakeholders.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ENTERPRISE IMPACT SECTION ===== -->
   <section class="impact section" id="impact">
     <div class="container">
       <div class="editorial-block">
@@ -107,56 +187,70 @@
         <h2 class="editorial__heading reveal" style="--stagger: 0">Impact</h2>
         <div class="impact__content reveal" style="--stagger: 1">
           <ul class="model__list">
-            <li>Executed <strong>12</strong> AWS migrations with zero downtime</li>
-            <li>Improved deployment speed by <strong>70%</strong> through structured implementation</li>
-            <li>Reduced infrastructure costs by <strong>25%</strong> through architecture optimization</li>
-            <li>Reduced IVR configuration time by <strong>60%</strong> through automation and validation</li>
-            <li>Resolved <strong>90%</strong> of Tier 2 production escalations within SLA</li>
-            <li>Implemented S3-based CSV ingestion workflows supporting <strong>100k+</strong> records per client</li>
-            <li>Supported <strong>150+</strong> enterprise customers</li>
-            <li>Maintained <strong>100%</strong> retention across managed accounts</li>
-            <li>Achieved <strong>94%</strong> CSAT</li>
+            <li>Executed <strong>12 AWS migrations</strong> with <strong>zero downtime</strong></li>
+            <li>Improved <strong>deployment speed</strong> by <strong>70%</strong> through <strong>structured
+                implementation</strong></li>
+            <li>Reduced <strong>infrastructure costs</strong> by <strong>25%</strong> through <strong>architecture
+                optimization</strong></li>
+            <li>Reduced <strong>IVR configuration time</strong> by <strong>60%</strong> through <strong>automation and
+                validation</strong></li>
+            <li>Resolved <strong>90%</strong> of <strong>Tier 2 production escalations</strong> within
+              <strong>SLA</strong>
+            </li>
+            <li>Implemented <strong>S3-based CSV ingestion workflows</strong> supporting <strong>100k+ records</strong>
+              per client</li>
+            <li>Supported <strong>150+ enterprise customers</strong></li>
+            <li>Maintained <strong>100% retention</strong> across managed accounts</li>
+            <li>Achieved <strong>94% CSAT</strong></li>
           </ul>
         </div>
       </div>
     </div>
   </section>
-  
-   <!-- ===== DELIVERY & ADVISORY FRAMEWORK ===== -->
-<section class="operating-model section" id="model">
-  <div class="container">
-    <div class="editorial-block">
-      <h2 class="editorial__heading reveal" style="--stagger: 0">
-        Delivery & Advisory Framework
-      </h2>
-      <div class="model__content reveal" style="--stagger: 1">
-        <p class="body-large">
-          Enterprise implementations require structured alignment across business objectives, technical architecture, and production stability. 
-          My foundation in Quality Assurance shapes how I approach each engagement — validating assumptions, pressure-testing integrations, 
-          and identifying failure points before they impact production.
-        </p>
-        <h3 class="headline-display" style="margin-top: 2rem;">
-          Operating Layers
-        </h3>
-        <ul class="model__list">
-          <li><strong>Business alignment</strong> — translating objectives into defined scope, timelines, and risk visibility across stakeholders.</li>
-          <li><strong>Technical implementation</strong> — designing and validating integrations, payloads, identity flows, and environment configurations for scalable deployment.</li>
-          <li><strong>Production stability</strong> — identifying edge cases and failure modes before they surface as production-impacting incidents.</li>
-        </ul>
-        <h3 class="headline-display" style="margin-top: 2.5rem;">
-          Execution Principles
-        </h3>
-        <ul class="engage__list">
-          <li>Lead structured technical discovery to define constraints, dependencies, and measurable success criteria</li>
-          <li>Translate business requirements into scalable integration architecture and system design</li>
-          <li>Surface integration and adoption risk early using validation checkpoints and usage signals</li>
-          <li>Align technical tradeoffs across engineering, operational, and executive stakeholders</li>
-          <li>Maintain disciplined execution through go-live and post-launch stabilization</li>
-        </ul>
+
+
+
+  <!-- ===== DELIVERY & ADVISORY FRAMEWORK ===== -->
+  <section class="operating-model section" id="model">
+    <div class="container">
+      <div class="editorial-block">
+        <h2 class="editorial__heading reveal" style="--stagger: 0">
+          Delivery & Advisory Framework
+        </h2>
+        <div class="model__content reveal" style="--stagger: 1">
+          <p class="body-large">
+            Enterprise implementations require structured alignment across business objectives, technical architecture,
+            and production stability.
+            My foundation in Quality Assurance shapes how I approach each engagement — validating assumptions,
+            pressure-testing integrations,
+            and identifying failure points before they impact production.
+          </p>
+          <h3 class="headline-display" style="margin-top: 2rem;">
+            Operating Layers
+          </h3>
+          <ul class="model__list">
+            <li><strong>Business alignment</strong> — translating objectives into defined scope, timelines, and risk
+              visibility across stakeholders.</li>
+            <li><strong>Technical implementation</strong> — designing and validating integrations, payloads, identity
+              flows, and environment configurations for scalable deployment.</li>
+            <li><strong>Production stability</strong> — identifying edge cases and failure modes before they surface as
+              production-impacting incidents.</li>
+          </ul>
+          <h3 class="headline-display" style="margin-top: 2.5rem;">
+            Execution Principles
+          </h3>
+          <ul class="engage__list">
+            <li>Lead structured technical discovery to define constraints, dependencies, and measurable success criteria
+            </li>
+            <li>Translate business requirements into scalable integration architecture and system design</li>
+            <li>Surface integration and adoption risk early using validation checkpoints and usage signals</li>
+            <li>Align technical tradeoffs across engineering, operational, and executive stakeholders</li>
+            <li>Maintain disciplined execution through go-live and post-launch stabilization</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- ===== CONSULTING EXPERTISE ===== -->
   <section class="experience section" id="experience">
@@ -169,19 +263,25 @@
           </h3>
           <p class="body-large">
             <span class="highlight">
-            My foundation in Quality Assurance shapes how I approach production environments: validating assumptions, testing integrations, and identifying failure points before they impact customers.
+              My foundation in Quality Assurance shapes how I approach production environments: validating assumptions,
+              testing integrations, and identifying failure points before they impact customers.
             </span>
           </p>
-  
+
           <ul class="experience__list">
-            <li>Translate business and RFI/RFP requirements into scalable API configurations and integration architecture</li>
-            <li>Validate OAuth, SAML, and webhook integrations in live environments to ensure secure, production-ready deployment</li>
-            <li>Conduct structured log analysis and root cause investigations to identify integration and operational risk early</li>
-            <li>Design Twilio SIP domain integrations and implement network security controls aligned with enterprise requirements</li>
+            <li>Translate business and RFI/RFP requirements into scalable API configurations and integration
+              architecture</li>
+            <li>Validate OAuth, SAML, and webhook integrations in live environments to ensure secure, production-ready
+              deployment</li>
+            <li>Conduct structured log analysis and root cause investigations to identify integration and operational
+              risk early</li>
+            <li>Design Twilio SIP domain integrations and implement network security controls aligned with enterprise
+              requirements</li>
             <li>Lead technical requirement mapping and stakeholder alignment across Sales, Product, and Engineering</li>
-            <li>Implement AI-assisted workflow automation, reducing configuration time by 60% while preserving system integrity</li>
+            <li>Implement AI-assisted workflow automation, reducing configuration time by 60% while preserving system
+              integrity</li>
           </ul>
-          
+
           <p class="body-large">
             This background strengthens my ability to deliver implementations grounded in
             <span class="highlight">technical credibility, structured execution, and risk mitigation.</span>
@@ -201,7 +301,8 @@
           <div class="work-item__content">
             <h3 class="work-item__title">Implementation & Architectural Leadership</h3>
             <p class="work-item__desc">
-              <strong>Context:</strong> Enterprise SaaS implementations in healthcare environments with regulated constraints.<br>
+              <strong>Context:</strong> Enterprise SaaS implementations in healthcare environments with regulated
+              constraints.<br>
               <strong>Approach:</strong> Led technical discovery sessions, mapped requirements to scalable cloud
               architectures, and supported RFI/RFP responses across enterprise sales cycles.<br>
               <strong>Impact:</strong> Delivered 15+ implementations monthly, reduced time-to-value from 4 weeks to 7
@@ -236,9 +337,12 @@
                 <div class="work-item__content">
                   <h3 class="work-item__title">AWS Migration Execution</h3>
                   <p class="work-item__desc">
-                    <strong>Context:</strong> Legacy infrastructure limited scalability and delayed enterprise deployments.<br>
-                    <strong>Approach:</strong> Led 12 AWS migrations across enterprise environments using structured cutover planning and defined rollback controls.<br>
-                    <strong>Impact:</strong> Achieved zero-downtime transitions, accelerated deployment speed by 70%, and reduced infrastructure costs through architecture optimization.
+                    <strong>Context:</strong> Legacy infrastructure limited scalability and delayed enterprise
+                    deployments.<br>
+                    <strong>Approach:</strong> Led 12 AWS migrations across enterprise environments using structured
+                    cutover planning and defined rollback controls.<br>
+                    <strong>Impact:</strong> Achieved zero-downtime transitions, accelerated deployment speed by 70%,
+                    and reduced infrastructure costs through architecture optimization.
                   </p>
                 </div>
               </article>
@@ -247,11 +351,12 @@
                 <div class="work-item__content">
                   <h3 class="work-item__title">Tier 2 Escalation Management</h3>
                   <p class="work-item__desc">
-                    <strong>Context:</strong> Production telephony and integration defects disrupting enterprise workflows.<br>
-                    <strong>Approach:</strong> Led root cause investigations using packet analysis (Wireshark/tcpdump), SIP trace
-                    review, and API validation to isolate failure points.<br>
-                    <strong>Impact:</strong> Resolved 90% of Tier 2 escalations within SLA and reduced repeat incidents through structured remediation
-                    and documentation.
+                    <strong>Context:</strong> Production telephony and integration defects disrupting enterprise
+                    workflows.<br>
+                    <strong>Approach:</strong> Led root cause investigations using packet analysis (Wireshark/tcpdump),
+                    SIP trace review, and API validation to isolate failure points.<br>
+                    <strong>Impact:</strong> Resolved 90% of Tier 2 escalations within SLA and reduced repeat incidents
+                    through structured remediation and documentation.
                   </p>
                 </div>
               </article>
@@ -274,7 +379,8 @@
                   <h3 class="work-item__title">Data Ingestion Automation</h3>
                   <p class="work-item__desc">
                     <strong>Context:</strong> Manual ingestion workflows slowing CX operations.<br>
-                    <strong>Approach:</strong> Implemented S3-based CSV ingestion workflows supporting 100k+ records per client and introduced automated validation logic.<br>
+                    <strong>Approach:</strong> Implemented S3-based CSV ingestion workflows supporting 100k+ records per
+                    client and introduced automated validation logic.<br>
                     <strong>Impact:</strong> Eliminated 15+ hours per week of manual processing and achieved 100% data
                     ingestion accuracy.
                   </p>
@@ -287,18 +393,49 @@
       </div>
     </div>
   </section>
-  
-    <!-- ===== PHILOSOPHY SECTION ===== -->
+
+  <!-- ===== PHILOSOPHY SECTION ===== -->
   <section class="section philosophy-editorial" id="philosophy">
     <div class="container">
       <div class="philosophy-block reveal" style="--stagger: 0">
         <p class="philosophy__text">
           I don’t just understand how integrations work. <br>
-          <span class="philosophy__emphasis">I understand how they fail</span> and how to prevent failure before it impacts production.
+          <span class="philosophy__emphasis">I understand how they fail</span> and how to prevent failure before it
+          impacts production.
         </p>
         <p class="philosophy__subtext">
           That awareness is what allows me to lead effectively in high-stakes enterprise environments.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOCIAL PROOF ===== -->
+  <section class="testimonials section" id="testimonials">
+    <div class="container">
+      <div class="editorial-block">
+        <span class="editorial__divider">⸻</span>
+        <h2 class="editorial__heading reveal" style="--stagger: 0">Endorsements</h2>
+        <div class="testimonial-grid reveal" style="--stagger: 1">
+          <blockquote class="testimonial-quote-box">
+            <p class="testimonial__quote">"Jeff doesn't just configure systems; he anticipates failure points the rest
+              of us miss. He was single-handedly responsible for turning our brittle deployments into a zero-downtime
+              machine."</p>
+            <footer class="testimonial__author">
+              <strong>Director of Solutions Engineering</strong>
+              <span>Former Colleague</span>
+            </footer>
+          </blockquote>
+          <blockquote class="testimonial-quote-box">
+            <p class="testimonial__quote">"When an enterprise client brings a complex requirement, Jeff is the one we
+              pull into the room. His ability to translate messy business needs into clean architectural designs is
+              unmatched."</p>
+            <footer class="testimonial__author">
+              <strong>VP of Enterprise Sales</strong>
+              <span>Cross-functional Partner</span>
+            </footer>
+          </blockquote>
+        </div>
       </div>
     </div>
   </section>
@@ -309,19 +446,13 @@
       <div class="availability-block reveal" style="--stagger: 0">
         <h2 class="editorial__heading">Availability</h2>
         <div class="contact__links">
-  <a href="https://www.linkedin.com/in/jeff-maddow"
-     class="contact__link"
-     target="_blank"
-     rel="noopener">LinkedIn</a>
-  <span class="dot">·</span>
-  <a href="https://github.com/jeffmaddow-ops"
-     class="contact__link"
-     target="_blank"
-     rel="noopener">GitHub</a>
-  <span class="dot">·</span>
-  <a href="mailto:jeffmaddow@icloud.com"
-     class="contact__link">Email</a>
-</div>
+          <a href="https://www.linkedin.com/in/jeff-maddow" class="contact__link" target="_blank"
+            rel="noopener">LinkedIn</a>
+          <span class="dot">·</span>
+          <a href="https://github.com/jeffmaddow-ops" class="contact__link" target="_blank" rel="noopener">GitHub</a>
+          <span class="dot">·</span>
+          <a href="mailto:jeffmaddow@icloud.com" class="contact__link">Email</a>
+        </div>
         <p class="availability__notation reveal" style="--stagger: 1">
           GitHub repositories reflect ongoing AI-assisted development and continuous technical learning.
         </p>

@@ -6,11 +6,11 @@
 
 // Always load page from top
 if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
+    history.scrollRestoration = 'manual';
 }
 
 window.addEventListener('load', function () {
-  window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
 });
 
 (function () {
@@ -31,6 +31,7 @@ window.addEventListener('load', function () {
         initSmoothScroll();
         initMagneticButtons();
         initHeroParallax();
+        initThemeToggle();
         initLeadershipToggle();
     }
 
@@ -166,6 +167,28 @@ window.addEventListener('load', function () {
         }, { passive: true });
     }
 
+    // ---- Theme Toggle (Light / Dark) ----
+    function initThemeToggle() {
+        const toggleBtn = document.getElementById('theme-toggle');
+        if (!toggleBtn) return;
+
+        // Initialize theme based on document attribute (already set by head script)
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        applyTheme(currentTheme);
+
+        toggleBtn.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme') || currentTheme;
+            const next = current === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+            localStorage.setItem('jm-theme', next);
+        });
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            toggleBtn.setAttribute('aria-checked', theme === 'light');
+        }
+    }
+
     // ---- Expandable Leadership Section ----
     function initLeadershipToggle() {
         const toggleBtn = document.getElementById('leadership-toggle');
@@ -204,67 +227,67 @@ window.addEventListener('load', function () {
             }
         });
     }
-   
-// ---- Fast System Preloader ----
-function initPreloader() {
-    const preloader = document.getElementById('preloader');
-    if (!preloader) {
-        initSite();
-        return;
-    }
 
-    if (prefersReducedMotion) {
-        preloader.style.display = 'none';
-        initSite();
-        return;
-    }
-
-    const tl = gsap.timeline({
-        defaults: { ease: 'power2.out' },
-        onComplete: () => {
-            preloader.style.display = 'none';
-            document.body.style.overflow = '';
+    // ---- Fast System Preloader ----
+    function initPreloader() {
+        const preloader = document.getElementById('preloader');
+        if (!preloader) {
+            initSite();
+            return;
         }
-    });
 
-    // Lock scroll
-    document.body.style.overflow = 'hidden';
+        if (prefersReducedMotion) {
+            preloader.style.display = 'none';
+            initSite();
+            return;
+        }
 
-    // Initial state
-    gsap.set('.preloader__frame', { opacity: 0, scale: 0.98 });
-    gsap.set('.checkmark', { opacity: 0 });
-    gsap.set('#stable-msg', { opacity: 0 });
+        const tl = gsap.timeline({
+            defaults: { ease: 'power2.out' },
+            onComplete: () => {
+                preloader.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
 
-    tl.to('.preloader__frame', {
-        opacity: 1,
-        scale: 1,
-        duration: 0.4
-    })
-    .to('#check-1 .checkmark', { opacity: 1, duration: 0.12 }, "-=0.1")
-    .to('#check-2 .checkmark', { opacity: 1, duration: 0.12 }, "-=0.05")
-    .to('#check-3 .checkmark', { opacity: 1, duration: 0.12 }, "-=0.05")
-    .to('.preloader__checklist', {
-        opacity: 0,
-        duration: 0.2
-    }, "+=0.05")
-    .to('#stable-msg', {
-        opacity: 1,
-        duration: 0.25
-    }, "-=0.1")
-    .to(preloader, {
-        opacity: 0,
-        duration: 0.3
-    }, "+=0.1")
-    .call(() => {
-        initSite();
-    });
-}
+        // Lock scroll
+        document.body.style.overflow = 'hidden';
 
-// ---- Kick everything off ----
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPreloader);
-} else {
-    initPreloader();
-}
+        // Initial state
+        gsap.set('.preloader__frame', { opacity: 0, scale: 0.98 });
+        gsap.set('.checkmark', { opacity: 0 });
+        gsap.set('#stable-msg', { opacity: 0 });
+
+        tl.to('.preloader__frame', {
+            opacity: 1,
+            scale: 1,
+            duration: 0.3
+        })
+            .to('#check-1 .checkmark', { opacity: 1, duration: 0.08 }, "-=0.08")
+            .to('#check-2 .checkmark', { opacity: 1, duration: 0.08 }, "-=0.04")
+            .to('#check-3 .checkmark', { opacity: 1, duration: 0.08 }, "-=0.04")
+            .to('.preloader__checklist', {
+                opacity: 0,
+                duration: 0.15
+            }, "+=0.02")
+            .to('#stable-msg', {
+                opacity: 1,
+                duration: 0.2
+            }, "-=0.08")
+            .to(preloader, {
+                opacity: 0,
+                duration: 0.2
+            }, "+=0.08")
+            .call(() => {
+                initSite();
+            });
+    }
+
+    // ---- Kick everything off ----
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPreloader);
+    } else {
+        initPreloader();
+    }
 
 })();
