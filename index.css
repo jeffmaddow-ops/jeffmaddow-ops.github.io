@@ -395,8 +395,9 @@ img {
 }
 
 .hero__name em {
-    font-style: italic;
+    font-style: normal;
     color: var(--accent);
+    font-weight: 600;
 }
 
 /* Terminal Init Lines — REMOVED */
@@ -566,7 +567,7 @@ img {
     font-family: var(--font-display);
     font-size: var(--text-4xl);
     font-weight: 700;
-    font-style: italic;
+    font-style: normal;
     color: var(--accent);
     line-height: 1;
 }
