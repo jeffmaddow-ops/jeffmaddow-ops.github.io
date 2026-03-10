@@ -268,7 +268,7 @@ tl.to('.preloader__frame', {
        scale: 1,
        duration: 0.12,
        stagger: 0.2
-       ease"back.out(2)"
+       ease: "back.out(2)"
    }, "+=0.2")
       .to('.preloader__checklist', {
        opacity: 0,
