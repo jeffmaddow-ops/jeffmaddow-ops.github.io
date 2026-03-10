@@ -257,8 +257,9 @@ img {
 }
 
 .headline-display em {
-    font-style: italic;
+    font-style: normal;
     color: var(--accent);
+    font-weight: 600;
 }
 
 .body-large {
@@ -899,7 +900,8 @@ img {
 
 .philosophy__emphasis {
     font-family: var(--font-display);
-    font-style: italic;
+    font-style: normal;
+    font-weight: 600;
     color: var(--accent);
     font-size: 1.2em;
 }
