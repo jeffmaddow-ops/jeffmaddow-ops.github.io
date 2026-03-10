@@ -112,7 +112,8 @@
 }
 
 [data-theme="light"] .cta-button:hover {
-    box-shadow: 0 6px 24px rgba(0, 168, 107, 0.20);
+    background: #009E63;
+    box-shadow: 0 4px 16px rgba(0, 168, 107, 0.12);
 }
 
 [data-theme="light"] .preloader {
