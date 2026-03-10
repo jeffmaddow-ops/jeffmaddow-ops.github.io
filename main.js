@@ -173,7 +173,7 @@ window.addEventListener('load', function () {
         if (!toggleBtn) return;
 
         // Initialize theme based on document attribute (already set by head script)
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
         applyTheme(currentTheme);
 
         toggleBtn.addEventListener('click', () => {
@@ -236,6 +236,13 @@ window.addEventListener('load', function () {
             return;
         }
 
+       // Skip preloader if user already visited this session
+       if (sessionStorage.getItem('jm-preloader-seen')) {
+           preloader.style.display = 'none';
+           initSite();
+        return;
+       }
+
         if (prefersReducedMotion) {
             preloader.style.display = 'none';
             initSite();
@@ -247,7 +254,8 @@ window.addEventListener('load', function () {
             onComplete: () => {
                 preloader.style.display = 'none';
                 document.body.style.overflow = '';
-            }
+             sessionStorage.setItem('jm-preloader-seen', 'true');
+         }
         });
 
         // Lock scroll
@@ -262,29 +270,29 @@ tl.to('.preloader__frame', {
     opacity: 1,
     scale: 1,
     duration: 0.4
-   })
-      .to('.checkmark', {
-       opacity: 1,
-       scale: 1,
-       duration: 0.12,
-       stagger: 0.2,
-       ease: "back.out(2)",
-      });
-tl.to('.preloader__checklist', {
-       opacity: 0,
-       duration: 0.2
-   }, "+=0.25")
-      .to('#stable-msg', {
-       opacity: 1,
-       duration: 0.25
-   })
-      .to(preloader, {
-       opacity: 0,
-       duration: 0.25
-   }, "+=0.2")
-      .call(() => {
-       initSite();
-   });   
+})
+.to('.checkmark', {
+    opacity: 1,
+    scale: 1,
+    duration: 0.12,
+    stagger: 0.2,
+    ease: "back.out(2)"
+})
+.to('.preloader__checklist', {
+    opacity: 0,
+    duration: 0.2
+}, "+=0.25")
+.to('#stable-msg', {
+    opacity: 1,
+    duration: 0.25
+})
+.to(preloader, {
+    opacity: 0,
+    duration: 0.25
+}, "+=0.2")
+.call(() => {
+    initSite();
+});   
 }
 
     // ---- Kick everything off ----
