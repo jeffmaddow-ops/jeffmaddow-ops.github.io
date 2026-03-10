@@ -901,11 +901,9 @@ img {
 }
 
 .philosophy__emphasis {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-style: normal;
     font-weight: 600;
-    color: var(--accent);
-    font-size: 1.2em;
 }
 
 .philosophy__subtext {
