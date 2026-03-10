@@ -735,10 +735,10 @@ img {
     margin-bottom: var(--space-sm);
 }
 
-.work-item__desc {
-    font-size: var(--text-base);
-    color: var(--text-secondary);
-    line-height: 1.6;
+.work-item__desc strong {
+    color: var(--text-primary);
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .work-item__link {
