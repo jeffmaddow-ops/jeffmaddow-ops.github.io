@@ -266,21 +266,21 @@ tl.to('.preloader__frame', {
       .to('.checkmark', {
        opacity: 1,
        scale: 1,
-       duration: 0.12,
+       duration: 0.10,
        stagger: 0.2
        ease"back.out(2)"
    }, "+=0.2")
       .to('.preloader__checklist', {
        opacity: 0,
-       duration: 0.2
+       duration: 0.15
    }, "+=0.25")
       .to('#stable-msg', {
        opacity: 1,
-       duration: 0.25
+       duration: 0.2
    })
       .to(preloader, {
        opacity: 0,
-       duration: 0.25
+       duration: 0.2
    }, "+=0.2")
       .call(() => {
        initSite();
