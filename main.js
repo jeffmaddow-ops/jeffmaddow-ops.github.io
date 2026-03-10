@@ -267,10 +267,10 @@ tl.to('.preloader__frame', {
        opacity: 1,
        scale: 1,
        duration: 0.12,
-       stagger: 0.2
-       ease: "back.out(2)"
-   }, "+=0.2")
-      .to('.preloader__checklist', {
+       stagger: 0.2,
+       ease: "back.out(2)",
+      });
+tl.to('.preloader__checklist', {
        opacity: 0,
        duration: 0.2
    }, "+=0.25")
