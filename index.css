@@ -77,8 +77,8 @@
     --bg-elevated: #FFFFFF;
     --bg-surface: #E8EAF0;
     --accent: #17946A;
-    --accent-dim: rgba(0, 168, 107, 0.10);
-    --accent-glow: rgba(0, 168, 107, 0.06);
+    --accent-dim: rgba(0, 168, 107, 0.14);
+    --accent-glow: rgba(0, 168, 107, 0.08);
     --text-primary: #1A1D26;
     --text-secondary: #555B6E;
     --text-tertiary: #8890A0;
