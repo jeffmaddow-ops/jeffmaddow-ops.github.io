@@ -1532,9 +1532,10 @@ img {
 }
 
 .preloader__frame {
-    width: 380px;
-    height: 220px;
+    width: 360px;
+    height: 200px;
     border: 1px solid var(--border-subtle);
+    box-shadow: 0 0 0 1px rgba(0,220,130,0.05);
     position: relative;
     padding: var(--space-xl);
     display: flex;
@@ -1612,6 +1613,7 @@ img {
 
 .stable-text {
     font-family: var(--font-display);
-    font-style: italic;
+    font-style: normal;
+    font-weight: 600;
     color: var(--accent);
 }
