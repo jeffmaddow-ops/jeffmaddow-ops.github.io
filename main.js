@@ -255,7 +255,7 @@ window.addEventListener('load', function () {
 
         // Initial state
 gsap.set('.preloader__frame', { opacity: 0, scale: 0.98 });
-gsap.set('.checkmark', { opacity: 0 });
+gsap.set('.checkmark', { opacity: 0, scale: 0.8  });
 gsap.set('#stable-msg', { opacity: 0 });
 
 tl.to('.preloader__frame', {
@@ -264,9 +264,11 @@ tl.to('.preloader__frame', {
     duration: 0.4
    })
       .to('.checkmark', {
-      opacity: 1,
+       opacity: 1,
+       scale: 1,
        duration: 0.12,
        stagger: 0.2
+       ease"back.out(2)"
    }, "+=0.2")
       .to('.preloader__checklist', {
        opacity: 0,
