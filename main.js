@@ -254,34 +254,36 @@ window.addEventListener('load', function () {
         document.body.style.overflow = 'hidden';
 
         // Initial state
-        gsap.set('.preloader__frame', { opacity: 0, scale: 0.98 });
-        gsap.set('.checkmark', { opacity: 0 });
-        gsap.set('#stable-msg', { opacity: 0 });
+gsap.set('.preloader__frame', { opacity: 0, scale: 0.98 });
+gsap.set('.checkmark', { opacity: 0 });
+gsap.set('#stable-msg', { opacity: 0 });
 
-        tl.to('.preloader__frame', {
-            opacity: 1,
-            scale: 1,
-            duration: 0.4
-        })
-            .to('#check-1 .checkmark', { opacity: 1, duration: 0.11 }, "-=0.13")
-            .to('#check-2 .checkmark', { opacity: 1, duration: 0.11 }, "-=0.13")
-            .to('#check-3 .checkmark', { opacity: 1, duration: 0.11 }, "-=0.13")
-            .to('.preloader__checklist', {
-                opacity: 0,
-                duration: 0.2
-            }, "+=0.10")
-            .to('#stable-msg', {
-                opacity: 1,
-                duration: 0.25
-            }, "-=0.01")
-            .to(preloader, {
-                opacity: 0,
-                duration: 0.25
-            }, "+=0.15")
-            .call(() => {
-                initSite();
-            });
-    }
+tl.to('.preloader__frame', {
+    opacity: 1,
+    scale: 1,
+    duration: 0.4
+   })
+      .to('.checkmark', {
+      opacity: 1,
+       duration: 0.12,
+       stagger: 0.2
+   }, "+=0.2")
+      .to('.preloader__checklist', {
+       opacity: 0,
+       duration: 0.2
+   }, "+=0.25")
+      .to('#stable-msg', {
+       opacity: 1,
+       duration: 0.25
+   })
+      .to(preloader, {
+       opacity: 0,
+       duration: 0.25
+   }, "+=0.2")
+      .call(() => {
+       initSite();
+   });   
+}
 
     // ---- Kick everything off ----
     if (document.readyState === 'loading') {
