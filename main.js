@@ -261,23 +261,23 @@ window.addEventListener('load', function () {
         tl.to('.preloader__frame', {
             opacity: 1,
             scale: 1,
-            duration: 0.3
+            duration: 0.4
         })
-            .to('#check-1 .checkmark', { opacity: 1, duration: 0.08 }, "-=0.08")
-            .to('#check-2 .checkmark', { opacity: 1, duration: 0.08 }, "-=0.04")
-            .to('#check-3 .checkmark', { opacity: 1, duration: 0.08 }, "-=0.04")
+            .to('#check-1 .checkmark', { opacity: 1, duration: 0.11 }, "-=0.13")
+            .to('#check-2 .checkmark', { opacity: 1, duration: 0.11 }, "-=0.13")
+            .to('#check-3 .checkmark', { opacity: 1, duration: 0.11 }, "-=0.13")
             .to('.preloader__checklist', {
                 opacity: 0,
-                duration: 0.15
-            }, "+=0.02")
+                duration: 0.2
+            }, "+=0.10")
             .to('#stable-msg', {
                 opacity: 1,
-                duration: 0.2
-            }, "-=0.08")
+                duration: 0.25
+            }, "-=0.01")
             .to(preloader, {
                 opacity: 0,
-                duration: 0.2
-            }, "+=0.08")
+                duration: 0.25
+            }, "+=0.15")
             .call(() => {
                 initSite();
             });
