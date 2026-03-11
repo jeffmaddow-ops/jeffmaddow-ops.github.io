@@ -1109,6 +1109,9 @@ img {
     color: var(--text-tertiary);
     transition: color var(--duration-fast) var(--ease-out-quart);
     position: relative;
+    display: inline-flex;    /* ADD */
+    align-items: center;     /* ADD */
+    gap: 6px;                /* ADD */
 }
 
 .contact__link::after {
