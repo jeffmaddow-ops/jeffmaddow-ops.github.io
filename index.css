@@ -622,7 +622,7 @@ img {
 }
 
 .profile-photo {
-    width: 120px;
+    width: 150px;
     height: auto;
     border-radius: 0%;
     object-fit: contain;
