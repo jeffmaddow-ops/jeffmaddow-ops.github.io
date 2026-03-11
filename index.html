@@ -25,19 +25,40 @@
 <body>
 
   <!-- ===== PRELOADER ===== -->
-  <div id="preloader" class="preloader">
-    <div class="preloader__frame">
-      <span class="preloader__label">JM | Portfolio</span>
-      <div class="preloader__content">
-        <ul class="preloader__checklist">
-          <li class="preloader__item" id="check-1">Endpoint Validation <span class="checkmark">✓</span></li>
-          <li class="preloader__item" id="check-2">Authenticating <span class="checkmark">✓</span></li>
-          <li class="preloader__item" id="check-3">Services Online <span class="checkmark">✓</span></li>
-        </ul>
-        <p class="preloader__stable" id="stable-msg">Deployment <span class="stable-text">Complete</span></p>
+<div id="preloader" class="preloader">
+  <div class="preloader__frame">
+    <span class="preloader__label">JM | Portfolio</span>
+    
+    <div class="message-viewport">
+      <div class="message-scroller" id="message-scroller">
+        <div class="loading-message">
+          <div class="check-circle">
+            <span class="checkmark">✓</span>
+          </div>
+          <span class="message-text">Validating Endpoint</span>
+        </div>
+        <div class="loading-message">
+          <div class="check-circle">
+            <span class="checkmark">✓</span>
+          </div>
+          <span class="message-text">Authenticating</span>
+        </div>
+        <div class="loading-message">
+          <div class="check-circle">
+            <span class="checkmark">✓</span>
+          </div>
+          <span class="message-text">Services Online</span>
+        </div>
+        <div class="loading-message">
+          <div class="check-circle">
+            <span class="checkmark">✓</span>
+          </div>
+          <span class="message-text">Deployment Ready</span>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
   <!-- ===== NAV ===== -->
   <nav class="nav" id="nav">
