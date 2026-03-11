@@ -124,7 +124,6 @@ window.addEventListener('load', function () {
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
 
-                // Subtle pull (0.35 factor)
                 gsap.to(el, {
                     x: x * 0.35,
                     y: y * 0.35,
@@ -172,7 +171,6 @@ window.addEventListener('load', function () {
         const toggleBtn = document.getElementById('theme-toggle');
         if (!toggleBtn) return;
 
-        // Initialize theme based on document attribute (already set by head script)
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
         applyTheme(currentTheme);
 
@@ -196,7 +194,6 @@ window.addEventListener('load', function () {
 
         if (!toggleBtn || !collapsible || typeof gsap === 'undefined') return;
 
-        // Set initial GSAP state
         gsap.set(collapsible, { height: 0, opacity: 0, overflow: 'hidden', visibility: 'hidden' });
 
         let isExpanded = false;
@@ -228,60 +225,64 @@ window.addEventListener('load', function () {
         });
     }
 
-/* ============================================================
-   PRELOADER JAVASCRIPT
-   ============================================================ */
+    /* ============================================================
+       PRELOADER — self-contained IIFE
+       ============================================================ */
 
-// Scrolling Preloader Animation
-(function initPreloader() {
-  const MESSAGE_INTERVAL = 450; // ms between scrolls (450ms × 4 = 1.8s total)
-  
-  function scrollMessages() {
-    const scroller = document.getElementById('message-scroller');
-    if (!scroller) return;
-    
-    const messages = scroller.querySelectorAll('.loading-message');
-    let currentIndex = 0;
+    (function initPreloader() {
+        const MESSAGE_INTERVAL = 450;
 
-    // Set first message as active
-    messages[0].classList.add('active');
+        function scrollMessages() {
+            const scroller = document.getElementById('message-scroller');
+            if (!scroller) return;
 
-    const scrollInterval = setInterval(() => {
-      if (currentIndex >= messages.length - 1) {
-        clearInterval(scrollInterval);
-        // Hide preloader after final message
-        setTimeout(hidePreloader, 300);
-        return;
-      }
+            const messages = scroller.querySelectorAll('.loading-message');
+            let currentIndex = 0;
 
-      // Remove active from current
-      messages[currentIndex].classList.remove('active');
+            messages[0].classList.add('active');
 
-      // Move to next
-      currentIndex++;
-      messages[currentIndex].classList.add('active');
+            const scrollInterval = setInterval(() => {
+                if (currentIndex >= messages.length - 1) {
+                    clearInterval(scrollInterval);
+                    setTimeout(hidePreloader, 300);
+                    return;
+                }
 
-      // Scroll the viewport (45px per message)
-      scroller.style.transform = `translateY(-${currentIndex * 45}px)`;
-    }, MESSAGE_INTERVAL);
-  }
+                messages[currentIndex].classList.remove('active');
+                currentIndex++;
+                messages[currentIndex].classList.add('active');
 
-  function hidePreloader() {
-    const preloader = document.getElementById('preloader');
-    if (!preloader) return;
-    
-    preloader.classList.add('complete');
-    
-    // Remove from DOM after transition
-    setTimeout(() => {
-      preloader.style.display = 'none';
-    }, 600);
-  }
+                scroller.style.transform = `translateY(-${currentIndex * 45}px)`;
+            }, MESSAGE_INTERVAL);
+        }
 
-  // Start animation when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', scrollMessages);
-  } else {
-    scrollMessages();
-  }
-})();
+        function hidePreloader() {
+            const preloader = document.getElementById('preloader');
+            if (!preloader) return;
+
+            preloader.classList.add('complete');
+
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 600);
+        }
+
+        // Start preloader animation when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', scrollMessages);
+        } else {
+            scrollMessages();
+        }
+    })();
+
+    /* ============================================================
+       BOOT — call initSite when DOM is ready
+       ============================================================ */
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSite);
+    } else {
+        initSite();
+    }
+
+})(); // closes the outer IIFE
