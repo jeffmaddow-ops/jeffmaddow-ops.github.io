@@ -573,6 +573,10 @@ img {
     line-height: 1;
 }
 
+.stat-card__number--long {
+    font-size: var(--text-2xl);  /* 1.5rem — fits on one or two clean lines */
+}
+
 .stat-card__label {
     font-family: var(--font-body);
     font-size: var(--text-sm);
