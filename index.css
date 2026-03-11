@@ -758,34 +758,42 @@ img {
 
 /* Expandable Leadership Section */
 .expand-toggle {
-    background: transparent;
-    border: none;
+    background: rgba(var(--accent-rgb, 59, 130, 246), 0.08);
+    border: 1px solid rgba(var(--accent-rgb, 59, 130, 246), 0.2);
+    border-radius: 4px;
     font-family: var(--font-mono);
     font-size: var(--text-sm);
-    color: var(--text-tertiary);
+    color: var(--accent, #3b82f6);
     text-transform: uppercase;
     letter-spacing: 0.12em;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: var(--space-sm);
-    padding: 0;
+    padding: var(--space-sm) var(--space-md);
     margin-top: var(--space-xl);
     margin-bottom: var(--space-md);
-    transition: color var(--duration-fast) var(--ease-out-quart);
+    transition: all var(--duration-fast) var(--ease-out-quart);
+    position: relative;
 }
 
 .expand-toggle:hover {
+    background: rgba(var(--accent-rgb, 59, 130, 246), 0.15);
+    border-color: rgba(var(--accent-rgb, 59, 130, 246), 0.4);
     color: var(--text-primary);
+    transform: translateX(4px);
 }
 
 .expand-toggle__icon {
     display: inline-block;
     font-size: 1.8em;
-    /* 🔥 makes arrow larger relative to text */
     line-height: 1;
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
+}
+
+.expand-toggle[aria-expanded="true"] {
+    background: rgba(var(--accent-rgb, 59, 130, 246), 0.12);
 }
 
 .expand-toggle[aria-expanded="true"] .expand-toggle__icon {
