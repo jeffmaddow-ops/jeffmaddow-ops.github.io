@@ -766,7 +766,7 @@ img {
 .expand-toggle {
     background: rgba(59, 130, 246, 0.08);
     border: 1px solid rgba(59, 130, 246, 0.3);
-    border-radius: 4px;
+    border-radius: 30px;
     font-family: var(--font-mono);
     font-size: var(--text-sm);
     color: var(--accent, #3b82f6);
@@ -1055,6 +1055,11 @@ img {
     text-transform: uppercase;
 }
 
+/* ========================================
+   OVAL/PILL-SHAPED CTA BUTTONS
+   Updated to match theme toggle styling
+   ======================================== */
+
 .cta-button {
     display: inline-flex;
     align-items: center;
@@ -1067,7 +1072,7 @@ img {
     background: var(--accent);
     border: none;
     padding: var(--space-md) var(--space-xl);
-    border-radius: 2px;
+    border-radius: 30px;  /* Changed from 2px to 30px for pill shape */
     cursor: pointer;
     transition:
         background-color var(--duration-fast) var(--ease-out-quart),
@@ -1169,7 +1174,6 @@ img {
     font-size: var(--text-xs);
     color: var(--text-tertiary);
 }
-
 
 /* ============================================================
    NAV (minimal — fully stabilized responsive behavior)
