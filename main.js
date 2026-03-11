@@ -228,78 +228,60 @@ window.addEventListener('load', function () {
         });
     }
 
-    // ---- Fast System Preloader ----
-    function initPreloader() {
-        const preloader = document.getElementById('preloader');
-        if (!preloader) {
-            initSite();
-            return;
-        }
+/* ============================================================
+   PRELOADER JAVASCRIPT
+   ============================================================ */
 
-       // Skip preloader if user already visited this session
-       if (sessionStorage.getItem('jm-preloader-seen')) {
-           preloader.style.display = 'none';
-           initSite();
+// Scrolling Preloader Animation
+(function initPreloader() {
+  const MESSAGE_INTERVAL = 450; // ms between scrolls (450ms × 4 = 1.8s total)
+  
+  function scrollMessages() {
+    const scroller = document.getElementById('message-scroller');
+    if (!scroller) return;
+    
+    const messages = scroller.querySelectorAll('.loading-message');
+    let currentIndex = 0;
+
+    // Set first message as active
+    messages[0].classList.add('active');
+
+    const scrollInterval = setInterval(() => {
+      if (currentIndex >= messages.length - 1) {
+        clearInterval(scrollInterval);
+        // Hide preloader after final message
+        setTimeout(hidePreloader, 300);
         return;
-       }
+      }
 
-        if (prefersReducedMotion) {
-            preloader.style.display = 'none';
-            initSite();
-            return;
-        }
+      // Remove active from current
+      messages[currentIndex].classList.remove('active');
 
-        const tl = gsap.timeline({
-            defaults: { ease: 'power2.out' },
-            onComplete: () => {
-                preloader.style.display = 'none';
-                document.body.style.overflow = '';
-             sessionStorage.setItem('jm-preloader-seen', 'true');
-         }
-        });
+      // Move to next
+      currentIndex++;
+      messages[currentIndex].classList.add('active');
 
-        // Lock scroll
-        document.body.style.overflow = 'hidden';
+      // Scroll the viewport (45px per message)
+      scroller.style.transform = `translateY(-${currentIndex * 45}px)`;
+    }, MESSAGE_INTERVAL);
+  }
 
-        // Initial state
-gsap.set('.preloader__frame', { opacity: 0, scale: 0.98 });
-gsap.set('.checkmark', { opacity: 0, scale: 0.8  });
-gsap.set('#stable-msg', { opacity: 0 });
+  function hidePreloader() {
+    const preloader = document.getElementById('preloader');
+    if (!preloader) return;
+    
+    preloader.classList.add('complete');
+    
+    // Remove from DOM after transition
+    setTimeout(() => {
+      preloader.style.display = 'none';
+    }, 600);
+  }
 
-tl.to('.preloader__frame', {
-    opacity: 1,
-    scale: 1,
-    duration: 0.4
-})
-.to('.checkmark', {
-    opacity: 1,
-    scale: 1,
-    duration: 0.12,
-    stagger: 0.2,
-    ease: "back.out(2)"
-})
-.to('.preloader__checklist', {
-    opacity: 0,
-    duration: 0.2
-}, "+=0.25")
-.to('#stable-msg', {
-    opacity: 1,
-    duration: 0.25
-})
-.to(preloader, {
-    opacity: 0,
-    duration: 0.25
-}, "+=0.2")
-.call(() => {
-    initSite();
-});   
-}
-
-    // ---- Kick everything off ----
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initPreloader);
-    } else {
-        initPreloader();
-    }
-
+  // Start animation when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scrollMessages);
+  } else {
+    scrollMessages();
+  }
 })();
