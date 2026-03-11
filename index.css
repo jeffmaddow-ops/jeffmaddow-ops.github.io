@@ -431,7 +431,6 @@ img {
 
 /* Outline CTA Button */
 
-
 .hero__name span {
     display: block;
 }
@@ -480,7 +479,6 @@ img {
 .hero__metadata .dot {
     color: var(--accent);
 }
-
 
 /* ============================================================
    STATS GRID
@@ -595,7 +593,6 @@ img {
         grid-template-columns: 1fr;
     }
 }
-
 
 /* ============================================================
    EDITORIAL SECTIONS
@@ -757,9 +754,18 @@ img {
 }
 
 /* Expandable Leadership Section */
+@keyframes subtle-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0);
+    }
+}
+
 .expand-toggle {
-    background: rgba(var(--accent-rgb, 59, 130, 246), 0.08);
-    border: 1px solid rgba(var(--accent-rgb, 59, 130, 246), 0.2);
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.3);
     border-radius: 4px;
     font-family: var(--font-mono);
     font-size: var(--text-sm);
@@ -774,14 +780,14 @@ img {
     margin-top: var(--space-xl);
     margin-bottom: var(--space-md);
     transition: all var(--duration-fast) var(--ease-out-quart);
-    position: relative;
+    animation: subtle-pulse 3s ease-in-out infinite;
 }
 
 .expand-toggle:hover {
-    background: rgba(var(--accent-rgb, 59, 130, 246), 0.15);
-    border-color: rgba(var(--accent-rgb, 59, 130, 246), 0.4);
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.5);
     color: var(--text-primary);
-    transform: translateX(4px);
+    animation: none;
 }
 
 .expand-toggle__icon {
@@ -793,7 +799,7 @@ img {
 }
 
 .expand-toggle[aria-expanded="true"] {
-    background: rgba(var(--accent-rgb, 59, 130, 246), 0.12);
+    animation: none;
 }
 
 .expand-toggle[aria-expanded="true"] .expand-toggle__icon {
