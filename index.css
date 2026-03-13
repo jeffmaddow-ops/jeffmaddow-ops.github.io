@@ -1562,8 +1562,8 @@ img {
 }
 
 .preloader__frame {
-    width: 400px;
-    height: 180px;
+    width: 520px;
+    height: 234px;
     border: 1px solid var(--border-subtle);
     box-shadow: 0 0 0 1px var(--accent-glow);
     position: relative;
@@ -1668,7 +1668,7 @@ img {
 @media (max-width: 768px) {
     .preloader__frame {
         width: 90%;
-        max-width: 400px;
+        max-width: 520px;
     }
     
     .loading-message {
