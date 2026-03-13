@@ -223,13 +223,13 @@ img {
 }
 
 .section {
-    padding-block: clamp(72px, 8vh, 88px);
+    padding-block: clamp(48px, 5vh, 64px);
     position: relative;
     overflow: hidden;
 }
 
 .section--compact {
-    padding-block: var(--space-4xl);
+    padding-block: var(--space-3xl);
 }
 
 
@@ -332,7 +332,7 @@ img {
    ============================================================ */
 
 .hero {
-    min-height: 75vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -601,12 +601,11 @@ img {
 .editorial__heading {
     font-family: var(--font-body);
     font-weight: 500;
-    font-size: var(--text-base);
+    font-size: var(--text-lg);
     text-transform: uppercase;
     letter-spacing: 0.18em;
     color: var(--accent);
     margin-bottom: var(--space-lg);
-    /* Reduced from space-2xl (48px) to space-lg (24px) */
     border-bottom: 1px solid var(--border-subtle);
     padding-bottom: var(--space-sm);
     display: inline-block;
@@ -618,7 +617,7 @@ img {
 }
 
 .profile-header {
-    margin-bottom: var(--space-xl);
+    margin-bottom: 0;
 }
 
 .profile-photo {
@@ -677,7 +676,7 @@ img {
 
 .model__list {
     list-style: none;
-    margin-top: var(--space-xl);
+    margin-top: var(--space-md);
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
@@ -714,10 +713,14 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding-block: var(--space-xl);
+    padding-block: var(--space-lg);
     border-bottom: 1px solid var(--border-subtle);
     gap: var(--space-3xl);
     transition: background-color var(--duration-fast) var(--ease-out-quart);
+}
+
+.work-editorial__list .work-item:first-child {
+    padding-top: 0;
 }
 
 .work-item:hover {
@@ -899,7 +902,7 @@ img {
 
 /* Philosophy Editorial */
 .philosophy-editorial {
-    padding-block: var(--space-3xl);
+    padding-block: var(--space-2xl);
     background-color: var(--bg-secondary);
     border-top: 1px solid var(--border-subtle);
 }
@@ -937,7 +940,7 @@ img {
    ========================================================== */
 
 .testimonials {
-    padding-top: var(--space-xl);
+    padding-top: var(--space-md);
 }
 
 .testimonial-grid {
@@ -993,7 +996,7 @@ img {
 .availability {
     text-align: center;
     border-top: 1px solid var(--border-subtle);
-    padding-block: var(--space-5xl);
+    padding-block: var(--space-2xl);
 }
 
 .availability-block {
@@ -1207,7 +1210,7 @@ img {
     font-family: var(--font-body);
     font-size: var(--text-base);
     letter-spacing: 0.08em;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--text-primary);
     white-space: nowrap;
 }

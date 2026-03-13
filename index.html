@@ -7,9 +7,9 @@
   <title>Jeff Maddow — Enterprise SaaS Implementation & Solutions Engineering</title>
   <meta name="description"
     content="Enterprise implementation and solutions engineering leader specializing in SaaS integrations, production-scale deployments, and risk-aware delivery.">
-  <link rel="stylesheet" href="index.css?v=3.1.2">
+  <link rel="stylesheet" href="index.css?v=3.2.0">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="main.js?v=3.1.2" defer></script>
+  <script src="main.js?v=3.2.0" defer></script>
   <script>
     // Apply theme initialization to prevent flash
     (function () {
@@ -64,9 +64,9 @@
   <nav class="nav" id="nav">
     <div class="container nav__inner">
       <ul class="nav__links">
-        <li><a href="#about" class="nav__link">About</a></li>
-        <li><a href="#impact" class="nav__link">Impact</a></li>
+        <li><a href="#about" class="nav__link">Profile</a></li>
         <li><a href="#model" class="nav__link">Delivery Framework</a></li>
+        <li><a href="#impact" class="nav__link">Impact</a></li>
         <li><a href="#work" class="nav__link">Proof Points</a></li>
         <li><a href="#contact" class="nav__link">Connect</a></li>
       </ul>
@@ -108,7 +108,7 @@
 
       <!-- Primary Statement -->
       <h1 class="hero__name reveal" style="--stagger: 1">
-        <span>Solutions <em>Engineer</em></span>
+        <span>Enterprise Solutions <em>Engineer</em></span>
       </h1>
 
       <!-- Subtitle -->
@@ -128,6 +128,32 @@
       </div>
     </div>
   </header>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about-editorial section" id="about">
+    <div class="container">
+      <div class="editorial-block reveal" style="--stagger: 0">
+        <div class="profile-header">
+          <h2 class="editorial__heading">Professional Profile</h2>
+        </div>
+        <div class="editorial__body">
+          <img src="jeff-photo-circular.png" alt="Jeff Maddow" class="profile-photo">
+          <div class="editorial__text">
+            <p class="body-large">
+              I'm Jeff Maddow.
+              One company, three names — ATEB, Omnicell, EnlivenHealth —
+              and one of the most regulated implementation environments in healthcare SaaS.</p>
+            <p class="body-large" style="margin-bottom: 0;">
+              I design and validate complex integrations — the type where a misconfiguration at go-live doesn't just
+              break a workflow, it breaks trust with the customer. I've learned to treat every assumption as a risk
+              until it's been tested, and to communicate tradeoffs in language that works for both engineers and
+              executives.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ===== STATS GRID ===== -->
   <section class="stats-grid section section--compact" id="stats">
@@ -169,61 +195,6 @@
     </div>
   </section>
 
-  <!-- ===== ABOUT ===== -->
-  <section class="about-editorial section" id="about">
-    <div class="container">
-      <div class="editorial-block reveal" style="--stagger: 0">
-        <div class="profile-header">
-          <h2 class="editorial__heading">Professional Profile</h2>
-        </div>
-        <div class="editorial__body">
-          <img src="jeff-photo-circular.png" alt="Jeff Maddow" class="profile-photo">
-          <div class="editorial__text">
-            <p class="body-large">
-              I'm Jeff Maddow.
-              One company, three names — ATEB, Omnicell, EnlivenHealth —
-              and one of the most regulated implementation environments in healthcare SaaS.</p>
-            <p class="body-large" style="margin-bottom: 0;">
-              I design and validate complex integrations — translating business requirements into scalable architecture,
-              anticipating integration risk, and communicating tradeoffs clearly to engineering and executive
-              stakeholders.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ENTERPRISE IMPACT ===== -->
-  <section class="impact section" id="impact">
-    <div class="container">
-      <div class="editorial-block">
-        <span class="editorial__divider">⸻</span>
-        <h2 class="editorial__heading reveal" style="--stagger: 0">Impact</h2>
-        <div class="impact__content reveal" style="--stagger: 1">
-          <ul class="model__list">
-            <li>Executed <strong>12 AWS migrations</strong> with <strong>zero downtime</strong></li>
-            <li>Improved <strong>deployment speed</strong> by <strong>70%</strong> through <strong>structured
-                implementation</strong></li>
-            <li>Reduced <strong>infrastructure costs</strong> by <strong>25%</strong> through <strong>architecture
-                optimization</strong></li>
-            <li>Reduced <strong>IVR configuration time</strong> by <strong>60%</strong> through <strong>automation and
-                validation</strong></li>
-            <li>Resolved <strong>90%</strong> of <strong>Tier 2 production escalations</strong> within
-              <strong>SLA</strong>
-            </li>
-            <li>Implemented <strong>S3-based CSV ingestion workflows</strong> supporting <strong>100k+ records</strong>
-              per client</li>
-            <li>Supported <strong>150+ enterprise customers</strong></li>
-            <li>Maintained <strong>100% retention</strong> across managed accounts</li>
-            <li>Delivered <strong>enterprise implementations with zero customer complaints across complex, evolving
-                project scopes</strong></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== DELIVERY & ADVISORY FRAMEWORK ===== -->
   <section class="operating-model section" id="model">
     <div class="container">
@@ -248,7 +219,7 @@
     </div>
   </section>
 
-  <!-- ===== TECHNICAL IMPLEMENTATION WORK ===== -->
+  <!-- ===== INTEGRATION ENGINEERING ===== -->
   <section class="section" id="tech-work">
     <div class="container">
       <div class="editorial-block">
@@ -378,15 +349,26 @@
     </div>
   </section>
 
-  <!-- ===== PHILOSOPHY ===== -->
-  <section class="section philosophy-editorial" id="philosophy">
+  <!-- ===== ENTERPRISE IMPACT ===== -->
+  <section class="impact section" id="impact">
     <div class="container">
-      <div class="philosophy-block reveal" style="--stagger: 0">
-        <p class="philosophy__text">
-          I don't just understand how integrations work. <br>
-          <span class="philosophy__emphasis">I understand how they fail</span> — and how to prevent failure before it
-          impacts production.
-        </p>
+      <div class="editorial-block">
+        <span class="editorial__divider">⸻</span>
+        <h2 class="editorial__heading reveal" style="--stagger: 0">Impact</h2>
+        <div class="impact__content reveal" style="--stagger: 1">
+          <ul class="model__list">
+            <li>Executed 12 AWS migrations with <strong>zero downtime</strong></li>
+            <li>Improved deployment speed by <strong>70%</strong> through structured implementation</li>
+            <li>Reduced infrastructure costs by <strong>25%</strong> through architecture optimization</li>
+            <li>Reduced IVR configuration time by <strong>60%</strong> through automation and validation</li>
+            <li>Resolved <strong>90%</strong> of Tier 2 production escalations within SLA</li>
+            <li>Implemented S3-based CSV ingestion workflows supporting <strong>100k+ records</strong> per client</li>
+            <li>Supported <strong>150+</strong> enterprise customers</li>
+            <li>Maintained <strong>100%</strong> retention across managed accounts</li>
+            <li>Delivered enterprise implementations with <strong>zero customer complaints</strong> across complex,
+              evolving project scopes</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -401,8 +383,8 @@
           <div class="work-item__content">
             <h3 class="work-item__title">150+ Customer-Facing Enterprise Deployments, Zero Critical Failures</h3>
             <p class="work-item__desc">
-              <strong>Context:</strong> Enterprise SaaS implementations in healthcare environments with regulated
-              constraints.<br>
+              <strong>Context:</strong> SaaS implementations in regulated enterprise environments with complex
+              integration constraints.<br>
               <strong>Approach:</strong> Led technical discovery sessions, mapped requirements to scalable cloud
               architectures, and supported RFI/RFP responses across enterprise sales cycles.<br>
               <strong>Impact:</strong> Delivered 15+ implementations monthly, reduced time-to-value from 4 weeks to 7
@@ -470,7 +452,7 @@
                   <h3 class="work-item__title">Telephony Architecture & Security</h3>
                   <p class="work-item__desc">
                     <strong>Context:</strong> Enterprise clients requiring secure and scalable voice routing for
-                    critical patient-pharmacy communications.<br>
+                    critical enterprise communications.<br>
                     <strong>Approach:</strong> Engineered Twilio SIP domain integrations, implemented IP ACL policies,
                     and secured registration controls.<br>
                     <strong>Impact:</strong> Eliminated misconfiguration-related incidents, secured 99.99% telephony
@@ -499,7 +481,21 @@
     </div>
   </section>
 
+  <!-- ===== PHILOSOPHY ===== -->
+  <section class="section philosophy-editorial" id="philosophy">
+    <div class="container">
+      <div class="philosophy-block reveal" style="--stagger: 0">
+        <p class="philosophy__text">
+          I don't just understand how integrations work. <br>
+          <span class="philosophy__emphasis">I understand how they fail</span> — and how to prevent failure before it
+          impacts production.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== TESTIMONIALS ===== -->
+  <!-- ENDORSEMENTS SECTION — commented out until more endorsements available
   <section class="testimonials section" id="testimonials">
     <div class="container">
       <div class="editorial-block">
@@ -519,6 +515,7 @@
       </div>
     </div>
   </section>
+  -->
 
   <!-- ===== CLOSING / CONNECT ===== -->
   <section class="availability section" id="contact">
