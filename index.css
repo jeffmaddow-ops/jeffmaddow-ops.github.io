@@ -1729,6 +1729,15 @@ img {
 }
 
 /* Flow diagram */
+.impl-flow__title {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-sm);
+}
+
 .impl-flow {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
@@ -1808,6 +1817,14 @@ img {
     text-transform: uppercase;
     color: var(--text-tertiary);
     margin-right: var(--space-xs);
+}
+
+.impl-stack__desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+    max-width: 600px;
 }
 
 /* Action buttons */
