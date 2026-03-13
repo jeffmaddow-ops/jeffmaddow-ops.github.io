@@ -121,7 +121,7 @@
 }
 
 [data-theme="light"] body::before {
-    opacity: 0;
+    opacity: 0.04;
 }
 
 [data-theme="light"] .case-card__tag {
@@ -446,8 +446,8 @@ img {
 .hero__subtitle {
     font-family: var(--font-body);
     font-weight: 300;
-    font-size: clamp(var(--text-base), 1.8vw, var(--text-lg));
-    color: var(--text-secondary);
+    font-size: clamp(var(--text-lg), 1.8vw, var(--text-xl));
+    color: var(--text-primary);
     line-height: 1.6;
     max-width: 60ch;
     margin-bottom: var(--space-xl);
