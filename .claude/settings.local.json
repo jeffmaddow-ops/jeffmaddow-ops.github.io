@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(grep -E \"\\\\.\\(png|jpg|jpeg|svg|ico|json|yml|yaml|txt\\)$\")"
+      "Bash(grep -E \"\\\\.\\(png|jpg|jpeg|svg|ico|json|yml|yaml|txt\\)$\")",
+      "Bash(npm install:*)"
     ]
   }
 }

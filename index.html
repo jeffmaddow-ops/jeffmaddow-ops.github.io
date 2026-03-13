@@ -244,6 +244,83 @@
     </div>
   </section>
 
+  <!-- ===== TECHNICAL IMPLEMENTATION WORK ===== -->
+  <section class="section" id="tech-work">
+    <div class="container">
+      <div class="editorial-block">
+        <h2 class="editorial__heading reveal" style="--stagger: 0">Technical Implementation Work</h2>
+
+        <div class="impl-card reveal" style="--stagger: 1">
+
+          <div class="impl-card__header">
+            <h3 class="impl-card__title">Enterprise Integration Readiness API</h3>
+            <p class="impl-card__subtitle">A validation service designed to test enterprise integrations before go-live.</p>
+          </div>
+
+          <div class="impl-card__body">
+            <div class="impl-flow">
+              <div class="impl-flow__node">Client System</div>
+              <div>│</div>
+              <div>▼</div>
+              <div class="impl-flow__node impl-flow__node--accent">Integration Readiness API</div>
+              <div>│</div>
+              <div class="impl-flow__branch">├ Credential Validation</div>
+              <div class="impl-flow__branch">├ Webhook Test</div>
+              <div class="impl-flow__branch">└ Schema Validation</div>
+              <div>│</div>
+              <div>▼</div>
+              <div class="impl-flow__node">Readiness Score</div>
+            </div>
+
+            <div class="impl-validates">
+              <div class="impl-validates__label">Validates</div>
+              <ul class="impl-validates__list">
+                <li>API credentials</li>
+                <li>Webhook endpoints</li>
+                <li>Payload schemas</li>
+                <li>Integration readiness score</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="impl-stack">
+            <span class="impl-stack__label">Tech</span>
+            <span class="tag-badge">Node.js</span>
+            <span class="tag-badge">Express</span>
+            <span class="tag-badge">REST</span>
+            <span class="tag-badge">JSON</span>
+          </div>
+
+          <div class="impl-actions">
+            <a href="https://jm-api-demo.onrender.com" target="_blank" rel="noopener" class="impl-btn impl-btn--primary"
+               onclick="window.open(this.href,'api-demo','width=1000,height=680,scrollbars=yes'); return false;">
+              Live API Demo ↗
+            </a>
+            <a href="https://github.com/jeffmaddow-ops/jm-api-demo" target="_blank" rel="noopener" class="impl-btn impl-btn--outline">
+              View Source ↗
+            </a>
+          </div>
+          <p class="impl-actions__note">Launching Demo opens in a new browser window. Free tier — may take a moment to wake up.</p>
+
+        </div>
+
+        <div class="impl-example reveal" style="--stagger: 2">
+          <div class="impl-example__label">Example Request</div>
+          <div class="impl-example__block">
+            <div><span class="impl-example__method">GET</span>&nbsp;<span class="impl-example__path">/health</span></div>
+            <br>
+            <div><span class="impl-example__key">Response</span></div>
+            <div>{</div>
+            <div>&nbsp;&nbsp;<span class="impl-example__key">"status"</span>:&nbsp;<span class="impl-example__val">"ok"</span>,</div>
+            <div>&nbsp;&nbsp;<span class="impl-example__key">"service"</span>:&nbsp;<span class="impl-example__val">"integration-readiness-api"</span></div>
+            <div>}</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ===== CORE CAPABILITIES ===== -->
   <section class="experience section" id="experience">
     <div class="container">
