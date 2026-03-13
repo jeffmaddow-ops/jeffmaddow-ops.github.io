@@ -92,8 +92,8 @@
 
 [data-theme="light"] .hero__bg-photo {
     background-image: url('hero-data-center-lightmode.jpg');
-    opacity: 0.32;
-    filter: blur(0.8px) brightness(1.15) contrast(1.12);
+    opacity: 0.45;
+    filter: blur(0.8px) brightness(1.1) contrast(1.15);
     mix-blend-mode: normal;
 }
 
@@ -1234,7 +1234,7 @@ img {
     height: 30px;
     border-radius: 30px;
     background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
+    border: 2px solid var(--border-subtle);
     padding: 0;
     cursor: pointer;
     display: flex;
@@ -1244,6 +1244,15 @@ img {
     transition: background-color var(--duration-fast) var(--ease-out-quart),
         border-color var(--duration-fast) var(--ease-out-quart);
 }
+
+[data-theme="light"] .theme-toggle {
+    border-color: rgba(0, 0, 0, 0.28);
+}
+
+[data-theme="dark"] .theme-toggle {
+    border-color: rgba(255, 255, 255, 0.28);
+}
+
 
 .theme-toggle__slider {
     position: absolute;
@@ -1270,13 +1279,13 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-tertiary);
+    color: var(--text-secondary);
     transition: color 0.4s ease;
 }
 
 .theme-toggle__icon svg {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
 }
 
 [data-theme="dark"] .theme-toggle__icon--moon {
