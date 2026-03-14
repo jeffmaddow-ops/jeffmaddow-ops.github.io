@@ -529,7 +529,7 @@ window.addEventListener('load', function () {
             return;
         }
 
-        const MESSAGE_INTERVAL = 450;
+        const MESSAGE_INTERVAL = 550;
 
         function scrollMessages() {
             const scroller = document.getElementById('message-scroller');
@@ -576,8 +576,8 @@ window.addEventListener('load', function () {
             scrollMessages();
         }
 
-        // Failsafe — if anything breaks, dismiss preloader after 4s
-        setTimeout(hidePreloader, 4000);
+        // Failsafe — if anything breaks, dismiss preloader after 6s
+        setTimeout(hidePreloader, 6000);
     })();
 
     /* ============================================================
