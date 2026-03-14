@@ -413,6 +413,7 @@ img {
 .stats-grid {
     border-top: 1px solid var(--border-subtle);
     border-bottom: 1px solid var(--border-subtle);
+    background-color: var(--bg-secondary);
 }
 
 .stats-grid.section--compact {
@@ -587,6 +588,7 @@ img {
 /* Operating Model Section */
 .operating-model {
     border-top: 1px solid var(--border-subtle);
+    background-color: var(--bg-elevated);
 }
 
 .editorial__divider {
@@ -622,6 +624,10 @@ img {
 .model__list strong {
     color: var(--text-primary);
     font-weight: 500;
+}
+
+#tech-work {
+    background-color: var(--bg-secondary);
 }
 
 /* Selected Work (Horizontal Editorial List) */
@@ -775,7 +781,7 @@ img {
 }
 
 .impact {
-    background-color: var(--bg-elevated);
+    background-color: var(--bg-secondary);
 }
 
 .work-item:hover .work-item__link {
@@ -785,6 +791,10 @@ img {
 /* ============================================================
    CONSULTING EXPERTISE (Experience Section)
    ============================================================ */
+
+.experience {
+    background-color: var(--bg-elevated);
+}
 
 .experience__lead {
     font-size: var(--text-3xl);
@@ -851,6 +861,10 @@ img {
     color: var(--accent);
 }
 
+.work {
+    background-color: var(--bg-elevated);
+}
+
 /* Philosophy Editorial */
 .philosophy-editorial {
     padding-block: var(--space-2xl);
@@ -892,6 +906,7 @@ img {
 
 .testimonials {
     padding-top: var(--space-md);
+    background-color: var(--bg-elevated);
 }
 
 .testimonial-grid {
@@ -948,6 +963,7 @@ img {
     text-align: center;
     border-top: 1px solid var(--border-subtle);
     padding-block: var(--space-2xl);
+    background-color: var(--bg-secondary);
 }
 
 .availability-block {
