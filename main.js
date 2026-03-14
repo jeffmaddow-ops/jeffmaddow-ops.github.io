@@ -27,15 +27,19 @@ window.addEventListener('load', function () {
 
     function initSite() {
         initScrollReveal();
+        initNarrative();
         initNavScroll();
         initSmoothScroll();
         initMagneticButtons();
         initHeroParallax();
-        initThemeToggle();
+
         initLeadershipToggle();
+        initFlowToggle();
+        initScrollTrigger();
+        initIframeModal();
     }
 
-    // ---- Scroll Reveal ----
+    // ---- Scroll Reveal (GSAP ScrollTrigger) ----
     function initScrollReveal() {
         if (prefersReducedMotion) {
             document.querySelectorAll('.reveal, .reveal-line').forEach((el) => {
@@ -44,24 +48,154 @@ window.addEventListener('load', function () {
             return;
         }
 
-        const revealElements = document.querySelectorAll('.reveal');
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+            // Fallback: IntersectionObserver
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+            );
+            document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+            return;
+        }
 
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            {
-                threshold: 0.15,
-                rootMargin: '0px 0px -60px 0px',
-            }
-        );
+        gsap.registerPlugin(ScrollTrigger);
 
-        revealElements.forEach((el) => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach((el) => {
+            ScrollTrigger.create({
+                trigger: el,
+                start: 'top 86%',
+                once: true,
+                onEnter: () => el.classList.add('is-visible'),
+            });
+        });
+    }
+
+    // ---- Scroll Narrative: section-level stagger animations ----
+    function initNarrative() {
+        if (prefersReducedMotion) return;
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+        // --- Section wrappers: subtle entrance Y shift ---
+        // Gives each section a gentle "rise into view" without touching child opacity
+        document.querySelectorAll('.section:not(#hero):not(#stats)').forEach((section) => {
+            gsap.from(section, {
+                y: 20,
+                duration: 0.8,
+                ease: 'power3.out',
+                immediateRender: false,
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 88%',
+                    once: true,
+                },
+            });
+        });
+
+        // --- Model list items: horizontal slide-in stagger ---
+        const modelItems = document.querySelectorAll('#model .model__list li');
+        if (modelItems.length) {
+            gsap.set(modelItems, { opacity: 0, x: -16 });
+            ScrollTrigger.create({
+                trigger: '#model',
+                start: 'top 72%',
+                once: true,
+                onEnter: () => {
+                    gsap.to(modelItems, {
+                        opacity: 1, x: 0,
+                        duration: 0.45,
+                        ease: 'power3.out',
+                        stagger: 0.09,
+                        delay: 0.3,
+                    });
+                },
+            });
+        }
+
+        // --- Experience list items: staggered fade-up ---
+        const expItems = document.querySelectorAll('#experience .experience__list li');
+        if (expItems.length) {
+            gsap.set(expItems, { opacity: 0, y: 14 });
+            ScrollTrigger.create({
+                trigger: '#experience',
+                start: 'top 70%',
+                once: true,
+                onEnter: () => {
+                    gsap.to(expItems, {
+                        opacity: 1, y: 0,
+                        duration: 0.45,
+                        ease: 'power3.out',
+                        stagger: 0.07,
+                        delay: 0.35,
+                    });
+                },
+            });
+        }
+
+        // --- Impact list items: staggered fade-up ---
+        const impactItems = document.querySelectorAll('#impact .model__list li');
+        if (impactItems.length) {
+            gsap.set(impactItems, { opacity: 0, y: 14 });
+            ScrollTrigger.create({
+                trigger: '#impact',
+                start: 'top 70%',
+                once: true,
+                onEnter: () => {
+                    gsap.to(impactItems, {
+                        opacity: 1, y: 0,
+                        duration: 0.40,
+                        ease: 'power3.out',
+                        stagger: 0.05,
+                        delay: 0.3,
+                    });
+                },
+            });
+        }
+
+        // --- Contact links: staggered scale + fade ---
+        const contactLinks = document.querySelectorAll('#contact .contact__link');
+        if (contactLinks.length) {
+            gsap.set(contactLinks, { opacity: 0, y: 14, scale: 0.96 });
+            ScrollTrigger.create({
+                trigger: '#contact',
+                start: 'top 78%',
+                once: true,
+                onEnter: () => {
+                    gsap.to(contactLinks, {
+                        opacity: 1, y: 0, scale: 1,
+                        duration: 0.5,
+                        ease: 'back.out(1.3)',
+                        stagger: 0.08,
+                        delay: 0.25,
+                    });
+                },
+            });
+        }
+
+        // --- Philosophy emphasis: delayed accent reveal ---
+        const emphasis = document.querySelector('#philosophy .philosophy__emphasis');
+        if (emphasis) {
+            gsap.set(emphasis, { opacity: 0, y: 8 });
+            ScrollTrigger.create({
+                trigger: '#philosophy',
+                start: 'top 74%',
+                once: true,
+                onEnter: () => {
+                    gsap.to(emphasis, {
+                        opacity: 1, y: 0,
+                        duration: 0.65,
+                        ease: 'power3.out',
+                        delay: 0.5,
+                    });
+                },
+            });
+        }
     }
 
     // ---- Nav Scroll State ----
@@ -116,7 +250,7 @@ window.addEventListener('load', function () {
     function initMagneticButtons() {
         if (prefersReducedMotion) return;
 
-        const magneticElements = document.querySelectorAll('.cta-button, .nav__link, .work-item__link');
+        const magneticElements = document.querySelectorAll('.cta-button, .nav__link, .work-item__link, .impl-btn, .expand-toggle');
 
         magneticElements.forEach((el) => {
             el.addEventListener('mousemove', (e) => {
@@ -167,24 +301,56 @@ window.addEventListener('load', function () {
     }
 
     // ---- Theme Toggle (Light / Dark) ----
-    function initThemeToggle() {
-        const toggleBtn = document.getElementById('theme-toggle');
-        if (!toggleBtn) return;
 
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-        applyTheme(currentTheme);
+    // ---- GSAP ScrollTrigger: Stat Card Stagger + Animated Counters ----
+    function initScrollTrigger() {
+        if (prefersReducedMotion) return;
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-        toggleBtn.addEventListener('click', () => {
-            const current = document.documentElement.getAttribute('data-theme') || currentTheme;
-            const next = current === 'dark' ? 'light' : 'dark';
-            applyTheme(next);
-            localStorage.setItem('jm-theme', next);
-        });
+        gsap.registerPlugin(ScrollTrigger);
 
-        function applyTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            toggleBtn.setAttribute('aria-checked', theme === 'light');
+        // Stagger individual stat cards into view
+        const statsRow = document.querySelector('.stats__row');
+        const statCards = statsRow ? Array.from(statsRow.querySelectorAll('.stat-card')) : [];
+        if (statCards.length) {
+            gsap.set(statCards, { opacity: 0, y: 44 });
+            gsap.to(statCards, {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: 'power3.out',
+                stagger: 0.12,
+                scrollTrigger: {
+                    trigger: statsRow,
+                    start: 'top 80%',
+                    once: true,
+                },
+            });
         }
+
+        // Count-up animation for stat numbers
+        document.querySelectorAll('.stat-card__number[data-count]').forEach((el) => {
+            const target = parseInt(el.getAttribute('data-count'), 10);
+            const suffix = el.getAttribute('data-suffix') || '';
+            const counter = { val: 0 };
+
+            ScrollTrigger.create({
+                trigger: el,
+                start: 'top 82%',
+                once: true,
+                onEnter: () => {
+                    gsap.to(counter, {
+                        val: target,
+                        duration: 1.4,
+                        ease: 'power2.out',
+                        delay: 0.25,
+                        onUpdate: () => {
+                            el.textContent = Math.ceil(counter.val) + suffix;
+                        },
+                    });
+                },
+            });
+        });
     }
 
     // ---- Expandable Leadership Section ----
@@ -221,6 +387,130 @@ window.addEventListener('load', function () {
                         gsap.set(collapsible, { visibility: 'hidden' });
                     }
                 });
+            }
+        });
+    }
+
+    // ---- Flow Modal (Integration Validation Flow pop-out) ----
+    function initFlowToggle() {
+        const toggleBtn = document.getElementById('flow-toggle');
+        const modal     = document.getElementById('flow-modal');
+        if (!toggleBtn || !modal) return;
+
+        const backdrop = document.getElementById('flow-modal-backdrop');
+        const closeBtn = document.getElementById('flow-modal-close');
+
+        function openModal() {
+            modal.setAttribute('aria-hidden', 'false');
+            modal.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+            toggleBtn.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeModal() {
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        toggleBtn.addEventListener('click', openModal);
+        backdrop.addEventListener('click', closeModal);
+        closeBtn.addEventListener('click', closeModal);
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+        });
+    }
+
+    // ---- Iframe Modal (Live API Demo + View Source) ----
+    function initIframeModal() {
+        const modal = document.getElementById('iframe-modal');
+        if (!modal) return;
+
+        const backdrop   = document.getElementById('iframe-modal-backdrop');
+        const closeBtn   = document.getElementById('iframe-modal-close');
+        const titleEl    = document.getElementById('iframe-modal-title');
+        const newTabLink = document.getElementById('iframe-modal-newtab');
+        const iframe     = document.getElementById('iframe-modal-iframe');
+        const loader     = document.getElementById('iframe-modal-loader');
+        const redirect   = document.getElementById('iframe-modal-redirect');
+        const redirectLink = document.getElementById('iframe-modal-redirect-link');
+
+        // Hosts known to refuse iframe embedding
+        const EMBED_BLOCKED = ['github.com', 'www.github.com'];
+
+        function isBlocked(url) {
+            try {
+                return EMBED_BLOCKED.includes(new URL(url).hostname);
+            } catch (_) {
+                return false;
+            }
+        }
+
+        function openModal(url, title) {
+            titleEl.textContent = title;
+            newTabLink.href = url;
+            redirectLink.href = url;
+
+            if (isBlocked(url)) {
+                // GitHub blocks embedding — show redirect card and auto-open new tab
+                iframe.style.display = 'none';
+                loader.style.display = 'none';
+                redirect.classList.add('is-visible');
+                window.open(url, '_blank', 'noopener,noreferrer');
+            } else {
+                iframe.style.display = 'block';
+                iframe.classList.remove('is-loaded');
+                loader.style.display = 'flex';
+                redirect.classList.remove('is-visible');
+                // Slight delay so panel animation completes first
+                setTimeout(function () { iframe.src = url; }, 120);
+            }
+
+            modal.setAttribute('aria-hidden', 'false');
+            modal.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            // Reset state after panel exit animation
+            setTimeout(function () {
+                iframe.src = '';
+                iframe.style.display = 'block';
+                iframe.classList.remove('is-loaded');
+                loader.style.display = 'flex';
+                redirect.classList.remove('is-visible');
+            }, 420);
+        }
+
+        // Reveal iframe once content is loaded
+        iframe.addEventListener('load', function () {
+            if (iframe.src && iframe.src !== window.location.href) {
+                loader.style.display = 'none';
+                iframe.classList.add('is-loaded');
+            }
+        });
+
+        // Wire [data-modal] buttons
+        document.querySelectorAll('[data-modal]').forEach(function (el) {
+            el.addEventListener('click', function (e) {
+                e.preventDefault();
+                var url   = el.getAttribute('data-modal-url') || el.getAttribute('href');
+                var title = el.getAttribute('data-modal-title') || 'Preview';
+                openModal(url, title);
+            });
+        });
+
+        backdrop.addEventListener('click', closeModal);
+        closeBtn.addEventListener('click', closeModal);
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+                closeModal();
             }
         });
     }
