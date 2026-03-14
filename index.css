@@ -2082,9 +2082,9 @@ img {
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 1080px;
-    height: 88vh;
-    max-height: 840px;
+    max-width: 860px;
+    height: 80vh;
+    max-height: 720px;
     display: flex;
     flex-direction: column;
     background: linear-gradient(
