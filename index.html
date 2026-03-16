@@ -14,17 +14,12 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <meta name="msapplication-TileImage" content="apple-touch-icon.png">
   <meta name="msapplication-TileColor" content="#0f1117">
-<<<<<<< HEAD
   <link rel="stylesheet" href="index.css?v=3.8.6">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="main.js?v=3.8.0" defer></script>
-=======
-  <link rel="stylesheet" href="index.css?v=3.7.6">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-  <script src="main.js?v=3.7.6" defer></script>
   <script>
+    
     // Apply theme initialization to prevent flash
     (function () {
       var savedTheme = localStorage.getItem('jm-theme');
@@ -34,13 +29,13 @@
       document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
->>>>>>> 28801b5a564f3cd7174ba2e34415a81ad8305b6a
+
 </head>
 
 <body>
 
   <!-- ===== PRELOADER ===== -->
-  <div id="preloader" class="preloader">
+  <div id="preloader" class="preloader" aria-hidden="true">
     <div class="preloader__frame">
       <span class="preloader__label">JM | Portfolio</span>
 
@@ -98,15 +93,16 @@
         <li><a href="#contact" class="nav__link">Connect</a></li>
       </ul>
       <div class="nav__right">
-        <a href="/" class="nav__logo"><span class="nav__logo-dot">●</span> Jeff Maddow</a>
-      </div>
+        <a href="#hero" class="nav__logo">
+          <span class="nav__logo-dot">●</span> Jeff Maddow</a>
+    </div>
     </div>
   </nav>
 
   <!-- ===== HERO ===== -->
   <header class="hero section" id="hero">
-    <div class="hero__bg-photo"></div>
-    <div class="hero__bg-lines"></div>
+  <div class="hero__bg-photo" aria-hidden="true"></div>
+  <div class="hero__bg-lines" aria-hidden="true"></div>
     <div class="container hero__content">
 
       <!-- Primary Statement -->
@@ -116,11 +112,7 @@
 
       <!-- Subtitle -->
       <p class="hero__subtitle reveal" style="--stagger: 2">
-<<<<<<< HEAD
         I configure, validate, and deploy integrations without breaking production.
-=======
-        I configure, validate, and deploy without breaking production.
->>>>>>> 28801b5a564f3cd7174ba2e34415a81ad8305b6a
       </p>
 
       <!-- Dual CTA Buttons -->
@@ -130,11 +122,7 @@
           <span class="cta-button__arrow">→</span>
         </a>
         <a href="#work" class="cta-button cta-button--outline">
-<<<<<<< HEAD
           See The Work
-=======
-          Check The Work
->>>>>>> 28801b5a564f3cd7174ba2e34415a81ad8305b6a
         </a>
       </div>
     </div>
@@ -151,24 +139,13 @@
           <img src="jeff-photo-circular.png" alt="Jeff Maddow" class="profile-photo">
           <div class="editorial__text">
             <p class="body-large">
-              I'm Jeff Maddow.
-<<<<<<< HEAD
-              One company, three names: ATEB, Omnicell, EnlivenHealth.
-              Implementation and Integration in one of the most regulated SaaS spaces.
+              I'm Jeff Maddow. One company, three names: ATEB, Omnicell, EnlivenHealth.
+              Implementation and integration across one of the most regulated SaaS environments.
             </p>
             <p class="body-large" style="margin-bottom: 0;">
               I design and validate complex integrations, where a misconfiguration at go-live doesn’t
               just break a workflow, it breaks customer trust. I assume risk until it’s tested, and
               translate technical tradeoffs for both engineers and executives.
-=======
-              One company, three names: ATEB, Omnicell, EnlivenHealth
-              Implementation and Integration in one of the most regulated SaaS spaces.</p>
-            <p class="body-large" style="margin-bottom: 0;">
-              I design and validate complex integrations, the type where a misconfiguration at go-live doesn't just
-              break a workflow, it breaks trust with the customer. I've learned to treat every assumption as a risk
-              until it's been tested, and to communicate tradeoffs in language that works for both engineers and
-              executives.
->>>>>>> 28801b5a564f3cd7174ba2e34415a81ad8305b6a
             </p>
           </div>
         </div>
