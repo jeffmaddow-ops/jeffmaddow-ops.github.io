@@ -14,20 +14,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <meta name="msapplication-TileImage" content="apple-touch-icon.png">
   <meta name="msapplication-TileColor" content="#0f1117">
-  <link rel="stylesheet" href="index.css?v=3.7.4">
+  <link rel="stylesheet" href="index.css?v=3.8.6">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-  <script src="main.js?v=3.7.4" defer></script>
-  <script>
-    // Apply theme initialization to prevent flash
-    (function () {
-      var savedTheme = localStorage.getItem('jm-theme');
-      var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      // If no saved theme, use system preference (fallback to light)
-      var theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
-    })();
-  </script>
+  <script src="main.js?v=3.8.0" defer></script>
 </head>
 
 <body>
@@ -68,6 +58,18 @@
     </div>
   </div>
 
+  <!-- ===== SCROLL PROGRESS ===== -->
+  <nav class="scroll-progress" id="scroll-progress" aria-label="Section navigation">
+    <div class="scroll-progress__inner">
+      <a href="#hero" class="scroll-progress__dot is-active" data-label="Intro" aria-label="Intro"></a>
+      <a href="#about" class="scroll-progress__dot" data-label="Profile" aria-label="Profile"></a>
+      <a href="#model" class="scroll-progress__dot" data-label="Framework" aria-label="Framework"></a>
+      <a href="#tech-work" class="scroll-progress__dot" data-label="Engineering" aria-label="Engineering"></a>
+      <a href="#impact" class="scroll-progress__dot" data-label="Impact" aria-label="Impact"></a>
+      <a href="#contact" class="scroll-progress__dot" data-label="Connect" aria-label="Connect"></a>
+    </div>
+  </nav>
+
   <!-- ===== NAV ===== -->
   <nav class="nav" id="nav">
     <div class="container nav__inner">
@@ -79,7 +81,7 @@
         <li><a href="#contact" class="nav__link">Connect</a></li>
       </ul>
       <div class="nav__right">
-        <a href="#" class="nav__logo"><span class="nav__logo-dot">●</span> Jeff Maddow</a>
+        <a href="/" class="nav__logo"><span class="nav__logo-dot">●</span> Jeff Maddow</a>
       </div>
     </div>
   </nav>
@@ -92,12 +94,12 @@
 
       <!-- Primary Statement -->
       <h1 class="hero__name reveal" style="--stagger: 1">
-        <span>Enterprise Solutions <em>Engineer</em></span>
+        <span>Enterprise SaaS Solutions <em>Engineer</em></span>
       </h1>
 
       <!-- Subtitle -->
       <p class="hero__subtitle reveal" style="--stagger: 2">
-        I configure, validate, and deploy — without breaking production.
+        I configure, validate, and deploy integrations without breaking production.
       </p>
 
       <!-- Dual CTA Buttons -->
@@ -107,7 +109,7 @@
           <span class="cta-button__arrow">→</span>
         </a>
         <a href="#work" class="cta-button cta-button--outline">
-          Check The Receipts
+          See The Work
         </a>
       </div>
     </div>
@@ -125,13 +127,13 @@
           <div class="editorial__text">
             <p class="body-large">
               I'm Jeff Maddow.
-              One company, three names — ATEB, Omnicell, EnlivenHealth —
-              and one of the most regulated implementation environments in healthcare SaaS.</p>
+              One company, three names: ATEB, Omnicell, EnlivenHealth.
+              Implementation and Integration in one of the most regulated SaaS spaces.
+            </p>
             <p class="body-large" style="margin-bottom: 0;">
-              I design and validate complex integrations — the type where a misconfiguration at go-live doesn't just
-              break a workflow, it breaks trust with the customer. I've learned to treat every assumption as a risk
-              until it's been tested, and to communicate tradeoffs in language that works for both engineers and
-              executives.
+              I design and validate complex integrations, where a misconfiguration at go-live doesn’t
+              just break a workflow, it breaks customer trust. I assume risk until it’s tested, and
+              translate technical tradeoffs for both engineers and executives.
             </p>
           </div>
         </div>
@@ -143,14 +145,18 @@
   <section class="stats-grid section section--compact" id="stats">
     <div class="container">
       <div class="stats__row">
-        <div class="stat-card">
+
+        <!-- Featured narrative card -->
+        <div class="stat-card stat-card--featured">
           <div class="stat-card__visible">
             <span class="stat-card__number" data-count="150" data-suffix="+">150+</span>
-            <span class="stat-card__label">Customer-Facing<br>Enterprise Go-Lives</span>
+            <span class="stat-card__label">Customer-Facing Enterprise Go-Lives</span>
           </div>
-          <div class="stat-card__hover-content">Guided successful implementations across regulated SaaS environments
-            with zero critical failures.</div>
+          <p class="stat-card__narrative">Guided successful implementations across regulated SaaS environments with zero
+            critical failures.</p>
         </div>
+
+        <!-- Supporting metrics -->
         <div class="stat-card">
           <div class="stat-card__visible">
             <span class="stat-card__number" data-count="12" data-suffix="">12</span>
@@ -175,6 +181,7 @@
           <div class="stat-card__hover-content">Achieved top-tier client retention by delivering stable, predictable
             production integrations within SLA scope.</div>
         </div>
+
       </div>
     </div>
   </section>
@@ -239,8 +246,7 @@
             structure before generating a readiness score for production deployment.</p>
 
           <div class="impl-actions">
-            <a href="https://jm-api-demo.onrender.com" target="_blank" rel="noopener"
-              class="impl-btn impl-btn--primary"
+            <a href="https://jm-api-demo.onrender.com" target="_blank" rel="noopener" class="impl-btn impl-btn--primary"
               data-modal data-modal-title="Live API Demo" data-modal-url="https://jm-api-demo.onrender.com">
               Live API Demo ↗
             </a>
@@ -449,8 +455,7 @@
       <div class="philosophy-block reveal" style="--stagger: 0">
         <p class="philosophy__text">
           I don't just understand how integrations work. <br>
-          <span class="philosophy__emphasis">I understand how they fail</span> — and how to prevent failure before it
-          impacts production.
+          <span class="philosophy__emphasis">I understand how they fail.</span>
         </p>
       </div>
     </div>
@@ -518,8 +523,8 @@
   </section>
 
   <!-- ===== FLOW MODAL ===== -->
-  <div class="flow-modal" id="flow-modal" role="dialog" aria-modal="true"
-    aria-labelledby="flow-modal-title" aria-hidden="true">
+  <div class="flow-modal" id="flow-modal" role="dialog" aria-modal="true" aria-labelledby="flow-modal-title"
+    aria-hidden="true">
     <div class="flow-modal__backdrop" id="flow-modal-backdrop"></div>
     <div class="flow-modal__panel">
       <header class="flow-modal__header">
@@ -559,8 +564,8 @@
   </div>
 
   <!-- ===== IFRAME MODAL ===== -->
-  <div class="iframe-modal" id="iframe-modal" role="dialog" aria-modal="true"
-    aria-labelledby="iframe-modal-title" aria-hidden="true">
+  <div class="iframe-modal" id="iframe-modal" role="dialog" aria-modal="true" aria-labelledby="iframe-modal-title"
+    aria-hidden="true">
     <div class="iframe-modal__backdrop" id="iframe-modal-backdrop"></div>
     <div class="iframe-modal__panel">
       <header class="iframe-modal__header">
@@ -580,8 +585,8 @@
           <p class="iframe-modal__redirect-note">
             This site can't be embedded — opening in a new tab now.
           </p>
-          <a class="iframe-modal__redirect-link" id="iframe-modal-redirect-link"
-            target="_blank" rel="noopener noreferrer">
+          <a class="iframe-modal__redirect-link" id="iframe-modal-redirect-link" target="_blank"
+            rel="noopener noreferrer">
             Open manually ↗
           </a>
         </div>

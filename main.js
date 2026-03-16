@@ -32,6 +32,7 @@ window.addEventListener('load', function () {
         initSmoothScroll();
         initMagneticButtons();
         initHeroParallax();
+        initScrollProgress();
 
         initLeadershipToggle();
         initFlowToggle();
@@ -250,7 +251,7 @@ window.addEventListener('load', function () {
     function initMagneticButtons() {
         if (prefersReducedMotion) return;
 
-        const magneticElements = document.querySelectorAll('.cta-button, .nav__link, .work-item__link, .impl-btn, .expand-toggle');
+        const magneticElements = document.querySelectorAll('.cta-button, .nav__link, .work-item__link, .impl-btn, .expand-toggle, .availability .contact__link');
 
         magneticElements.forEach((el) => {
             el.addEventListener('mousemove', (e) => {
@@ -298,6 +299,35 @@ window.addEventListener('load', function () {
                 ticking = true;
             }
         }, { passive: true });
+    }
+
+    // ---- Scroll Progress Indicator ----
+    function initScrollProgress() {
+        const progressNav = document.getElementById('scroll-progress');
+        if (!progressNav) return;
+
+        const dots = Array.from(progressNav.querySelectorAll('.scroll-progress__dot'));
+        const sections = dots.map((dot) =>
+            document.querySelector(dot.getAttribute('href'))
+        ).filter(Boolean);
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                const id = entry.target.id;
+                dots.forEach((dot) => {
+                    dot.classList.toggle('is-active', dot.getAttribute('href') === '#' + id);
+                });
+                // Hide dots while hero is active, show for all other sections
+                if (id === 'hero') {
+                    progressNav.classList.remove('is-visible');
+                } else {
+                    progressNav.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.4, rootMargin: '-10% 0px -10% 0px' });
+
+        sections.forEach((section) => observer.observe(section));
     }
 
     // ---- Theme Toggle (Light / Dark) ----

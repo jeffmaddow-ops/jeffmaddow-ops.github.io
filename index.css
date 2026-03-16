@@ -15,6 +15,7 @@
     --bg-primary: #0B0E17;
     --bg-secondary: #0F1319;
     --bg-elevated: #141A24;
+    --bg-editorial: #1C2433;
     --bg-surface: #1A2030;
     --accent: #00DC82;
     --accent-dim: rgba(0, 220, 130, 0.12);
@@ -202,17 +203,17 @@ img {
 
 .reveal {
     opacity: 0;
-    transform: translateY(24px) scale(0.97);
+    transform: translateY(60px);
     transition:
-        opacity 0.65s var(--ease-out-expo),
-        transform 0.65s var(--ease-out-expo);
+        opacity 0.9s var(--ease-out-expo),
+        transform 0.9s var(--ease-out-expo);
     transition-delay: calc(var(--stagger, 0) * 120ms);
     will-change: transform, opacity;
 }
 
 .reveal.is-visible {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
 }
 
 .reveal-line {
@@ -423,24 +424,45 @@ img {
 
 .stats__row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-lg);
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: start;
 }
 
 .stat-card {
-    border: 1px solid var(--border-subtle);
-    border-radius: 6px;
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
     padding: var(--space-xl) var(--space-lg);
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
-    background: var(--bg-secondary);
-    transition: border-color var(--duration-fast) var(--ease-out-quart),
-        background var(--duration-fast) var(--ease-out-quart),
-        transform var(--duration-fast) var(--ease-out-quart),
-        box-shadow var(--duration-fast) var(--ease-out-quart);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.40),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.10);
+    transition:
+        transform 0.35s var(--ease-out-quart),
+        box-shadow 0.35s var(--ease-out-quart),
+        border-color 0.35s var(--ease-out-quart);
     position: relative;
     overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 220, 130, 0.05) 0%,
+        transparent 50%,
+        rgba(0, 220, 130, 0.02) 100%
+    );
+    border-radius: inherit;
+    pointer-events: none;
 }
 
 .stat-card__visible {
@@ -449,13 +471,18 @@ img {
     gap: var(--space-sm);
     transition: opacity var(--duration-fast) var(--ease-out-quart),
         transform var(--duration-fast) var(--ease-out-quart);
+    position: relative;
+    z-index: 1;
 }
 
 .stat-card:hover {
-    border-color: var(--accent);
-    background: var(--bg-elevated);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    transform: translateY(-6px);
+    border-color: rgba(0, 220, 130, 0.22);
+    box-shadow:
+        0 20px 48px rgba(0, 0, 0, 0.50),
+        0 0 0 1px rgba(0, 220, 130, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10),
+        0 0 40px rgba(0, 220, 130, 0.05);
 }
 
 .stat-card:hover .stat-card__visible {
@@ -475,9 +502,10 @@ img {
     color: var(--text-primary);
     line-height: 1.5;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
     transition: transform var(--duration-med) var(--ease-out-quart),
         opacity var(--duration-med) var(--ease-out-quart);
+    z-index: 1;
 }
 
 .stat-card:hover .stat-card__hover-content {
@@ -492,10 +520,13 @@ img {
     font-style: normal;
     color: var(--accent);
     line-height: 1;
+    text-shadow:
+        0 0 12px rgba(0, 220, 130, 0.40),
+        0 0 28px rgba(0, 220, 130, 0.15);
 }
 
 .stat-card__number--long {
-    font-size: var(--text-2xl);  /* 1.5rem — fits on one or two clean lines */
+    font-size: var(--text-2xl);
 }
 
 .stat-card__label {
@@ -503,6 +534,46 @@ img {
     font-size: var(--text-sm);
     color: var(--text-secondary);
     letter-spacing: 0.02em;
+}
+
+/* ---- Featured narrative card ---- */
+.stat-card--featured {
+    grid-row: span 3;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    justify-content: flex-start;
+    padding: var(--space-2xl) var(--space-xl);
+}
+
+.stat-card--featured .stat-card__number {
+    font-size: clamp(3.5rem, 5.5vw, 5rem);
+}
+
+.stat-card__narrative {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.75;
+    color: var(--text-secondary);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: var(--space-lg);
+    margin-top: auto;
+}
+
+/* Disable hover-flip on featured — narrative is always visible */
+.stat-card--featured:hover .stat-card__visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (max-width: 640px) {
+    .stats__row {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card--featured {
+        grid-row: span 1;
+    }
 }
 
 @media (max-width: 900px) {
@@ -975,19 +1046,62 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--space-md);
+    gap: 12px;
     margin-top: var(--space-xl);
+    flex-wrap: nowrap;
 }
 
 .availability .contact__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
     font-family: var(--font-display);
-    font-size: var(--text-2xl);
+    font-size: 0.95rem;
     color: var(--text-primary);
-    transition: color var(--duration-fast) var(--ease-out-quart);
+    text-decoration: none;
+    padding: 9px 20px;
+    border-radius: 50px;
+    backdrop-filter: blur(32px) saturate(220%) brightness(1.08);
+    -webkit-backdrop-filter: blur(32px) saturate(220%) brightness(1.08);
+    background: rgba(0, 220, 130, 0.08);
+    border: 1px solid rgba(0, 220, 130, 0.30);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+        0 8px 32px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(0, 220, 130, 0.06);
+    white-space: nowrap;
+    transition:
+        color var(--duration-fast) var(--ease-out-quart),
+        background var(--duration-fast) var(--ease-out-quart),
+        border-color var(--duration-fast) var(--ease-out-quart),
+        box-shadow var(--duration-med) var(--ease-out-quart),
+        transform var(--duration-fast) var(--ease-out-quart);
 }
 
-.availability .contact__link:hover {
+.availability .contact__link svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+    opacity: 0.75;
+    transition: opacity var(--duration-fast) var(--ease-out-quart);
+}
+
+.availability .contact__link:hover,
+.availability .contact__link:focus {
     color: var(--accent);
+    text-decoration: none !important;
+    background: rgba(0, 220, 130, 0.12);
+    border-color: rgba(0, 220, 130, 0.40);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.10),
+        0 0 24px rgba(0, 220, 130, 0.15),
+        0 4px 24px rgba(0, 0, 0, 0.35);
+    transform: translateY(-2px);
+}
+
+.availability .contact__link:hover svg {
+    opacity: 1;
 }
 
 .availability__notation {
@@ -1002,8 +1116,7 @@ img {
 }
 
 .availability .dot {
-    color: var(--text-tertiary);
-    font-size: var(--text-base);
+    display: none;
 }
 
 .footer-bar {
@@ -1134,23 +1247,8 @@ img {
     gap: 6px;                /* ADD */
 }
 
-.contact__link::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--accent);
-    transition: width var(--duration-med) var(--ease-out-expo);
-}
-
 .contact__link:hover {
     color: var(--text-primary);
-}
-
-.contact__link:hover::after {
-    width: 100%;
 }
 
 .footer-bar {
@@ -2304,6 +2402,162 @@ img {
     }
 
     .iframe-modal__newtab {
+        display: none;
+    }
+}
+
+/* ============================================================
+   CHAPTER SECTION BACKGROUNDS — cinematic story progression
+   ============================================================ */
+
+/* Chapter 1 — hero: base primary */
+#hero {
+    background: var(--bg-primary);
+}
+
+/* Chapter 2 — profile: editorial surface, lifted from primary */
+#about {
+    background: var(--bg-editorial);
+}
+
+/* Stats strip — secondary dark inset */
+.stats-grid {
+    background: var(--bg-secondary) !important;
+    border-color: rgba(0, 220, 130, 0.06);
+}
+
+/* Chapter 3 — framework: elevated surface */
+#model {
+    background: var(--bg-elevated);
+}
+
+/* Chapter 4 — engineering: gradient sweep */
+#tech-work {
+    background: linear-gradient(160deg, #0E2030 0%, #142840 100%);
+}
+
+/* Chapter 5 — experience: warm graphite */
+#experience {
+    background: #111C26;
+}
+
+/* Chapter 6 — impact: deep navy */
+#impact {
+    background: #0C1D30;
+}
+
+/* Chapter 7 — work: mid deep slate */
+#work {
+    background: #0F1A26;
+}
+
+/* Chapter 8 — philosophy: near-black void */
+#philosophy {
+    background: #060810;
+}
+
+/* Chapter 9 — contact: base primary bookend */
+#contact {
+    background: var(--bg-primary);
+}
+
+/* Section chapter divider — green hairline */
+.section::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(0,220,130,0.14) 30%, rgba(0,220,130,0.14) 70%, transparent 100%);
+    pointer-events: none;
+}
+
+/* ============================================================
+   ABOUT-EDITORIAL — fourth surface treatment
+   ============================================================ */
+
+.about-editorial {
+    background: var(--bg-editorial);
+    border-top: 1px solid rgba(0, 220, 130, 0.08);
+    border-bottom: 1px solid rgba(0, 220, 130, 0.05);
+}
+
+/* ============================================================
+   SCROLL PROGRESS INDICATOR
+   ============================================================ */
+
+.scroll-progress {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.scroll-progress.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.scroll-progress__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.scroll-progress__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: block;
+    position: relative;
+    transition:
+        transform 0.3s var(--ease-out-quart),
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* Label tooltip shown on hover */
+.scroll-progress__dot::before {
+    content: attr(data-label);
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.scroll-progress:hover .scroll-progress__dot::before {
+    opacity: 1;
+}
+
+.scroll-progress__dot.is-active {
+    background: var(--accent);
+    border-color: rgba(0, 220, 130, 0.6);
+    transform: scale(1.5);
+    box-shadow: 0 0 10px rgba(0, 220, 130, 0.35);
+}
+
+@media (max-width: 900px) {
+    .scroll-progress {
         display: none;
     }
 }
