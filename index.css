@@ -1033,8 +1033,13 @@ img {
 .availability {
     text-align: center;
     border-top: 1px solid var(--border-subtle);
-    padding-block: var(--space-2xl);
+    padding-block: var(--space-3xl);
     background-color: var(--bg-secondary);
+}
+
+/* Override section clipping so footer text never gets cut */
+.availability.section {
+    overflow: visible;
 }
 
 .availability-block {
@@ -1109,7 +1114,7 @@ img {
     font-size: 0.7rem;
     color: var(--text-tertiary);
     margin-top: var(--space-xl);
-    max-width: 40ch;
+    max-width: 55ch;
     margin-inline: auto;
     letter-spacing: 0.02em;
     opacity: 0.8;
