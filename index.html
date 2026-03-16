@@ -14,7 +14,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <meta name="msapplication-TileImage" content="apple-touch-icon.png">
   <meta name="msapplication-TileColor" content="#0f1117">
-  <link rel="stylesheet" href="index.css?v=3.8.6">
+  <link rel="stylesheet" href="index.css?v=4.4.0">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="main.js?v=3.8.0" defer></script>
@@ -101,7 +101,7 @@
 
   <!-- ===== HERO ===== -->
   <header class="hero section" id="hero">
-  <div class="hero__bg-photo" aria-hidden="true"></div>
+  <canvas id="hero-canvas" class="hero__bg-canvas" aria-hidden="true"></canvas>
   <div class="hero__bg-lines" aria-hidden="true"></div>
     <div class="container hero__content">
 
@@ -527,7 +527,7 @@
             Email
           </a>
         </div>
-        <p class="availability__notation reveal" style="--stagger: 1">
+        <p class="availability__notation">
           GitHub repositories reflect ongoing AI-assisted development and continuous technical learning.
         </p>
       </div>
@@ -613,6 +613,8 @@
       <span class="footer-bar__copy">© 2026 Designed & Built by Jeff Maddow</span>
     </div>
   </footer>
+
+  <script src="shader-hero.js" defer></script>
 
 </body>
 

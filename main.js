@@ -1,7 +1,6 @@
 /* ============================================================
    JEFF MADDOW — PORTFOLIO
-   Preloader + Scroll Animations + Interactions
-   GSAP for preloader timeline, vanilla for the rest
+   Scroll Animations + Interactions
    ============================================================ */
 
 // Always load page from top
@@ -22,7 +21,7 @@ window.addEventListener('load', function () {
     ).matches;
 
     /* ==========================================================
-       SITE INIT — Immediate Initialization
+       SITE INIT
        ========================================================== */
 
     function initSite() {
@@ -30,10 +29,8 @@ window.addEventListener('load', function () {
         initNarrative();
         initNavScroll();
         initSmoothScroll();
-        initMagneticButtons();
-        initHeroParallax();
+        initHeroFade();
         initScrollProgress();
-
         initLeadershipToggle();
         initFlowToggle();
         initScrollTrigger();
@@ -50,7 +47,6 @@ window.addEventListener('load', function () {
         }
 
         if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-            // Fallback: IntersectionObserver
             const observer = new IntersectionObserver(
                 (entries) => {
                     entries.forEach((entry) => {
@@ -78,31 +74,15 @@ window.addEventListener('load', function () {
         });
     }
 
-    // ---- Scroll Narrative: section-level stagger animations ----
+    // ---- Scroll Narrative: section-level entrance animations ----
     function initNarrative() {
         if (prefersReducedMotion) return;
         if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-        // --- Section wrappers: subtle entrance Y shift ---
-        // Gives each section a gentle "rise into view" without touching child opacity
-        document.querySelectorAll('.section:not(#hero):not(#stats)').forEach((section) => {
-            gsap.from(section, {
-                y: 20,
-                duration: 0.8,
-                ease: 'power3.out',
-                immediateRender: false,
-                scrollTrigger: {
-                    trigger: section,
-                    start: 'top 88%',
-                    once: true,
-                },
-            });
-        });
-
         // --- Model list items: horizontal slide-in stagger ---
         const modelItems = document.querySelectorAll('#model .model__list li');
         if (modelItems.length) {
-            gsap.set(modelItems, { opacity: 0, x: -16 });
+            gsap.set(modelItems, { opacity: 0, x: -12 });
             ScrollTrigger.create({
                 trigger: '#model',
                 start: 'top 72%',
@@ -110,70 +90,70 @@ window.addEventListener('load', function () {
                 onEnter: () => {
                     gsap.to(modelItems, {
                         opacity: 1, x: 0,
-                        duration: 0.45,
-                        ease: 'power3.out',
-                        stagger: 0.09,
-                        delay: 0.3,
+                        duration: 0.4,
+                        ease: 'power2.out',
+                        stagger: 0.07,
+                        delay: 0.2,
                     });
                 },
             });
         }
 
-        // --- Experience list items: staggered fade-up ---
+        // --- Experience list items: staggered fade ---
         const expItems = document.querySelectorAll('#experience .experience__list li');
         if (expItems.length) {
-            gsap.set(expItems, { opacity: 0, y: 14 });
+            gsap.set(expItems, { opacity: 0 });
             ScrollTrigger.create({
                 trigger: '#experience',
                 start: 'top 70%',
                 once: true,
                 onEnter: () => {
                     gsap.to(expItems, {
-                        opacity: 1, y: 0,
-                        duration: 0.45,
-                        ease: 'power3.out',
-                        stagger: 0.07,
-                        delay: 0.35,
+                        opacity: 1,
+                        duration: 0.35,
+                        ease: 'power1.out',
+                        stagger: 0.06,
+                        delay: 0.25,
                     });
                 },
             });
         }
 
-        // --- Impact list items: staggered fade-up ---
+        // --- Impact list items: staggered fade ---
         const impactItems = document.querySelectorAll('#impact .model__list li');
         if (impactItems.length) {
-            gsap.set(impactItems, { opacity: 0, y: 14 });
+            gsap.set(impactItems, { opacity: 0 });
             ScrollTrigger.create({
                 trigger: '#impact',
                 start: 'top 70%',
                 once: true,
                 onEnter: () => {
                     gsap.to(impactItems, {
-                        opacity: 1, y: 0,
-                        duration: 0.40,
-                        ease: 'power3.out',
+                        opacity: 1,
+                        duration: 0.3,
+                        ease: 'power1.out',
                         stagger: 0.05,
-                        delay: 0.3,
+                        delay: 0.2,
                     });
                 },
             });
         }
 
-        // --- Contact links: staggered scale + fade ---
+        // --- Contact links: simple staggered fade ---
         const contactLinks = document.querySelectorAll('#contact .contact__link');
         if (contactLinks.length) {
-            gsap.set(contactLinks, { opacity: 0, y: 14, scale: 0.96 });
+            gsap.set(contactLinks, { opacity: 0 });
             ScrollTrigger.create({
                 trigger: '#contact',
                 start: 'top 78%',
                 once: true,
                 onEnter: () => {
                     gsap.to(contactLinks, {
-                        opacity: 1, y: 0, scale: 1,
-                        duration: 0.5,
-                        ease: 'back.out(1.3)',
-                        stagger: 0.08,
-                        delay: 0.25,
+                        opacity: 1,
+                        duration: 0.45,
+                        ease: 'power1.out',
+                        stagger: 0.1,
+                        delay: 0.2,
                     });
                 },
             });
@@ -182,17 +162,17 @@ window.addEventListener('load', function () {
         // --- Philosophy emphasis: delayed accent reveal ---
         const emphasis = document.querySelector('#philosophy .philosophy__emphasis');
         if (emphasis) {
-            gsap.set(emphasis, { opacity: 0, y: 8 });
+            gsap.set(emphasis, { opacity: 0 });
             ScrollTrigger.create({
                 trigger: '#philosophy',
                 start: 'top 74%',
                 once: true,
                 onEnter: () => {
                     gsap.to(emphasis, {
-                        opacity: 1, y: 0,
-                        duration: 0.65,
-                        ease: 'power3.out',
-                        delay: 0.5,
+                        opacity: 1,
+                        duration: 0.7,
+                        ease: 'power2.out',
+                        delay: 0.4,
                     });
                 },
             });
@@ -247,39 +227,8 @@ window.addEventListener('load', function () {
         });
     }
 
-    // ---- Magnetic Button Interaction ----
-    function initMagneticButtons() {
-        if (prefersReducedMotion) return;
-
-        const magneticElements = document.querySelectorAll('.cta-button, .nav__link, .work-item__link, .impl-btn, .expand-toggle, .availability .contact__link');
-
-        magneticElements.forEach((el) => {
-            el.addEventListener('mousemove', (e) => {
-                const rect = el.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-
-                gsap.to(el, {
-                    x: x * 0.35,
-                    y: y * 0.35,
-                    duration: 0.6,
-                    ease: 'power2.out',
-                });
-            });
-
-            el.addEventListener('mouseleave', () => {
-                gsap.to(el, {
-                    x: 0,
-                    y: 0,
-                    duration: 0.8,
-                    ease: 'elastic.out(1, 0.3)',
-                });
-            });
-        });
-    }
-
-    // ---- Hero Parallax (subtle) ----
-    function initHeroParallax() {
+    // ---- Hero Fade on Scroll (opacity only — no parallax) ----
+    function initHeroFade() {
         if (prefersReducedMotion) return;
 
         const hero = document.querySelector('.hero__content');
@@ -291,9 +240,7 @@ window.addEventListener('load', function () {
             if (!ticking) {
                 requestAnimationFrame(() => {
                     const scrolled = window.scrollY;
-                    const rate = scrolled * 0.15;
-                    hero.style.transform = `translateY(${rate}px)`;
-                    hero.style.opacity = Math.max(1 - scrolled / 800, 0);
+                    hero.style.opacity = Math.max(1 - scrolled / 600, 0);
                     ticking = false;
                 });
                 ticking = true;
@@ -318,7 +265,6 @@ window.addEventListener('load', function () {
                 dots.forEach((dot) => {
                     dot.classList.toggle('is-active', dot.getAttribute('href') === '#' + id);
                 });
-                // Hide dots while hero is active, show for all other sections
                 if (id === 'hero') {
                     progressNav.classList.remove('is-visible');
                 } else {
@@ -330,26 +276,22 @@ window.addEventListener('load', function () {
         sections.forEach((section) => observer.observe(section));
     }
 
-    // ---- Theme Toggle (Light / Dark) ----
-
-    // ---- GSAP ScrollTrigger: Stat Card Stagger + Animated Counters ----
+    // ---- GSAP ScrollTrigger: Stat Card Stagger ----
     function initScrollTrigger() {
         if (prefersReducedMotion) return;
         if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
         gsap.registerPlugin(ScrollTrigger);
 
-        // Stagger individual stat cards into view
         const statsRow = document.querySelector('.stats__row');
         const statCards = statsRow ? Array.from(statsRow.querySelectorAll('.stat-card')) : [];
         if (statCards.length) {
-            gsap.set(statCards, { opacity: 0, y: 44 });
+            gsap.set(statCards, { opacity: 0 });
             gsap.to(statCards, {
                 opacity: 1,
-                y: 0,
-                duration: 0.6,
-                ease: 'power3.out',
-                stagger: 0.12,
+                duration: 0.5,
+                ease: 'power1.out',
+                stagger: 0.1,
                 scrollTrigger: {
                     trigger: statsRow,
                     start: 'top 80%',
@@ -357,30 +299,6 @@ window.addEventListener('load', function () {
                 },
             });
         }
-
-        // Count-up animation for stat numbers
-        document.querySelectorAll('.stat-card__number[data-count]').forEach((el) => {
-            const target = parseInt(el.getAttribute('data-count'), 10);
-            const suffix = el.getAttribute('data-suffix') || '';
-            const counter = { val: 0 };
-
-            ScrollTrigger.create({
-                trigger: el,
-                start: 'top 82%',
-                once: true,
-                onEnter: () => {
-                    gsap.to(counter, {
-                        val: target,
-                        duration: 1.4,
-                        ease: 'power2.out',
-                        delay: 0.25,
-                        onUpdate: () => {
-                            el.textContent = Math.ceil(counter.val) + suffix;
-                        },
-                    });
-                },
-            });
-        });
     }
 
     // ---- Expandable Leadership Section ----
@@ -404,15 +322,15 @@ window.addEventListener('load', function () {
                     height: 'auto',
                     opacity: 1,
                     visibility: 'visible',
-                    duration: 0.6,
-                    ease: 'power3.out'
+                    duration: 0.5,
+                    ease: 'power2.out'
                 });
             } else {
                 gsap.to(collapsible, {
                     height: 0,
                     opacity: 0,
-                    duration: 0.5,
-                    ease: 'power3.inOut',
+                    duration: 0.4,
+                    ease: 'power2.inOut',
                     onComplete: () => {
                         gsap.set(collapsible, { visibility: 'hidden' });
                     }
@@ -421,7 +339,7 @@ window.addEventListener('load', function () {
         });
     }
 
-    // ---- Flow Modal (Integration Validation Flow pop-out) ----
+    // ---- Flow Modal ----
     function initFlowToggle() {
         const toggleBtn = document.getElementById('flow-toggle');
         const modal     = document.getElementById('flow-modal');
@@ -453,7 +371,7 @@ window.addEventListener('load', function () {
         });
     }
 
-    // ---- Iframe Modal (Live API Demo + View Source) ----
+    // ---- Iframe Modal ----
     function initIframeModal() {
         const modal = document.getElementById('iframe-modal');
         if (!modal) return;
@@ -467,7 +385,6 @@ window.addEventListener('load', function () {
         const redirect   = document.getElementById('iframe-modal-redirect');
         const redirectLink = document.getElementById('iframe-modal-redirect-link');
 
-        // Hosts known to refuse iframe embedding
         const EMBED_BLOCKED = ['github.com', 'www.github.com'];
 
         function isBlocked(url) {
@@ -484,7 +401,6 @@ window.addEventListener('load', function () {
             redirectLink.href = url;
 
             if (isBlocked(url)) {
-                // GitHub blocks embedding — show redirect card and auto-open new tab
                 iframe.style.display = 'none';
                 loader.style.display = 'none';
                 redirect.classList.add('is-visible');
@@ -494,7 +410,6 @@ window.addEventListener('load', function () {
                 iframe.classList.remove('is-loaded');
                 loader.style.display = 'flex';
                 redirect.classList.remove('is-visible');
-                // Slight delay so panel animation completes first
                 setTimeout(function () { iframe.src = url; }, 120);
             }
 
@@ -507,7 +422,6 @@ window.addEventListener('load', function () {
             modal.classList.remove('is-open');
             modal.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
-            // Reset state after panel exit animation
             setTimeout(function () {
                 iframe.src = '';
                 iframe.style.display = 'block';
@@ -517,7 +431,6 @@ window.addEventListener('load', function () {
             }, 420);
         }
 
-        // Reveal iframe once content is loaded
         iframe.addEventListener('load', function () {
             if (iframe.src && iframe.src !== window.location.href) {
                 loader.style.display = 'none';
@@ -525,7 +438,6 @@ window.addEventListener('load', function () {
             }
         });
 
-        // Wire [data-modal] buttons
         document.querySelectorAll('[data-modal]').forEach(function (el) {
             el.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -546,72 +458,17 @@ window.addEventListener('load', function () {
     }
 
     /* ============================================================
-       PRELOADER — self-contained IIFE
+       PRELOADER — skip immediately
        ============================================================ */
 
     (function initPreloader() {
         const preloader = document.getElementById('preloader');
         if (!preloader) return;
-
-        // Skip preloader on same-tab refresh — only show once per session
-        if (sessionStorage.getItem('jm-preloader-shown')) {
-            preloader.style.display = 'none';
-            return;
-        }
-
-        const MESSAGE_INTERVAL = 550;
-
-        function scrollMessages() {
-            const scroller = document.getElementById('message-scroller');
-            if (!scroller) return;
-
-            const messages = scroller.querySelectorAll('.loading-message');
-            let currentIndex = 0;
-
-            messages[0].classList.add('active');
-
-            const scrollInterval = setInterval(() => {
-                if (currentIndex >= messages.length - 1) {
-                    clearInterval(scrollInterval);
-                    setTimeout(hidePreloader, 300);
-                    return;
-                }
-
-                messages[currentIndex].classList.remove('active');
-                currentIndex++;
-                messages[currentIndex].classList.add('active');
-
-                scroller.style.transform = `translateY(-${currentIndex * 45}px)`;
-            }, MESSAGE_INTERVAL);
-        }
-
-        let dismissed = false;
-
-        function hidePreloader() {
-            if (dismissed) return;
-            dismissed = true;
-
-            preloader.classList.add('complete');
-            sessionStorage.setItem('jm-preloader-shown', '1');
-
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 600);
-        }
-
-        // Start preloader animation when DOM is ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', scrollMessages);
-        } else {
-            scrollMessages();
-        }
-
-        // Failsafe — if anything breaks, dismiss preloader after 6s
-        setTimeout(hidePreloader, 6000);
+        preloader.style.display = 'none';
     })();
 
     /* ============================================================
-       BOOT — call initSite when DOM is ready
+       BOOT
        ============================================================ */
 
     if (document.readyState === 'loading') {
@@ -620,4 +477,4 @@ window.addEventListener('load', function () {
         initSite();
     }
 
-})(); // closes the outer IIFE
+})();
