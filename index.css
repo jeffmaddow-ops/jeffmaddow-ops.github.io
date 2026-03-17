@@ -1436,7 +1436,13 @@ img {
     right: 0;
     z-index: 100;
     padding-block: var(--space-md);
-    transition: background-color var(--duration-med) var(--ease-out-quart);
+    transition:
+        background-color var(--duration-med) var(--ease-out-quart),
+        transform 0.28s var(--ease-out-quart);
+}
+
+.nav.is-hidden {
+    transform: translateY(-100%);
 }
 
 .nav.is-scrolled {

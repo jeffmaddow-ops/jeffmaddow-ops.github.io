@@ -327,14 +327,28 @@ window.addEventListener('load', function () {
         const nav = document.getElementById('nav');
         if (!nav) return;
 
+        let lastY   = window.scrollY;
         let ticking = false;
 
         function updateNav() {
-            if (window.scrollY > 80) {
+            const currentY = window.scrollY;
+            const delta    = currentY - lastY;
+
+            // Glass background once past the very top
+            if (currentY > 80) {
                 nav.classList.add('is-scrolled');
             } else {
                 nav.classList.remove('is-scrolled');
             }
+
+            // Direction-aware: hide on scroll-down (past initial band), reveal on scroll-up
+            if (currentY > 200 && delta > 4) {
+                nav.classList.add('is-hidden');
+            } else if (delta < -4) {
+                nav.classList.remove('is-hidden');
+            }
+
+            lastY   = currentY;
             ticking = false;
         }
 
