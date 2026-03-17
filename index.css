@@ -1463,18 +1463,47 @@ img {
 
 /* Logo */
 .nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-family: var(--font-body);
     font-size: var(--text-base);
     letter-spacing: 0.08em;
     font-weight: 400;
     color: var(--text-primary);
     white-space: nowrap;
+    text-decoration: none;
 }
 
-.nav__logo-dot {
-    color: var(--accent);
-    font-size: 0.7em;
-    margin-right: 2px;
+.nav__logo-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px;
+    border-radius: 10px;
+    background: rgba(192, 144, 80, 0.06);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.nav__logo:hover .nav__logo-badge {
+    background: rgba(192, 144, 80, 0.1);
+    border-color: rgba(192, 144, 80, 0.2);
+}
+
+.nav__logo-mark {
+    height: 2.2em;
+    width: auto;
+    border-radius: 6px;
+    display: block;
+    filter: brightness(1.18);
+}
+
+.nav__logo-name {
+    line-height: 1;
 }
 
 .nav__right {
