@@ -27,6 +27,7 @@ window.addEventListener('load', function () {
     function initSite() {
         initScrollReveal();
         initNarrative();
+        initScrollytelling();
         initNavScroll();
         initSmoothScroll();
         initHeroFade();
@@ -72,6 +73,148 @@ window.addEventListener('load', function () {
                 onEnter: () => el.classList.add('is-visible'),
             });
         });
+    }
+
+    // ---- Scrollytelling: Premium Editorial Parallax Effects ----
+    function initScrollytelling() {
+        if (prefersReducedMotion) return;
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        // ----------------------------------------------------------
+        // 1. METRIC ROWS — staggered entry + number count-up + divider draw
+        // ----------------------------------------------------------
+        (function initMetricScrollytelling() {
+            const rows = document.querySelectorAll('.metric-row');
+            if (!rows.length) return;
+
+            // Let parent reveal class fire instantly; per-row GSAP takes over
+            const metricsBlock = document.querySelector('.metrics-editorial');
+            if (metricsBlock) {
+                metricsBlock.style.opacity = '1';
+                metricsBlock.style.transform = 'none';
+                metricsBlock.classList.add('is-visible');
+            }
+
+            rows.forEach(function (row) {
+                gsap.set(row, { opacity: 0, x: -18 });
+                const divider = row.querySelector('.metric-row__divider');
+                if (divider) gsap.set(divider, { scaleY: 0, transformOrigin: 'top center' });
+                const numEl = row.querySelector('.metric-row__number');
+                if (numEl) gsap.set(numEl, { opacity: 0 });
+            });
+
+            ScrollTrigger.create({
+                trigger: '.metrics-editorial',
+                start: 'top 76%',
+                once: true,
+                onEnter: function () {
+                    rows.forEach(function (row, i) {
+                        var delay = i * 0.11;
+
+                        // Row slide in
+                        gsap.to(row, {
+                            opacity: 1, x: 0,
+                            duration: 0.55,
+                            ease: 'power2.out',
+                            delay: delay,
+                        });
+
+                        // Vertical divider draw
+                        var divider = row.querySelector('.metric-row__divider');
+                        if (divider) {
+                            gsap.to(divider, {
+                                scaleY: 1,
+                                duration: 0.55,
+                                ease: 'power2.out',
+                                delay: delay + 0.22,
+                            });
+                        }
+
+                        // Number count-up
+                        var numEl = row.querySelector('.metric-row__number');
+                        if (!numEl) return;
+
+                        var suffix = numEl.querySelector('.metric-row__suffix');
+                        var suffixHTML = suffix ? suffix.outerHTML : '';
+                        var textNode = Array.from(numEl.childNodes).find(function (n) {
+                            return n.nodeType === Node.TEXT_NODE;
+                        });
+                        var rawNum = textNode ? parseInt(textNode.textContent.trim(), 10) : NaN;
+
+                        if (!isNaN(rawNum)) {
+                            var counter = { val: 0 };
+                            gsap.to(counter, {
+                                val: rawNum,
+                                duration: 0.85,
+                                ease: 'power2.out',
+                                delay: delay + 0.14,
+                                onStart: function () {
+                                    gsap.set(numEl, { opacity: 1 });
+                                },
+                                onUpdate: function () {
+                                    numEl.innerHTML = Math.round(counter.val) + suffixHTML;
+                                },
+                            });
+                        } else {
+                            gsap.to(numEl, { opacity: 1, duration: 0.3, delay: delay + 0.14 });
+                        }
+                    });
+                },
+            });
+        })();
+
+        // ----------------------------------------------------------
+        // 2. PHILOSOPHY EMPHASIS — editorial highlight sweep
+        // ----------------------------------------------------------
+        (function initPhilosophyHighlight() {
+            var emphasis = document.querySelector('#philosophy .philosophy__emphasis');
+            if (!emphasis) return;
+
+            // Override the existing initNarrative opacity-only animation for emphasis
+            // by adding the highlight class with a delay after section enters
+            ScrollTrigger.create({
+                trigger: '#philosophy',
+                start: 'top 68%',
+                once: true,
+                onEnter: function () {
+                    setTimeout(function () {
+                        emphasis.classList.add('is-highlighted');
+                    }, 480);
+                },
+            });
+        })();
+
+        // ----------------------------------------------------------
+        // 3. ATMOSPHERIC BACKGROUND DRIFT — fixed gradient layer
+        // ----------------------------------------------------------
+        (function initBgDrift() {
+            var driftEl = document.createElement('div');
+            driftEl.className = 'bg-drift-layer';
+            document.body.prepend(driftEl);
+
+            var ticking = false;
+
+            window.addEventListener('scroll', function () {
+                if (!ticking) {
+                    requestAnimationFrame(function () {
+                        var scrolled = window.scrollY;
+                        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                        var progress = docHeight > 0 ? scrolled / docHeight : 0;
+
+                        // Very gentle drift: vertical at ~3% scroll rate, subtle horizontal sine wave
+                        var yShift = scrolled * -0.028;
+                        var xShift = Math.sin(progress * Math.PI) * 24;
+
+                        driftEl.style.transform = 'translate(' + xShift.toFixed(1) + 'px, ' + yShift.toFixed(1) + 'px)';
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        })();
+
     }
 
     // ---- Scroll Narrative: section-level entrance animations ----

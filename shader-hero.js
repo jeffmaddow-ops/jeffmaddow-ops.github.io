@@ -7,7 +7,7 @@
   'use strict';
 
   const VS = /* glsl */ `#version 300 es
-precision mediump float;
+precision highp float;
 
 in vec2 a_position;
 out vec2 v_uv;
@@ -18,7 +18,7 @@ void main() {
 }`;
 
   const FS = /* glsl */ `#version 300 es
-precision mediump float;
+precision highp float;
 
 in vec2 v_uv;
 out vec4 fragColor;
@@ -67,10 +67,10 @@ void main() {
   cols[3] = vec3(0.235, 0.431, 0.392);
   cols[4] = vec3(0.10,  0.06,  0.02);
 
-  float t = u_time * 0.22;
+  float t = u_time * 0.28;
 
   // Grain seed
-  vec2 grainUV = v_uv * 3.5;
+  vec2 grainUV = v_uv * 5.5;
   float grain    = valueNoise(grainUV);
   float grainOff = 0.06 * (grain - 0.5);
 
@@ -96,7 +96,7 @@ void main() {
   for (int i = 0; i < 5; i++) {
     vec2  pos    = getPosition(i, t) + grainOff;
     float dist   = length(uvS - pos);
-    dist         = pow(dist, 3.5);
+    dist         = pow(dist, 5.0);
     float weight = 1.0 / (dist + 1e-3);
     color        += cols[i] * weight;
     totalWeight  += weight;
@@ -112,7 +112,7 @@ void main() {
   color = mix(color, gCol, 0.03);
 
   // Keep dark — hero content must stay legible
-  color *= 0.72;
+  color *= 0.78;
 
   fragColor = vec4(color, 1.0);
 }`;
@@ -185,8 +185,8 @@ void main() {
     let raf = null;
 
     function resize() {
-      // Cap pixel ratio at 1.5 — shaders are expensive
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      // Cap pixel ratio at 2.0 for full retina sharpness
+      const dpr = Math.min(window.devicePixelRatio || 1, 2.0);
       const w   = canvas.clientWidth;
       const h   = canvas.clientHeight;
       const pw  = Math.floor(w * dpr);

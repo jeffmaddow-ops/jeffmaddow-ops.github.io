@@ -34,42 +34,6 @@
 
 <body>
 
-  <!-- ===== PRELOADER ===== -->
-  <div id="preloader" class="preloader" aria-hidden="true">
-    <div class="preloader__frame">
-      <span class="preloader__label">JM | Portfolio</span>
-
-      <div class="message-viewport">
-        <div class="message-scroller" id="message-scroller">
-          <div class="loading-message">
-            <div class="check-circle">
-              <span class="checkmark">✓</span>
-            </div>
-            <span class="message-text">Validating Endpoint</span>
-          </div>
-          <div class="loading-message">
-            <div class="check-circle">
-              <span class="checkmark">✓</span>
-            </div>
-            <span class="message-text">Authenticating</span>
-          </div>
-          <div class="loading-message">
-            <div class="check-circle">
-              <span class="checkmark">✓</span>
-            </div>
-            <span class="message-text">Services Online</span>
-          </div>
-          <div class="loading-message">
-            <div class="check-circle">
-              <span class="checkmark">✓</span>
-            </div>
-            <span class="message-text">Deployment Ready</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ===== SCROLL PROGRESS ===== -->
   <nav class="scroll-progress" id="scroll-progress" aria-label="Section navigation">
     <div class="scroll-progress__inner">
@@ -87,7 +51,7 @@
     <div class="container nav__inner">
       <ul class="nav__links">
         <li><a href="#about" class="nav__link">Profile</a></li>
-        <li><a href="#model" class="nav__link">Delivery Framework</a></li>
+        <li><a href="#model" class="nav__link">How I Work</a></li>
         <li><a href="#impact" class="nav__link">Impact</a></li>
         <li><a href="#work" class="nav__link">Proof Points</a></li>
         <li><a href="#contact" class="nav__link">Connect</a></li>
@@ -112,7 +76,7 @@
 
       <!-- Subtitle -->
       <p class="hero__subtitle reveal" style="--stagger: 2">
-        I configure, validate, and deploy integrations without breaking production.
+        If you've had a go-live blow up at 2am, I'm the person you needed before it got there.
       </p>
 
       <!-- Dual CTA Buttons -->
@@ -153,45 +117,45 @@
     </div>
   </section>
 
-  <!-- ===== STATS GRID ===== -->
+  <!-- ===== METRICS EDITORIAL ===== -->
   <section class="stats-grid section section--compact" id="stats">
     <div class="container">
-      <div class="stats__row">
+      <div class="metrics-editorial reveal" style="--stagger: 0">
 
-        <!-- Featured narrative card -->
-        <div class="stat-card stat-card--featured">
-          <div class="stat-card__visible">
-            <span class="stat-card__number" data-count="150" data-suffix="+">150+</span>
-            <span class="stat-card__label">Customer-Facing Enterprise Go-Lives</span>
+        <div class="metric-row">
+          <div class="metric-row__number">150<span class="metric-row__suffix">+</span></div>
+          <div class="metric-row__divider" aria-hidden="true"></div>
+          <div class="metric-row__body">
+            <span class="metric-row__label">Customer-Facing Enterprise Go-Lives</span>
+            <p class="metric-row__context">Guided successful implementations across regulated SaaS environments with zero critical failures.</p>
           </div>
-          <p class="stat-card__narrative">Guided successful implementations across regulated SaaS environments with zero
-            critical failures.</p>
         </div>
 
-        <!-- Supporting metrics -->
-        <div class="stat-card">
-          <div class="stat-card__visible">
-            <span class="stat-card__number" data-count="12" data-suffix="">12</span>
-            <span class="stat-card__label">AWS Migrations</span>
+        <div class="metric-row">
+          <div class="metric-row__number">12</div>
+          <div class="metric-row__divider" aria-hidden="true"></div>
+          <div class="metric-row__body">
+            <span class="metric-row__label">AWS Migrations</span>
+            <p class="metric-row__context">Led complex multi-tenant infrastructure migrations to AWS with zero downtime and automated workflows.</p>
           </div>
-          <div class="stat-card__hover-content">Led complex multi-tenant infrastructure migrations to AWS with zero
-            downtime and automated workflows.</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-card__visible">
-            <span class="stat-card__number" data-count="200" data-suffix="+">200+</span>
-            <span class="stat-card__label">Postman Collections</span>
+
+        <div class="metric-row">
+          <div class="metric-row__number">200<span class="metric-row__suffix">+</span></div>
+          <div class="metric-row__divider" aria-hidden="true"></div>
+          <div class="metric-row__body">
+            <span class="metric-row__label">Postman Collections</span>
+            <p class="metric-row__context">Scripted comprehensive integration test suites and API monitoring flows used by entire teams.</p>
           </div>
-          <div class="stat-card__hover-content">Scripted comprehensive integration test suites and API monitoring flows
-            used by entire teams.</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-card__visible">
-            <span class="stat-card__number" data-count="100" data-suffix="%">100%</span>
-            <span class="stat-card__label">Client Retention</span>
+
+        <div class="metric-row">
+          <div class="metric-row__number">100<span class="metric-row__suffix">%</span></div>
+          <div class="metric-row__divider" aria-hidden="true"></div>
+          <div class="metric-row__body">
+            <span class="metric-row__label">Client Retention</span>
+            <p class="metric-row__context">Achieved top-tier client retention by delivering stable, predictable production integrations within SLA scope.</p>
           </div>
-          <div class="stat-card__hover-content">Achieved top-tier client retention by delivering stable, predictable
-            production integrations within SLA scope.</div>
         </div>
 
       </div>
@@ -203,7 +167,7 @@
     <div class="container">
       <div class="editorial-block">
         <h2 class="editorial__heading reveal" style="--stagger: 0">
-          Delivery & Advisory Framework
+          How I Work
         </h2>
         <div class="model__content reveal" style="--stagger: 1">
           <p class="body-large">
@@ -361,27 +325,23 @@
 
         <article class="work-item reveal" style="--stagger: 1">
           <div class="work-item__content">
-            <h3 class="work-item__title">150+ Customer-Facing Enterprise Deployments, Zero Critical Failures</h3>
+            <h3 class="work-item__title">150+ Enterprise Go-Lives, Zero Critical Failures</h3>
             <p class="work-item__desc">
-              <strong>Context:</strong> SaaS implementations in regulated enterprise environments with complex
-              integration constraints.<br>
-              <strong>Approach:</strong> Led technical discovery sessions, mapped requirements to scalable cloud
-              architectures, and supported RFI/RFP responses across enterprise sales cycles.<br>
-              <strong>Impact:</strong> Delivered 15+ implementations monthly, reduced time-to-value from 4 weeks to 7
-              days, and maintained 100% retention with 94% CSAT.
+              Regulated SaaS environments with complex integration constraints — the kind where a misconfiguration
+              at go-live means a pharmacist can't access patient records. I ran technical discovery, mapped
+              requirements to architecture, and owned the handoff from sales through production. We got from
+              contract to live in 7 days. Retention was 100%. CSAT was 94%.
             </p>
           </div>
         </article>
 
         <article class="work-item reveal" style="--stagger: 2">
           <div class="work-item__content">
-            <h3 class="work-item__title">Reduced Production Incidents 80% Through Automated QA & Release Controls</h3>
+            <h3 class="work-item__title">80% Fewer Production Incidents Through Automated QA</h3>
             <p class="work-item__desc">
-              <strong>Context:</strong> Manual validation and unclear ownership increased production risk.<br>
-              <strong>Approach:</strong> Engineered automated workflows and implemented structured testing to prevent
-              regression and deployment errors.<br>
-              <strong>Impact:</strong> Reduced preventable production incidents by 80% and established consistent,
-              zero-downtime deployment practices.
+              The incidents weren't random — they were the result of manual validation with no clear ownership.
+              I built automated workflows and structured testing that caught failures before they became
+              escalations. Zero-downtime deployments became the expectation, not the exception.
             </p>
           </div>
         </article>
@@ -397,60 +357,48 @@
             <div class="collapsible-inner">
               <article class="work-item">
                 <div class="work-item__content">
-                  <h3 class="work-item__title">AWS Migration Execution</h3>
+                  <h3 class="work-item__title">12 AWS Migrations, Zero Downtime</h3>
                   <p class="work-item__desc">
-                    <strong>Context:</strong> Legacy infrastructure limited scalability and delayed enterprise
-                    deployments.<br>
-                    <strong>Approach:</strong> Led 12 AWS migrations across enterprise environments using structured
-                    cutover planning and defined rollback controls.<br>
-                    <strong>Impact:</strong> Delivered 12 zero-downtime migrations, accelerated deployment speed 70%,
-                    and
-                    reduced infrastructure costs through rightsized architecture.
+                    Legacy infrastructure was throttling deployment speed and adding lead time to every
+                    enterprise rollout. I ran 12 full AWS migrations using structured cutover planning and
+                    defined rollback controls. All 12 landed without incident. Deployment speed improved 70%,
+                    infrastructure costs came down through right-sized architecture.
                   </p>
                 </div>
               </article>
 
               <article class="work-item">
                 <div class="work-item__content">
-                  <h3 class="work-item__title">Tier 2 Escalation Management</h3>
+                  <h3 class="work-item__title">90% of Tier 2 Escalations Resolved Within SLA</h3>
                   <p class="work-item__desc">
-                    <strong>Context:</strong> Production telephony and integration defects disrupting enterprise
-                    workflows
-                    and risking SLA penalties.<br>
-                    <strong>Approach:</strong> Led root cause investigations using packet analysis (Wireshark/tcpdump),
-                    SIP trace review,
-                    and API validation to isolate failure points.<br>
-                    <strong>Impact:</strong> Prevented SLA penalties by resolving 90% of Tier 2 escalations within
-                    contractual windows, reduced repeat incidents 65%, and documented root cause patterns to prevent
-                    future escalations.
+                    Production telephony failures in healthcare aren't just technical problems — they're
+                    compliance events. I led root cause investigations using Wireshark, SIP traces, and API
+                    validation to isolate failure points fast. Resolved 90% within SLA, cut repeat incidents
+                    by 65%, and documented patterns that prevented the same issues from recurring.
                   </p>
                 </div>
               </article>
 
               <article class="work-item">
                 <div class="work-item__content">
-                  <h3 class="work-item__title">Telephony Architecture & Security</h3>
+                  <h3 class="work-item__title">HIPAA-Compliant Voice Routing Across 200+ Facilities</h3>
                   <p class="work-item__desc">
-                    <strong>Context:</strong> Enterprise clients requiring secure and scalable voice routing for
-                    critical enterprise communications.<br>
-                    <strong>Approach:</strong> Engineered Twilio SIP domain integrations, implemented IP ACL policies,
-                    and secured registration controls.<br>
-                    <strong>Impact:</strong> Eliminated misconfiguration-related incidents, secured 99.99% telephony
-                    stability,
-                    and enabled HIPAA-compliant voice routing across 200+ healthcare facilities.
+                    Designed Twilio SIP domain integrations with IP ACL policies and secured registration
+                    controls for enterprise healthcare clients. No misconfiguration incidents post-deployment.
+                    99.99% telephony stability. Voice routing that met HIPAA requirements without adding
+                    operational complexity.
                   </p>
                 </div>
               </article>
 
               <article class="work-item">
                 <div class="work-item__content">
-                  <h3 class="work-item__title">Data Ingestion Automation</h3>
+                  <h3 class="work-item__title">15+ Hours/Week Eliminated Through S3 Ingestion Automation</h3>
                   <p class="work-item__desc">
-                    <strong>Context:</strong> Manual ingestion workflows slowing CX operations.<br>
-                    <strong>Approach:</strong> Implemented S3-based CSV ingestion workflows supporting 100k+ records per
-                    client and introduced automated validation logic.<br>
-                    <strong>Impact:</strong> Eliminated 15+ hours/week of manual processing, enabled
-                    CX ops to scale 3x without headcount growth, and achieved 100% ingestion accuracy.
+                    Manual CSV processing was a bottleneck that didn't scale. I built S3-based ingestion
+                    workflows handling 100k+ records per client with automated validation logic. The team
+                    stopped touching it. CX operations scaled 3x without adding headcount. Ingestion accuracy
+                    hit 100%.
                   </p>
                 </div>
               </article>
@@ -466,8 +414,8 @@
     <div class="container">
       <div class="philosophy-block reveal" style="--stagger: 0">
         <p class="philosophy__text">
-          I don't just understand how integrations work. <br>
-          <span class="philosophy__emphasis">I understand how they fail.</span>
+          The part nobody talks about is what happens when it breaks.<br>
+          <span class="philosophy__emphasis">That's the part I've always paid attention to.</span>
         </p>
       </div>
     </div>
@@ -528,7 +476,7 @@
           </a>
         </div>
         <p class="availability__notation">
-          GitHub repositories reflect ongoing AI-assisted development and continuous technical learning.
+          Open to new opportunities.
         </p>
       </div>
     </div>
