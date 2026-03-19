@@ -237,6 +237,69 @@ window.addEventListener('load', function () {
         document.querySelectorAll('.cap-card').forEach(el => el.classList.add('is-visible'));
         document.querySelectorAll('.work-item').forEach(el => el.classList.add('is-visible'));
 
+        // ---- Hero word-split drift entrance ----
+        (function initHeroNarrative() {
+            const nameEl     = document.querySelector('.hero__name');
+            const subtitleEl = document.querySelector('.hero__subtitle');
+            const actionsEl  = document.querySelector('.hero__actions');
+            if (!nameEl) return;
+
+            // Split text nodes into word spans; preserve child elements (em, etc.)
+            const wordSpans = [];
+            Array.from(nameEl.childNodes).forEach(node => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const words = node.textContent.trim().split(/\s+/).filter(Boolean);
+                    words.forEach((word) => {
+                        const span = document.createElement('span');
+                        span.textContent = word;
+                        span.style.display = 'inline-block';
+                        span.style.marginRight = '0.28em';
+                        wordSpans.push(span);
+                        node.before(span);
+                    });
+                    node.remove();
+                }
+                // element nodes (em) stay in place — they animate as a unit below
+            });
+
+            const emEl = nameEl.querySelector('em');
+
+            // Set starting state — container visible, words/em start hidden
+            gsap.set(nameEl, { opacity: 1 });
+            gsap.set(wordSpans, { opacity: 0, y: 10 });
+            if (emEl) gsap.set(emEl, { opacity: 0, y: 10 });
+            if (subtitleEl) gsap.set(subtitleEl, { opacity: 0, y: 8 });
+            if (actionsEl)  gsap.set(actionsEl,  { opacity: 0, y: 8 });
+
+            // Animate
+            const allWordEls = emEl ? [...wordSpans, emEl] : wordSpans;
+            const tl = gsap.timeline({ delay: 0.1 });
+
+            tl.to(allWordEls, {
+                opacity: 1,
+                y: 0,
+                duration: 0.65,
+                ease: 'power3.out',
+                stagger: 0.08,
+            });
+
+            if (subtitleEl) {
+                tl.to(subtitleEl, {
+                    opacity: 1, y: 0,
+                    duration: 0.7,
+                    ease: 'power3.out',
+                }, '-=0.3');
+            }
+
+            if (actionsEl) {
+                tl.to(actionsEl, {
+                    opacity: 1, y: 0,
+                    duration: 0.65,
+                    ease: 'power3.out',
+                }, '-=0.4');
+            }
+        })();
+
         // --- Model list items: horizontal slide-in stagger ---
         const modelItems = document.querySelectorAll('#model .model__list li');
         if (modelItems.length) {
