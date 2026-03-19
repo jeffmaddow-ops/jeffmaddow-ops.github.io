@@ -438,21 +438,26 @@ window.addEventListener('load', function () {
             });
         }
 
-        // --- Impact list items: staggered fade ---
-        const impactItems = document.querySelectorAll('#impact .model__list li');
-        if (impactItems.length) {
-            gsap.set(impactItems, { opacity: 0 });
+        // --- Impact paragraphs: staggered drift ---
+        const impactContent = document.querySelector('.impact__content');
+        const impactParas   = document.querySelectorAll('.impact__content p');
+
+        if (impactContent) {
+            gsap.set(impactContent, { opacity: 1 });
+        }
+        if (impactParas.length) {
+            gsap.set(impactParas, { opacity: 0, y: 8 });
             ScrollTrigger.create({
                 trigger: '#impact',
-                start: 'top 70%',
+                start: 'top 72%',
                 once: true,
                 onEnter: () => {
-                    gsap.to(impactItems, {
-                        opacity: 1,
-                        duration: 0.3,
-                        ease: 'power1.out',
-                        stagger: 0.05,
-                        delay: 0.2,
+                    gsap.to(impactParas, {
+                        opacity: 1, y: 0,
+                        duration: 0.65,
+                        ease: 'power3.out',
+                        stagger: 0.15,
+                        delay: 0.1,
                     });
                 },
             });
