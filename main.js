@@ -25,8 +25,8 @@ window.addEventListener('load', function () {
        ========================================================== */
 
     function initSite() {
+        initNarrative();        // must be first — suppresses reveals before ScrollReveal claims them
         initScrollReveal();
-        initNarrative();
         initScrollytelling();
         initNavScroll();
         initSmoothScroll();
@@ -222,6 +222,21 @@ window.addEventListener('load', function () {
         if (prefersReducedMotion) return;
         if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
+        // Suppress reveal class on elements GSAP will own fully.
+        // is-visible pre-sets opacity:1/transform:none via CSS; gsap.set() then
+        // immediately writes inline opacity:0 which wins over the class.
+        [
+            '.hero__name',
+            '.hero__subtitle',
+            '.hero__actions',
+            '.model__content',
+            '.impact__content',
+        ].forEach(sel => {
+            document.querySelectorAll(sel).forEach(el => el.classList.add('is-visible'));
+        });
+        document.querySelectorAll('.cap-card').forEach(el => el.classList.add('is-visible'));
+        document.querySelectorAll('.work-item').forEach(el => el.classList.add('is-visible'));
+
         // --- Model list items: horizontal slide-in stagger ---
         const modelItems = document.querySelectorAll('#model .model__list li');
         if (modelItems.length) {
@@ -257,6 +272,82 @@ window.addEventListener('load', function () {
                         ease: 'power1.out',
                         stagger: 0.06,
                         delay: 0.25,
+                    });
+                },
+            });
+        }
+
+        // --- Capability cards: staggered fade + rise ---
+        const capCards = document.querySelectorAll('.cap-card');
+        if (capCards.length) {
+            gsap.set(capCards, { opacity: 0, y: 24, scale: 0.96 });
+            ScrollTrigger.create({
+                trigger: '.cap-grid',
+                start: 'top 78%',
+                once: true,
+                onEnter: () => {
+                    gsap.to(capCards, {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 0.55,
+                        ease: 'power2.out',
+                        stagger: 0.08,
+                        delay: 0.1,
+                    });
+                },
+            });
+        }
+
+        // --- Architecture layers: sequential marker + content reveal ---
+        const archLayers = document.querySelectorAll('.arch-layer');
+        if (archLayers.length) {
+            archLayers.forEach(layer => {
+                gsap.set(layer, { opacity: 0, x: -16 });
+                const lineEl = layer.querySelector('.arch-layer__line');
+                if (lineEl) gsap.set(lineEl, { scaleY: 0, transformOrigin: 'top center' });
+                const numberEl = layer.querySelector('.arch-layer__number');
+                if (numberEl) gsap.set(numberEl, { scale: 0.6, opacity: 0 });
+            });
+            ScrollTrigger.create({
+                trigger: '.arch-layers',
+                start: 'top 76%',
+                once: true,
+                onEnter: () => {
+                    archLayers.forEach((layer, i) => {
+                        const delay = i * 0.14;
+
+                        // Number marker pop-in
+                        const numberEl = layer.querySelector('.arch-layer__number');
+                        if (numberEl) {
+                            gsap.to(numberEl, {
+                                scale: 1,
+                                opacity: 1,
+                                duration: 0.4,
+                                ease: 'back.out(1.7)',
+                                delay: delay,
+                            });
+                        }
+
+                        // Content slide-in
+                        gsap.to(layer, {
+                            opacity: 1,
+                            x: 0,
+                            duration: 0.5,
+                            ease: 'power2.out',
+                            delay: delay + 0.06,
+                        });
+
+                        // Vertical connector line draw
+                        const lineEl = layer.querySelector('.arch-layer__line');
+                        if (lineEl) {
+                            gsap.to(lineEl, {
+                                scaleY: 1,
+                                duration: 0.5,
+                                ease: 'power2.out',
+                                delay: delay + 0.3,
+                            });
+                        }
                     });
                 },
             });
