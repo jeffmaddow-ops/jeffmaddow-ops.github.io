@@ -315,6 +315,34 @@ img {
         var(--bg-primary);
 }
 
+/* Decorative photo layer — centered, flipped, masked to atmosphere */
+.hero__bg-photo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scaleX(-1);
+    height: 100%;
+    width: auto;
+    max-width: none;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.22;
+    mix-blend-mode: screen;
+    mask-image: radial-gradient(
+        ellipse 52% 62% at 50% 48%,
+        black 10%,
+        rgba(0,0,0,0.6) 40%,
+        transparent 70%
+    );
+    -webkit-mask-image: radial-gradient(
+        ellipse 52% 62% at 50% 48%,
+        black 10%,
+        rgba(0,0,0,0.6) 40%,
+        transparent 70%
+    );
+}
+
 /* Grid lines — not used */
 .hero__bg-lines {
     display: none;
