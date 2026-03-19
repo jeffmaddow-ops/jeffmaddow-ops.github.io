@@ -364,10 +364,10 @@ window.addEventListener('load', function () {
         // --- Capability cards: stagger with rotateX settle ---
         const capCards = document.querySelectorAll('.cap-card');
         if (capCards.length) {
-            gsap.set(capCards, { opacity: 0, y: 20, rotateX: 4, scale: 0.97 });
+            gsap.set(capCards, { opacity: 0, y: 14, rotateX: 3, scale: 0.97 });
             ScrollTrigger.create({
                 trigger: '.cap-grid',
-                start: 'top 78%',
+                start: 'top 82%',
                 once: true,
                 onEnter: () => {
                     gsap.to(capCards, {
@@ -375,10 +375,9 @@ window.addEventListener('load', function () {
                         y: 0,
                         rotateX: 0,
                         scale: 1,
-                        duration: 0.65,
-                        ease: 'power2.out',
-                        stagger: 0.08,
-                        delay: 0.1,
+                        duration: 0.38,
+                        ease: 'power4.out',
+                        stagger: 0.05,
                     });
                 },
             });
