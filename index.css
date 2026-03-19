@@ -42,7 +42,7 @@
     --text-3xl: 2rem;
     --text-4xl: 2.75rem;
     --text-5xl: 3.5rem;
-    --text-hero: clamp(2.25rem, 4.5vw, 3.75rem);
+    --text-hero: clamp(3.0rem, 5.5vw, 5rem);
 
     /* Spacing (4px base) */
     --space-xs: 4px;
@@ -2035,7 +2035,7 @@ img {
     }
 
     .hero__name {
-        font-size: clamp(2rem, 6vw, 3rem);
+        font-size: clamp(2.4rem, 6vw, 3.8rem);
     }
 
     .projects__grid {
@@ -2060,7 +2060,7 @@ img {
     }
 
     .hero__name {
-        font-size: clamp(2rem, 10vw, 3rem);
+        font-size: clamp(2.4rem, 10vw, 3.8rem);
         letter-spacing: 0.08em;
     }
 
