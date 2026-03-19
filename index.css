@@ -38,8 +38,8 @@
     --text-base: 1rem;
     --text-lg: 1.125rem;
     --text-xl: 1.25rem;
-    --text-2xl: 1.5rem;
-    --text-3xl: 2rem;
+    --text-2xl: 1.65rem;
+    --text-3xl: 2.2rem;
     --text-4xl: 2.75rem;
     --text-5xl: 3.5rem;
     --text-hero: clamp(3.0rem, 5.5vw, 5rem);
@@ -772,7 +772,7 @@ img {
 
 .metric-row__label {
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: 0.74rem;
     letter-spacing: 0.20em;
     text-transform: uppercase;
     color: var(--text-secondary);
@@ -782,7 +782,7 @@ img {
 
 .metric-row__context {
     font-family: var(--font-body);
-    font-size: var(--text-sm);
+    font-size: 0.95rem;
     line-height: 1.65;
     color: var(--text-tertiary);
     max-width: 52ch;
