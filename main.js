@@ -388,7 +388,7 @@ window.addEventListener('load', function () {
         const archLayers = document.querySelectorAll('.arch-layer');
         if (archLayers.length) {
             archLayers.forEach(layer => {
-                gsap.set(layer, { opacity: 0, x: -16 });
+                gsap.set(layer, { opacity: 0, x: -8 });
                 const lineEl = layer.querySelector('.arch-layer__line');
                 if (lineEl) gsap.set(lineEl, { scaleY: 0, transformOrigin: 'top center' });
                 const numberEl = layer.querySelector('.arch-layer__number');
@@ -418,7 +418,7 @@ window.addEventListener('load', function () {
                         gsap.to(layer, {
                             opacity: 1,
                             x: 0,
-                            duration: 0.5,
+                            duration: 0.6,
                             ease: 'power2.out',
                             delay: delay + 0.06,
                         });
@@ -428,7 +428,7 @@ window.addEventListener('load', function () {
                         if (lineEl) {
                             gsap.to(lineEl, {
                                 scaleY: 1,
-                                duration: 0.5,
+                                duration: 0.6,
                                 ease: 'power2.out',
                                 delay: delay + 0.3,
                             });
