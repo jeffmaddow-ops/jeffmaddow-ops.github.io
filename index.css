@@ -100,6 +100,9 @@ body {
     font-weight: 400;
     line-height: 1.6;
     color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     /* Richer atmosphere — the glass panels blur these gradients for depth */
     background-color: var(--bg-primary);
     background-image:
@@ -856,10 +859,10 @@ img {
     width: 28px;
 }
 
-/* Section-title variant — larger, heavier, used for major section openers like Impact */
+/* Section-title variant — larger, used for major section openers */
 .editorial__heading--section {
     font-size: 1.05rem;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0.18em;
 }
 
@@ -2428,10 +2431,10 @@ img {
 
 .impl-capability__label {
     font-family: var(--font-mono);
-    font-size: var(--text-xs);
+    font-size: 0.72rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--text-tertiary);
+    color: var(--text-secondary);
 }
 
 .impl-capability__name {
@@ -2449,13 +2452,17 @@ img {
 }
 
 /* Flow pill toggle — inherits expand-toggle base, just needs margin override */
-.impl-card__header + .flow-toggle {
+.impl-card__header + .impl-flow-row {
     margin-top: calc(-1 * var(--space-lg));
 }
 
 .flow-toggle {
-    margin-top: 0;
-    margin-bottom: var(--space-lg);
+    margin: 0;
+    align-self: center;
+}
+
+.impl-stack {
+    align-self: center;
 }
 
 /* Flow modal */
@@ -2619,25 +2626,29 @@ img {
     flex-shrink: 0;
 }
 
+/* Flow row — button + built-with on one line */
+.impl-flow-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-lg);
+}
+
 /* Tech stack row */
 .impl-stack {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-sm);
-    padding-top: var(--space-lg);
-    padding-bottom: var(--space-lg);
-    border-top: 1px solid var(--border-subtle);
-    border-bottom: 1px solid var(--border-subtle);
-    margin-bottom: var(--space-lg);
 }
 
 .impl-stack__label {
     font-family: var(--font-mono);
-    font-size: var(--text-xs);
+    font-size: 0.72rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--text-tertiary);
+    color: var(--text-secondary);
     margin-right: var(--space-xs);
 }
 
@@ -2724,9 +2735,9 @@ img {
 
 .impl-example__label {
     font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    font-weight: 600;
-    letter-spacing: 0.14em;
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: var(--space-xs);
@@ -2762,6 +2773,8 @@ img {
     padding-bottom: 52px;   /* reserved space for controls */
     outline: none;
     width: 100%;
+    /* Clip translated cards so they don't cause horizontal page scroll on mobile */
+    overflow: hidden;
 }
 
 .crud-carousel__track {
@@ -2770,6 +2783,7 @@ img {
     height: 390px;          /* tall enough that 1.09× active card has clearance */
     perspective: 1600px;
     perspective-origin: 50% 38%;
+    overflow: hidden;
 }
 
 .crud-panel {
@@ -2940,6 +2954,16 @@ img {
 
     .impl-card {
         padding: var(--space-lg);
+    }
+
+    /* Tighter card spread on mobile — prevents overflow bleed beneath clip */
+    .crud-carousel__track {
+        height: 440px;
+    }
+
+    .crud-panel {
+        width: 200px;
+        margin-left: -100px;
     }
 }
 

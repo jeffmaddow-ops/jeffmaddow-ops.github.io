@@ -584,24 +584,49 @@ window.addEventListener('load', function () {
         });
     }
 
-    // ---- Hero Fade on Scroll (opacity only — no parallax) ----
+    // ---- Hero Scroll Response (subtle, not gimmicky) ----
     function initHeroFade() {
         if (prefersReducedMotion) return;
 
-        const hero = document.querySelector('.hero__content');
-        if (!hero) return;
+        const content  = document.querySelector('.hero__content');
+        const photo    = document.querySelector('.hero__bg-photo');
+        const canvas   = document.querySelector('.hero__bg-canvas');
+        const heroEl   = document.querySelector('.hero');
+        if (!content) return;
 
+        // Headline + subtitle fade and compress slightly
+        const headline = content.querySelector('.hero__headline, h1');
+        const ctaGroup = content.querySelector('.hero__cta, .cta-group');
+
+        const heroH = heroEl ? heroEl.offsetHeight : window.innerHeight;
         let ticking = false;
 
         window.addEventListener('scroll', () => {
-            if (!ticking) {
-                requestAnimationFrame(() => {
-                    const scrolled = window.scrollY;
-                    hero.style.opacity = Math.max(1 - scrolled / 600, 0);
-                    ticking = false;
-                });
-                ticking = true;
-            }
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+                const s = window.scrollY;
+                // Normalise 0→1 over the first 55% of hero height
+                const t = Math.min(s / (heroH * 0.55), 1);
+
+                // Content: fade + very subtle scale compress (1 → 0.97)
+                const contentOpacity = 1 - t * 0.85;
+                const contentScale   = 1 - t * 0.03;
+                content.style.opacity  = Math.max(contentOpacity, 0);
+                content.style.transform = `translateY(${-s * 0.08}px) scale(${contentScale})`;
+
+                // CTA fades a touch faster
+                if (ctaGroup) ctaGroup.style.opacity = Math.max(1 - t * 1.4, 0);
+
+                // Background photo drifts up gently (parallax-lite)
+                if (photo) photo.style.transform =
+                    `translateY(calc(-50% + ${s * 0.18}px)) scaleX(-1)`;
+
+                // Canvas shifts very slightly so it doesn't feel locked
+                if (canvas) canvas.style.transform = `translateY(${s * 0.06}px)`;
+
+                ticking = false;
+            });
         }, { passive: true });
     }
 

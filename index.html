@@ -30,7 +30,7 @@
   <meta name="twitter:title" content="Jeff Maddow — Enterprise SaaS Implementation & Solutions Engineering">
   <meta name="twitter:description" content="Enterprise implementation and solutions engineering leader specializing in SaaS integrations, production-scale deployments, and risk-aware delivery.">
   <meta name="twitter:image" content="https://jeffmaddow.vercel.app/og-image.png">
-  <link rel="stylesheet" href="index.css?v=6.0.8">
+  <link rel="stylesheet" href="index.css?v=6.1.6">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="main.js?v=6.0.0" defer></script>
@@ -120,7 +120,7 @@
     <div class="container">
       <div class="editorial-block reveal" style="--stagger: 0">
         <div class="profile-header">
-          <h2 class="editorial__heading">Professional Profile</h2>
+          <h2 class="editorial__heading editorial__heading--section">Professional Profile</h2>
         </div>
         <div class="editorial__body">
           <img src="jeff-photo-circular.png" alt="Jeff Maddow" class="profile-photo">
@@ -192,7 +192,7 @@
   <section class="operating-model section" id="model">
     <div class="container">
       <div class="editorial-block">
-        <h2 class="editorial__heading reveal" style="--stagger: 0">
+        <h2 class="editorial__heading editorial__heading--section reveal" style="--stagger: 0">
           How I Work
         </h2>
         <div class="model__content reveal" style="--stagger: 1">
@@ -216,7 +216,7 @@
   <section class="section" id="tech-work">
     <div class="container">
       <div class="editorial-block">
-        <h2 class="editorial__heading reveal" style="--stagger: 0">Integration Engineering</h2>
+        <h2 class="editorial__heading editorial__heading--section reveal" style="--stagger: 0">Integration Engineering</h2>
 
         <div class="impl-card reveal" style="--stagger: 1">
 
@@ -224,23 +224,23 @@
             <h3 class="impl-card__title">Enterprise Integration Readiness API</h3>
             <div class="impl-capability">
               <span class="impl-capability__label">Validation Service</span>
-              <span class="impl-capability__name">Enterprise Integration Readiness</span>
             </div>
-            <p class="impl-card__subtitle">Created a service that catches broken integrations before they 
-            hit production—validates credentials, tests webhooks, and flags bad data early.</p>
+            <p class="impl-card__subtitle">Created a service that catches broken integrations before they hit production.<br>Validates credentials, tests webhooks, and flags bad data early.</p>
           </div>
 
-          <button class="flow-toggle expand-toggle" id="flow-toggle" aria-expanded="false">
-            View Flow
-            <span class="expand-toggle__icon" aria-hidden="true">→</span>
-          </button>
+          <div class="impl-flow-row">
+            <button class="flow-toggle expand-toggle" id="flow-toggle" aria-expanded="false">
+              View Flow
+              <span class="expand-toggle__icon" aria-hidden="true">→</span>
+            </button>
 
-          <div class="impl-stack">
-            <span class="impl-stack__label">Built with</span>
-            <span class="tag-badge">Node.js</span>
-            <span class="tag-badge">Express</span>
-            <span class="tag-badge">REST API</span>
-            <span class="tag-badge">JSON</span>
+            <div class="impl-stack">
+              <span class="impl-stack__label">Built with</span>
+              <span class="tag-badge">Node.js</span>
+              <span class="tag-badge">Express</span>
+              <span class="tag-badge">REST API</span>
+              <span class="tag-badge">JSON</span>
+            </div>
           </div>
           <p class="impl-stack__desc">
             Try a live request below to see how the API validates and responds.
@@ -389,7 +389,7 @@ Authorization: Bearer &lt;token&gt;</pre>
   <section class="experience section integ-arch" id="experience">
     <div class="container">
       <div class="editorial-block">
-        <h2 class="editorial__heading reveal" style="--stagger: 0">Core Capabilities</h2>
+        <h2 class="editorial__heading editorial__heading--section reveal" style="--stagger: 0">Core Capabilities</h2>
         <div class="experience__content reveal" style="--stagger: 1">
           <h3 class="headline-display experience__lead">
             Integration design, delivery, and risk mitigation at enterprise scale
@@ -534,7 +534,7 @@ Authorization: Bearer &lt;token&gt;</pre>
   <!-- ===== PROOF POINTS ===== -->
   <section class="work section" id="work">
     <div class="container">
-      <h2 class="editorial__heading reveal" style="--stagger: 0">Proof Points</h2>
+      <h2 class="editorial__heading editorial__heading--section reveal" style="--stagger: 0">Proof Points</h2>
       <div class="work-editorial__list">
 
         <article class="work-item reveal" style="--stagger: 1">
@@ -563,7 +563,7 @@ Authorization: Bearer &lt;token&gt;</pre>
         <div class="leadership-expand reveal" style="--stagger: 3">
           <button id="leadership-toggle" class="expand-toggle" aria-expanded="false"
             aria-controls="leadership-collapsible">
-            More Wins <span class="expand-toggle__icon">→</span>
+            View More Outcomes <span class="expand-toggle__icon">→</span>
           </button>
 
           <div id="leadership-collapsible" class="collapsible-wrapper" aria-hidden="true"
@@ -792,7 +792,10 @@ Authorization: Bearer &lt;token&gt;</pre>
       let touchStartX = 0;
 
       // slot index 0-4 maps to relative positions -2,-1,0,+1,+2
-      const TX = [-380, -220,   0, 220, 380];
+      // Use tighter spread on mobile so translated cards don't overflow horizontally
+      const isMobile = () => window.innerWidth < 640;
+      const TX_D = [-380, -220,   0, 220, 380];
+      const TX_M = [-160,  -95,   0,  95, 160];
       const TZ = [ -70,  -40,  60, -40, -70];
       const RY = [ -22,  -14,   0,  14,  22];
       const SC = [0.74, 0.84,1.09,0.84, 0.74];
@@ -801,6 +804,7 @@ Authorization: Bearer &lt;token&gt;</pre>
 
       function go(idx) {
         active = (idx + COUNT) % COUNT;
+        const TX = isMobile() ? TX_M : TX_D;
         panels.forEach((p, i) => {
           const s = Math.max(-2, Math.min(2, i - active)) + 2;
           p.style.transform  = `translate3d(${TX[s]}px,0,${TZ[s]}px) rotateY(${RY[s]}deg) scale(${SC[s]})`;
