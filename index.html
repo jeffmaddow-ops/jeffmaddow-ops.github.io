@@ -14,10 +14,10 @@
   <meta name="msapplication-TileImage" content="apple-touch-icon.png">
   <meta name="msapplication-TileColor" content="#0f1117">
   <meta name="theme-color" content="#0f1117">
-  <link rel="stylesheet" href="index.css?v=5.3.8">
+  <link rel="stylesheet" href="index.css?v=6.0.1">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-  <script src="main.js?v=5.0.0" defer></script>
+  <script src="main.js?v=6.0.0" defer></script>
   <script>
 
     // Apply theme initialization to prevent flash
@@ -178,16 +178,16 @@
           How I Work
         </h2>
         <div class="model__content reveal" style="--stagger: 1">
-          <p class="body-large">
-            I approach every engagement with a bias toward risk identification.
-            Where most see a deployment, I see a set of assumptions that haven't been validated yet.
+          <p class="body-large" style="margin-bottom: 1.5rem;">
+            I start by assuming the plan is missing something important — and my job is to find it before production does.
           </p>
-          <ul class="model__list" style="margin-top: 2rem;">
-            <li><strong>Business alignment</strong> — translating objectives into defined scope, timelines, and clear
-              risk visibility.</li>
-            <li><strong>Technical implementation</strong> — designing and validating integrations end-to-end for
-              scalable, production-ready deployment.</li>
-            <li><strong>Production stability</strong> — identifying failure modes before they become incidents.</li>
+          <p style="margin-bottom: 2rem; color: var(--text-secondary); line-height: 1.75;">
+            Every project moves through the same basic pattern: get clear on what "good" looks like for the business, design an integration that can actually survive real traffic, then prove it under conditions that look like day 2, not just day 0.
+          </p>
+          <ul class="model__list">
+            <li><strong>Business alignment</strong> — Turn loose goals and RFP language into concrete scope, timelines, and visible risks so nobody is surprised at go-live.</li>
+            <li><strong>Technical implementation</strong> — Design and validate integrations end to end — auth, data flow, failure paths — so they're deployable, observable, and supportable.</li>
+            <li><strong>Production stability</strong> — Look for how it will fail, not just how it works in the happy path, and close those gaps before they turn into incidents.</li>
           </ul>
         </div>
       </div>
@@ -379,28 +379,216 @@ Authorization: Bearer &lt;token&gt;</pre>
           </h3>
           <p class="body-large">
             <span class="highlight">
-              A QA-first mindset shapes how I engage,
-              surfacing integration risk early, validating assumptions before they become incidents,
-              and keeping production stability as the constant measure of success.
+              I bring a QA-first mindset to every project: surface integration risk early, validate assumptions in something that looks like production, and keep stability as the thing that actually defines success.
             </span>
           </p>
-
-          <ul class="experience__list">
-            <li>Translate business and RFI/RFP requirements into scalable API configurations and integration
-              architecture</li>
-            <li>Validate OAuth, SAML, and webhook integrations in live environments to ensure secure, production-ready
-              deployment</li>
-            <li>Conduct structured log analysis and root cause investigations to identify integration and operational
-              risk early</li>
-            <li>Design Twilio SIP domain integrations and implement network security controls aligned with enterprise
-              requirements</li>
-            <li>Lead technical requirement mapping and stakeholder alignment across Sales, Product, and Engineering</li>
-            <li>Implement AI-assisted workflow automation, reducing configuration time by 60% while preserving system
-              integrity</li>
-          </ul>
-
         </div>
       </div>
+
+      <!-- Capability Cards Grid -->
+      <div class="cap-grid">
+
+        <div class="cap-card reveal" style="--stagger: 2">
+          <div class="cap-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16v16H4z"/>
+              <path d="M4 9h16"/>
+              <path d="M9 4v16"/>
+              <circle cx="6.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+              <path d="M12 14l2 2 3-4"/>
+            </svg>
+          </div>
+          <h4 class="cap-card__title">API Architecture & RFP Translation</h4>
+          <p class="cap-card__desc">Turn business goals and RFI/RFP language into concrete API designs, data flows, and integration architecture that can be implemented and supported.</p>
+        </div>
+
+        <div class="cap-card reveal" style="--stagger: 3">
+          <div class="cap-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="10" rx="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              <circle cx="12" cy="16" r="1.5"/>
+              <path d="M12 17.5V19"/>
+            </svg>
+          </div>
+          <h4 class="cap-card__title">Auth & Webhook Validation</h4>
+          <p class="cap-card__desc">Validate OAuth, SAML, and webhook integrations in live-like environments so auth, events, and data passing are ready for real traffic — not just a demo.</p>
+        </div>
+
+        <div class="cap-card reveal" style="--stagger: 4">
+          <div class="cap-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+              <path d="M14 2v6h6"/>
+              <path d="M8 13h8"/>
+              <path d="M8 17h5"/>
+              <circle cx="8" cy="13" r="0.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <h4 class="cap-card__title">Log Analysis & Root Cause</h4>
+          <p class="cap-card__desc">Use structured log analysis and root cause investigations to catch integration and operational risk before it shows up as a customer escalation.</p>
+        </div>
+
+        <div class="cap-card reveal" style="--stagger: 5">
+          <div class="cap-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              <path d="M14.05 2a9 9 0 0 1 7.95 8"/>
+              <path d="M14.05 6a5 5 0 0 1 3.95 4"/>
+            </svg>
+          </div>
+          <h4 class="cap-card__title">Twilio SIP & Network Security</h4>
+          <p class="cap-card__desc">Design and ship Twilio SIP domain integrations with network and security controls that pass enterprise review the first time.</p>
+        </div>
+
+        <div class="cap-card reveal" style="--stagger: 6">
+          <div class="cap-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h4 class="cap-card__title">Cross-Functional Alignment</h4>
+          <p class="cap-card__desc">Lead technical requirement mapping across Sales, Product, and Engineering so what's sold, scoped, and built stay aligned.</p>
+        </div>
+
+        <div class="cap-card reveal" style="--stagger: 7">
+          <div class="cap-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+              <circle cx="18" cy="5" r="3" fill="rgba(192,144,80,0.15)" stroke="currentColor"/>
+              <path d="M17.25 5l.5.5 1-1"/>
+            </svg>
+          </div>
+          <h4 class="cap-card__title">AI Workflow Automation</h4>
+          <p class="cap-card__desc">Implement workflow automation — including AI-assisted pieces where it makes sense — to cut configuration time while keeping guardrails in place.</p>
+        </div>
+
+      </div><!-- /cap-grid -->
+    </div>
+  </section>
+
+  <!-- ===== INTEGRATION ARCHITECTURE ===== -->
+  <section class="section integ-arch" id="integration-arch">
+    <div class="container">
+      <div class="editorial-block">
+        <h2 class="editorial__heading reveal" style="--stagger: 0">Integration Architecture</h2>
+        <div class="integ-arch__intro reveal" style="--stagger: 1">
+          <p class="body-large">
+            Every integration I design follows a layered validation model —
+            from business requirements down through security controls to production stability.
+            Each layer has a defined owner, a testable assertion, and a failure mode that I've planned for.
+          </p>
+        </div>
+      </div>
+
+      <!-- Architecture Layers -->
+      <div class="arch-layers">
+
+        <div class="arch-layer reveal" style="--stagger: 2">
+          <div class="arch-layer__marker">
+            <span class="arch-layer__number">01</span>
+            <div class="arch-layer__line" aria-hidden="true"></div>
+          </div>
+          <div class="arch-layer__content">
+            <div class="arch-layer__header">
+              <span class="arch-layer__tag">Discovery</span>
+              <h3 class="arch-layer__title">Business Layer</h3>
+            </div>
+            <p class="arch-layer__desc">
+              RFI/RFP analysis, stakeholder alignment, technical requirement mapping.
+              Translate business objectives into defined scope, integration constraints,
+              and risk visibility — before any code runs.
+            </p>
+            <div class="arch-layer__capabilities">
+              <span class="arch-layer__cap">Requirement Mapping</span>
+              <span class="arch-layer__cap">Scope Definition</span>
+              <span class="arch-layer__cap">Risk Assessment</span>
+              <span class="arch-layer__cap">Stakeholder Sync</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="arch-layer reveal" style="--stagger: 3">
+          <div class="arch-layer__marker">
+            <span class="arch-layer__number">02</span>
+            <div class="arch-layer__line" aria-hidden="true"></div>
+          </div>
+          <div class="arch-layer__content">
+            <div class="arch-layer__header">
+              <span class="arch-layer__tag">Configuration</span>
+              <h3 class="arch-layer__title">Integration Layer</h3>
+            </div>
+            <p class="arch-layer__desc">
+              API configuration, webhook design, data mapping, and SIP domain setup.
+              Every endpoint, payload schema, and callback URL is validated
+              end-to-end before it touches a production environment.
+            </p>
+            <div class="arch-layer__capabilities">
+              <span class="arch-layer__cap">API Design</span>
+              <span class="arch-layer__cap">Webhook Config</span>
+              <span class="arch-layer__cap">Data Mapping</span>
+              <span class="arch-layer__cap">SIP Routing</span>
+              <span class="arch-layer__cap">Postman Suites</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="arch-layer reveal" style="--stagger: 4">
+          <div class="arch-layer__marker">
+            <span class="arch-layer__number">03</span>
+            <div class="arch-layer__line" aria-hidden="true"></div>
+          </div>
+          <div class="arch-layer__content">
+            <div class="arch-layer__header">
+              <span class="arch-layer__tag">Validation</span>
+              <h3 class="arch-layer__title">Security Layer</h3>
+            </div>
+            <p class="arch-layer__desc">
+              OAuth and SAML flows validated in live environments.
+              IP ACL policies, credential rotation, and HIPAA-compliant
+              voice routing — tested under production conditions, not staging assumptions.
+            </p>
+            <div class="arch-layer__capabilities">
+              <span class="arch-layer__cap">OAuth / SAML</span>
+              <span class="arch-layer__cap">IP ACL Policies</span>
+              <span class="arch-layer__cap">HIPAA Controls</span>
+              <span class="arch-layer__cap">Credential Mgmt</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="arch-layer reveal" style="--stagger: 5">
+          <div class="arch-layer__marker">
+            <span class="arch-layer__number">04</span>
+            <div class="arch-layer__line" aria-hidden="true"></div>
+          </div>
+          <div class="arch-layer__content">
+            <div class="arch-layer__header">
+              <span class="arch-layer__tag">Stability</span>
+              <h3 class="arch-layer__title">Production Layer</h3>
+            </div>
+            <p class="arch-layer__desc">
+              Structured log analysis, automated QA gates, failure-mode testing,
+              and root cause investigation. Post-deployment monitoring that catches
+              regressions before they escalate — because every incident I've prevented
+              started as a log line someone else ignored.
+            </p>
+            <div class="arch-layer__capabilities">
+              <span class="arch-layer__cap">Log Analysis</span>
+              <span class="arch-layer__cap">Automated QA</span>
+              <span class="arch-layer__cap">Root Cause</span>
+              <span class="arch-layer__cap">SLA Monitoring</span>
+              <span class="arch-layer__cap">Incident Response</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /arch-layers -->
     </div>
   </section>
 
@@ -411,18 +599,18 @@ Authorization: Bearer &lt;token&gt;</pre>
         <span class="editorial__divider">⸻</span>
         <h2 class="editorial__heading reveal" style="--stagger: 0">Impact</h2>
         <div class="impact__content reveal" style="--stagger: 1">
-          <ul class="model__list">
-            <li>Executed 12 AWS migrations with <strong>zero downtime</strong></li>
-            <li>Improved deployment speed by <strong>70%</strong> through structured implementation</li>
-            <li>Reduced infrastructure costs by <strong>25%</strong> through architecture optimization</li>
-            <li>Reduced IVR configuration time by <strong>60%</strong> through automation and validation</li>
-            <li>Resolved <strong>90%</strong> of Tier 2 production escalations within SLA</li>
-            <li>Implemented S3-based CSV ingestion workflows supporting <strong>100k+ records</strong> per client</li>
-            <li>Supported <strong>150+</strong> enterprise customers</li>
-            <li>Maintained <strong>100%</strong> retention across managed accounts</li>
-            <li>Delivered enterprise implementations with <strong>zero customer complaints</strong> across complex,
-              evolving project scopes</li>
-          </ul>
+          <p class="body-large" style="margin-bottom: 1.5rem;">
+            Impact for me shows up in cleaner cutovers, fewer late-night escalations, and customers who stay.
+          </p>
+          <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.75;">
+            I've run <strong>12 AWS migrations with zero downtime</strong>, cut deployment time by <strong>70%</strong> by putting structure around implementation, and reduced infrastructure costs by <strong>25%</strong> through smarter architecture instead of overprovisioning.
+          </p>
+          <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.75;">
+            On the workflow side, I've cut IVR configuration time by <strong>60%</strong> with automation and validation, built S3-based CSV ingestion that reliably handles <strong>100k+ records</strong> per client, and resolved <strong>90%</strong> of Tier 2 production escalations within SLA.
+          </p>
+          <p style="color: var(--text-secondary); line-height: 1.75;">
+            Across <strong>150+ enterprise customers</strong>, that's translated into <strong>100% retention</strong> on the accounts I owned and enterprise implementations delivered with zero customer complaints — even when scope and requirements kept changing.
+          </p>
         </div>
       </div>
     </div>

@@ -463,20 +463,40 @@ window.addEventListener('load', function () {
             });
         }
 
-        // --- Contact links: simple staggered fade ---
+        // --- Proof Points: work items slide from left ---
+        const workItems = document.querySelectorAll('.work-editorial__list .work-item');
+        if (workItems.length) {
+            gsap.set(workItems, { opacity: 0, x: -10 });
+            ScrollTrigger.create({
+                trigger: '.work-editorial__list',
+                start: 'top 76%',
+                once: true,
+                onEnter: () => {
+                    gsap.to(workItems, {
+                        opacity: 1, x: 0,
+                        duration: 0.5,
+                        ease: 'power2.out',
+                        stagger: 0.1,
+                        delay: 0.1,
+                    });
+                },
+            });
+        }
+
+        // --- Connect links: drift up ---
         const contactLinks = document.querySelectorAll('#contact .contact__link');
         if (contactLinks.length) {
-            gsap.set(contactLinks, { opacity: 0 });
+            gsap.set(contactLinks, { opacity: 0, y: 10 });
             ScrollTrigger.create({
                 trigger: '#contact',
                 start: 'top 78%',
                 once: true,
                 onEnter: () => {
                     gsap.to(contactLinks, {
-                        opacity: 1,
-                        duration: 0.45,
-                        ease: 'power1.out',
-                        stagger: 0.1,
+                        opacity: 1, y: 0,
+                        duration: 0.55,
+                        ease: 'power2.out',
+                        stagger: 0.12,
                         delay: 0.2,
                     });
                 },
