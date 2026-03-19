@@ -361,10 +361,10 @@ window.addEventListener('load', function () {
             });
         }
 
-        // --- Capability cards: staggered fade + rise ---
+        // --- Capability cards: stagger with rotateX settle ---
         const capCards = document.querySelectorAll('.cap-card');
         if (capCards.length) {
-            gsap.set(capCards, { opacity: 0, y: 24, scale: 0.96 });
+            gsap.set(capCards, { opacity: 0, y: 20, rotateX: 4, scale: 0.97 });
             ScrollTrigger.create({
                 trigger: '.cap-grid',
                 start: 'top 78%',
@@ -373,8 +373,9 @@ window.addEventListener('load', function () {
                     gsap.to(capCards, {
                         opacity: 1,
                         y: 0,
+                        rotateX: 0,
                         scale: 1,
-                        duration: 0.55,
+                        duration: 0.65,
                         ease: 'power2.out',
                         stagger: 0.08,
                         delay: 0.1,
