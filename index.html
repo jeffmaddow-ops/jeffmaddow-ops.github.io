@@ -179,14 +179,14 @@
         </h2>
         <div class="model__content reveal" style="--stagger: 1">
           <p class="body-large" style="margin-bottom: 1.5rem;">
-            I start by assuming the plan is missing something important — and my job is to find it before production does.
+            I start by assuming the plan is missing something important and my job is to find it before production does.
           </p>
           <p style="margin-bottom: 2rem; color: var(--text-secondary); line-height: 1.75;">
             Every project moves through the same basic pattern: get clear on what "good" looks like for the business, design an integration that can actually survive real traffic, then prove it under conditions that look like day 2, not just day 0.
           </p>
           <ul class="model__list">
             <li><strong>Business alignment</strong> — Turn loose goals and RFP language into concrete scope, timelines, and visible risks so nobody is surprised at go-live.</li>
-            <li><strong>Technical implementation</strong> — Design and validate integrations end to end — auth, data flow, failure paths — so they're deployable, observable, and supportable.</li>
+            <li><strong>Technical implementation</strong> — Design and validate integrations end to end: auth, data flow, failure paths — so they're deployable, observable, and supportable.</li>
             <li><strong>Production stability</strong> — Look for how it will fail, not just how it works in the happy path, and close those gaps before they turn into incidents.</li>
           </ul>
         </div>
@@ -208,9 +208,8 @@
               <span class="impl-capability__label">Validation Service</span>
               <span class="impl-capability__name">Enterprise Integration Readiness</span>
             </div>
-            <p class="impl-card__subtitle">A validation service that tests enterprise SaaS integrations before go-live
-              by simulating login authentication, webhook events, and data validation to identify integration failures
-              early.</p>
+            <p class="impl-card__subtitle">Created a service that catches broken integrations before they 
+            hit production—validates credentials, tests webhooks, and flags bad data early.</p>
           </div>
 
           <button class="flow-toggle expand-toggle" id="flow-toggle" aria-expanded="false">
@@ -239,7 +238,7 @@
               Source ↗
             </a>
           </div>
-          <p class="impl-actions__note">** Free tier demo. Uses Redis and UptimeRobot to stay active, but may take a few seconds to wake.</p>
+          <p class="impl-actions__note">** Free tier demo. Uses Redis and UptimeRobot to stay active, but if my Robot is taking a nap it may take a few seconds to wake.</p>
 
         </div>
 
@@ -479,7 +478,7 @@ Authorization: Bearer &lt;token&gt;</pre>
         <h2 class="editorial__heading reveal" style="--stagger: 0">Integration Architecture</h2>
         <div class="integ-arch__intro reveal" style="--stagger: 1">
           <p class="body-large">
-            Every integration I design follows a layered validation model —
+            Every integration I design follows a layered validation model,
             from business requirements down through security controls to production stability.
             Each layer has a defined owner, a testable assertion, and a failure mode that I've planned for.
           </p>
@@ -626,7 +625,7 @@ Authorization: Bearer &lt;token&gt;</pre>
           <div class="work-item__content">
             <h3 class="work-item__title">150+ Enterprise Go-Lives, Zero Critical Failures</h3>
             <p class="work-item__desc">
-              Regulated SaaS environments with complex integration constraints — the kind where a misconfiguration
+              Regulated SaaS environments with complex integration constraints. The kind where a misconfiguration
               at go-live means a pharmacist can't access patient records. I ran technical discovery, mapped
               requirements to architecture, and owned the handoff from sales through production. We got from
               contract to live in 7 days. Retention was 100%. CSAT was 94%.
@@ -638,7 +637,7 @@ Authorization: Bearer &lt;token&gt;</pre>
           <div class="work-item__content">
             <h3 class="work-item__title">80% Fewer Production Incidents Through Automated QA</h3>
             <p class="work-item__desc">
-              The incidents weren't random — they were the result of manual validation with no clear ownership.
+              The incidents weren't random, they were the result of manual validation with no clear ownership.
               I built automated workflows and structured testing that caught failures before they became
               escalations. Zero-downtime deployments became the expectation, not the exception.
             </p>
