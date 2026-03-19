@@ -14,7 +14,7 @@
   <meta name="msapplication-TileImage" content="apple-touch-icon.png">
   <meta name="msapplication-TileColor" content="#0f1117">
   <meta name="theme-color" content="#0f1117">
-  <link rel="stylesheet" href="index.css?v=5.0.2">
+  <link rel="stylesheet" href="index.css?v=5.3.4">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="main.js?v=5.0.0" defer></script>
@@ -50,11 +50,11 @@
   <nav class="nav" id="nav">
     <div class="container nav__inner">
       <ul class="nav__links">
-        <li><a href="#about" class="nav__link">Profile</a></li>
-        <li><a href="#model" class="nav__link">How I Work</a></li>
-        <li><a href="#impact" class="nav__link">Impact</a></li>
-        <li><a href="#work" class="nav__link">Proof Points</a></li>
-        <li><a href="#contact" class="nav__link">Connect</a></li>
+        <li><a href="#about" class="nav__link">Profile<svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+        <li><a href="#model" class="nav__link">How I Work<svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+        <li><a href="#impact" class="nav__link">Impact<svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+        <li><a href="#work" class="nav__link">Proof Points<svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+        <li><a href="#contact" class="nav__link">Connect<svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
       </ul>
       <div class="nav__right">
         <a href="#hero" class="nav__logo">
@@ -80,7 +80,7 @@
       </h1>
 
       <!-- Subtitle -->
-      <p class="hero__subtitle reveal" style="--stagger: 2">
+      <p class="hero__subtitle reveal" style="--stagger: 2; opacity: 0.75">
         If you've had a go-live blow up at 2am, I'm the person you needed before it got there.
       </p>
 
@@ -243,26 +243,129 @@
 
         </div>
 
-        <div class="impl-example reveal" style="--stagger: 2">
-          <div class="impl-example__label">Try the API</div>
-          <p class="impl-example__desc">
-            The example below shows a simple request response confirming the API is running with a status of OK.</p>
-          <div class="impl-example__block">
-            <div><span class="impl-example__method">GET</span>&nbsp;<span class="impl-example__path">/health</span>
+      </div><!-- /editorial-block -->
+
+      <div class="impl-example reveal" style="--stagger: 2">
+          <div class="impl-example__label">CRUD Examples</div>
+          <p class="impl-example__desc">Four API endpoint patterns — Create, Read, Update, Delete. Click any card to bring it forward.</p>
+
+          <div class="crud-carousel">
+            <div class="crud-carousel__track" id="crudTrack">
+
+              <!-- POST — Create -->
+              <div class="crud-panel" data-index="0">
+                <div class="crud-panel__header">
+                  <span class="crud-badge crud-badge--post">POST</span>
+                  <span class="crud-panel__path">/users</span>
+                </div>
+                <div class="crud-panel__section">
+                  <div class="crud-panel__label">Request Body</div>
+                  <pre class="crud-panel__code">{
+  "name": "Alex Rivera",
+  "email": "alex@company.io",
+  "role": "admin"
+}</pre>
+                </div>
+                <div class="crud-panel__divider"></div>
+                <div class="crud-panel__section">
+                  <div class="crud-panel__label">Response <span class="crud-status crud-status--201">201 Created</span></div>
+                  <pre class="crud-panel__code">{
+  "id": 142,
+  "name": "Alex Rivera",
+  "email": "alex@company.io",
+  "role": "admin",
+  "created_at": "2026-03-18T09:41:22Z"
+}</pre>
+                </div>
+              </div>
+
+              <!-- GET — Read -->
+              <div class="crud-panel" data-index="1">
+                <div class="crud-panel__header">
+                  <span class="crud-badge crud-badge--get">GET</span>
+                  <span class="crud-panel__path">/users/142</span>
+                </div>
+                <div class="crud-panel__section">
+                  <div class="crud-panel__label">No body required</div>
+                  <pre class="crud-panel__code">GET /users/142
+Authorization: Bearer &lt;token&gt;</pre>
+                </div>
+                <div class="crud-panel__divider"></div>
+                <div class="crud-panel__section">
+                  <div class="crud-panel__label">Response <span class="crud-status crud-status--200">200 OK</span></div>
+                  <pre class="crud-panel__code">{
+  "id": 142,
+  "name": "Alex Rivera",
+  "email": "alex@company.io",
+  "role": "admin",
+  "created_at": "2026-03-18T09:41:22Z"
+}</pre>
+                </div>
+              </div>
+
+              <!-- PUT — Update -->
+              <div class="crud-panel" data-index="2">
+                <div class="crud-panel__header">
+                  <span class="crud-badge crud-badge--put">PUT</span>
+                  <span class="crud-panel__path">/users/142</span>
+                </div>
+                <div class="crud-panel__section">
+                  <div class="crud-panel__label">Request Body</div>
+                  <pre class="crud-panel__code">{
+  "email": "alex.rivera@newdomain.io",
+  "role": "superadmin"
+}</pre>
+                </div>
+                <div class="crud-panel__divider"></div>
+                <div class="crud-panel__section">
+                  <div class="crud-panel__label">Response <span class="crud-status crud-status--200">200 OK</span></div>
+                  <pre class="crud-panel__code">{
+  "id": 142,
+  "name": "Alex Rivera",
+  "email": "alex.rivera@newdomain.io",
+  "role": "superadmin",
+  "updated_at": "2026-03-18T11:05:44Z"
+}</pre>
+                </div>
+              </div>
+
+              <!-- DELETE — Remove -->
+              <div class="crud-panel" data-index="3">
+                <div class="crud-panel__header">
+                  <span class="crud-badge crud-badge--delete">DELETE</span>
+                  <span class="crud-panel__path">/users/142</span>
+                </div>
+                <div class="crud-panel__section">
+                  <div class="crud-panel__label">No body required</div>
+                  <pre class="crud-panel__code">DELETE /users/142
+Authorization: Bearer &lt;token&gt;</pre>
+                </div>
+                <div class="crud-panel__divider"></div>
+                <div class="crud-panel__section">
+                  <div class="crud-panel__label">Response <span class="crud-status crud-status--204">204 No Content</span></div>
+                  <pre class="crud-panel__code">{
+  "message": "User 142 deleted.",
+  "deleted_at": "2026-03-18T11:12:09Z"
+}</pre>
+                </div>
+              </div>
+
             </div>
-            <br>
-            <div><span class="impl-example__key">Response</span></div>
-            <div>{</div>
-            <div>&nbsp;&nbsp;<span class="impl-example__key">"status"</span>:&nbsp;<span
-                class="impl-example__val">"ok"</span>,</div>
-            <div>&nbsp;&nbsp;<span class="impl-example__key">"service"</span>:&nbsp;<span
-                class="impl-example__val">"integration-readiness-api"</span></div>
-            <div>}</div>
+
+            <div class="crud-carousel__controls">
+              <button class="crud-arrow crud-arrow--prev" id="crudPrev" aria-label="Previous">&#8592;</button>
+              <div class="crud-carousel__dots" id="crudDots">
+                <button class="crud-dot" data-target="0" aria-label="POST"></button>
+                <button class="crud-dot" data-target="1" aria-label="GET"></button>
+                <button class="crud-dot" data-target="2" aria-label="PUT"></button>
+                <button class="crud-dot" data-target="3" aria-label="DELETE"></button>
+              </div>
+              <button class="crud-arrow crud-arrow--next" id="crudNext" aria-label="Next">&#8594;</button>
+            </div>
           </div>
         </div>
 
-      </div>
-    </div>
+    </div><!-- /container -->
   </section>
 
   <!-- ===== CORE CAPABILITIES ===== -->
@@ -571,6 +674,80 @@
   </footer>
 
   <script src="shader-hero.js" defer></script>
+  <script>
+    (function () {
+      const track    = document.getElementById('crudTrack');
+      if (!track) return;
+      const carousel = track.closest('.crud-carousel');
+      const panels   = Array.from(track.querySelectorAll('.crud-panel'));
+      const dots     = Array.from(document.querySelectorAll('.crud-dot'));
+      const btnPrev  = document.getElementById('crudPrev');
+      const btnNext  = document.getElementById('crudNext');
+      const COUNT    = panels.length;
+      let active     = 1;
+      let timer      = null;
+      let touchStartX = 0;
+
+      // slot index 0-4 maps to relative positions -2,-1,0,+1,+2
+      const TX = [-380, -220,   0, 220, 380];
+      const TZ = [ -70,  -40,  50, -40, -70];
+      const RY = [ -22,  -14,   0,  14,  22];
+      const SC = [0.76, 0.86,1.05,0.86, 0.76];
+      const OP = [0.28, 0.62,  1, 0.62, 0.28];
+      const ZI = [ 97,   98, 100,  98,  97];
+
+      function go(idx) {
+        active = (idx + COUNT) % COUNT;
+        panels.forEach((p, i) => {
+          const s = Math.max(-2, Math.min(2, i - active)) + 2;
+          p.style.transform  = `translate3d(${TX[s]}px,0,${TZ[s]}px) rotateY(${RY[s]}deg) scale(${SC[s]})`;
+          p.style.opacity    = OP[s];
+          p.style.zIndex     = ZI[s];
+          p.classList.toggle('is-active', i === active);
+        });
+        dots.forEach((d, i) => d.classList.toggle('is-active', i === active));
+      }
+
+      function startTimer() {
+        clearInterval(timer);
+        timer = setInterval(() => go(active + 1), 3800);
+      }
+
+      function manualNav(idx) {
+        go(idx);
+        startTimer(); // reset the clock on manual interaction
+      }
+
+      // Click panels
+      panels.forEach((p, i) => p.addEventListener('click', () => { if (i !== active) manualNav(i); }));
+      // Dot nav
+      dots.forEach(d => d.addEventListener('click', () => manualNav(+d.dataset.target)));
+      // Arrow buttons
+      btnPrev && btnPrev.addEventListener('click', () => manualNav(active - 1));
+      btnNext && btnNext.addEventListener('click', () => manualNav(active + 1));
+
+      // Pause on hover, resume on leave
+      carousel.addEventListener('mouseenter', () => clearInterval(timer));
+      carousel.addEventListener('mouseleave', startTimer);
+
+      // Touch / swipe
+      carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      carousel.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) manualNav(active + (dx < 0 ? 1 : -1));
+      });
+
+      // Keyboard
+      carousel.setAttribute('tabindex', '0');
+      carousel.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); manualNav(active - 1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); manualNav(active + 1); }
+      });
+
+      go(active);
+      startTimer();
+    })();
+  </script>
 
 </body>
 
