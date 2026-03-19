@@ -109,6 +109,8 @@ body {
         radial-gradient(ellipse 40% 30% at 30% 85%, rgba(60, 110, 100, 0.14) 0%, transparent 50%);
     background-attachment: fixed;
     overflow-x: hidden;
+    /* Prevent Chrome Android pull-to-refresh from triggering on the page */
+    overscroll-behavior-y: contain;
 }
 
 /* Grain texture overlay — adds subtle film grain to break synthetic smoothness */
@@ -852,6 +854,13 @@ img {
 
 .editorial__heading.is-visible::before {
     width: 28px;
+}
+
+/* Section-title variant — larger, heavier, used for major section openers like Impact */
+.editorial__heading--section {
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
 }
 
 /* About Editorial */

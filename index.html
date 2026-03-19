@@ -14,7 +14,7 @@
   <meta name="msapplication-TileImage" content="apple-touch-icon.png">
   <meta name="msapplication-TileColor" content="#0f1117">
   <meta name="theme-color" content="#0f1117">
-  <link rel="stylesheet" href="index.css?v=6.0.3">
+  <link rel="stylesheet" href="index.css?v=6.0.5">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="main.js?v=6.0.0" defer></script>
@@ -40,8 +40,8 @@
       <a href="#hero" class="scroll-progress__dot is-active" data-label="Intro" aria-label="Intro"></a>
       <a href="#about" class="scroll-progress__dot" data-label="Profile" aria-label="Profile"></a>
       <a href="#model" class="scroll-progress__dot" data-label="Framework" aria-label="Framework"></a>
-      <a href="#tech-work" class="scroll-progress__dot" data-label="Engineering" aria-label="Engineering"></a>
       <a href="#impact" class="scroll-progress__dot" data-label="Impact" aria-label="Impact"></a>
+      <a href="#work" class="scroll-progress__dot" data-label="Proof Points" aria-label="Proof Points"></a>
       <a href="#contact" class="scroll-progress__dot" data-label="Connect" aria-label="Connect"></a>
     </div>
   </nav>
@@ -367,8 +367,8 @@ Authorization: Bearer &lt;token&gt;</pre>
     </div><!-- /container -->
   </section>
 
-  <!-- ===== CORE CAPABILITIES ===== -->
-  <section class="experience section" id="experience">
+  <!-- ===== CORE CAPABILITIES + ARCHITECTURE ===== -->
+  <section class="experience section integ-arch" id="experience">
     <div class="container">
       <div class="editorial-block">
         <h2 class="editorial__heading reveal" style="--stagger: 0">Core Capabilities</h2>
@@ -380,107 +380,6 @@ Authorization: Bearer &lt;token&gt;</pre>
             <span class="highlight">
               I bring a QA-first mindset to every project: surface integration risk early, validate assumptions in something that looks like production, and keep stability as the thing that actually defines success.
             </span>
-          </p>
-        </div>
-      </div>
-
-      <!-- Capability Cards Grid -->
-      <div class="cap-grid">
-
-        <div class="cap-card reveal" style="--stagger: 2">
-          <div class="cap-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16v16H4z"/>
-              <path d="M4 9h16"/>
-              <path d="M9 4v16"/>
-              <circle cx="6.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-              <path d="M12 14l2 2 3-4"/>
-            </svg>
-          </div>
-          <h4 class="cap-card__title">API Architecture & RFP Translation</h4>
-          <p class="cap-card__desc">Turn business goals and RFI/RFP language into concrete API designs, data flows, and integration architecture that can be implemented and supported.</p>
-        </div>
-
-        <div class="cap-card reveal" style="--stagger: 3">
-          <div class="cap-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="11" width="18" height="10" rx="2"/>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-              <circle cx="12" cy="16" r="1.5"/>
-              <path d="M12 17.5V19"/>
-            </svg>
-          </div>
-          <h4 class="cap-card__title">Auth & Webhook Validation</h4>
-          <p class="cap-card__desc">Validate OAuth, SAML, and webhook integrations in live-like environments so auth, events, and data passing are ready for real traffic — not just a demo.</p>
-        </div>
-
-        <div class="cap-card reveal" style="--stagger: 4">
-          <div class="cap-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
-              <path d="M14 2v6h6"/>
-              <path d="M8 13h8"/>
-              <path d="M8 17h5"/>
-              <circle cx="8" cy="13" r="0.5" fill="currentColor" stroke="none"/>
-            </svg>
-          </div>
-          <h4 class="cap-card__title">Log Analysis & Root Cause</h4>
-          <p class="cap-card__desc">Use structured log analysis and root cause investigations to catch integration and operational risk before it shows up as a customer escalation.</p>
-        </div>
-
-        <div class="cap-card reveal" style="--stagger: 5">
-          <div class="cap-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-              <path d="M14.05 2a9 9 0 0 1 7.95 8"/>
-              <path d="M14.05 6a5 5 0 0 1 3.95 4"/>
-            </svg>
-          </div>
-          <h4 class="cap-card__title">Twilio SIP & Network Security</h4>
-          <p class="cap-card__desc">Design and ship Twilio SIP domain integrations with network and security controls that pass enterprise review the first time.</p>
-        </div>
-
-        <div class="cap-card reveal" style="--stagger: 6">
-          <div class="cap-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <h4 class="cap-card__title">Cross-Functional Alignment</h4>
-          <p class="cap-card__desc">Lead technical requirement mapping across Sales, Product, and Engineering so what's sold, scoped, and built stay aligned.</p>
-        </div>
-
-        <div class="cap-card reveal" style="--stagger: 7">
-          <div class="cap-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-              <path d="M2 17l10 5 10-5"/>
-              <path d="M2 12l10 5 10-5"/>
-              <circle cx="18" cy="5" r="3" fill="rgba(192,144,80,0.15)" stroke="currentColor"/>
-              <path d="M17.25 5l.5.5 1-1"/>
-            </svg>
-          </div>
-          <h4 class="cap-card__title">AI Workflow Automation</h4>
-          <p class="cap-card__desc">Implement workflow automation — including AI-assisted pieces where it makes sense — to cut configuration time while keeping guardrails in place.</p>
-        </div>
-
-      </div><!-- /cap-grid -->
-    </div>
-  </section>
-
-  <!-- ===== INTEGRATION ARCHITECTURE ===== -->
-  <section class="section integ-arch" id="integration-arch">
-    <div class="container">
-      <div class="editorial-block">
-        <h2 class="editorial__heading reveal" style="--stagger: 0">Integration Architecture</h2>
-        <div class="integ-arch__intro reveal" style="--stagger: 1">
-          <p class="body-large">
-            Every integration I design follows a layered validation model,
-            from business requirements down through security controls to production stability.
-            Each layer has a defined owner, a testable assertion, and a failure mode that I've planned for.
           </p>
         </div>
       </div>
@@ -595,8 +494,7 @@ Authorization: Bearer &lt;token&gt;</pre>
   <section class="impact section" id="impact">
     <div class="container">
       <div class="editorial-block">
-        <span class="editorial__divider">⸻</span>
-        <h2 class="editorial__heading reveal" style="--stagger: 0">Impact</h2>
+        <h2 class="editorial__heading editorial__heading--section reveal" style="--stagger: 0">Impact</h2>
         <div class="impact__content reveal" style="--stagger: 1">
           <p class="body-large" style="margin-bottom: 1.5rem;">
             Impact for me shows up in cleaner cutovers, fewer late-night escalations, and customers who stay.
@@ -608,7 +506,7 @@ Authorization: Bearer &lt;token&gt;</pre>
             On the workflow side, I've cut IVR configuration time by <strong>60%</strong> with automation and validation, built S3-based CSV ingestion that reliably handles <strong>100k+ records</strong> per client, and resolved <strong>90%</strong> of Tier 2 production escalations within SLA.
           </p>
           <p style="color: var(--text-secondary); line-height: 1.75;">
-            Across <strong>150+ enterprise customers</strong>, that's translated into <strong>100% retention</strong> on the accounts I owned and enterprise implementations delivered with zero customer complaints — even when scope and requirements kept changing.
+            Across those accounts, that's translated into <strong>100% retention</strong> on the accounts I owned and enterprise implementations delivered with zero customer complaints — even when scope and requirements kept changing.
           </p>
         </div>
       </div>
