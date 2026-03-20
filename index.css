@@ -873,6 +873,8 @@ img {
 
 .profile-header {
     margin-bottom: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .profile-photo {

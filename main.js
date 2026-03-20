@@ -57,7 +57,7 @@ window.addEventListener('load', function () {
                         }
                     });
                 },
-                { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+                { threshold: 0.05, rootMargin: '0px 0px 200px 0px' }
             );
             document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
             return;
@@ -68,7 +68,7 @@ window.addEventListener('load', function () {
         document.querySelectorAll('.reveal').forEach((el) => {
             ScrollTrigger.create({
                 trigger: el,
-                start: 'top 86%',
+                start: 'top 94%',
                 once: true,
                 onEnter: () => el.classList.add('is-visible'),
             });
@@ -107,11 +107,11 @@ window.addEventListener('load', function () {
 
             ScrollTrigger.create({
                 trigger: '.metrics-editorial',
-                start: 'top 76%',
+                start: 'top 94%',
                 once: true,
                 onEnter: function () {
                     rows.forEach(function (row, i) {
-                        var delay = i * 0.11;
+                        var delay = i * 0.08;
 
                         // Row slide in
                         gsap.to(row, {
@@ -147,7 +147,7 @@ window.addEventListener('load', function () {
                             var counter = { val: 0 };
                             gsap.to(counter, {
                                 val: rawNum,
-                                duration: 0.85,
+                                duration: 0.6,
                                 ease: 'power2.out',
                                 delay: delay + 0.14,
                                 onStart: function () {
@@ -318,7 +318,7 @@ window.addEventListener('load', function () {
         if (modelLead || modelItems.length) {
             ScrollTrigger.create({
                 trigger: '#model',
-                start: 'top 72%',
+                start: 'top 92%',
                 once: true,
                 onEnter: () => {
                     if (modelLead) {
@@ -347,7 +347,7 @@ window.addEventListener('load', function () {
             gsap.set(expItems, { opacity: 0 });
             ScrollTrigger.create({
                 trigger: '#experience',
-                start: 'top 70%',
+                start: 'top 92%',
                 once: true,
                 onEnter: () => {
                     gsap.to(expItems, {
@@ -367,7 +367,9 @@ window.addEventListener('load', function () {
             gsap.set(capCards, { opacity: 0, y: 14, rotateX: 3, scale: 0.97 });
             ScrollTrigger.create({
                 trigger: '.cap-grid',
-                start: 'top 82%',
+                // Fire 200px before the grid enters the viewport so cards
+                // are already animating when the user's eyes land on them
+                start: 'top bottom+=200',
                 once: true,
                 onEnter: () => {
                     gsap.to(capCards, {
@@ -395,7 +397,7 @@ window.addEventListener('load', function () {
             });
             ScrollTrigger.create({
                 trigger: '.arch-layers',
-                start: 'top 76%',
+                start: 'top 92%',
                 once: true,
                 onEnter: () => {
                     archLayers.forEach((layer, i) => {
@@ -448,15 +450,14 @@ window.addEventListener('load', function () {
             gsap.set(impactParas, { opacity: 0, y: 8 });
             ScrollTrigger.create({
                 trigger: '#impact',
-                start: 'top 72%',
+                start: 'top 92%',
                 once: true,
                 onEnter: () => {
                     gsap.to(impactParas, {
                         opacity: 1, y: 0,
-                        duration: 0.65,
+                        duration: 0.35,
                         ease: 'power3.out',
-                        stagger: 0.15,
-                        delay: 0.1,
+                        stagger: 0.06,
                     });
                 },
             });
@@ -468,7 +469,7 @@ window.addEventListener('load', function () {
             gsap.set(workItems, { opacity: 0, x: -10 });
             ScrollTrigger.create({
                 trigger: '.work-editorial__list',
-                start: 'top 76%',
+                start: 'top 92%',
                 once: true,
                 onEnter: () => {
                     gsap.to(workItems, {
@@ -488,7 +489,7 @@ window.addEventListener('load', function () {
             gsap.set(contactLinks, { opacity: 0, y: 10 });
             ScrollTrigger.create({
                 trigger: '#contact',
-                start: 'top 78%',
+                start: 'top 92%',
                 once: true,
                 onEnter: () => {
                     gsap.to(contactLinks, {
@@ -508,7 +509,7 @@ window.addEventListener('load', function () {
             gsap.set(emphasis, { opacity: 0 });
             ScrollTrigger.create({
                 trigger: '#philosophy',
-                start: 'top 74%',
+                start: 'top 92%',
                 once: true,
                 onEnter: () => {
                     gsap.to(emphasis, {
@@ -594,8 +595,6 @@ window.addEventListener('load', function () {
         const heroEl   = document.querySelector('.hero');
         if (!content) return;
 
-        // Headline + subtitle fade and compress slightly
-        const headline = content.querySelector('.hero__headline, h1');
         const ctaGroup = content.querySelector('.hero__cta, .cta-group');
 
         const heroH = heroEl ? heroEl.offsetHeight : window.innerHeight;
