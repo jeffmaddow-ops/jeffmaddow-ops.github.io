@@ -12,20 +12,20 @@
 
 :root {
     /* Palette — Dark Editorial */
-    --bg-primary: #17171A;
-    --bg-secondary: #1E1E21;
-    --bg-elevated: #24242A;
-    --bg-editorial: #26262C;
-    --bg-surface: #24242A;
-    --bg-card: #24242A;
+    --bg-primary: #1C1C20;
+    --bg-secondary: #222226;
+    --bg-elevated: #28282F;
+    --bg-editorial: #2A2A31;
+    --bg-surface: #28282F;
+    --bg-card: #28282F;
     --accent: #C09050;
-    --accent-dim: rgba(192, 144, 80, 0.12);
-    --accent-glow: rgba(192, 144, 80, 0.06);
-    --text-primary: #EDE9E3;
-    --text-secondary: #A09890;
-    --text-tertiary: #585450;
-    --border-subtle: rgba(255, 255, 255, 0.07);
-    --border-hover: rgba(192, 144, 80, 0.28);
+    --accent-dim: rgba(192, 144, 80, 0.14);
+    --accent-glow: rgba(192, 144, 80, 0.08);
+    --text-primary: #F0EDE8;
+    --text-secondary: #B0A898;
+    --text-tertiary: #6A6560;
+    --border-subtle: rgba(255, 255, 255, 0.09);
+    --border-hover: rgba(192, 144, 80, 0.32);
 
     /* Typography */
     --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -106,10 +106,10 @@ body {
     /* Richer atmosphere — the glass panels blur these gradients for depth */
     background-color: var(--bg-primary);
     background-image:
-        radial-gradient(ellipse 80% 60% at 10% 15%, rgba(192, 144, 80, 0.26) 0%, transparent 60%),
-        radial-gradient(ellipse 65% 55% at 90% 80%, rgba(55, 80, 140, 0.22) 0%, transparent 58%),
-        radial-gradient(ellipse 50% 40% at 60% 45%, rgba(100, 65, 120, 0.15) 0%, transparent 55%),
-        radial-gradient(ellipse 40% 30% at 30% 85%, rgba(60, 110, 100, 0.14) 0%, transparent 50%);
+        radial-gradient(ellipse 80% 60% at 10% 15%, rgba(192, 144, 80, 0.34) 0%, transparent 62%),
+        radial-gradient(ellipse 65% 55% at 90% 80%, rgba(55, 80, 140, 0.28) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 60% 45%, rgba(100, 65, 120, 0.20) 0%, transparent 56%),
+        radial-gradient(ellipse 40% 30% at 30% 85%, rgba(60, 110, 100, 0.18) 0%, transparent 52%);
     background-attachment: fixed;
     overflow-x: hidden;
     /* Prevent Chrome Android pull-to-refresh from triggering on the page */
@@ -2866,6 +2866,20 @@ img {
     background: var(--border-subtle);
 }
 
+/* Explanation text zone — below the carousel, updates via JS on card change */
+.crud-explain {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    text-align: center;
+    max-width: 500px;
+    margin: var(--space-lg) auto 0;
+    min-height: 3.5em;
+    transition: opacity 0.2s var(--ease-out-quart);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+}
+
 .crud-badge {
     font-family: var(--font-mono);
     font-size: 0.6rem;
@@ -2928,24 +2942,32 @@ img {
 }
 
 .crud-arrow {
-    background: transparent;
-    border: 1px solid var(--border-subtle);
-    color: var(--text-tertiary);
-    width: 28px;
-    height: 28px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--text-secondary);
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.25s var(--ease-out-quart), border-color 0.25s var(--ease-out-quart);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+    transition: background 0.25s var(--ease-out-quart),
+                border-color 0.25s var(--ease-out-quart),
+                color 0.25s var(--ease-out-quart),
+                box-shadow 0.25s var(--ease-out-quart);
     flex-shrink: 0;
 }
 
 .crud-arrow:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(192, 144, 80, 0.45);
     color: var(--accent);
-    border-color: rgba(192, 144, 80, 0.35);
+    box-shadow: 0 2px 16px rgba(192, 144, 80, 0.18);
 }
 
 @media (max-width: 640px) {

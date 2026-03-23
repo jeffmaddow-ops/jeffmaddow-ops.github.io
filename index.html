@@ -30,7 +30,7 @@
   <meta name="twitter:title" content="Jeff Maddow — Enterprise SaaS Implementation & Solutions Engineering">
   <meta name="twitter:description" content="Enterprise implementation and solutions engineering leader specializing in SaaS integrations, production-scale deployments, and risk-aware delivery.">
   <meta name="twitter:image" content="https://jeffmaddow.vercel.app/og-image.png">
-  <link rel="stylesheet" href="index.css?v=6.1.6">
+  <link rel="stylesheet" href="index.css?v=6.2.0">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="main.js?v=6.0.0" defer></script>
@@ -270,7 +270,7 @@
             <div class="crud-carousel__track" id="crudTrack">
 
               <!-- POST — Create -->
-              <div class="crud-panel" data-index="0">
+              <div class="crud-panel" data-index="0" data-explain="Think of this like filling out a sign-up form. You send in someone's name, email, and role — the system creates a new account and sends back the profile with an ID and timestamp.">
                 <div class="crud-panel__header">
                   <span class="crud-badge crud-badge--post">POST</span>
                   <span class="crud-panel__path">/users</span>
@@ -297,7 +297,7 @@
               </div>
 
               <!-- GET — Read -->
-              <div class="crud-panel" data-index="1">
+              <div class="crud-panel" data-index="1" data-explain="Just looking someone up. You ask &quot;show me user #142&quot; and the server hands back everything it knows — no changes made, nothing sent in, just a peek at the data.">
                 <div class="crud-panel__header">
                   <span class="crud-badge crud-badge--get">GET</span>
                   <span class="crud-panel__path">/users/142</span>
@@ -321,7 +321,7 @@ Authorization: Bearer &lt;token&gt;</pre>
               </div>
 
               <!-- PUT — Update -->
-              <div class="crud-panel" data-index="2">
+              <div class="crud-panel" data-index="2" data-explain="Like editing a contact in your phone. You send the new details and the server swaps them in, confirming with the updated profile and a timestamp of when the change happened.">
                 <div class="crud-panel__header">
                   <span class="crud-badge crud-badge--put">PUT</span>
                   <span class="crud-panel__path">/users/142</span>
@@ -347,7 +347,7 @@ Authorization: Bearer &lt;token&gt;</pre>
               </div>
 
               <!-- DELETE — Remove -->
-              <div class="crud-panel" data-index="3">
+              <div class="crud-panel" data-index="3" data-explain="Exactly what it sounds like. You tell the server &quot;remove user #142&quot; and it's gone — confirmed with a timestamp. No profile returned because there's nothing left to show.">
                 <div class="crud-panel__header">
                   <span class="crud-badge crud-badge--delete">DELETE</span>
                   <span class="crud-panel__path">/users/142</span>
@@ -368,6 +368,9 @@ Authorization: Bearer &lt;token&gt;</pre>
               </div>
 
             </div>
+
+            <!-- Explanation zone — updates via JS when active card changes -->
+            <p class="crud-explain" id="crudExplain"></p>
 
             <div class="crud-carousel__controls">
               <button class="crud-arrow crud-arrow--prev" id="crudPrev" aria-label="Previous">&#8592;</button>
@@ -802,6 +805,8 @@ Authorization: Bearer &lt;token&gt;</pre>
       const OP = [0.22, 0.52,  1, 0.52, 0.22];
       const ZI = [ 97,   98, 100,  98,  97];
 
+      const explainEl = document.getElementById('crudExplain');
+
       function go(idx) {
         active = (idx + COUNT) % COUNT;
         const TX = isMobile() ? TX_M : TX_D;
@@ -812,8 +817,18 @@ Authorization: Bearer &lt;token&gt;</pre>
           p.style.zIndex     = ZI[s];
           p.classList.toggle('is-active', i === active);
         });
+        // Update the explanation zone below the carousel
+        if (explainEl) {
+          explainEl.style.opacity = '0';
+          setTimeout(() => {
+            explainEl.textContent = panels[active].dataset.explain || '';
+            explainEl.style.opacity = '1';
+          }, 180);
+        }
         dots.forEach((d, i) => d.classList.toggle('is-active', i === active));
       }
+
+      let userPaused = false;
 
       function startTimer() {
         clearInterval(timer);
@@ -822,7 +837,9 @@ Authorization: Bearer &lt;token&gt;</pre>
 
       function manualNav(idx) {
         go(idx);
-        startTimer(); // reset the clock on manual interaction
+        // Kill auto-advance completely — only a page scroll restarts it
+        clearInterval(timer);
+        userPaused = true;
       }
 
       // Click panels
@@ -833,9 +850,9 @@ Authorization: Bearer &lt;token&gt;</pre>
       btnPrev && btnPrev.addEventListener('click', () => manualNav(active - 1));
       btnNext && btnNext.addEventListener('click', () => manualNav(active + 1));
 
-      // Pause on hover, resume on leave
+      // Hover pause/resume — only when user hasn't taken manual control
       carousel.addEventListener('mouseenter', () => clearInterval(timer));
-      carousel.addEventListener('mouseleave', startTimer);
+      carousel.addEventListener('mouseleave', () => { if (!userPaused) startTimer(); });
 
       // Touch / swipe
       carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
@@ -850,6 +867,14 @@ Authorization: Bearer &lt;token&gt;</pre>
         if (e.key === 'ArrowLeft')  { e.preventDefault(); manualNav(active - 1); }
         if (e.key === 'ArrowRight') { e.preventDefault(); manualNav(active + 1); }
       });
+
+      // Page scroll is the ONLY thing that resumes auto-advance
+      window.addEventListener('scroll', () => {
+        if (userPaused) {
+          userPaused = false;
+          startTimer();
+        }
+      }, { passive: true });
 
       go(active);
       startTimer();
