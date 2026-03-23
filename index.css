@@ -110,7 +110,7 @@ body {
         radial-gradient(ellipse 65% 55% at 90% 80%, rgba(55, 80, 140, 0.28) 0%, transparent 60%),
         radial-gradient(ellipse 50% 40% at 60% 45%, rgba(100, 65, 120, 0.20) 0%, transparent 56%),
         radial-gradient(ellipse 40% 30% at 30% 85%, rgba(60, 110, 100, 0.18) 0%, transparent 52%);
-    background-attachment: fixed;
+    background-attachment: scroll;
     overflow-x: hidden;
     /* Prevent Chrome Android pull-to-refresh from triggering on the page */
     overscroll-behavior-y: contain;
@@ -306,7 +306,6 @@ img {
     position: relative;
     padding-top: clamp(140px, 20vh, 200px);
     padding-bottom: var(--space-3xl);
-    overflow: hidden;
 }
 
 /* WebGL shader canvas — replaces the background photo */
@@ -318,6 +317,9 @@ img {
     display: block;
     pointer-events: none;
     z-index: 1;
+    /* Dissolve deeply enough so there's absolutely 0 opacity well before the boundary */
+    mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
     /* CSS fallback gradient while WebGL loads or on unsupported browsers */
     background:
         radial-gradient(ellipse 80% 60% at 10% 15%, rgba(192, 144, 80, 0.22) 0%, transparent 60%),
@@ -361,17 +363,20 @@ img {
     display: none;
 }
 
-/* Gradient vignette — keeps hero text legible over the shader */
+/* Gradient vignette — keeps hero text legible, bleeds into next section */
 .hero::after {
     content: '';
     position: absolute;
     inset: 0;
+    /* Blend the hero perfectly without extending and creating a line */
     background:
-        radial-gradient(ellipse 120% 80% at 50% 100%, var(--bg-primary) 30%, transparent 70%),
-        radial-gradient(ellipse at 0% 0%, rgba(0,0,0,0.5) 0%, transparent 50%),
-        radial-gradient(ellipse at 100% 0%, rgba(0,0,0,0.4) 0%, transparent 50%);
+        linear-gradient(to top, var(--bg-primary) 0%, transparent 35%),
+        radial-gradient(ellipse at 0% 0%, rgba(0,0,0,0.45) 0%, transparent 48%),
+        radial-gradient(ellipse at 100% 0%, rgba(0,0,0,0.35) 0%, transparent 48%);
     pointer-events: none;
     z-index: 2;
+    mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
 }
 
 .hero__content {
