@@ -25,18 +25,24 @@ window.addEventListener('load', function () {
        ========================================================== */
 
     function initSite() {
-        initNarrative();        // must be first — suppresses reveals before ScrollReveal claims them
+        initNavToggle();
+        initNarrative();        // must be first
         initScrollReveal();
         initScrollytelling();
         initNavScroll();
         initSmoothScroll();
         initHeroFade();
+        initHeroParallax();
         initScrollProgress();
+
         initLeadershipToggle();
         initFlowToggle();
         initScrollTrigger();
         initIframeModal();
+        initCollapsibles();
     }
+
+
 
     // ---- Scroll Reveal (GSAP ScrollTrigger) ----
     function initScrollReveal() {
@@ -237,68 +243,55 @@ window.addEventListener('load', function () {
         document.querySelectorAll('.cap-card').forEach(el => el.classList.add('is-visible'));
         document.querySelectorAll('.work-item').forEach(el => el.classList.add('is-visible'));
 
-        // ---- Hero word-split drift entrance ----
+        // ---- Hero luxury entrance ----
         (function initHeroNarrative() {
-            const nameEl     = document.querySelector('.hero__name');
-            const subtitleEl = document.querySelector('.hero__subtitle');
+            const badgeEl    = document.querySelector('.hero__badge');
+            const titleEl    = document.querySelector('.hero__title');
+            const subtextEl  = document.querySelector('.hero__subtext');
             const actionsEl  = document.querySelector('.hero__actions');
-            if (!nameEl) return;
+            const visualEl   = document.querySelector('.hero__right');
+            
+            if (!titleEl) return;
 
-            // Split text nodes into word spans; preserve child elements (em, etc.)
-            const wordSpans = [];
-            Array.from(nameEl.childNodes).forEach(node => {
-                if (node.nodeType === Node.TEXT_NODE) {
-                    const words = node.textContent.trim().split(/\s+/).filter(Boolean);
-                    words.forEach((word) => {
-                        const span = document.createElement('span');
-                        span.textContent = word;
-                        span.style.display = 'inline-block';
-                        span.style.marginRight = '0.28em';
-                        wordSpans.push(span);
-                        node.before(span);
-                    });
-                    node.remove();
-                }
-                // element nodes (em) stay in place — they animate as a unit below
-            });
+            // Set starting state
+            gsap.set([badgeEl, titleEl, subtextEl, actionsEl], { opacity: 0, y: 20 });
+            gsap.set(visualEl, { opacity: 0, scale: 0.95, x: 20 });
 
-            const emEl = nameEl.querySelector('em');
+            const tl = gsap.timeline({ delay: 0.2 });
 
-            // Set starting state — container visible, words/em start hidden
-            gsap.set(nameEl, { opacity: 1 });
-            gsap.set(wordSpans, { opacity: 0, y: 10 });
-            if (emEl) gsap.set(emEl, { opacity: 0, y: 10 });
-            if (subtitleEl) gsap.set(subtitleEl, { opacity: 0, y: 8 });
-            if (actionsEl)  gsap.set(actionsEl,  { opacity: 0, y: 8 });
-
-            // Animate
-            const allWordEls = emEl ? [...wordSpans, emEl] : wordSpans;
-            const tl = gsap.timeline({ delay: 0.1 });
-
-            tl.to(allWordEls, {
+            tl.to(badgeEl, {
                 opacity: 1,
                 y: 0,
-                duration: 0.65,
-                ease: 'power3.out',
-                stagger: 0.08,
-            });
-
-            if (subtitleEl) {
-                tl.to(subtitleEl, {
-                    opacity: 1, y: 0,
-                    duration: 0.7,
-                    ease: 'power3.out',
-                }, '-=0.3');
-            }
-
-            if (actionsEl) {
-                tl.to(actionsEl, {
-                    opacity: 1, y: 0,
-                    duration: 0.65,
-                    ease: 'power3.out',
-                }, '-=0.4');
-            }
+                duration: 0.6,
+                ease: 'power3.out'
+            })
+            .to(titleEl, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power3.out'
+            }, '-=0.4')
+            .to(subtextEl, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power3.out'
+            }, '-=0.6')
+            .to(actionsEl, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power3.out'
+            }, '-=0.6')
+            .to(visualEl, {
+                opacity: 1,
+                scale: 1,
+                x: 0,
+                duration: 1.2,
+                ease: 'expo.out'
+            }, '-=1');
         })();
+
 
         // --- How I Work: lead paragraph + list items ---
         const modelContent = document.querySelector('#model .model__content');
@@ -585,17 +578,14 @@ window.addEventListener('load', function () {
         });
     }
 
-    // ---- Hero Scroll Response (subtle, not gimmicky) ----
+    // ---- Hero Scroll Response ----
     function initHeroFade() {
         if (prefersReducedMotion) return;
 
-        const content  = document.querySelector('.hero__content');
-        const photo    = document.querySelector('.hero__bg-photo');
-        const canvas   = document.querySelector('.hero__bg-canvas');
-        const heroEl   = document.querySelector('.hero');
-        if (!content) return;
-
-        const ctaGroup = content.querySelector('.hero__cta, .cta-group');
+        const leftCol   = document.querySelector('.hero__left');
+        const rightCol  = document.querySelector('.hero__right');
+        const heroEl    = document.querySelector('.hero');
+        if (!leftCol) return;
 
         const heroH = heroEl ? heroEl.offsetHeight : window.innerHeight;
         let ticking = false;
@@ -605,29 +595,72 @@ window.addEventListener('load', function () {
             ticking = true;
             requestAnimationFrame(() => {
                 const s = window.scrollY;
-                // Normalise 0→1 over the first 55% of hero height
-                const t = Math.min(s / (heroH * 0.55), 1);
+                const t = Math.min(s / (heroH * 0.6), 1);
 
-                // Content: fade + very subtle scale compress (1 → 0.97)
-                const contentOpacity = 1 - t * 0.85;
-                const contentScale   = 1 - t * 0.03;
-                content.style.opacity  = Math.max(contentOpacity, 0);
-                content.style.transform = `translateY(${-s * 0.08}px) scale(${contentScale})`;
+                // Fade and lift effect on scroll
+                const opacity = 1 - t * 0.9;
+                const yShift  = -s * 0.1;
 
-                // CTA fades a touch faster
-                if (ctaGroup) ctaGroup.style.opacity = Math.max(1 - t * 1.4, 0);
-
-                // Background photo drifts up gently (parallax-lite)
-                if (photo) photo.style.transform =
-                    `translateY(calc(-50% + ${s * 0.18}px)) scaleX(-1)`;
-
-                // Canvas shifts very slightly so it doesn't feel locked
-                if (canvas) canvas.style.transform = `translateY(${s * 0.06}px)`;
+                if (leftCol) {
+                    leftCol.style.opacity = Math.max(opacity, 0);
+                    leftCol.style.transform = `translateY(${yShift}px)`;
+                }
+                
+                if (rightCol) {
+                    rightCol.style.opacity = Math.max(opacity, 0);
+                    rightCol.style.transform = `translateY(${yShift * 0.5}px)`;
+                }
 
                 ticking = false;
             });
         }, { passive: true });
     }
+
+    // ---- Hero Interactive Parallax ----
+    function initHeroParallax() {
+        if (prefersReducedMotion) return;
+
+        const hero = document.querySelector('.hero');
+        const stack = document.querySelector('.visual-stack');
+        const cards = document.querySelectorAll('.glass-card');
+        const spheres = document.querySelectorAll('.sphere');
+        
+        if (!hero || !stack) return;
+
+        hero.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const { innerWidth, innerHeight } = window;
+            
+            // Calculate normalized mouse position (-1 to 1)
+            const x = (clientX / innerWidth - 0.5) * 2;
+            const y = (clientY / innerHeight - 0.5) * 2;
+
+            // Parallax for cards
+            cards.forEach((card, i) => {
+                const factor = (i + 1) * 15;
+                gsap.to(card, {
+                    x: x * factor,
+                    y: y * factor,
+                    rotateY: x * 5,
+                    rotateX: -y * 5,
+                    duration: 0.6,
+                    ease: 'power2.out'
+                });
+            });
+
+            // Parallax for spheres (slower)
+            spheres.forEach((sphere, i) => {
+                const factor = (i + 1) * 25;
+                gsap.to(sphere, {
+                    x: x * factor,
+                    y: y * factor,
+                    duration: 1,
+                    ease: 'power2.out'
+                });
+            });
+        });
+    }
+
 
     // ---- Scroll Progress Indicator ----
     function initScrollProgress() {
@@ -752,6 +785,24 @@ window.addEventListener('load', function () {
         });
     }
 
+
+
+    // ---- Generic Collapsibles ----
+    function initCollapsibles() {
+        document.querySelectorAll('[data-toggle]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-toggle');
+                const target = document.getElementById(targetId);
+                if (!target) return;
+
+                const isOpen = target.classList.toggle('is-open');
+                btn.classList.toggle('is-active', isOpen);
+                btn.setAttribute('aria-expanded', isOpen);
+            });
+        });
+    }
+
+
     // ---- Iframe Modal ----
     function initIframeModal() {
         const modal = document.getElementById('iframe-modal');
@@ -769,6 +820,7 @@ window.addEventListener('load', function () {
         const EMBED_BLOCKED = ['github.com', 'www.github.com'];
 
         function isBlocked(url) {
+
             try {
                 return EMBED_BLOCKED.includes(new URL(url).hostname);
             } catch (_) {
@@ -847,6 +899,51 @@ window.addEventListener('load', function () {
         if (!preloader) return;
         preloader.style.display = 'none';
     })();
+
+    /* ============================================================
+       NAV TOGGLE — Mobile hamburger menu
+       ============================================================ */
+
+    function initNavToggle() {
+        const toggle = document.getElementById('navToggle');
+        const nav = document.getElementById('nav');
+        const links = document.querySelector('.nav__links');
+
+        if (!toggle || !nav || !links) return;
+
+        toggle.addEventListener('click', () => {
+            const isOpen = nav.classList.toggle('is-open');
+            toggle.classList.toggle('is-active', isOpen);
+            links.classList.toggle('is-open', isOpen);
+        });
+
+        // Close when clicking a nav link
+        document.querySelectorAll('.nav__link').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('is-open');
+                toggle.classList.remove('is-active');
+                links.classList.remove('is-open');
+            });
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target)) {
+                nav.classList.remove('is-open');
+                toggle.classList.remove('is-active');
+                links.classList.remove('is-open');
+            }
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                nav.classList.remove('is-open');
+                toggle.classList.remove('is-active');
+                links.classList.remove('is-open');
+            }
+        });
+    }
 
     /* ============================================================
        BOOT

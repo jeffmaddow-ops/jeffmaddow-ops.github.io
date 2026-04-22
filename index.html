@@ -30,10 +30,10 @@
   <meta name="twitter:title" content="Jeff Maddow — Enterprise SaaS Implementation & Solutions Engineering">
   <meta name="twitter:description" content="Enterprise implementation and solutions engineering leader specializing in SaaS integrations, production-scale deployments, and risk-aware delivery.">
   <meta name="twitter:image" content="https://jeffmaddow.vercel.app/og-image.png">
-  <link rel="stylesheet" href="index.css?v=6.2.2">
+  <link rel="stylesheet" href="index.css?v=7.41.0">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-  <script src="main.js?v=6.0.0" defer></script>
+  <script src="main.js?v=6.4.0" defer></script>
   <script>
 
     // Apply theme initialization to prevent flash
@@ -54,13 +54,13 @@
   <nav class="scroll-progress" id="scroll-progress" aria-label="Section navigation">
     <div class="scroll-progress__inner">
       <a href="#hero" class="scroll-progress__dot is-active" data-label="Intro" aria-label="Intro"></a>
-      <a href="#about" class="scroll-progress__dot" data-label="Profile" aria-label="Profile"></a>
-      <a href="#model" class="scroll-progress__dot" data-label="Work" aria-label="Work"></a>
+      <a href="#glance" class="scroll-progress__dot" data-label="Glance" aria-label="Glance"></a>
       <a href="#tech-work" class="scroll-progress__dot" data-label="Integration" aria-label="Integration"></a>
-      <a href="#experience" class="scroll-progress__dot" data-label="Core" aria-label="Core"></a>
-      <a href="#impact" class="scroll-progress__dot" data-label="Impact" aria-label="Impact"></a>
-      <a href="#work" class="scroll-progress__dot" data-label="Proof Points" aria-label="Proof Points"></a>
+      <a href="#model" class="scroll-progress__dot" data-label="Operations" aria-label="Operations"></a>
+      <a href="#work" class="scroll-progress__dot" data-label="Impact" aria-label="Impact"></a>
       <a href="#contact" class="scroll-progress__dot" data-label="Connect" aria-label="Connect"></a>
+
+
     </div>
   </nav>
 
@@ -68,11 +68,14 @@
   <nav class="nav" id="nav">
     <div class="container nav__inner">
       <ul class="nav__links">
-        <li><a href="#about" class="nav__link">Profile<svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-        <li><a href="#model" class="nav__link">How I Work<svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-        <li><a href="#impact" class="nav__link">Impact<svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-        <li><a href="#work" class="nav__link">Proof Points<svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+        <li><a href="#glance" class="nav__link">Glance<svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+        <li><a href="#tech-work" class="nav__link">Integration<svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+        <li><a href="#model" class="nav__link">Operations<svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+        <li><a href="#work" class="nav__link">Impact<svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
         <li><a href="#contact" class="nav__link">Connect<svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+
+
+
       </ul>
       <div class="nav__right">
         <a href="#hero" class="nav__logo">
@@ -82,131 +85,112 @@
           <span class="nav__logo-name">Jeff Maddow</span>
         </a>
       </div>
+      <button class="nav__toggle" id="navToggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
+  
+
+
 
   <!-- ===== HERO ===== -->
   <header class="hero section" id="hero">
-    <canvas id="hero-canvas" class="hero__bg-canvas" aria-hidden="true"></canvas>
-    <img src="erkan-altas-2wHLQHP_j7c-unsplash.jpg" class="hero__bg-photo" alt="" aria-hidden="true">
-    <div class="hero__bg-lines" aria-hidden="true"></div>
-    <div class="container hero__content">
+    <div class="hero__bg-luxury"></div>
+    <div class="container hero__grid">
+      
+    <!-- LEFT COLUMN -->
 
-      <!-- Primary Statement -->
-      <h1 class="hero__name reveal" style="--stagger: 1">
-        <span>Enterprise SaaS Solutions <em>Engineer</em></span>
-      </h1>
+    <div class="hero__left">
 
-      <!-- Subtitle -->
-      <p class="hero__subtitle reveal" style="--stagger: 2; opacity: 0.70">
-        If you've had a go-live blow up at 2am, I'm the person you needed before it got there.
-      </p>
+      
 
-      <!-- Dual CTA Buttons -->
-      <div class="hero__actions reveal" style="--stagger: 4">
-        <a href="#contact" class="cta-button">
-          Contact
-          <span class="cta-button__arrow">→</span>
-        </a>
-        <a href="#work" class="cta-button cta-button--outline">
-          See The Work
-        </a>
+      <div class="hero__badge reveal" style="--stagger: 1;">
+
+        Enterprise SaaS
+
       </div>
-    </div>
-  </header>
 
-  <!-- ===== ABOUT ===== -->
-  <section class="about-editorial section" id="about">
+        <h1 class="hero__title reveal" style="--stagger: 1">
+          Solutions Engineer
+          <span class="hero__accent">Preventing Failure in Enterprise Go-Lives</span>
+        </h1>
+        <p class="hero__subtext reveal" style="--stagger: 2">
+
+         Replacing theoretical stability with operational certainty in high-stakes SaaS environments.
+        </p>
+
+        <div class="hero__actions reveal" style="--stagger: 3">
+          <a href="#work" class="btn btn--primary">View My Work</a>
+          <a href="#glance" class="btn btn--glass">At a Glance</a>
+        </div>
+
+
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+
+    <div class="hero__right">
+
+      <div class="hero__visual-frame"></div>
+
+      <div class="visual-stack">
+        <!-- Spheres -->
+        <div class="sphere sphere--hero parallax-layer" data-speed="0.06"></div>
+        <div class="sphere sphere--1 parallax-layer" data-speed="0.08"></div>
+        <div class="sphere sphere--2 parallax-layer" data-speed="0.05"></div>
+        
+        <!-- Glass Cards -->
+        <div class="glass-card glass-card--secondary parallax-layer" data-speed="0.04">
+          <div class="glass-card__ui">
+            <div class="ui-dot"></div>
+            <div class="ui-line" style="width: 40%;"></div>
+          </div>
+        </div>
+
+        <div class="glass-card glass-card--main parallax-layer" data-speed="0.1">
+          <div class="glass-card__ui">     
+            <div class="ui-header">
+              <div class="ui-circle"></div>
+              <div class="ui-text"></div>
+            </div>
+            <div class="ui-body">
+              <div class="ui-line"></div>
+              <div class="ui-line" style="width: 75%;"></div>
+              <div class="ui-line" style="width: 60%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</header>
+
+
+  <!-- ===== AT A GLANCE ===== -->
+  <section class="at-a-glance section" id="glance">
     <div class="container">
       <div class="editorial-block reveal" style="--stagger: 0">
-        <div class="profile-header">
-          <h2 class="editorial__heading editorial__heading--section">Professional Profile</h2>
-        </div>
-        <div class="editorial__body">
-          <img src="jeff-photo-circular.png" alt="Jeff Maddow" class="profile-photo">
-          <div class="editorial__text">
+        <h2 class="editorial__heading editorial__heading--section">At a Glance</h2>
+        <div class="glance-grid">
+          <div class="glance-profile">
             <p class="body-large">
-              I'm Jeff Maddow. One company, three names: ATEB, Omnicell, EnlivenHealth.
-              Implementation and integration across one of the most regulated SaaS environments.
-            </p>
-            <p class="body-large" style="margin-bottom: 0;">
-              I design and validate complex integrations, where a misconfiguration at go-live doesn’t
-              just break a workflow, it breaks customer trust. Everything is broken until it's tested.
+              Hi, I'm Jeff. An enterprise solutions engineer specializing in high-risk integrations. 
+              I design systems that hold under real conditions and prevent failures before they reach production.
             </p>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== METRICS EDITORIAL ===== -->
-  <section class="stats-grid section section--compact" id="stats">
-    <div class="container">
-      <div class="metrics-editorial reveal" style="--stagger: 0">
-
-        <div class="metric-row">
-          <div class="metric-row__number">7</div>
-          <div class="metric-row__divider" aria-hidden="true"></div>
-          <div class="metric-row__body">
-            <span class="metric-row__label">Days, Contract to Go-Live</span>
-            <p class="metric-row__context">Average time from signed contract to production go-live across enterprise
-              SaaS implementations — no runway required.</p>
+          <div class="glance-metrics">
+            <div class="glance-metric-item">150+ Enterprise Go-Lives</div>
+            <div class="glance-metric-item">0 Critical Failures at Scale</div>
+            <div class="glance-metric-item">7-Day Deployment Velocity</div>
           </div>
-        </div>
-
-        <div class="metric-row">
-          <div class="metric-row__number">12</div>
-          <div class="metric-row__divider" aria-hidden="true"></div>
-          <div class="metric-row__body">
-            <span class="metric-row__label">AWS Migrations</span>
-            <p class="metric-row__context">Led complex multi-tenant infrastructure migrations to AWS with zero downtime
-              and automated workflows.</p>
-          </div>
-        </div>
-
-        <div class="metric-row">
-          <div class="metric-row__number">200<span class="metric-row__suffix">+</span></div>
-          <div class="metric-row__divider" aria-hidden="true"></div>
-          <div class="metric-row__body">
-            <span class="metric-row__label">Postman Collections</span>
-            <p class="metric-row__context">Scripted comprehensive integration test suites and API monitoring flows used
-              by entire teams.</p>
-          </div>
-        </div>
-
-        <div class="metric-row">
-          <div class="metric-row__number">100<span class="metric-row__suffix">%</span></div>
-          <div class="metric-row__divider" aria-hidden="true"></div>
-          <div class="metric-row__body">
-            <span class="metric-row__label">Client Retention</span>
-            <p class="metric-row__context">Achieved top-tier client retention by delivering stable, predictable
-              production integrations within SLA scope.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== DELIVERY & ADVISORY FRAMEWORK ===== -->
-  <section class="operating-model section" id="model">
-    <div class="container">
-      <div class="editorial-block">
-        <h2 class="editorial__heading editorial__heading--section reveal" style="--stagger: 0">
-          How I Work
-        </h2>
-        <div class="model__content reveal" style="--stagger: 1">
-          <p class="body-large" style="margin-bottom: 1.5rem;">
-            I start by assuming the plan is missing something important and my job is to find it before production does.
-          </p>
-          <p style="margin-bottom: 2rem; color: var(--text-secondary); line-height: 1.75;">
-            Every project moves through the same basic pattern: get clear on what "good" looks like for the business, design an integration that can actually survive real traffic, then prove it under conditions that look like day 2, not just day 0.
-          </p>
-          <ul class="model__list">
-            <li><strong>Business alignment</strong> — Turn loose goals and RFP language into concrete scope, timelines, and visible risks so nobody is surprised at go-live.</li>
-            <li><strong>Technical implementation</strong> — Design and validate integrations end to end: auth, data flow, failure paths — so they're deployable, observable, and supportable.</li>
-            <li><strong>Production stability</strong> — Look for how it will fail, not just how it works in the happy path, and close those gaps before they turn into incidents.</li>
-          </ul>
         </div>
       </div>
     </div>
@@ -225,7 +209,7 @@
             <div class="impl-capability">
               <span class="impl-capability__label">Validation Service</span>
             </div>
-            <p class="impl-card__subtitle">Created a service that catches broken integrations before they hit production.<br>Validates credentials, tests webhooks, and flags bad data early.</p>
+            <p class="impl-card__subtitle">Service that catches broken integrations before they hit production.<br>Validates credentials, tests webhooks, and flags bad data early.</p>
           </div>
 
           <div class="impl-flow-row">
@@ -236,12 +220,21 @@
 
             <div class="impl-stack">
               <span class="impl-stack__label">Built with</span>
-              <span class="tag-badge">Node.js</span>
-              <span class="tag-badge">Express</span>
-              <span class="tag-badge">REST API</span>
-              <span class="tag-badge">JSON</span>
+              <span class="tag-badge" title="Node.js">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+              </span>
+              <span class="tag-badge" title="Express">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              </span>
+              <span class="tag-badge" title="REST API">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+              </span>
+              <span class="tag-badge" title="JSON">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </span>
             </div>
           </div>
+
           <p class="impl-stack__desc">
             Try a live request below to see how the API validates and responds.
           </p>
@@ -256,7 +249,7 @@
               Source ↗
             </a>
           </div>
-          <p class="impl-actions__note">Free tier demo. Uses Redis and UptimeRobot to stay active, but if my Robot is taking a nap it may take a few seconds to wake.</p>
+          <p class="impl-actions__note">Free tier demo. Uses Redis and UptimeRobot to stay active.</p>
 
         </div>
 
@@ -264,7 +257,7 @@
 
       <div class="impl-example reveal" style="--stagger: 2">
           <div class="impl-example__label">CRUD Examples</div>
-          <p class="impl-example__desc">Four API endpoint patterns — Create, Read, Update, Delete. Click any card to bring it forward.</p>
+          <p class="impl-example__desc">Click any card to bring it forward.</p>
 
           <div class="crud-carousel">
             <div class="crud-carousel__track" id="crudTrack">
@@ -388,185 +381,125 @@ Authorization: Bearer &lt;token&gt;</pre>
     </div><!-- /container -->
   </section>
 
-  <!-- ===== CORE CAPABILITIES + ARCHITECTURE ===== -->
-  <section class="experience section integ-arch" id="experience">
+
+
+
+
+
+
+
+  <!-- ===== HOW I OPERATE ===== -->
+  <section class="operating-model section" id="model">
     <div class="container">
       <div class="editorial-block">
-        <h2 class="editorial__heading editorial__heading--section reveal" style="--stagger: 0">Core Capabilities</h2>
-        <div class="experience__content reveal" style="--stagger: 1">
-          <h3 class="headline-display experience__lead">
-            How a project actually moves from contract to stable production.
-          </h3>
-          <p class="body-large">
-            <span class="highlight">
-              I've seen too many go-lives fail because nobody tested the failure paths. That's the first thing I look for now.
-            </span>
-          </p>
-        </div>
-      </div>
+        <h2 class="editorial__heading editorial__heading--section reveal" style="--stagger: 0">How I Operate</h2>
+        <div class="model__content reveal" style="--stagger: 1">
+          <ul class="model__list">
+            <li>
+              <strong>Outcome alignment</strong>
+              <span>Turn vague business requirements into concrete scope and visible risk boundaries.</span>
+            </li>
+            <li>
+              <strong>Implementation authority</strong>
+              <span>Design auth, data flows, and failure paths that survive production traffic.</span>
+            </li>
+            <li>
+              <strong>Risk Mitigation</strong>
+              <span>Enforce schema integrity and validation gates before any production record is touched.</span>
+            </li>
+          </ul>
 
-      <!-- Architecture Layers -->
-      <div class="arch-layers">
+          
+          <button class="expand-toggle" data-toggle="model-details" aria-expanded="false">
+            View Diagnostics & Architecture
+            <span class="expand-toggle__icon">→</span>
+          </button>
 
-        <div class="arch-layer reveal" style="--stagger: 2">
-          <div class="arch-layer__marker">
-            <span class="arch-layer__number">01</span>
-            <div class="arch-layer__line" aria-hidden="true"></div>
-          </div>
-          <div class="arch-layer__content">
-            <div class="arch-layer__header">
-              <span class="arch-layer__tag">Discovery</span>
-              <h3 class="arch-layer__title">Business Layer</h3>
-            </div>
-            <p class="arch-layer__desc">
-              RFI/RFP analysis, stakeholder alignment, technical requirement mapping.
-              Translate business objectives into defined scope, integration constraints,
-              and risk visibility — before any code runs.
-            </p>
-            <div class="arch-layer__capabilities">
-              <span class="arch-layer__cap">Requirement Mapping</span>
-              <span class="arch-layer__cap">Scope Definition</span>
-              <span class="arch-layer__cap">Risk Assessment</span>
-              <span class="arch-layer__cap">Stakeholder Sync</span>
-            </div>
-          </div>
-        </div>
 
-        <div class="arch-layer reveal" style="--stagger: 3">
-          <div class="arch-layer__marker">
-            <span class="arch-layer__number">02</span>
-            <div class="arch-layer__line" aria-hidden="true"></div>
-          </div>
-          <div class="arch-layer__content">
-            <div class="arch-layer__header">
-              <span class="arch-layer__tag">Configuration</span>
-              <h3 class="arch-layer__title">Integration Layer</h3>
+          
+          <div class="collapsible" id="model-details">
+            <div class="collapsible-inner">
+              <div class="section-block">
+                <span class="section-label">Diagnostic Targets</span>
+                <ul class="clean-list">
+                  <li>Unvalidated failure paths</li>
+                  <li>Authentication edge cases</li>
+                  <li>Assumptions in data mapping</li>
+                  <li>Missing observability</li>
+                </ul>
+              </div>
+              <div class="section-block">
+                <span class="section-label">Core Architecture</span>
+                <ul class="clean-list">
+                  <li>Discovery & Mapping</li>
+                  <li>API & Webhook Config</li>
+                  <li>OAuth / SAML Security</li>
+                  <li>Automated QA Gates</li>
+                </ul>
+              </div>
             </div>
-            <p class="arch-layer__desc">
-              API configuration, webhook design, data mapping, and SIP domain setup.
-              Every endpoint, payload schema, and callback URL is validated
-              end-to-end before it touches a production environment.
-            </p>
-            <div class="arch-layer__capabilities">
-              <span class="arch-layer__cap">API Design</span>
-              <span class="arch-layer__cap">Webhook Config</span>
-              <span class="arch-layer__cap">Data Mapping</span>
-              <span class="arch-layer__cap">SIP Routing</span>
-              <span class="arch-layer__cap">Postman Suites</span>
-            </div>
-          </div>
-        </div>
 
-        <div class="arch-layer reveal" style="--stagger: 4">
-          <div class="arch-layer__marker">
-            <span class="arch-layer__number">03</span>
-            <div class="arch-layer__line" aria-hidden="true"></div>
           </div>
-          <div class="arch-layer__content">
-            <div class="arch-layer__header">
-              <span class="arch-layer__tag">Validation</span>
-              <h3 class="arch-layer__title">Security Layer</h3>
-            </div>
-            <p class="arch-layer__desc">
-              OAuth and SAML flows validated in live environments.
-              IP ACL policies, credential rotation, and HIPAA-compliant
-              voice routing — tested under production conditions, not staging assumptions.
-            </p>
-            <div class="arch-layer__capabilities">
-              <span class="arch-layer__cap">OAuth / SAML</span>
-              <span class="arch-layer__cap">IP ACL Policies</span>
-              <span class="arch-layer__cap">HIPAA Controls</span>
-              <span class="arch-layer__cap">Credential Mgmt</span>
-            </div>
-          </div>
-        </div>
 
-        <div class="arch-layer reveal" style="--stagger: 5">
-          <div class="arch-layer__marker">
-            <span class="arch-layer__number">04</span>
-            <div class="arch-layer__line" aria-hidden="true"></div>
-          </div>
-          <div class="arch-layer__content">
-            <div class="arch-layer__header">
-              <span class="arch-layer__tag">Stability</span>
-              <h3 class="arch-layer__title">Production Layer</h3>
-            </div>
-            <p class="arch-layer__desc">
-              Structured log analysis, automated QA gates, failure-mode testing,
-              and root cause investigation. Post-deployment monitoring that catches
-              regressions before they escalate — because every incident I've prevented
-              started as a log line someone else ignored.
-            </p>
-            <div class="arch-layer__capabilities">
-              <span class="arch-layer__cap">Log Analysis</span>
-              <span class="arch-layer__cap">Automated QA</span>
-              <span class="arch-layer__cap">Root Cause</span>
-              <span class="arch-layer__cap">SLA Monitoring</span>
-              <span class="arch-layer__cap">Incident Response</span>
-            </div>
-          </div>
-        </div>
 
-      </div><!-- /arch-layers -->
-    </div>
-  </section>
 
-  <!-- ===== ENTERPRISE IMPACT ===== -->
-  <section class="impact section" id="impact">
-    <div class="container">
-      <div class="editorial-block">
-        <h2 class="editorial__heading editorial__heading--section reveal" style="--stagger: 0">Impact</h2>
-        <div class="impact__content reveal" style="--stagger: 1">
-          <p class="body-large" style="margin-bottom: 1.5rem;">
-            Impact for me shows up in cleaner cutovers, fewer late-night escalations, and customers who stay.
-          </p>
-          <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.75;">
-            I've run <strong>12 AWS migrations with zero downtime</strong>, cut deployment time by <strong>70%</strong> by putting structure around implementation, and reduced infrastructure costs by <strong>25%</strong> through smarter architecture instead of overprovisioning.
-          </p>
-          <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.75;">
-            On the workflow side, I've cut IVR configuration time by <strong>60%</strong> with automation and validation, built S3-based CSV ingestion that reliably handles <strong>100k+ records</strong> per client, and resolved <strong>90%</strong> of Tier 2 production escalations within SLA.
-          </p>
-          <p style="color: var(--text-secondary); line-height: 1.75;">
-            Across those accounts, that's translated into <strong>100% retention</strong> on the accounts I owned and enterprise implementations delivered with zero customer complaints — even when scope and requirements kept changing.
-          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== PROOF POINTS ===== -->
+
+
+
+
+
+
+  <!-- ===== FAILURE CASE STUDY ===== -->
+  <section class="failure-case section">
+    <div class="container">
+      <div class="editorial-block reveal" style="--stagger: 0">
+        <h2 class="editorial__heading editorial__heading--section">What Almost Broke</h2>
+        <div class="case-block">
+          <h3>Integration Failure Prevented Pre-Go-Live</h3>
+          <p class="case-problem"><strong>Outcome:</strong> A production deployment was approved with incomplete webhook validation and inconsistent payload handling.</p>
+          <p class="case-risk"><strong>Risk:</strong> Silent data loss and downstream system desync across multiple enterprise clients.</p>
+          <p class="case-action"><strong>Action:</strong> Rebuilt request handling and enforced schema checks during final validation.</p>
+          <p class="case-result"><strong>Result:</strong> Zero escalation, zero rollback, zero client impact. Incident prevented entirely.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== IMPACT ===== -->
   <section class="work section" id="work">
     <div class="container">
-      <h2 class="editorial__heading editorial__heading--section reveal" style="--stagger: 0">Proof Points</h2>
-      <div class="work-editorial__list">
+      <div class="proof-points__header reveal" style="--stagger: 0">
+        <h2 class="editorial__heading editorial__heading--section">Impact</h2>
+      </div>
 
+      <div class="work-editorial__list">
         <article class="work-item reveal" style="--stagger: 1">
           <div class="work-item__content">
-            <h3 class="work-item__title">150+ Enterprise Go-Lives, Zero Critical Failures</h3>
+            <h3 class="work-item__title">150+ Enterprise Go-Lives</h3>
             <p class="work-item__desc">
-              Regulated SaaS environments with complex integration constraints. The kind where a misconfiguration
-              at go-live means a pharmacist can't access patient records. I ran technical discovery, mapped
-              requirements to architecture, and owned the handoff from sales through production. Delivered from
-              contract to live in under 2 weeks. CSAT was 94% or higher.
+              Zero critical failures. Delivered in regulated environments where misconfiguration blocks patient access.
             </p>
           </div>
         </article>
 
         <article class="work-item reveal" style="--stagger: 2">
           <div class="work-item__content">
-            <h3 class="work-item__title">80% Fewer Production Incidents Through Automated QA</h3>
+            <h3 class="work-item__title">80% Fewer Incidents</h3>
             <p class="work-item__desc">
-              The incidents weren't random, they were the result of manual validation with no clear ownership.
-              I built automated workflows and structured testing that caught failures before they became
-              escalations. Zero-downtime deployments became the expectation, not the exception.
+              Automated QA implementation. Replaced manual validation with structured testing and zero-downtime cutovers.
             </p>
           </div>
         </article>
-
+        
         <div class="leadership-expand reveal" style="--stagger: 3">
           <button id="leadership-toggle" class="expand-toggle" aria-expanded="false"
             aria-controls="leadership-collapsible">
-            View More Outcomes <span class="expand-toggle__icon">→</span>
+            VIEW MORE <span class="expand-toggle__icon">→</span>
           </button>
 
           <div id="leadership-collapsible" class="collapsible-wrapper" aria-hidden="true"
@@ -574,49 +507,15 @@ Authorization: Bearer &lt;token&gt;</pre>
             <div class="collapsible-inner">
               <article class="work-item">
                 <div class="work-item__content">
-                  <h3 class="work-item__title">12 AWS Migrations, Zero Downtime</h3>
-                  <p class="work-item__desc">
-                    Legacy infrastructure was throttling deployment speed and adding lead time to every
-                    enterprise rollout. I ran 12 full AWS migrations using structured cutover planning and
-                    defined rollback controls. All 12 landed without incident. Deployment speed improved 70%,
-                    infrastructure costs came down through right-sized architecture.
-                  </p>
+                  <h3 class="work-item__title">12 AWS Migrations</h3>
+                  <p class="work-item__desc">Zero downtime. Replaced throttled legacy infrastructure with scalable architecture, improving deployment speed 70%.</p>
                 </div>
               </article>
 
               <article class="work-item">
                 <div class="work-item__content">
-                  <h3 class="work-item__title">90% of Tier 2 Escalations Resolved Within SLA</h3>
-                  <p class="work-item__desc">
-                    Production telephony failures in healthcare aren't just technical problems — they're
-                    compliance events. I led root cause investigations using Wireshark, SIP traces, and API
-                    validation to isolate failure points fast. Resolved 90% within SLA, cut repeat incidents
-                    by 65%, and documented patterns that prevented the same issues from recurring.
-                  </p>
-                </div>
-              </article>
-
-              <article class="work-item">
-                <div class="work-item__content">
-                  <h3 class="work-item__title">HIPAA-Compliant Voice Routing Across 200+ Facilities</h3>
-                  <p class="work-item__desc">
-                    Designed Twilio SIP domain integrations with IP ACL policies and secured registration
-                    controls for enterprise healthcare clients. No misconfiguration incidents post-deployment.
-                    99.99% telephony stability. Voice routing that met HIPAA requirements without adding
-                    operational complexity.
-                  </p>
-                </div>
-              </article>
-
-              <article class="work-item">
-                <div class="work-item__content">
-                  <h3 class="work-item__title">15+ Hours/Week Eliminated Through S3 Ingestion Automation</h3>
-                  <p class="work-item__desc">
-                    Manual CSV processing was a bottleneck that didn't scale. I built S3-based ingestion
-                    workflows handling 100k+ records per client with automated validation logic. The team
-                    stopped touching it. CX operations scaled 3x without adding headcount. Ingestion accuracy
-                    hit 100%.
-                  </p>
+                  <h3 class="work-item__title">90% Resolve Rate</h3>
+                  <p class="work-item__desc">SLA compliant. Isolated failure points using Wireshark and SIP traces. Cut repeat incidents by 65%.</p>
                 </div>
               </article>
             </div>
@@ -625,6 +524,8 @@ Authorization: Bearer &lt;token&gt;</pre>
       </div>
     </div>
   </section>
+
+
 
   <!-- ===== PHILOSOPHY ===== -->
   <section class="section philosophy-editorial" id="philosophy">
@@ -638,57 +539,23 @@ Authorization: Bearer &lt;token&gt;</pre>
     </div>
   </section>
 
-  <!-- ===== TESTIMONIALS ===== -->
-  <!-- ENDORSEMENTS SECTION — commented out until more endorsements available
-  <section class="testimonials section" id="testimonials">
+  <!-- ===== CONNECT ===== -->
+  <section class="contact section" id="contact">
     <div class="container">
-      <div class="editorial-block">
-        <span class="editorial__divider">⸻</span>
-        <h2 class="editorial__heading reveal" style="--stagger: 0">Endorsements</h2>
-        <div class="testimonial-grid reveal" style="--stagger: 1; max-width: 640px;">
-          <blockquote class="testimonial-quote-box">
-            <p class="testimonial__quote">"Jeff's ability to identify potential issues before they arise saves time,
-              reduces risk, and drives better outcomes. Any company would be lucky to have him — you'll get far more
-              than what you're paying for in terms of expertise, commitment, and positive impact."</p>
-            <footer class="testimonial__author">
-              <strong>J. David Kearney</strong>
-              <span>Technical Project Coordinator — Direct Manager</span>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div>
-  </section>
-  -->
-
-  <!-- ===== CLOSING / CONNECT ===== -->
-  <section class="availability section" id="contact">
-    <div class="container">
-      <div class="availability-block reveal" style="--stagger: 0">
-        <h2 class="editorial__heading">Connect</h2>
+      <div class="contact__content reveal" style="--stagger: 0;">
+        <h2 class="editorial__heading editorial__heading--section">Connect</h2>
+        
         <div class="contact__links">
-          <a href="https://www.linkedin.com/in/jeff-maddow" class="contact__link" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-            </svg>
+          <a href="https://linkedin.com/in/jeffmaddow" target="_blank" rel="noopener" class="btn btn--glass contact__btn">
+            <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
             LinkedIn
           </a>
-          <span class="dot">·</span>
-          <a href="https://github.com/jeffmaddow-ops" class="contact__link" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path
-                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-            </svg>
+          <a href="https://github.com/jeffmaddow-ops" target="_blank" rel="noopener" class="btn btn--glass contact__btn">
+            <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
             GitHub
           </a>
-          <span class="dot">·</span>
-          <a href="mailto:jeffmaddow@icloud.com" class="contact__link">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-            </svg>
+          <a href="mailto:jeffmaddow@icloud.com" class="btn btn--glass contact__btn">
+            <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             Email
           </a>
         </div>
@@ -698,6 +565,9 @@ Authorization: Bearer &lt;token&gt;</pre>
       </div>
     </div>
   </section>
+
+
+
 
   <!-- ===== FLOW MODAL ===== -->
   <div class="flow-modal" id="flow-modal" role="dialog" aria-modal="true" aria-labelledby="flow-modal-title"
